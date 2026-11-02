@@ -191,12 +191,20 @@ for row in tbl.split('|-')[1:]:
     c = [x.strip() for x in re.split(r'\|\|?', re.sub(r'\[\[[^\]]*\]\]', lambda m: m.group(0).replace('|', '\x01'), row.replace('\n', ''))) ]
     c = [x.replace('\x01', '|') for x in c if x != '']
     if len(c) < 4 or not re.match(r'\d{4}', c[2]): continue
-    who = [P.plain(x) for x in re.split(r'<br\s*/?>', c[0])]
+    who = []
+    for x in re.split(r'<br\s*/?>', c[0]):
+        nm = P.plain(x); lk = re.search(r'\[\[([^\]|]+)', x)
+        who.append(dict(n=nm, s=slug(nm), w=lk.group(1).strip().replace(' ', '_') if lk else ''))
     a = int(c[2]); b = 2026 if c[3] == 'Present' else int(c[3])
     start = a + 1 if mg and str(mg[-1]['t']) == str(a) else a   # a handover year belongs to the outgoing manager
     L = [m for m in matches if start <= m['y'] <= b and m.get('r')]
-    mg.append(dict(n=who, f=a, t=c[3], ai=P.plain(c[4]) if len(c) > 4 else '', mu=P.plain(c[5]) if len(c) > 5 else '', nl=P.plain(c[6]) if len(c) > 6 else '', rec=tot(L)))
+    mg.append(dict(n=who, f=a, t=c[3], a=start, b=b, ai=P.plain(c[4]) if len(c) > 4 else '', mu=P.plain(c[5]) if len(c) > 5 else '', nl=P.plain(c[6]) if len(c) > 6 else '', rec=tot(L)))
 json.dump(mg, open(OUT + 'managers.json', 'w'), ensure_ascii=False, separators=(',', ':'))
+seen_m = {}
+for m_ in mg:
+    for w_ in m_['n']:
+        seen_m.setdefault(w_['s'], w_)
+        if w_['w'] and not seen_m[w_['s']]['w']: seen_m[w_['s']]['w'] = w_['w']
 # Fixtures, hand-kept in tools/data/fixtures.json
 fx = json.load(open('tools/data/fixtures.json'))
 json.dump(fx, open(OUT + 'fixtures.json', 'w'), ensure_ascii=False, separators=(',', ':'))
@@ -212,6 +220,7 @@ open('site/calendar.ics', 'w').write('\r\n'.join(ics) + '\r\n')
 # Search index
 idx = [[p['n'], 'Player', '/player/?p=' + p['s'], f"{p['g']}-{p['p']} recorded, {p['f']}-{p['l']}"] for p in pll]
 idx += [[o['n'], 'Opponent', '/opponent/?o=' + o['s'], f"{o['p']} recorded games"] for o in ol]
+idx += [[w_['n'], 'Manager', '/manager/?m=' + k_, 'Limerick manager'] for k_, w_ in seen_m.items()]
 idx += [[str(s['y']), 'Season', '/season/?y=' + str(s['y']), f"{s['p']} recorded games"] for s in se]
 json.dump(idx, open('site/search.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 json.dump(dict(built=DT.date.today().isoformat(), revs=None), open(OUT + 'status.json', 'w'))

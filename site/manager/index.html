@@ -1,0 +1,42 @@
+<!doctype html><html lang="en-IE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#00693e">
+<title>Limerick Hurling · Manager</title>
+<link rel="icon" href="/assets/favicon-32.png" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Limerick">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="/mu.css"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png" alt="" width="44" height="44" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="from" id="from">Manager<span></span></div></header>
+<nav class="munav" aria-label="Sections"></nav>
+<main id="main-content" tabindex="-1">
+<section class="sheet" id="head"></section>
+<section class="sheet" id="sp"></section>
+<section class="sheet" id="fin"></section>
+<section class="sheet" id="games"></section>
+
+</main>
+<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests belong to their county boards. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
+</div>
+<script src="/lh.js"></script>
+<script>
+(function(){
+LH.nav('Managers');
+var $=function(i){return document.getElementById(i)}, E=LH.esc;
+
+Promise.all([LH.get("managers"),LH.get("matches")]).then(function(R){
+ var s=LH.q("m"), S=R[0].filter(function(g){return g.n.some(function(x){return x.s===s})});
+ if(!S.length){$("head").innerHTML='<p class="empty">No manager with that name. <a class="link" href="/managers/">All managers</a></p>';return}
+ var me=null; S.forEach(function(g){g.n.forEach(function(x){if(x.s===s&&(!me||x.w))me=x})});
+ document.title="Limerick Hurling · "+me.n; $("from").innerHTML="Manager<span>"+E(me.n)+"</span>";
+ function inS(m){return S.some(function(g){return g.a<=m.y&&m.y<=g.b})}
+ var G=R[1].filter(inS).reverse(), t=LH.tot(G);
+ function titles(k){var o=[]; S.forEach(function(g){if(g[k])g[k].split(/,\s*/).forEach(function(y){if(y&&o.indexOf(y)<0)o.push(y)})}); return o}
+ var ai=titles("ai"),mu=titles("mu"),nl=titles("nl");
+ $("head").innerHTML='<div class="big">'+E(me.n)+'</div><div class="tiles">'+LH.stat("Recorded games",t.p,t.w+" won, "+t.d+" drawn, "+t.l+" lost")+LH.stat("Win rate",(t.p?Math.round(100*t.w/t.p):0)+"%")+LH.stat("All-Ireland",ai.length,ai.join(", "))+LH.stat("Munster",mu.length,mu.join(", "))+LH.stat("League",nl.length,nl.join(", "))+'</div><p class="note" style="margin:10px 0 0">Games in this archive during his seasons. A handover year counts for the outgoing manager, and joint managements share the same games.'+(me.w?' <a class="link" href="https://en.wikipedia.org/wiki/'+encodeURIComponent(me.w)+'">Wikipedia</a>':'')+'</p>';
+ $("sp").innerHTML='<h2>Spells</h2><table class="mu"><thead><tr><th>Years</th><th>Management</th><th class="n">P</th><th class="n">W</th><th class="n">D</th><th class="n">L</th></tr></thead><tbody>'+S.slice().reverse().map(function(g){return '<tr><td class="yrs">'+g.f+'-'+(g.t==="Present"?"":g.t)+'</td><td>'+g.n.map(function(x){return x.s===s?E(x.n):'<a href="/manager/?m='+x.s+'">'+E(x.n)+'</a>'}).join(", ")+'</td><td class="n">'+g.rec.p+'</td><td class="n">'+g.rec.w+'</td><td class="n">'+g.rec.d+'</td><td class="n">'+g.rec.l+'</td></tr>'}).join("")+'</tbody></table>';
+ var F=G.filter(function(m){return /^final/i.test(m.rnd||"")&&m.r}); $("fin").innerHTML='<h2>Finals</h2>'+(F.length?LH.list(F,{nov:1}):'<p class="note" style="margin:0">No finals recorded in his seasons.</p>');
+ $("games").innerHTML='<h2>Every game</h2>'+LH.list(G,{nov:1});
+}).catch(function(){LH.fail($("head"))});
+
+})();
+</script></body></html>

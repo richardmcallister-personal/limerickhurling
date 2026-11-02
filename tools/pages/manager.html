@@ -1,0 +1,24 @@
+<!--title:Manager-->
+<!--kick:Manager-->
+<!--sub:-->
+<!--nav:Managers-->
+<section class="sheet" id="head"></section>
+<section class="sheet" id="sp"></section>
+<section class="sheet" id="fin"></section>
+<section class="sheet" id="games"></section>
+<script>
+Promise.all([LH.get("managers"),LH.get("matches")]).then(function(R){
+ var s=LH.q("m"), S=R[0].filter(function(g){return g.n.some(function(x){return x.s===s})});
+ if(!S.length){$("head").innerHTML='<p class="empty">No manager with that name. <a class="link" href="/managers/">All managers</a></p>';return}
+ var me=null; S.forEach(function(g){g.n.forEach(function(x){if(x.s===s&&(!me||x.w))me=x})});
+ document.title="Limerick Hurling · "+me.n; $("from").innerHTML="Manager<span>"+E(me.n)+"</span>";
+ function inS(m){return S.some(function(g){return g.a<=m.y&&m.y<=g.b})}
+ var G=R[1].filter(inS).reverse(), t=LH.tot(G);
+ function titles(k){var o=[]; S.forEach(function(g){if(g[k])g[k].split(/,\s*/).forEach(function(y){if(y&&o.indexOf(y)<0)o.push(y)})}); return o}
+ var ai=titles("ai"),mu=titles("mu"),nl=titles("nl");
+ $("head").innerHTML='<div class="big">'+E(me.n)+'</div><div class="tiles">'+LH.stat("Recorded games",t.p,t.w+" won, "+t.d+" drawn, "+t.l+" lost")+LH.stat("Win rate",(t.p?Math.round(100*t.w/t.p):0)+"%")+LH.stat("All-Ireland",ai.length,ai.join(", "))+LH.stat("Munster",mu.length,mu.join(", "))+LH.stat("League",nl.length,nl.join(", "))+'</div><p class="note" style="margin:10px 0 0">Games in this archive during his seasons. A handover year counts for the outgoing manager, and joint managements share the same games.'+(me.w?' <a class="link" href="https://en.wikipedia.org/wiki/'+encodeURIComponent(me.w)+'">Wikipedia</a>':'')+'</p>';
+ $("sp").innerHTML='<h2>Spells</h2><table class="mu"><thead><tr><th>Years</th><th>Management</th><th class="n">P</th><th class="n">W</th><th class="n">D</th><th class="n">L</th></tr></thead><tbody>'+S.slice().reverse().map(function(g){return '<tr><td class="yrs">'+g.f+'-'+(g.t==="Present"?"":g.t)+'</td><td>'+g.n.map(function(x){return x.s===s?E(x.n):'<a href="/manager/?m='+x.s+'">'+E(x.n)+'</a>'}).join(", ")+'</td><td class="n">'+g.rec.p+'</td><td class="n">'+g.rec.w+'</td><td class="n">'+g.rec.d+'</td><td class="n">'+g.rec.l+'</td></tr>'}).join("")+'</tbody></table>';
+ var F=G.filter(function(m){return /^final/i.test(m.rnd||"")&&m.r}); $("fin").innerHTML='<h2>Finals</h2>'+(F.length?LH.list(F,{nov:1}):'<p class="note" style="margin:0">No finals recorded in his seasons.</p>');
+ $("games").innerHTML='<h2>Every game</h2>'+LH.list(G,{nov:1});
+}).catch(function(){LH.fail($("head"))});
+</script>
