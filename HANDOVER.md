@@ -3,11 +3,11 @@
 Read CLAUDE.md first.
 
 ## Done
-Pages: hub, season (any year), results (filters), match, players, player, opponents, opponent, managers, honours, records, search, more. Dark mode, phone tab bar, calendar file. County crests from Richard's gaa_assets folder.
+Live on limerickhurling.wiki (also limerickhurling.richardmcallister.workers.dev), noindex.
+Pages: manager, hub, season (any year), results (filters), match, players, player, opponents, opponent, managers, honours, records, search, more. Dark mode, phone tab bar, calendar file. County crests from Richard's gaa_assets folder.
 Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/reconcile.txt.
 
 ## Needs Richard
-- A Cloudflare Worker connected to this repo (name limerickhurling), and a domain. Add the domain to `routes` in wrangler.jsonc, as on irelandrugby.
 - Decide on the photos in gaa_assets: cups and grounds (mostly gaa.ie press photos) and shirts (retailer listings). None are on the site yet. Crests are in.
 
 ## Open items

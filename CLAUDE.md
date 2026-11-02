@@ -1,7 +1,7 @@
 # Limerick hurling: working notes for Claude
 
 Richard's site for Limerick's senior hurlers, modelled on manutd.wiki (repo SITE1), which it must not affect.
-Plain static pages + one Cloudflare Worker, deployed on push to `main`. No framework. Noindex until Richard launches it.
+Plain static pages + one Cloudflare Worker, deployed on push to `main`. Live host: limerickhurling.wiki. No framework. Noindex until Richard launches it.
 
 ## Layout
 
