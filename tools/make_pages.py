@@ -4,7 +4,7 @@ import os, glob, re
 HEAD = '''<!doctype html><html lang="en-IE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex"><meta name="theme-color" content="#00693e">
 <title>Limerick Hurling · {title}</title>
-<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/assets/favicon-32.png?v=2" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/assets/favicon-32.png?v=2" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=3">
 <meta property="og:title" content="Limerick Hurling · {title}"><meta property="og:type" content="website"><meta property="og:image" content="https://limerickhurling.wiki/assets/og.png"><link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Limerick">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

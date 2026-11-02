@@ -17,9 +17,13 @@ def fit(size, pad, bg=None):
 fit(132, 0).save('site/assets/crest-88.png')
 fit(32, 0).save('site/assets/favicon-32.png')
 fit(48, 0).save('site/favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
-W = (255, 255, 255, 255)
-fit(180, 14, W).convert('RGB').save('site/assets/apple-touch-icon.png')
-fit(192, 14, W).save('site/assets/icon-192.png')
-fit(512, 40, W).save('site/assets/icon-512.png')
-fit(512, 90, W).save('site/assets/icon-512-maskable.png')
+G = (0, 105, 62, 255)   # Limerick green, the site's band colour
+def outlined(size, pad, width):   # crest filling the tile, with a thin white edge so it lifts off the green
+    x = fit(size, pad); a = x.getchannel('A'); from PIL import ImageFilter
+    edge = a.filter(ImageFilter.MaxFilter(2 * width + 1)); box = Image.new('RGBA', (size, size), G)
+    box.paste((255, 255, 255, 255), (0, 0), edge); box.alpha_composite(x); return box
+outlined(180, 10, 2).convert('RGB').save('site/assets/apple-touch-icon.png')
+outlined(192, 11, 2).save('site/assets/icon-192.png')
+outlined(512, 28, 5).save('site/assets/icon-512.png')
+outlined(512, 70, 5).save('site/assets/icon-512-maskable.png')
 og = Image.new('RGBA', (1200, 630), (0, 105, 62, 255)); s = fit(460, 0); og.alpha_composite(s, (370, 85)); og.convert('RGB').save('site/assets/og.png', optimize=True)
