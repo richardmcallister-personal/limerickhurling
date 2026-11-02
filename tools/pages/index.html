@@ -1,0 +1,29 @@
+<!--title:Hub-->
+<!--kick:All-Ireland champions-->
+<!--sub:2026-->
+<!--nav:Hub-->
+<div class="hub"><div class="col">
+<section class="sheet" id="next" style="min-height:190px"></section>
+<section class="sheet" id="last" style="min-height:150px"></section>
+<section class="sheet"><h2>2027 fixtures</h2><div id="fx"></div><p class="note" id="fxn"></p><p style="margin:10px 0 0"><a class="btn" href="/calendar.ics" download>Add to calendar</a></p></section>
+</div><div class="col">
+<section class="sheet"><h2>Honours</h2><div class="tiles" id="hon"></div><p style="margin:10px 0 0"><a class="link" href="/honours/">Every title and final →</a></p></section>
+<section class="sheet" id="otd"></section>
+<section class="sheet"><h2>Top scorers on record</h2><div id="top"></div><p style="margin:10px 0 0"><a class="link" href="/players/">All players →</a></p></section>
+</div></div>
+<script>
+Promise.all([LH.get("matches"),LH.get("fixtures"),LH.get("honours"),LH.get("players")]).then(function(R){
+ var M=R[0],F=R[1],H=R[2],P=R[3], today=new Date().toISOString().slice(0,10);
+ var dated=F.games.filter(function(g){return g.d&&g.d>=today}).sort(function(a,b){return a.d<b.d?-1:1}), g=dated[0]||F.games[0];
+ var days=g.d?Math.round((new Date(g.d+"T12:00:00Z")-new Date(today+"T12:00:00Z"))/864e5):null;
+ var past=M.filter(function(m){return m.opp===g.opp&&m.r}), t=LH.tot(past), last5=past.slice(-3).reverse();
+ $("next").innerHTML='<h2>Next match</h2><div class="kick">'+E(g.comp)+' · '+E(g.rnd)+' <span class="prov">Provisional</span></div><div class="big">'+(g.h==="H"?"Limerick v "+E(g.opp):E(g.opp)+" v Limerick")+'</div><div>'+(g.approx&&!g.d?E(g.approx):g.approx?E(g.approx):LH.fmtD(g.d,true))+(days!=null?' · '+days+' days':'')+'</div><div class="note">'+E(g.v)+'</div><p class="note" style="margin:10px 0 0">Recorded meetings: <a class="link" href="/opponent/?o='+LH.slug(g.opp)+'">'+t.p+' games, '+t.w+' won, '+t.d+' drawn, '+t.l+' lost</a></p>'+LH.list(last5,{nov:1});
+ var L=M.filter(function(m){return m.r&&m.d}).sort(function(a,b){return a.d<b.d?-1:1}).pop();
+ $("last").innerHTML='<h2>Last match</h2><div class="kick">'+E(LH.comp(L.cn))+(L.rnd?' · '+E(L.rnd):'')+' · '+LH.fmtD(L.d)+'</div><div class="big">Limerick '+LH.gp(L.u)+' '+E(L.opp)+' '+LH.gp(L.o)+'</div><div class="sclist">'+LH.scs(L,6)+'</div><p style="margin:10px 0 0"><a class="link" href="/match/?id='+L.id+'">Match page →</a></p>';
+ $("fx").innerHTML='<ul class="mlist">'+F.games.map(function(x){return '<li><span class="d">'+(x.d&&!x.approx?LH.fmtD(x.d):E(x.approx||""))+'</span><span class="o">'+(x.h==="H"?"Limerick v "+E(x.opp):E(x.opp)+" v Limerick")+'<small>'+E(x.comp)+' · '+E(x.rnd)+' · '+E(x.v)+'</small></span><span class="prov">Prov.</span></li>'}).join("")+'</ul>'; $("fxn").textContent=F.open+" Last checked "+LH.fmtD(F.checked)+".";
+ $("hon").innerHTML=LH.stat("All-Ireland",H.aishc.w.n,"Last: "+H.aishc.w.y.slice(-1)[0])+LH.stat("League",H.nl.w.n,"Last: "+H.nl.w.y.slice(-1)[0])+LH.stat("Munster",H.mshc.w.n,"Last: "+H.mshc.w.y.slice(-1)[0]);
+ var md=today.slice(5), od=M.filter(function(m){return m.d&&m.d.slice(5)===md&&m.r}).sort(function(a,b){return a.d<b.d?1:-1});
+ $("otd").innerHTML='<h2>On this day</h2>'+(od.length?LH.list(od.slice(0,3),{nov:1}):'<p class="note" style="margin:0">No recorded Limerick game on this date. November is the off-season.</p>');
+ $("top").innerHTML='<table class="mu"><thead><tr><th>Player</th><th>Years</th><th class="n">Score</th><th class="n">Total</th></tr></thead><tbody>'+P.slice(0,6).map(function(p){return '<tr><td><a href="/player/?p='+p.s+'">'+E(p.n)+'</a></td><td class="yrs">'+p.f+'-'+p.l+'</td><td class="n">'+p.g+'-'+p.p+'</td><td class="n"><b>'+p.t+'</b></td></tr>'}).join("")+'</tbody></table>';
+}).catch(function(){LH.fail($("next"))});
+</script>

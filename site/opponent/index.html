@@ -1,0 +1,36 @@
+<!doctype html><html lang="en-IE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#00693e">
+<title>Limerick Hurling · Opponent</title>
+<link rel="icon" href="/assets/favicon-32.png" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Limerick">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="/mu.css"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png" alt="" width="44" height="44" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="from" id="from">Opponent<span></span></div></header>
+<nav class="munav" aria-label="Sections"></nav>
+<main id="main-content" tabindex="-1">
+<section class="sheet" id="head"></section>
+<div class="two"><section class="sheet" id="ch"></section><section class="sheet" id="nl"></section></div>
+
+</main>
+<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
+</div>
+<script src="/lh.js"></script>
+<script>
+(function(){
+LH.nav('Opponents');
+var $=function(i){return document.getElementById(i)}, E=LH.esc;
+
+Promise.all([LH.get("opponents"),LH.get("matches")]).then(function(R){
+ var s=LH.q("o"), o=R[0].filter(function(x){return x.s===s})[0];
+ if(!o){$("head").innerHTML='<p class="empty">No opponent with that name. <a class="link" href="/opponents/">All opponents</a></p>';return}
+ document.title="Limerick v "+o.n; $("from").innerHTML="Opponent<span>"+E(o.n)+"</span>";
+ var L=R[1].filter(function(m){return m.opp===o.n}).reverse(); function rec(t){return LH.stat("Played",t.p)+LH.stat("Won",t.w)+LH.stat("Drawn",t.d)+LH.stat("Lost",t.l)}
+ var big=L.filter(function(m){return m.r==="W"}).sort(function(a,b){return (b.gf-b.ga)-(a.gf-a.ga)})[0], bad=L.filter(function(m){return m.r==="L"}).sort(function(a,b){return (b.ga-b.gf)-(a.ga-a.gf)})[0];
+ $("head").innerHTML='<div class="big">Limerick v '+E(o.n)+'</div><div class="tiles">'+rec(o)+'</div><p class="note" style="margin:10px 0 0">'+(big?'Biggest win: '+LH.gp(big.u)+' to '+LH.gp(big.o)+', '+big.y+'. ':'')+(bad?'Heaviest defeat: '+LH.gp(bad.u)+' to '+LH.gp(bad.o)+', '+bad.y+'.':'')+'</p>';
+ $("ch").innerHTML='<h2>Championship ('+o.ch.w+'-'+o.ch.d+'-'+o.ch.l+')</h2>'+LH.list(L.filter(function(m){return m.cn!=="NL"}),{nov:1});
+ $("nl").innerHTML='<h2>League ('+o.nl.w+'-'+o.nl.d+'-'+o.nl.l+')</h2>'+LH.list(L.filter(function(m){return m.cn==="NL"}),{nov:1});
+}).catch(function(){LH.fail($("head"))});
+
+})();
+</script></body></html>

@@ -1,0 +1,14 @@
+<!--title:Players-->
+<!--kick:Players-->
+<!--sub:Scorers on record-->
+<!--nav:Players-->
+<section class="sheet"><div class="pick"><input id="q" type="search" placeholder="Filter by name" aria-label="Filter players"><select id="d" aria-label="Decade"><option value="">All eras</option></select></div><p class="note" style="margin:0 0 10px">The source lists scorers only, not teams, so a player who never scored is not here and "Games" means games he scored in. Many older players appear by initial as printed in the source.</p><div id="list"></div></section>
+<script>
+LH.get("players").then(function(P){
+ var dec={}; P.forEach(function(p){p.by.forEach(function(b){dec[Math.floor(b[0]/10)*10]=1})}); $("d").innerHTML+=Object.keys(dec).reverse().map(function(d){return '<option value="'+d+'">'+d+'s</option>'}).join("");
+ function fold(t){return String(t).normalize("NFKD").replace(/[̀-ͯ]/g,"").toLowerCase()}
+ function draw(){var q=fold($("q").value.trim()),d=+$("d").value, L=P.filter(function(p){return (!q||fold(p.n).indexOf(q)>=0)&&(!d||p.by.some(function(b){return Math.floor(b[0]/10)*10===d}))}).map(function(p){if(!d)return p; var g=0,x=0,c=0; p.by.forEach(function(b){if(Math.floor(b[0]/10)*10===d){g+=b[1];x+=b[2];c+=b[3]}}); return {n:p.n,s:p.s,f:p.f,l:p.l,g:g,p:x,c:c,t:g*3+x}}).sort(function(a,b){return b.t-a.t});
+  $("list").innerHTML='<table class="mu"><thead><tr><th>#</th><th>Player</th><th>Years</th><th class="n">Games</th><th class="n">Score</th><th class="n">Total</th></tr></thead><tbody>'+L.slice(0,200).map(function(p,i){return '<tr><td>'+(i+1)+'</td><td><a href="/player/?p='+p.s+'">'+E(p.n)+'</a></td><td class="yrs">'+p.f+'-'+p.l+'</td><td class="n">'+p.c+'</td><td class="n">'+p.g+'-'+p.p+'</td><td class="n"><b>'+p.t+'</b></td></tr>'}).join("")+'</tbody></table>'}
+ $("q").addEventListener("input",draw); $("d").addEventListener("change",draw); draw();
+}).catch(function(){LH.fail($("list"))});
+</script>

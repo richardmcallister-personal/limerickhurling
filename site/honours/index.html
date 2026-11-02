@@ -1,0 +1,34 @@
+<!doctype html><html lang="en-IE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#00693e">
+<title>Limerick Hurling · Honours</title>
+<link rel="icon" href="/assets/favicon-32.png" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Limerick">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="/mu.css"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png" alt="" width="44" height="44" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="from" id="from">History<span>Honours</span></div></header>
+<nav class="munav" aria-label="Sections"></nav>
+<main id="main-content" tabindex="-1">
+<section class="sheet"><h2>Titles</h2><div id="hon"></div></section>
+<section class="sheet"><h2>All-Ireland finals</h2><div id="ai"></div></section>
+<section class="sheet"><h2>Munster finals</h2><div id="mu"></div></section>
+<section class="sheet"><h2>League finals</h2><div id="nl"></div></section>
+
+</main>
+<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
+</div>
+<script src="/lh.js"></script>
+<script>
+(function(){
+LH.nav('Honours');
+var $=function(i){return document.getElementById(i)}, E=LH.esc;
+
+Promise.all([LH.get("honours"),LH.get("matches")]).then(function(R){var H=R[0],M=R[1];
+ function row(t,x){return '<tr><td><b>'+t+'</b></td><td class="n">'+x.w.n+'</td><td>'+x.w.y.join(", ")+'</td><td class="n">'+x.ru.n+'</td><td>'+x.ru.y.join(", ")+'</td></tr>'}
+ $("hon").innerHTML='<table class="mu"><thead><tr><th>Competition</th><th class="n">Won</th><th>Years</th><th class="n">Lost</th><th>Finals lost</th></tr></thead><tbody>'+row("All-Ireland",H.aishc)+row("National League",H.nl)+row("Munster",H.mshc)+'</tbody></table>';
+ function F(c){return M.filter(function(m){return m.cn===c&&/^final/i.test(m.rnd||"")&&m.r}).reverse()}
+ $("ai").innerHTML=LH.list(F("AISHC"),{sc:1}); $("mu").innerHTML=LH.list(F("MSHC")); $("nl").innerHTML=LH.list(F("NL"));
+}).catch(function(){LH.fail($("hon"))});
+
+})();
+</script></body></html>

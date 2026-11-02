@@ -1,0 +1,16 @@
+<!--title:Honours-->
+<!--kick:History-->
+<!--sub:Honours-->
+<!--nav:Honours-->
+<section class="sheet"><h2>Titles</h2><div id="hon"></div></section>
+<section class="sheet"><h2>All-Ireland finals</h2><div id="ai"></div></section>
+<section class="sheet"><h2>Munster finals</h2><div id="mu"></div></section>
+<section class="sheet"><h2>League finals</h2><div id="nl"></div></section>
+<script>
+Promise.all([LH.get("honours"),LH.get("matches")]).then(function(R){var H=R[0],M=R[1];
+ function row(t,x){return '<tr><td><b>'+t+'</b></td><td class="n">'+x.w.n+'</td><td>'+x.w.y.join(", ")+'</td><td class="n">'+x.ru.n+'</td><td>'+x.ru.y.join(", ")+'</td></tr>'}
+ $("hon").innerHTML='<table class="mu"><thead><tr><th>Competition</th><th class="n">Won</th><th>Years</th><th class="n">Lost</th><th>Finals lost</th></tr></thead><tbody>'+row("All-Ireland",H.aishc)+row("National League",H.nl)+row("Munster",H.mshc)+'</tbody></table>';
+ function F(c){return M.filter(function(m){return m.cn===c&&/^final/i.test(m.rnd||"")&&m.r}).reverse()}
+ $("ai").innerHTML=LH.list(F("AISHC"),{sc:1}); $("mu").innerHTML=LH.list(F("MSHC")); $("nl").innerHTML=LH.list(F("NL"));
+}).catch(function(){LH.fail($("hon"))});
+</script>

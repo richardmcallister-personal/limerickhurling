@@ -1,0 +1,38 @@
+<!doctype html><html lang="en-IE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#00693e">
+<title>Limerick Hurling · Records</title>
+<link rel="icon" href="/assets/favicon-32.png" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Limerick">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="/mu.css"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png" alt="" width="44" height="44" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="from" id="from">History<span>Records</span></div></header>
+<nav class="munav" aria-label="Sections"></nav>
+<main id="main-content" tabindex="-1">
+<section class="sheet"><p class="note" style="margin:0">Worked out from the archive only, so a record set in a game Wikipedia doesn't hold won't show. Margins use points value (a goal is 3).</p></section>
+<div class="two"><section class="sheet" id="w"></section><section class="sheet" id="l"></section><section class="sheet" id="s"></section><section class="sheet" id="p"></section></div>
+<section class="sheet" id="t"></section>
+
+</main>
+<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
+</div>
+<script src="/lh.js"></script>
+<script>
+(function(){
+LH.nav('Records');
+var $=function(i){return document.getElementById(i)}, E=LH.esc;
+
+Promise.all([LH.get("matches"),LH.get("players"),LH.get("seasons")]).then(function(R){var M=R[0].filter(function(m){return m.r}),P=R[1],S=R[2];
+ function top(a,f,n){return a.slice().sort(function(x,y){return f(y)-f(x)}).slice(0,n||8)}
+ $("w").innerHTML='<h2>Biggest wins</h2>'+LH.list(top(M,function(m){return m.gf-m.ga}),{nov:1});
+ $("l").innerHTML='<h2>Heaviest defeats</h2>'+LH.list(top(M,function(m){return m.ga-m.gf}),{nov:1});
+ $("s").innerHTML='<h2>Highest scores</h2>'+LH.list(top(M,function(m){return m.gf}),{nov:1});
+ var g=[]; R[0].forEach(function(m){(m.sc||[]).forEach(function(x){g.push({n:x[0],g:x[1],p:x[2],m:m})})});
+ $("p").innerHTML='<h2>Best individual games</h2><ul class="mlist">'+top(g,function(x){return x.g*3+x.p}).map(function(x){return '<li><span class="d">'+x.m.y+'</span><span class="o"><a href="/player/?p='+LH.slug(x.n)+'">'+E(x.n)+'</a><small><a href="/match/?id='+x.m.id+'">v '+E(x.m.opp)+', '+E(LH.comp(x.m.cn))+'</a></small></span><span class="score">'+x.g+'-'+x.p+' <small>('+(x.g*3+x.p)+')</small></span></li>'}).join("")+'</ul>';
+ var best=0,cur=0,from=null,bf=null,bt=null; M.forEach(function(m){if(m.r!=="L"&&m.d){if(!cur)from=m; cur++; if(cur>best){best=cur;bf=from;bt=m}}else if(m.r==="L")cur=0});
+ var ws=0,wc=0,wf,wt,wfrom; M.forEach(function(m){if(m.r==="W"&&m.d){if(!wc)wfrom=m;wc++;if(wc>ws){ws=wc;wf=wfrom;wt=m}}else if(m.r!=="W")wc=0});
+ $("t").innerHTML='<h2>Runs and seasons</h2><div class="tiles">'+LH.stat("Longest unbeaten run",best,LH.fmtD(bf.d)+" to "+LH.fmtD(bt.d))+LH.stat("Longest winning run",ws,LH.fmtD(wf.d)+" to "+LH.fmtD(wt.d))+(function(){var s=top(S.filter(function(x){return x.p>=6}),function(x){return x.w/x.p})[0];return LH.stat("Best season by win rate",s.y,s.w+" of "+s.p+" recorded games")})()+'</div>';
+}).catch(function(){LH.fail($("w"))});
+
+})();
+</script></body></html>

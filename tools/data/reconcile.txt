@@ -1,0 +1,70 @@
+Stubs with no score dropped: 1891 Munster Championship v Kerry (Postponed); 1891 Munster Championship v Kerry (Postponed); 1911 All-Ireland Championship v Kilkenny (Cancelled); 1911 All-Ireland Championship v Kilkenny (Cancelled); 1971 National League v Tipperary (Postponed)
+All-Ireland titles: list 13, finals won in archive 13. Listed, no final found: []. Final won, not listed: []
+Munster titles: list 26, finals won in archive 25. Listed, no final found: [1910, 1911]. Final won, not listed: [1891]
+League titles: list 15, finals won in archive 10. Listed, no final found: [1934, 1935, 1936, 1983, 1984]. Final won, not listed: []
+Matches: 786; with a score 783; with a date 693; with Limerick scorers 669
+By competition: Counter({'NL': 450, 'MSHC': 253, 'AISHC': 83})
+Scorers that don't add up to the score: 62 of 669
+1902-cork: score 1-5, scorers add to 1-0
+1930-waterford: score 3-3, scorers add to 3-2
+1944-cork: score 4-13, scorers add to 5-13
+1946-tipperary: score 3-5, scorers add to 2-5
+1955-waterford: score 4-5, scorers add to 4-6
+1959-carlow: score 10-6, scorers add to 10-7
+1963-wexford: score 1-9, scorers add to 1-8
+1964-dublin: score 6-10, scorers add to 7-10
+1967-clare-2: score 3-5, scorers add to 2-5
+1970-clare-3: score 1-11, scorers add to 1-10
+1973-clare-2: score 3-9, scorers add to 3-10
+1973-galway: score 4-10, scorers add to 3-10
+1973-tipperary-2: score 1-13, scorers add to 1-12
+1974-clare-2: score 6-14, scorers add to 5-14
+1975-laois: score 5-14, scorers add to 5-12
+1976-clare-2: score 2-7, scorers add to 2-5
+1978-tipperary: score 1-14, scorers add to 1-13
+1978-galway: score 0-11, scorers add to 0-9
+1980-offaly: score 4-6, scorers add to 3-5
+1981-tipperary-2: score 3-17, scorers add to 3-13
+1981-clare: score 3-12, scorers add to 3-11
+1983-galway: score 0-10, scorers add to 0-9
+1986-cork: score 1-12, scorers add to 2-12
+1987-clare: score 3-9, scorers add to 3-8
+1987-cork-2: score 3-11, scorers add to 2-11
+1988-kilkenny: score 3-6, scorers add to 2-6
+1992-galway: score 6-9, scorers add to 5-9
+1993-antrim: score 1-7, scorers add to 1-6
+1994-galway: score 2-7, scorers add to 1-6
+1999-clare: score 1-10, scorers add to 1-9
+2001-antrim: score 4-18, scorers add to 3-17
+2001-galway: score 2-12, scorers add to 2-11
+2003-waterford-2: score 4-13, scorers add to 4-11
+2003-offaly-2: score 0-14, scorers add to 1-11
+2004-waterford: score 4-7, scorers add to 4-5
+2004-clare: score 2-11, scorers add to 7-6
+2004-tipperary-2: score 2-12, scorers add to 6-8
+2006-clare-2: score 0-10, scorers add to 4-6
+2007-tipperary-2: score 1-19, scorers add to 1-20
+2011-clare-2: score 4-12, scorers add to 5-10
+2011-wexford: score 1-21, scorers add to 1-22
+2014-antrim: score 3-28, scorers add to 3-26
+2014-laois: score 1-17, scorers add to 1-15
+2014-wexford-2: score 4-26, scorers add to 4-23
+2015-laois: score 1-25, scorers add to 1-24
+2015-dublin-2: score 1-16, scorers add to 1-17
+2016-kerry: score 1-19, scorers add to 1-17
+2017-laois: score 6-33, scorers add to 6-27
+2017-clare: score 2-16, scorers add to 2-15
+2018-offaly: score 1-24, scorers add to 1-23
+2018-galway-2: score 3-16, scorers add to 3-15
+2019-waterford: score 1-24, scorers add to 1-22
+2019-waterford-2: score 2-24, scorers add to 2-22
+2019-tipperary-2: score 2-26, scorers add to 2-24
+2020-galway: score 1-19, scorers add to 1-16
+2020-cork: score 0-29, scorers add to 0-28
+2022-cork: score 2-25, scorers add to 2-24
+2022-kilkenny: score 1-31, scorers add to 1-30
+2023-waterford: score 1-18, scorers add to 3-15
+2025-cork: score 1-16, scorers add to 1-11
+2025-clare: score 0-21, scorers add to 0-17
+2025-wexford: score 1-12, scorers add to 1-8
+Parser skipped: [('no score: 1891 Postponed', 2), ('no score: 1911 Cancelled', 2), ('no score: 1971 Postponed', 1)]

@@ -1,0 +1,26 @@
+<!doctype html><html lang="en-IE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#00693e">
+<title>Limerick Hurling · Search</title>
+<link rel="icon" href="/assets/favicon-32.png" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Limerick">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="/mu.css"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png" alt="" width="44" height="44" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="from" id="from">Search<span></span></div></header>
+<nav class="munav" aria-label="Sections"></nav>
+<main id="main-content" tabindex="-1">
+<section class="sheet"><div class="pick"><input id="q" type="search" aria-label="Search" placeholder="Search players, opponents, seasons…" style="flex:1"></div><div id="res" class="mlistres"></div></section>
+
+</main>
+<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
+</div>
+<script src="/lh.js"></script>
+<script>
+(function(){
+LH.nav('');
+var $=function(i){return document.getElementById(i)}, E=LH.esc;
+
+var i=$("q"); i.value=LH.q("q")||""; function run(){var q=i.value.trim(); if(q.length<2){$("res").innerHTML="";return} LH.find(q,60).then(function(L){$("res").innerHTML=L.length?'<ul class="mlist">'+L.map(function(e){return '<li><span class="d">'+E(e.k)+'</span><span class="o"><a href="'+e.u+'">'+E(e.t)+'</a><small>'+E(e.s)+'</small></span><span></span></li>'}).join("")+'</ul>':'<p class="empty">Nothing matches.</p>'})} i.addEventListener("input",run); run();
+
+})();
+</script></body></html>

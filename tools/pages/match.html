@@ -1,0 +1,21 @@
+<!--title:Match-->
+<!--kick:Match-->
+<!--sub:-->
+<!--nav:Results-->
+<section class="sheet" id="head"></section>
+<div class="two"><section class="sheet" id="us"></section><section class="sheet" id="them"></section></div>
+<section class="sheet" id="prev"></section>
+<script>
+Promise.all([LH.get("matches"),LH.get("detail")]).then(function(R){
+ var id=LH.q("id"), m=R[0].filter(function(x){return x.id===id})[0], D=R[1][id]||{};
+ if(!m){$("head").innerHTML='<p class="empty">No match with that reference. <a class="link" href="/results/">All results</a></p>';return}
+ document.title="Limerick v "+m.opp+" "+m.y; $("from").innerHTML=E(LH.comp(m.cn))+"<span>"+m.y+"</span>";
+ var info=[m.d?LH.fmtD(m.d,true):m.y,m.v,D.loc&&(m.v||"").indexOf(D.loc)<0?D.loc:"",D.att?"Attendance "+D.att.replace(/,/g,""):"",D.ref?"Referee "+D.ref:"",D.tv?"TV "+D.tv:""].filter(Boolean);
+ $("head").innerHTML='<div class="kick">'+E(LH.comp(m.cn))+(m.rnd?' · '+E(m.rnd):'')+'</div><div class="big">Limerick '+(m.r?LH.gp(m.u):"")+' '+E(m.opp)+' '+(m.r?LH.gp(m.o):"")+'</div>'+(m.r?'<div class="score r'+m.r.toLowerCase()+'">'+m.gf+' – '+m.ga+' on points value · '+({W:"Won",D:"Drawn",L:"Lost"})[m.r]+'</div>':'<div>'+E(m.wo||"")+'</div>')+'<p class="note" style="margin:10px 0 0">'+info.map(E).join(" · ")+'</p>';
+ function tbl(sc,link){return sc&&sc.length?'<table class="mu"><tbody>'+sc.slice().sort(function(a,b){return (b[1]*3+b[2])-(a[1]*3+a[2])}).map(function(s){return '<tr><td>'+(link?'<a href="/player/?p='+LH.slug(s[0])+'">'+E(s[0])+'</a>':E(s[0]))+'</td><td class="n">'+s[1]+'-'+s[2]+'</td></tr>'}).join("")+'</tbody></table>':'<p class="note" style="margin:0">Not recorded.</p>'}
+ function chk(sc,want){if(!sc||!sc.length||!want||want[0]==null)return ""; var g=0,p=0; sc.forEach(function(s){g+=s[1];p+=s[2]}); return g===want[0]&&p===want[1]?"":'<p class="note" style="margin:8px 0 0">The source\'s scorers add to '+g+'-'+p+', not '+want[0]+'-'+want[1]+'.</p>'}
+ $("us").innerHTML='<h2>Limerick scorers</h2>'+tbl(m.sc,1)+chk(m.sc,m.u); $("them").innerHTML='<h2>'+E(m.opp)+' scorers</h2>'+tbl(D.osc)+chk(D.osc,m.o);
+ var P=R[0].filter(function(x){return x.opp===m.opp&&x.id!==id&&x.r}).slice().reverse().slice(0,6);
+ $("prev").innerHTML='<h2>Other meetings</h2>'+LH.list(P,{nov:1})+'<p style="margin:10px 0 0"><a class="link" href="/opponent/?o='+LH.slug(m.opp)+'">Full record v '+E(m.opp)+' →</a> · <a class="link" href="https://en.wikipedia.org/wiki/'+encodeURIComponent((D.src||"").replace(/ /g,"_"))+'">Source article</a></p>';
+}).catch(function(){LH.fail($("head"))});
+</script>

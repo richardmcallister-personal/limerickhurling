@@ -1,0 +1,8 @@
+<!--title:Search-->
+<!--kick:Search-->
+<!--sub:-->
+<!--nav:-->
+<section class="sheet"><div class="pick"><input id="q" type="search" aria-label="Search" placeholder="Search players, opponents, seasons…" style="flex:1"></div><div id="res" class="mlistres"></div></section>
+<script>
+var i=$("q"); i.value=LH.q("q")||""; function run(){var q=i.value.trim(); if(q.length<2){$("res").innerHTML="";return} LH.find(q,60).then(function(L){$("res").innerHTML=L.length?'<ul class="mlist">'+L.map(function(e){return '<li><span class="d">'+E(e.k)+'</span><span class="o"><a href="'+e.u+'">'+E(e.t)+'</a><small>'+E(e.s)+'</small></span><span></span></li>'}).join("")+'</ul>':'<p class="empty">Nothing matches.</p>'})} i.addEventListener("input",run); run();
+</script>

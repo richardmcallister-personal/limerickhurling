@@ -1,0 +1,18 @@
+<!--title:Results-->
+<!--kick:History-->
+<!--sub:Every recorded game-->
+<!--nav:Results-->
+<section class="sheet"><div class="pick"><select id="c" aria-label="Competition"><option value="">All competitions</option><option value="AISHC">All-Ireland</option><option value="MSHC">Munster</option><option value="NL">National League</option></select><select id="o" aria-label="Opponent"><option value="">All opponents</option></select><select id="d" aria-label="Decade"><option value="">All decades</option></select><select id="r" aria-label="Result"><option value="">All results</option><option value="W">Won</option><option value="D">Drawn</option><option value="L">Lost</option></select></div><div class="tiles" id="tiles"></div><p class="note" style="margin:10px 0 0">The archive holds what Wikipedia's season articles record. League games before about 1960 are mostly missing, so totals are a floor rather than the full record.</p></section>
+<section class="sheet"><div id="list"></div><p id="more" style="margin:10px 0 0" hidden><button class="btn" id="mb" type="button">Show more</button></p></section>
+<script>
+LH.get("matches").then(function(M){
+ var fo=$("o"),fd=$("d"),fc=$("c"),fr=$("r"),n=60, A=M.slice().reverse();
+ var opps={}; M.forEach(function(m){opps[m.opp]=(opps[m.opp]||0)+1}); fo.innerHTML+=Object.keys(opps).sort().map(function(o){return '<option>'+E(o)+'</option>'}).join("");
+ var dec={}; M.forEach(function(m){dec[Math.floor(m.y/10)*10]=1}); fd.innerHTML+=Object.keys(dec).reverse().map(function(d){return '<option value="'+d+'">'+d+'s</option>'}).join("");
+ if(LH.q("o"))fo.value=LH.q("o"); if(LH.q("c"))fc.value=LH.q("c");
+ function draw(){var L=A.filter(function(m){return (!fc.value||m.cn===fc.value)&&(!fo.value||m.opp===fo.value)&&(!fd.value||Math.floor(m.y/10)*10===+fd.value)&&(!fr.value||m.r===fr.value)}), t=LH.tot(L);
+  $("tiles").innerHTML=LH.stat("Games",t.p)+LH.stat("Won",t.w)+LH.stat("Drawn",t.d)+LH.stat("Lost",t.l);
+  $("list").innerHTML=LH.list(L.slice(0,n)); $("more").hidden=L.length<=n}
+ [fc,fo,fd,fr].forEach(function(s){s.addEventListener("change",function(){n=60;draw()})}); $("mb").addEventListener("click",function(){n+=100;draw()}); draw();
+}).catch(function(){LH.fail($("list"))});
+</script>
