@@ -3,12 +3,12 @@
 Read CLAUDE.md first.
 
 ## Done
-Pages: hub, season (any year), results (filters), match, players, player, opponents, opponent, managers, honours, records, search, more. Dark mode, phone tab bar, calendar file.
+Pages: hub, season (any year), results (filters), match, players, player, opponents, opponent, managers, honours, records, search, more. Dark mode, phone tab bar, calendar file. County crests from Richard's gaa_assets folder.
 Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/reconcile.txt.
 
 ## Needs Richard
 - A Cloudflare Worker connected to this repo (name limerickhurling), and a domain. Add the domain to `routes` in wrangler.jsonc, as on irelandrugby.
-- Real crest, kit and competition images. The icon is a placeholder sliotar on green.
+- Decide on the photos in gaa_assets: cups and grounds (mostly gaa.ie press photos) and shirts (retailer listings). None are on the site yet. Crests are in.
 
 ## Open items
 - 2027 fixtures are provisional and partial: league rounds 1, 4 and 5 and the Munster order, no Munster dates. Recheck tools/data/fixtures.json when the master fixtures come out.

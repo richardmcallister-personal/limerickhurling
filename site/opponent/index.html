@@ -13,7 +13,7 @@
 <div class="two"><section class="sheet" id="ch"></section><section class="sheet" id="nl"></section></div>
 
 </main>
-<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
+<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests belong to their county boards. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
 <script src="/lh.js"></script>
 <script>
@@ -27,7 +27,7 @@ Promise.all([LH.get("opponents"),LH.get("matches")]).then(function(R){
  document.title="Limerick v "+o.n; $("from").innerHTML="Opponent<span>"+E(o.n)+"</span>";
  var L=R[1].filter(function(m){return m.opp===o.n}).reverse(); function rec(t){return LH.stat("Played",t.p)+LH.stat("Won",t.w)+LH.stat("Drawn",t.d)+LH.stat("Lost",t.l)}
  var big=L.filter(function(m){return m.r==="W"}).sort(function(a,b){return (b.gf-b.ga)-(a.gf-a.ga)})[0], bad=L.filter(function(m){return m.r==="L"}).sort(function(a,b){return (b.ga-b.gf)-(a.ga-a.gf)})[0];
- $("head").innerHTML='<div class="big">Limerick v '+E(o.n)+'</div><div class="tiles">'+rec(o)+'</div><p class="note" style="margin:10px 0 0">'+(big?'Biggest win: '+LH.gp(big.u)+' to '+LH.gp(big.o)+', '+big.y+'. ':'')+(bad?'Heaviest defeat: '+LH.gp(bad.u)+' to '+LH.gp(bad.o)+', '+bad.y+'.':'')+'</p>';
+ $("head").innerHTML=''+LH.vs("Limerick",o.n,56)+'<div class="big">Limerick v '+E(o.n)+'</div><div class="tiles">'+rec(o)+'</div><p class="note" style="margin:10px 0 0">'+(big?'Biggest win: '+LH.gp(big.u)+' to '+LH.gp(big.o)+', '+big.y+'. ':'')+(bad?'Heaviest defeat: '+LH.gp(bad.u)+' to '+LH.gp(bad.o)+', '+bad.y+'.':'')+'</p>';
  $("ch").innerHTML='<h2>Championship ('+o.ch.w+'-'+o.ch.d+'-'+o.ch.l+')</h2>'+LH.list(L.filter(function(m){return m.cn!=="NL"}),{nov:1});
  $("nl").innerHTML='<h2>League ('+o.nl.w+'-'+o.nl.d+'-'+o.nl.l+')</h2>'+LH.list(L.filter(function(m){return m.cn==="NL"}),{nov:1});
 }).catch(function(){LH.fail($("head"))});

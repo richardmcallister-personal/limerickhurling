@@ -6,13 +6,16 @@ LH.comp=function(c){return C[c]||c};
 var esc=LH.esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
 function fold(t){return String(t||"").normalize("NFKD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[’']/g,"")}
 var slug=LH.slug=function(t){return fold(t).replace(/-/g," ").replace(/[^a-z0-9 ]/g,"").trim().replace(/ +/g,"-")};
+var CR="antrim carlow clare cork derry donegal down dublin galway kerry kildare kilkenny laois limerick london meath offaly tipperary waterford westmeath wexford".split(" ");
+var crest=LH.crest=function(n,s){s=s||18; var k=slug(n); return CR.indexOf(k)<0?"":'<img class="crest" src="/assets/crests/'+k+'.webp" alt="" width="'+s+'" height="'+s+'" style="width:'+s+'px;height:'+s+'px" loading="lazy" decoding="async">'};
+LH.vs=function(a,b,s){return '<div class="vs">'+crest(a,s||44)+crest(b,s||44)+'</div>'};
 LH.q=function(k){return new URLSearchParams(location.search).get(k)};
 var cache={}; LH.get=function(n){return cache[n]||(cache[n]=fetch("/history/"+n+".json").then(function(r){if(!r.ok)throw new Error(n);return r.json()}))};
 var fmtD=LH.fmtD=function(d,long){if(!d)return "";return new Date(d+"T12:00:00Z").toLocaleDateString("en-GB",long?{weekday:"short",day:"numeric",month:"short",year:"numeric",timeZone:"UTC"}:{day:"numeric",month:"short",year:"numeric",timeZone:"UTC"})};
 var gp=LH.gp=function(a){return a&&a[0]!=null?a[0]+"-"+a[1]:""};
 LH.score=function(m){if(!m.r)return '<span class="score rd">'+esc(m.wo||"no result")+'</span>'; return '<span class="score r'+m.r.toLowerCase()+'">'+gp(m.u)+' <small>('+m.gf+')</small> – '+gp(m.o)+' <small>('+m.ga+')</small></span>'};
 LH.scs=function(m,lim){var a=(m.sc||[]).slice().sort(function(x,y){return (y[1]*3+y[2])-(x[1]*3+x[2])}); if(lim)a=a.slice(0,lim); return a.map(function(s){return '<a href="/player/?p='+slug(s[0])+'" style="color:inherit">'+esc(s[0])+'</a> '+s[1]+'-'+s[2]}).join(", ")};
-LH.row=function(m,opt){opt=opt||{}; var title=m.r?'v '+esc(m.opp):'v '+esc(m.opp);
+LH.row=function(m,opt){opt=opt||{}; var title=crest(m.opp)+'v '+esc(m.opp);
   return '<li><span class="d">'+(m.d?fmtD(m.d):m.y)+'</span><span class="o"><a href="/match/?id='+m.id+'">'+title+'</a><small>'+esc(C[m.cn])+(m.rnd?' · '+esc(m.rnd):'')+(m.v&&!opt.nov?' · '+esc(m.v):'')+'</small>'+(opt.sc&&m.sc?'<span class="sclist" style="display:block">'+LH.scs(m,5)+'</span>':'')+'</span>'+LH.score(m)+'</li>'};
 LH.list=function(L,opt){return L.length?'<ul class="mlist">'+L.map(function(m){return LH.row(m,opt)}).join("")+'</ul>':'<p class="empty">Nothing here.</p>'};
 LH.tot=function(L){var t={p:0,w:0,d:0,l:0,gf:0,ga:0}; L.forEach(function(m){if(!m.r)return; t.p++; t[m.r.toLowerCase()]++; t.gf+=m.gf; t.ga+=m.ga}); return t};

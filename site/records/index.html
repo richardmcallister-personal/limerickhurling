@@ -14,7 +14,7 @@
 <section class="sheet" id="t"></section>
 
 </main>
-<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
+<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests belong to their county boards. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
 <script src="/lh.js"></script>
 <script>
@@ -28,7 +28,7 @@ Promise.all([LH.get("matches"),LH.get("players"),LH.get("seasons")]).then(functi
  $("l").innerHTML='<h2>Heaviest defeats</h2>'+LH.list(top(M,function(m){return m.ga-m.gf}),{nov:1});
  $("s").innerHTML='<h2>Highest scores</h2>'+LH.list(top(M,function(m){return m.gf}),{nov:1});
  var g=[]; R[0].forEach(function(m){(m.sc||[]).forEach(function(x){g.push({n:x[0],g:x[1],p:x[2],m:m})})});
- $("p").innerHTML='<h2>Best individual games</h2><ul class="mlist">'+top(g,function(x){return x.g*3+x.p}).map(function(x){return '<li><span class="d">'+x.m.y+'</span><span class="o"><a href="/player/?p='+LH.slug(x.n)+'">'+E(x.n)+'</a><small><a href="/match/?id='+x.m.id+'">v '+E(x.m.opp)+', '+E(LH.comp(x.m.cn))+'</a></small></span><span class="score">'+x.g+'-'+x.p+' <small>('+(x.g*3+x.p)+')</small></span></li>'}).join("")+'</ul>';
+ $("p").innerHTML='<h2>Best individual games</h2><ul class="mlist">'+top(g,function(x){return x.g*3+x.p}).map(function(x){return '<li><span class="d">'+x.m.y+'</span><span class="o"><a href="/player/?p='+LH.slug(x.n)+'">'+E(x.n)+'</a><small><a href="/match/?id='+x.m.id+'">'+LH.crest(x.m.opp,14)+'v '+E(x.m.opp)+', '+E(LH.comp(x.m.cn))+'</a></small></span><span class="score">'+x.g+'-'+x.p+' <small>('+(x.g*3+x.p)+')</small></span></li>'}).join("")+'</ul>';
  var best=0,cur=0,from=null,bf=null,bt=null; M.forEach(function(m){if(m.r!=="L"&&m.d){if(!cur)from=m; cur++; if(cur>best){best=cur;bf=from;bt=m}}else if(m.r==="L")cur=0});
  var ws=0,wc=0,wf,wt,wfrom; M.forEach(function(m){if(m.r==="W"&&m.d){if(!wc)wfrom=m;wc++;if(wc>ws){ws=wc;wf=wfrom;wt=m}}else if(m.r!=="W")wc=0});
  $("t").innerHTML='<h2>Runs and seasons</h2><div class="tiles">'+LH.stat("Longest unbeaten run",best,LH.fmtD(bf.d)+" to "+LH.fmtD(bt.d))+LH.stat("Longest winning run",ws,LH.fmtD(wf.d)+" to "+LH.fmtD(wt.d))+(function(){var s=top(S.filter(function(x){return x.p>=6}),function(x){return x.w/x.p})[0];return LH.stat("Best season by win rate",s.y,s.w+" of "+s.p+" recorded games")})()+'</div>';

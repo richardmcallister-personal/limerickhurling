@@ -235,3 +235,9 @@ a.link{color:var(--red-ink);font-weight:600;text-decoration:none} a.link:hover{t
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .rw{color:var(--red-ink)}
 @media (max-width:640px){.mlist li{grid-template-columns:76px 1fr;row-gap:2px} .mlist li>.score,.mlist li>.prov{grid-column:2;justify-self:start}}
+img.crest{object-fit:contain;vertical-align:-4px;margin-right:6px}
+.vs{display:flex;gap:8px;margin:8px 0 2px} .vs img.crest{margin:0}
+h2 img.crest{vertical-align:-5px}
+.brand img{background:#fff;border-radius:9px;padding:3px;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) img.crest[src*="kildare"]{background:#fff;border-radius:50%}}
+:root[data-theme="dark"] img.crest[src*="kildare"]{background:#fff;border-radius:50%}
