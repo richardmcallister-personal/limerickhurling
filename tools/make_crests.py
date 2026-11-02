@@ -12,11 +12,14 @@ for f in files:
     im.save(out + os.path.basename(f)[:-4] + '.webp', quality=88, method=6)
 c = Image.open(src + '/county-crests/limerick.png').convert('RGBA'); c = c.crop(c.getbbox())
 def fit(size, pad, bg=None):
-    box = Image.new('RGBA', (size, size), bg or (0, 0, 0, 0)); x = c.copy(); inner = size - 2 * pad; x.thumbnail((inner, inner), Image.LANCZOS)
+    box = Image.new('RGBA', (size, size), bg or (0, 0, 0, 0)); inner = size - 2 * pad; k = inner / max(c.size); x = c.resize((round(c.width * k), round(c.height * k)), Image.LANCZOS)
     box.alpha_composite(x, ((size - x.width) // 2, (size - x.height) // 2)); return box
-fit(88, 0).save('site/assets/crest-88.png')
+fit(132, 0).save('site/assets/crest-88.png')
 fit(32, 0).save('site/assets/favicon-32.png')
+fit(48, 0).save('site/favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
 W = (255, 255, 255, 255)
 fit(180, 14, W).convert('RGB').save('site/assets/apple-touch-icon.png')
 fit(192, 14, W).save('site/assets/icon-192.png')
 fit(512, 40, W).save('site/assets/icon-512.png')
+fit(512, 90, W).save('site/assets/icon-512-maskable.png')
+og = Image.new('RGBA', (1200, 630), (0, 105, 62, 255)); s = fit(460, 0); og.alpha_composite(s, (370, 85)); og.convert('RGB').save('site/assets/og.png', optimize=True)
