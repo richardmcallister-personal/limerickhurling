@@ -1,0 +1,10 @@
+<!--title:Shirts-->
+<!--kick:History-->
+<!--sub:Shirts-->
+<!--nav:Shirts-->
+<section class="sheet"><h2>Limerick shirts</h2><p class="note" style="margin:0 0 12px">A selection, not the full history. Years are the retailers' dates and may not match the seasons each shirt was worn.</p><div class="gallery" id="g"></div></section>
+<script>
+LH.get("media").then(function(M){
+ $("g").innerHTML=M.shirts.map(function(s){return '<div class="card shirt"><img src="/assets/shirts/'+s.k+'.webp" alt="Limerick shirt, '+E(s.y)+', '+E(s.t)+'" width="640" height="640" loading="lazy"><div class="b"><b>'+(s.a?'<a class="link" href="/season/?y='+s.a+'">'+E(s.y)+'</a>':E(s.y))+'</b><small>'+E(s.t)+'</small><small><span class="attr">Photo: <a href="'+E(s.c.page)+'" rel="noopener">'+E(s.c.site)+'</a></span></small></div></div>'}).join("");
+}).catch(function(){LH.fail($("g"))});
+</script>

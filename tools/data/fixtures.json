@@ -1,9 +1,71 @@
-{"note":"Hand-kept. All provisional until the GAA publishes the master fixtures. Sources: Tipperary Live and Echo Live (league, Oct-Nov 2026), Irish Examiner (Munster order, Aug 2026).","checked":"2026-11-02","games":[
-{"comp":"National League","rnd":"Round 1","d":"2027-01-24","approx":"Weekend of 23/24 Jan","opp":"Kilkenny","h":"A","v":"UPMC Nowlan Park, Kilkenny"},
-{"comp":"National League","rnd":"Round 4","d":"2027-02-20","opp":"Cork","h":"A","v":"SuperValu Páirc Uí Chaoimh, Cork"},
-{"comp":"National League","rnd":"Round 5","d":"2027-02-28","opp":"Galway","h":"A","v":"Pearse Stadium, Salthill"},
-{"comp":"Munster Championship","rnd":"Round 1","approx":"Mid-April, date to come","opp":"Cork","h":"H","v":"TUS Gaelic Grounds, Limerick"},
-{"comp":"Munster Championship","rnd":"Round 2","approx":"April, date to come","opp":"Waterford","h":"A","v":"Walsh Park, Waterford"},
-{"comp":"Munster Championship","rnd":"Round 3","approx":"May, date to come","opp":"Tipperary","h":"A","v":"FBD Semple Stadium, Thurles"},
-{"comp":"Munster Championship","rnd":"Round 4","approx":"May, date to come","opp":"Clare","h":"H","v":"TUS Gaelic Grounds, Limerick"}
-],"open":"Limerick's other league games (Clare, Dublin, Tipperary) have no reported dates yet."}
+{
+"note": "Hand-kept. All provisional until the GAA publishes the master fixtures. Sources: Tipperary Live and Echo Live (league, Oct-Nov 2026), Irish Examiner (Munster order, Aug 2026).",
+"checked": "2026-11-02",
+"games": [
+{
+"comp": "National League",
+"rnd": "Round 1",
+"d": "2027-01-24",
+"approx": "Weekend of 23/24 Jan",
+"opp": "Kilkenny",
+"h": "A",
+"v": "UPMC Nowlan Park, Kilkenny",
+"g": "nowlan-park"
+},
+{
+"comp": "National League",
+"rnd": "Round 4",
+"d": "2027-02-20",
+"opp": "Cork",
+"h": "A",
+"v": "SuperValu Páirc Uí Chaoimh, Cork",
+"g": "pairc-ui-chaoimh"
+},
+{
+"comp": "National League",
+"rnd": "Round 5",
+"d": "2027-02-28",
+"opp": "Galway",
+"h": "A",
+"v": "Pearse Stadium, Salthill",
+"g": "pearse-stadium"
+},
+{
+"comp": "Munster Championship",
+"rnd": "Round 1",
+"approx": "Mid-April, date to come",
+"opp": "Cork",
+"h": "H",
+"v": "TUS Gaelic Grounds, Limerick",
+"g": "gaelic-grounds"
+},
+{
+"comp": "Munster Championship",
+"rnd": "Round 2",
+"approx": "April, date to come",
+"opp": "Waterford",
+"h": "A",
+"v": "Walsh Park, Waterford",
+"g": "walsh-park"
+},
+{
+"comp": "Munster Championship",
+"rnd": "Round 3",
+"approx": "May, date to come",
+"opp": "Tipperary",
+"h": "A",
+"v": "FBD Semple Stadium, Thurles",
+"g": "semple-stadium"
+},
+{
+"comp": "Munster Championship",
+"rnd": "Round 4",
+"approx": "May, date to come",
+"opp": "Clare",
+"h": "H",
+"v": "TUS Gaelic Grounds, Limerick",
+"g": "gaelic-grounds"
+}
+],
+"open": "Limerick's other league games (Clare, Dublin, Tipperary) have no reported dates yet."
+}

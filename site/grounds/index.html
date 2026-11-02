@@ -1,0 +1,32 @@
+<!doctype html><html lang="en-IE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#00693e">
+<title>Limerick Hurling · Grounds</title>
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/assets/favicon-32.png?v=2" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
+<meta property="og:title" content="Limerick Hurling · Grounds"><meta property="og:type" content="website"><meta property="og:image" content="https://limerickhurling.wiki/assets/og.png"><link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Limerick">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="/mu.css"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="from" id="from">History<span>Grounds</span></div></header>
+<nav class="munav" aria-label="Sections"></nav>
+<main id="main-content" tabindex="-1">
+<section class="sheet"><h2>Where Limerick have played</h2><p class="note" style="margin:0 0 12px">Limerick's record at each ground, from recorded games. Thurles Sportsfield counts as Semple Stadium, Jones's Road as Croke Park, and the Cork Athletic Grounds as Páirc Uí Chaoimh, which replaced it on the same site.</p><div class="gallery" id="g"></div></section>
+<section class="sheet"><h2>Every other ground</h2><div id="rest"></div></section>
+
+</main>
+<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
+</div>
+<script src="/lh.js"></script>
+<script>
+(function(){
+LH.nav('Grounds');
+var $=function(i){return document.getElementById(i)}, E=LH.esc;
+
+LH.get("grounds").then(function(G){
+ var ph=G.filter(function(g){return g.c}), rest=G.filter(function(g){return !g.c});
+ $("g").innerHTML=ph.map(function(g){return '<a class="card gcard" href="/ground/?g='+g.s+'"><img src="/assets/grounds/'+g.ph+'.webp" alt="'+E(g.n)+'" width="'+g.iw+'" height="'+g.ih+'" loading="lazy"><div class="b"><b>'+E(g.n)+'</b><small>'+E(g.t)+'</small><small>'+g.p+' games: '+g.w+' won, '+g.d+' drawn, '+g.l+' lost</small></div></a>'}).join("");
+ $("rest").innerHTML='<table class="mu"><thead><tr><th>Ground</th><th class="n">P</th><th class="n">W</th><th class="n">D</th><th class="n">L</th><th>Years</th></tr></thead><tbody>'+rest.map(function(g){return '<tr><td><a href="/ground/?g='+g.s+'">'+E(g.n)+'</a>'+(g.t?' <small>'+E(g.t)+'</small>':'')+'</td><td class="n">'+g.p+'</td><td class="n">'+g.w+'</td><td class="n">'+g.d+'</td><td class="n">'+g.l+'</td><td class="yrs">'+g.first+(g.last!==g.first?'-'+g.last:'')+'</td></tr>'}).join("")+'</tbody></table>';
+}).catch(function(){LH.fail($("g"))});
+
+})();
+</script></body></html>

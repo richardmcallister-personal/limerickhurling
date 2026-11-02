@@ -8,7 +8,7 @@ Pages: manager, hub, season (any year), results (filters), match, players, playe
 Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/reconcile.txt.
 
 ## Needs Richard
-- Decide on the photos in gaa_assets: cups and grounds (mostly gaa.ie press photos) and shirts (retailer listings). None are on the site yet. Crests are in.
+- Rights for the photos are not cleared. Richard chose to publish them; recheck before removing noindex. No grounds photo yet for Cusack Park (Ennis), Kilmallock, Birr, Portlaoise, Markets Field.
 
 ## Open items
 - 2027 fixtures are provisional and partial: league rounds 1, 4 and 5 and the Munster order, no Munster dates. Recheck tools/data/fixtures.json when the master fixtures come out.

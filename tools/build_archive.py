@@ -123,8 +123,32 @@ for r in rows:
     r['h'] = venue_kind(r)
     r['cn'] = {'National League': 'NL', 'Munster Championship': 'MSHC', 'All-Ireland Championship': 'AISHC'}[r['comp']]
 
+# Grounds: one name per ground. Thurles Sportsfield became Semple Stadium; Jones's Road became Croke Park; the Cork Athletic Grounds
+# was rebuilt as Páirc Uí Chaoimh in 1976. The photo in the assets called athletic-grounds is Armagh, so it is not used.
+G_RULES = [(r'gaelic grounds', 'gaelic-grounds', 'Gaelic Grounds', 'Limerick', 'gaelic-grounds-limerick'), (r'semple|thurles', 'semple-stadium', 'Semple Stadium', 'Thurles', 'semple-stadium'),
+ (r'croke|jones', 'croke-park', 'Croke Park', 'Dublin', 'croke-park'), (r'chaoimh|cork athletic', 'pairc-ui-chaoimh', 'Páirc Uí Chaoimh', 'Cork', 'pairc-ui-chaoimh'),
+ (r'nowlan', 'nowlan-park', 'Nowlan Park', 'Kilkenny', 'nowlan-park'), (r'pearse stadium', 'pearse-stadium', 'Pearse Stadium', 'Galway', 'pearse-stadium'),
+ (r'walsh park', 'walsh-park', 'Walsh Park', 'Waterford', 'walsh-park'), (r'wexford park', 'wexford-park', 'Wexford Park', 'Wexford', 'wexford-park'),
+ (r'fitzgerald stadium', 'fitzgerald-stadium', 'FitzGerald Stadium', 'Killarney', 'fitzgerald-stadium'), (r'parnell', 'parnell-park', 'Parnell Park', 'Dublin', 'parnell-park'),
+ (r"o'connor park", 'oconnor-park', "O'Connor Park", 'Tullamore', 'oconnor-park'), (r'austin stack|tralee sportsfield', 'austin-stack-park', 'Austin Stack Park', 'Tralee', 'austin-stack-park'),
+ (r'fitzgerald park', 'fitzgerald-park', 'FitzGerald Park', 'Kilmallock', ''), (r'fraher', 'fraher-field', 'Fraher Field', 'Dungarvan', ''), (r"o'moore", 'omoore-park', "O'Moore Park", 'Portlaoise', ''),
+ (r'markets field', 'markets-field', 'Markets Field', 'Limerick', ''), (r"st\.? brendan", 'st-brendans-park', "St Brendan's Park", 'Birr', ''), (r'casement', 'casement-park', 'Casement Park', 'Belfast', ''), (r"chíosóg|chiosog", 'cusack-park-ennis', 'Cusack Park', 'Ennis', '')]
+def ground(r):
+    t = (r['v'] or '').replace('\u2019', "'")
+    if not t: return None
+    low = t.lower()
+    if 'cusack park' in low:
+        if 'mullingar' in low or 'teg' in low or r['opp'] == 'Westmeath': return ('cusack-park-mullingar', 'Cusack Park', 'Mullingar', '')
+        return ('cusack-park-ennis', 'Cusack Park', 'Ennis', '')
+    for rx, s, n, town, ph in G_RULES:
+        if re.search(rx, low): return (s, n, town, ph)
+    a, _, b = t.partition(',')
+    return (slug(t), a.strip(), b.strip(), '')
+for r in rows:
+    g = ground(r)
+    r['g'] = g[0] if g else None; r['gi'] = g
 def slim(r):
-    o = {k: r[k] for k in ('id', 'y', 'cn', 'rnd', 'd', 'opp', 'u', 'o', 'gf', 'ga', 'r', 'v', 'h') if r.get(k) not in (None, '')}
+    o = {k: r[k] for k in ('id', 'y', 'cn', 'rnd', 'd', 'opp', 'u', 'o', 'gf', 'ga', 'r', 'v', 'g', 'h') if r.get(k) not in (None, '')}
     if r['wo']: o['wo'] = r['wo']
     if r['sc']: o['sc'] = r['sc']
     return o
@@ -164,6 +188,21 @@ for n, x in pl.items():
     pll.append(dict(n=n, s=slug(n), g=x['g'], p=x['p'], t=x['g']*3+x['p'], c=x['games'], f=min(x['y']), l=max(x['y']), by=[[y]+x['by'][y] for y in sorted(x['by'])], b=x['best']))
 pll.sort(key=lambda a: -a['t'])
 json.dump(pll, open(OUT + 'players.json', 'w'), ensure_ascii=False, separators=(',', ':'))
+# Grounds and images
+IM = json.load(open('tools/data/image_sources.json'))
+gs = {}
+for r, m in zip(rows, matches):
+    if not r['gi'] or not m.get('r'): continue
+    s, n, town, ph = r['gi']; x = gs.setdefault(s, dict(s=s, n=n, t=town, ph=ph, L=[]))
+    x['L'].append(m)
+gl = []
+for x in gs.values():
+    L = x.pop('L'); t = tot(L); t.update(x); t.update(first=L[0]['y'], last=L[-1]['y'])
+    if x['ph'] in IM['grounds']: t['c'] = IM['grounds'][x['ph']]['c']; t['iw'] = IM['grounds'][x['ph']]['w']; t['ih'] = IM['grounds'][x['ph']]['h']
+    gl.append(t)
+gl.sort(key=lambda g: -g['p'])
+json.dump(gl, open(OUT + 'grounds.json', 'w'), ensure_ascii=False, separators=(',', ':'))
+json.dump(dict(shirts=IM['shirts'], cups=IM['cups']), open(OUT + 'media.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 # Seasons
 se = []
 for y in sorted({m['y'] for m in matches}):
@@ -221,6 +260,7 @@ open('site/calendar.ics', 'w').write('\r\n'.join(ics) + '\r\n')
 idx = [[p['n'], 'Player', '/player/?p=' + p['s'], f"{p['g']}-{p['p']} recorded, {p['f']}-{p['l']}"] for p in pll]
 idx += [[o['n'], 'Opponent', '/opponent/?o=' + o['s'], f"{o['p']} recorded games"] for o in ol]
 idx += [[w_['n'], 'Manager', '/manager/?m=' + k_, 'Limerick manager'] for k_, w_ in seen_m.items()]
+idx += [[g['n'] + (', ' + g['t'] if g['t'] else ''), 'Ground', '/ground/?g=' + g['s'], f"{g['p']} recorded games"] for g in gl]
 idx += [[str(s['y']), 'Season', '/season/?y=' + str(s['y']), f"{s['p']} recorded games"] for s in se]
 json.dump(idx, open('site/search.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 json.dump(dict(built=DT.date.today().isoformat(), revs=None), open(OUT + 'status.json', 'w'))

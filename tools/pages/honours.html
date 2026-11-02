@@ -2,12 +2,14 @@
 <!--kick:History-->
 <!--sub:Honours-->
 <!--nav:Honours-->
+<section class="sheet"><h2>The cups</h2><div class="cups" id="cups"></div></section>
 <section class="sheet"><h2>Titles</h2><div id="hon"></div></section>
 <section class="sheet"><h2>All-Ireland finals</h2><div id="ai"></div></section>
 <section class="sheet"><h2>Munster finals</h2><div id="mu"></div></section>
 <section class="sheet"><h2>League finals</h2><div id="nl"></div></section>
 <script>
-Promise.all([LH.get("honours"),LH.get("matches")]).then(function(R){var H=R[0],M=R[1];
+Promise.all([LH.get("honours"),LH.get("matches"),LH.get("media")]).then(function(R){var H=R[0],M=R[1];
+ $("cups").innerHTML=R[2].cups.map(function(c){var x=c.h?H[c.h].w:null; return '<div class="card"><img src="/assets/cups/'+c.k+'.webp" alt="'+E(c.t)+'" width="'+c.w+'" height="'+c.ht+'" loading="lazy"><div class="b"><b>'+E(c.t)+'</b><small>'+E(c.comp)+(x?': '+x.n+' titles, last in '+x.y.slice(-1)[0]:'')+'</small><small>'+LH.credit(c.c)+'</small></div></div>'}).join("");
  function row(t,x){return '<tr><td><b>'+t+'</b></td><td class="n">'+x.w.n+'</td><td>'+x.w.y.join(", ")+'</td><td class="n">'+x.ru.n+'</td><td>'+x.ru.y.join(", ")+'</td></tr>'}
  $("hon").innerHTML='<table class="mu"><thead><tr><th>Competition</th><th class="n">Won</th><th>Years</th><th class="n">Lost</th><th>Finals lost</th></tr></thead><tbody>'+row("All-Ireland",H.aishc)+row("National League",H.nl)+row("Munster",H.mshc)+'</tbody></table>';
  function F(c){return M.filter(function(m){return m.cn===c&&/^final/i.test(m.rnd||"")&&m.r}).reverse()}

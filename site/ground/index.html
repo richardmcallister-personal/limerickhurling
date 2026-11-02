@@ -1,0 +1,35 @@
+<!doctype html><html lang="en-IE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#00693e">
+<title>Limerick Hurling · Ground</title>
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/assets/favicon-32.png?v=2" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
+<meta property="og:title" content="Limerick Hurling · Ground"><meta property="og:type" content="website"><meta property="og:image" content="https://limerickhurling.wiki/assets/og.png"><link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Limerick">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="/mu.css"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="from" id="from">Ground<span></span></div></header>
+<nav class="munav" aria-label="Sections"></nav>
+<main id="main-content" tabindex="-1">
+<section class="sheet" id="head"></section>
+<section class="sheet" id="games"></section>
+
+</main>
+<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
+</div>
+<script src="/lh.js"></script>
+<script>
+(function(){
+LH.nav('Grounds');
+var $=function(i){return document.getElementById(i)}, E=LH.esc;
+
+Promise.all([LH.get("grounds"),LH.get("matches")]).then(function(R){
+ var s=LH.q("g"), g=R[0].filter(function(x){return x.s===s})[0];
+ if(!g){$("head").innerHTML='<p class="empty">No ground with that name. <a class="link" href="/grounds/">All grounds</a></p>';return}
+ document.title="Limerick Hurling · "+g.n; $("from").innerHTML="Ground<span>"+E(g.n)+"</span>";
+ var L=R[1].filter(function(m){return m.g===s&&m.r}).reverse();
+ $("head").innerHTML='<div class="big">'+E(g.n)+'</div><p class="note" style="margin:0 0 10px">'+E(g.t)+'</p>'+(g.c?'<img class="photo" src="/assets/grounds/'+g.ph+'.webp" alt="'+E(g.n)+'" width="'+g.iw+'" height="'+g.ih+'"><p class="note" style="margin:6px 0 12px">'+LH.credit(g.c)+'</p>':'')+'<div class="tiles">'+LH.stat("Played",g.p,g.first+"-"+g.last)+LH.stat("Won",g.w)+LH.stat("Drawn",g.d)+LH.stat("Lost",g.l)+'</div>';
+ $("games").innerHTML='<h2>Recorded games here</h2>'+LH.list(L,{nov:1});
+}).catch(function(){LH.fail($("head"))});
+
+})();
+</script></body></html>

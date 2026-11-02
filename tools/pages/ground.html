@@ -1,0 +1,16 @@
+<!--title:Ground-->
+<!--kick:Ground-->
+<!--sub:-->
+<!--nav:Grounds-->
+<section class="sheet" id="head"></section>
+<section class="sheet" id="games"></section>
+<script>
+Promise.all([LH.get("grounds"),LH.get("matches")]).then(function(R){
+ var s=LH.q("g"), g=R[0].filter(function(x){return x.s===s})[0];
+ if(!g){$("head").innerHTML='<p class="empty">No ground with that name. <a class="link" href="/grounds/">All grounds</a></p>';return}
+ document.title="Limerick Hurling · "+g.n; $("from").innerHTML="Ground<span>"+E(g.n)+"</span>";
+ var L=R[1].filter(function(m){return m.g===s&&m.r}).reverse();
+ $("head").innerHTML='<div class="big">'+E(g.n)+'</div><p class="note" style="margin:0 0 10px">'+E(g.t)+'</p>'+(g.c?'<img class="photo" src="/assets/grounds/'+g.ph+'.webp" alt="'+E(g.n)+'" width="'+g.iw+'" height="'+g.ih+'"><p class="note" style="margin:6px 0 12px">'+LH.credit(g.c)+'</p>':'')+'<div class="tiles">'+LH.stat("Played",g.p,g.first+"-"+g.last)+LH.stat("Won",g.w)+LH.stat("Drawn",g.d)+LH.stat("Lost",g.l)+'</div>';
+ $("games").innerHTML='<h2>Recorded games here</h2>'+LH.list(L,{nov:1});
+}).catch(function(){LH.fail($("head"))});
+</script>

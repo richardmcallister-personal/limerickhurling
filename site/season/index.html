@@ -12,10 +12,11 @@
 <main id="main-content" tabindex="-1">
 <section class="sheet"><div class="pick"><label for="y" class="sr">Season</label><select id="y"></select></div><div class="tiles" id="tiles"></div></section>
 <div id="comps"></div>
+<section class="sheet" id="shirt" hidden></section>
 <section class="sheet" id="scorers"></section>
 
 </main>
-<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests belong to their county boards. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
+<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
 <script src="/lh.js"></script>
 <script>
@@ -23,7 +24,7 @@
 LH.nav('Season');
 var $=function(i){return document.getElementById(i)}, E=LH.esc;
 
-Promise.all([LH.get("matches"),LH.get("seasons"),LH.get("honours"),LH.get("managers")]).then(function(R){
+Promise.all([LH.get("matches"),LH.get("seasons"),LH.get("honours"),LH.get("managers"),LH.get("media")]).then(function(R){
  var M=R[0],S=R[1],H=R[2],sel=$("y"),ys=S.map(function(s){return s.y}).reverse(), y=+LH.q("y")||ys[0]; if(ys.indexOf(y)<0)y=ys[0];
  sel.innerHTML=ys.map(function(v){return '<option value="'+v+'"'+(v===y?' selected':'')+'>'+v+'</option>'}).join("");
  function draw(y){
@@ -32,6 +33,7 @@ Promise.all([LH.get("matches"),LH.get("seasons"),LH.get("honours"),LH.get("manag
   if(H.nl.w.y.some(function(n){return n===String(y)||n.indexOf(String(y)+"–")===0}))won.push("League");
   $("tiles").innerHTML=LH.stat("Recorded games",t.p,t.w+" won, "+t.d+" drawn, "+t.l+" lost")+LH.stat("Scored",t.gf,"Points value")+LH.stat("Conceded",t.ga,"Points value")+(won.length?LH.stat("Titles",won.length,won.join(", ")):"")+(function(){var G=R[3].filter(function(g){return g.a<=y&&y<=g.b}); return G.length?'<div class="stat"><div class="k">Manager</div><div class="s" style="font-size:15px;margin-top:6px">'+G.map(function(g){return g.n.map(function(x){return '<a class="link" href="/manager/?m='+x.s+'">'+E(x.n)+'</a>'}).join(", ")}).join("<br>")+'</div></div>':""})();
   $("comps").innerHTML=["AISHC","MSHC","NL"].map(function(c){var X=L.filter(function(m){return m.cn===c}); return X.length?'<section class="sheet"><h2>'+E(LH.comp(c))+'</h2>'+LH.list(X,{sc:1})+'</section>':''}).join("");
+  var Sh=R[4].shirts.filter(function(s){return s.a&&s.a<=y&&y<=s.b}); $("shirt").hidden=!Sh.length; $("shirt").innerHTML=Sh.length?'<h2>Shirts from '+y+'</h2><div class="gallery">'+Sh.map(function(s){return '<a class="card shirt" href="/shirts/"><img src="/assets/shirts/'+s.k+'.webp" alt="Limerick shirt, '+E(s.y)+'" width="640" height="640" loading="lazy"><div class="b"><b>'+E(s.t)+'</b></div></a>'}).join("")+'</div>':"";
   var by={}; L.forEach(function(m){(m.sc||[]).forEach(function(s){var x=by[s[0]]=by[s[0]]||{n:s[0],g:0,p:0,c:0}; x.g+=s[1]; x.p+=s[2]; x.c++})});
   var A=Object.keys(by).map(function(k){return by[k]}).sort(function(a,b){return (b.g*3+b.p)-(a.g*3+a.p)});
   $("scorers").innerHTML='<h2>Scorers in '+y+'</h2>'+(A.length?'<table class="mu"><thead><tr><th>Player</th><th class="n">Games</th><th class="n">Score</th><th class="n">Total</th></tr></thead><tbody>'+A.slice(0,20).map(function(p){return '<tr><td><a href="/player/?p='+LH.slug(p.n)+'">'+E(p.n)+'</a></td><td class="n">'+p.c+'</td><td class="n">'+p.g+'-'+p.p+'</td><td class="n"><b>'+(p.g*3+p.p)+'</b></td></tr>'}).join("")+'</tbody></table>':'<p class="note" style="margin:0">No scorers recorded for this season.</p>');

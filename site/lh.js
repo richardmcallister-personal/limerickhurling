@@ -1,6 +1,6 @@
 /* Limerick hurling: shared helpers. Forked in spirit from manutd.wiki's mu.js; no live feed, everything is static JSON. */
 (function(){
-var LH=window.LH={}, NAV=[["/","Hub"],["/season/","Season"],["/results/","Results"],["/players/","Players"],["/opponents/","Opponents"],["/managers/","Managers"],["/honours/","Honours"],["/records/","Records"]];
+var LH=window.LH={}, NAV=[["/","Hub"],["/season/","Season"],["/results/","Results"],["/players/","Players"],["/opponents/","Opponents"],["/managers/","Managers"],["/grounds/","Grounds"],["/honours/","Honours"],["/shirts/","Shirts"],["/records/","Records"]];
 var C={NL:"National League",MSHC:"Munster",AISHC:"All-Ireland"};
 LH.comp=function(c){return C[c]||c};
 var esc=LH.esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
@@ -24,7 +24,7 @@ LH.nav=function(active){var el=document.querySelector("nav.munav"); if(!el)retur
   el.innerHTML=NAV.map(function(n){return '<a href="'+n[0]+'"'+(n[1]===active?' aria-current="page"':'')+'>'+n[1]+'</a>'}).join("")+'<form class="musearch" role="search" action="/search/"><input type="search" name="q" placeholder="Search players, opponents, seasons…" aria-label="Search the site" autocomplete="off"><div class="hits" hidden></div></form>';
   searchBox(el.querySelector(".musearch"));
   var I={h:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>',s:'<path d="M4 6h16M4 12h16M4 18h10"/>',r:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',p:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/>',m:'<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>'};
-  var T=[["/","Hub",I.h,["Hub"]],["/season/","Season",I.s,["Season"]],["/results/","Results",I.r,["Results"]],["/players/","Players",I.p,["Players"]],["/more/","More",I.m,["More","Opponents","Managers","Honours","Records"]]];
+  var T=[["/","Hub",I.h,["Hub"]],["/season/","Season",I.s,["Season"]],["/results/","Results",I.r,["Results"]],["/players/","Players",I.p,["Players"]],["/more/","More",I.m,["More","Opponents","Managers","Honours","Records","Grounds","Shirts"]]];
   var t=document.createElement("nav"); t.className="mutabs"; t.setAttribute("aria-label","Sections");
   t.innerHTML=T.map(function(x){return '<a href="'+x[0]+'"'+(x[3].indexOf(active)>=0?' aria-current="page"':'')+'><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'+x[2]+'</svg>'+x[1]+'</a>'}).join(""); document.body.appendChild(t);
 };
@@ -40,5 +40,6 @@ function theme(m){try{if(m==="auto")localStorage.removeItem("mu:theme"); else lo
 (function(){try{var t=localStorage.getItem("mu:theme"); if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})();
 document.addEventListener("DOMContentLoaded",function(){var f=document.querySelector("footer.mu"); if(!f)return; var cur="auto"; try{cur=localStorage.getItem("mu:theme")||"auto"}catch(e){}
   var d=document.createElement("span"); d.className="themesw"; d.setAttribute("role","group"); d.setAttribute("aria-label","Appearance"); d.innerHTML=["auto","light","dark"].map(function(m){return '<button type="button" data-m="'+m+'" aria-pressed="'+(m===cur)+'">'+m+'</button>'}).join(""); d.addEventListener("click",function(e){var b=e.target.closest("button"); if(b)theme(b.dataset.m)}); f.appendChild(document.createTextNode(" Appearance:")); f.appendChild(d)});
+LH.credit=function(c,extra){return '<span class="attr">'+(extra?esc(extra)+' ':'')+'Photo: <a href="'+esc(c.page)+'" rel="noopener">'+esc(c.by||c.site)+'</a></span>'};
 LH.fail=function(el){el.innerHTML='<p class="empty">This section could not load. Refresh to try again.</p>'};
 })();

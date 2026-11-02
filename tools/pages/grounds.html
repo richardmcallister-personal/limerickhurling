@@ -1,0 +1,13 @@
+<!--title:Grounds-->
+<!--kick:History-->
+<!--sub:Grounds-->
+<!--nav:Grounds-->
+<section class="sheet"><h2>Where Limerick have played</h2><p class="note" style="margin:0 0 12px">Limerick's record at each ground, from recorded games. Thurles Sportsfield counts as Semple Stadium, Jones's Road as Croke Park, and the Cork Athletic Grounds as Páirc Uí Chaoimh, which replaced it on the same site.</p><div class="gallery" id="g"></div></section>
+<section class="sheet"><h2>Every other ground</h2><div id="rest"></div></section>
+<script>
+LH.get("grounds").then(function(G){
+ var ph=G.filter(function(g){return g.c}), rest=G.filter(function(g){return !g.c});
+ $("g").innerHTML=ph.map(function(g){return '<a class="card gcard" href="/ground/?g='+g.s+'"><img src="/assets/grounds/'+g.ph+'.webp" alt="'+E(g.n)+'" width="'+g.iw+'" height="'+g.ih+'" loading="lazy"><div class="b"><b>'+E(g.n)+'</b><small>'+E(g.t)+'</small><small>'+g.p+' games: '+g.w+' won, '+g.d+' drawn, '+g.l+' lost</small></div></a>'}).join("");
+ $("rest").innerHTML='<table class="mu"><thead><tr><th>Ground</th><th class="n">P</th><th class="n">W</th><th class="n">D</th><th class="n">L</th><th>Years</th></tr></thead><tbody>'+rest.map(function(g){return '<tr><td><a href="/ground/?g='+g.s+'">'+E(g.n)+'</a>'+(g.t?' <small>'+E(g.t)+'</small>':'')+'</td><td class="n">'+g.p+'</td><td class="n">'+g.w+'</td><td class="n">'+g.d+'</td><td class="n">'+g.l+'</td><td class="yrs">'+g.first+(g.last!==g.first?'-'+g.last:'')+'</td></tr>'}).join("")+'</tbody></table>';
+}).catch(function(){LH.fail($("g"))});
+</script>

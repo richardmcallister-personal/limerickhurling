@@ -1,0 +1,300 @@
+{
+"shirts": [
+{
+"k": "2024-sponsorless",
+"y": "2024",
+"t": "White, no sponsor",
+"a": 2024,
+"b": 2024,
+"c": {
+"page": "https://shirtsvskins.ie/collections/limerick-gaa",
+"site": "shirtsvskins.ie",
+"by": ""
+}
+},
+{
+"k": "2021-centenary-sponsorless",
+"y": "2021",
+"t": "Centenary, hooped, no sponsor",
+"a": 2021,
+"b": 2021,
+"c": {
+"page": "https://shirtsvskins.ie/collections/limerick-gaa",
+"site": "shirtsvskins.ie",
+"by": ""
+}
+},
+{
+"k": "2021-sponsorless",
+"y": "2021",
+"t": "Home, no sponsor",
+"a": 2021,
+"b": 2021,
+"c": {
+"page": "https://shirtsvskins.ie/collections/limerick-gaa",
+"site": "shirtsvskins.ie",
+"by": ""
+}
+},
+{
+"k": "2020-home",
+"y": "2020",
+"t": "Home",
+"a": 2020,
+"b": 2020,
+"c": {
+"page": "https://onsidejerseys.ie/collections/limerick-gaa",
+"site": "onsidejerseys.ie",
+"by": ""
+}
+},
+{
+"k": "2019-2020-tight-fit",
+"y": "2019-20",
+"t": "Tight fit",
+"a": 2019,
+"b": 2020,
+"c": {
+"page": "https://onsidejerseys.ie/collections/limerick-gaa",
+"site": "onsidejerseys.ie",
+"by": ""
+}
+},
+{
+"k": "2019-goalkeeper",
+"y": "2019",
+"t": "Goalkeeper",
+"a": 2019,
+"b": 2019,
+"c": {
+"page": "https://onsidejerseys.ie/collections/limerick-gaa",
+"site": "onsidejerseys.ie",
+"by": ""
+}
+},
+{
+"k": "2018-tight-fit",
+"y": "2018",
+"t": "Tight fit, Sporting Limerick",
+"a": 2018,
+"b": 2018,
+"c": {
+"page": "https://onsidejerseys.ie/collections/limerick-gaa",
+"site": "onsidejerseys.ie",
+"by": ""
+}
+},
+{
+"k": "2017-home",
+"y": "2017",
+"t": "Home, Sporting Limerick",
+"a": 2017,
+"b": 2017,
+"c": {
+"page": "https://shirtsvskins.ie/collections/limerick-gaa",
+"site": "shirtsvskins.ie",
+"by": ""
+}
+},
+{
+"k": "2016-sporting-limerick",
+"y": "2016",
+"t": "Sporting Limerick",
+"a": 2016,
+"b": 2016,
+"c": {
+"page": "https://shirtsvskins.ie/collections/limerick-gaa",
+"site": "shirtsvskins.ie",
+"by": ""
+}
+},
+{
+"k": "2005-sporting-limerick",
+"y": "2005",
+"t": "Sporting Limerick",
+"a": 2005,
+"b": 2005,
+"c": {
+"page": "https://shirtsvskins.ie/collections/limerick-gaa",
+"site": "shirtsvskins.ie",
+"by": ""
+}
+},
+{
+"k": "academy-undated",
+"y": "Undated",
+"t": "Academy jersey",
+"a": 0,
+"b": 0,
+"c": {
+"page": "https://onsidejerseys.ie/collections/limerick-gaa",
+"site": "onsidejerseys.ie",
+"by": ""
+}
+}
+],
+"cups": [
+{
+"k": "liam-maccarthy-cup",
+"h": "aishc",
+"t": "Liam MacCarthy Cup",
+"comp": "All-Ireland",
+"w": 832,
+"ht": 468,
+"c": {
+"page": "https://www.gaa.ie/hurling/news/liam-maccarthy-cup-gets-all-ireland-final-makeover",
+"site": "gaa.ie",
+"by": ""
+}
+},
+{
+"k": "national-hurling-league-cup",
+"h": "nl",
+"t": "National League cup",
+"comp": "National League",
+"w": 832,
+"ht": 468,
+"c": {
+"page": "https://www.gaa.ie/hurling/news/new-allianz-hurling-league-structure-for-2025-explained",
+"site": "gaa.ie",
+"by": ""
+}
+},
+{
+"k": "mick-mackey-cup",
+"h": "mshc",
+"t": "Mick Mackey Cup",
+"comp": "Munster",
+"w": 832,
+"ht": 468,
+"c": {
+"page": "https://www.gaa.ie/article/munster-shc-final-limerick-finish-strongly",
+"site": "gaa.ie",
+"by": ""
+}
+},
+{
+"k": "original-liam-maccarthy-cup",
+"h": "",
+"t": "The original Liam MacCarthy Cup",
+"comp": "All-Ireland, 1921 to 1992",
+"w": 832,
+"ht": 468,
+"c": {
+"page": "https://www.gaa.ie/centenary/museum-artefacts/original-liam-maccarthy-cup",
+"site": "gaa.ie",
+"by": ""
+}
+}
+],
+"grounds": {
+"gaelic-grounds-limerick": {
+"w": 832,
+"h": 468,
+"c": {
+"page": "https://www.gaa.ie/article/aib-munster-club-ihc-final-impressive-watergrasshill-triumph",
+"site": "gaa.ie",
+"by": ""
+}
+},
+"semple-stadium": {
+"w": 1100,
+"h": 621,
+"c": {
+"page": "https://tipperary.gaa.ie/match-day-information-fbd-insurance-county-hurling-final-doubleheader/",
+"site": "tipperary.gaa.ie",
+"by": ""
+}
+},
+"pairc-ui-chaoimh": {
+"w": 1100,
+"h": 733,
+"c": {
+"page": "https://www.stwarchitects.com/projects/hotel-and-event/pairc-ui-chaoimh-redevelopment/",
+"site": "stwarchitects.com",
+"by": ""
+}
+},
+"croke-park": {
+"w": 1100,
+"h": 619,
+"c": {
+"page": "https://www.thesportsdb.com/venue/21597",
+"site": "thesportsdb.com",
+"by": ""
+}
+},
+"nowlan-park": {
+"w": 1100,
+"h": 619,
+"c": {
+"page": "https://kilkennygaa.ie/nowlan-park-drone-sept-2020/",
+"site": "kilkennygaa.ie",
+"by": ""
+}
+},
+"pearse-stadium": {
+"w": 299,
+"h": 169,
+"c": {
+"page": "https://www.galwaygaa.ie/centre-of-excellence-for-galway-gaa-camogie-and-lgfa/pearse-stadium-1/",
+"site": "galwaygaa.ie",
+"by": ""
+}
+},
+"walsh-park": {
+"w": 1100,
+"h": 619,
+"c": {
+"page": "https://www.thesportsdb.com/venue/31151",
+"site": "thesportsdb.com",
+"by": ""
+}
+},
+"wexford-park": {
+"w": 1100,
+"h": 540,
+"c": {
+"page": "https://wexfordgaa.ie/dcim100mediadji_0120-jpg-2/",
+"site": "wexfordgaa.ie",
+"by": ""
+}
+},
+"fitzgerald-stadium": {
+"w": 1100,
+"h": 733,
+"c": {
+"page": "https://www.irishexaminer.com/sport/gaa/arid-41012840.html",
+"site": "irishexaminer.com",
+"by": "INPHO/Bryan Keane"
+}
+},
+"parnell-park": {
+"w": 1100,
+"h": 619,
+"c": {
+"page": "https://www.thesportsdb.com/venue/31132",
+"site": "thesportsdb.com",
+"by": ""
+}
+},
+"oconnor-park": {
+"w": 1100,
+"h": 619,
+"c": {
+"page": "https://offaly.gaa.ie/four-football-finals-in-offaly-this-weekend/oconnorpark-3/",
+"site": "offaly.gaa.ie",
+"by": ""
+}
+},
+"austin-stack-park": {
+"w": 1100,
+"h": 619,
+"c": {
+"page": "https://www.thesportsdb.com/venue/31135",
+"site": "thesportsdb.com",
+"by": ""
+}
+}
+}
+}
