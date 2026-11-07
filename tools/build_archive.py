@@ -205,7 +205,7 @@ for x in gs.values():
     gl.append(t)
 gl.sort(key=lambda g: -g['p'])
 json.dump(gl, open(OUT + 'grounds.json', 'w'), ensure_ascii=False, separators=(',', ':'))
-json.dump(dict(shirts=IM['shirts'], cups=IM['cups']), open(OUT + 'media.json', 'w'), ensure_ascii=False, separators=(',', ':'))
+json.dump(dict(shirts=IM['shirts'], cups=IM['cups'], archive=IM.get('archive', [])), open(OUT + 'media.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 # Seasons
 se = []
 for y in sorted({m['y'] for m in matches}):

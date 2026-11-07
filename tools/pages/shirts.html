@@ -3,13 +3,21 @@
 <!--sub:Shirts-->
 <!--nav:Shirts-->
 <section class="sheet" id="new"></section>
-<section class="sheet"><h2>Limerick shirts</h2><p class="note" style="margin:0 0 12px">A selection, not the full history. Years before 2027 are the retailers' dates and may not match the seasons each shirt was worn.</p><div class="gallery" id="g"></div></section>
+<section class="sheet"><h2>Shirts</h2><p class="note" style="margin:0 0 12px">Every shirt photo in the collection, newest first. Years come from the file names and may be the year a shirt was launched rather than every season it was worn.</p><div class="gallery" id="shirts"></div></section>
+<section class="sheet"><h2>Worn in matches</h2><p class="note" style="margin:0 0 12px">Match photos showing the shirt of each era. Football means the county's footballers in the same jersey.</p><div class="gallery ph" id="worn"></div></section>
+<section class="sheet"><h2>Launches</h2><div class="gallery ph" id="launch"></div></section>
+<section class="sheet"><h2>Training tops</h2><div class="gallery" id="training"></div></section>
+<section class="sheet"><h2>Retro reproductions</h2><div class="gallery" id="retro"></div></section>
+<section class="sheet"><h2>From the archive</h2><p class="note" style="margin:0 0 12px">Team photos and match scenes from 1887 to 1994.</p><div class="gallery ph" id="history"></div></section>
+<p class="note" style="margin:12px 4px 0">Photos from Richard's collection; sources not recorded.</p>
 <script>
 LH.get("media").then(function(M){
  var n=M.shirts[0]; if(n&&n.views){var all=[n.k].concat(n.views);
-  $("new").innerHTML='<h2>New for '+E(n.y)+': the home shirt</h2><p class="note" style="margin:0 0 12px">'+E(n.t)+'. '+LH.credit(n.c)+'</p><div class="nsh"><img id="big" class="photo" src="/assets/shirts/'+n.k+'.webp" alt="Limerick home shirt 2027" width="640" height="640"><div class="thumbs">'+all.map(function(k,i){return '<button type="button" data-k="'+k+'" aria-label="View '+(i+1)+' of '+all.length+'"'+(i?'':' aria-pressed="true"')+'><img src="/assets/shirts/'+k+'.webp" alt="" width="80" height="80" loading="lazy"></button>'}).join("")+'</div></div>'+(n.launch?'<h3>The launch</h3><div class="launch">'+n.launch.map(function(x){return '<figure><img class="photo" src="/assets/shirts/'+x.k+'.webp" alt="'+E(x.t)+'" width="'+x.w+'" height="'+x.h+'" loading="lazy"><figcaption class="note">'+E(x.t)+'</figcaption></figure>'}).join("")+'</div>':'');
+  $("new").innerHTML='<h2>New for '+E(n.y)+': the home shirt</h2><p class="note" style="margin:0 0 12px">'+E(n.t)+'.</p><div class="nsh"><img id="big" class="photo" src="/assets/shirts/'+n.k+'.webp" alt="Limerick home shirt 2027" width="640" height="640"><div class="thumbs">'+all.map(function(k,i){return '<button type="button" data-k="'+k+'" aria-label="View '+(i+1)+' of '+all.length+'"'+(i?'':' aria-pressed="true"')+'><img src="/assets/shirts/'+k+'.webp" alt="" width="80" height="80" loading="lazy"></button>'}).join("")+'</div></div>'+(n.launch?'<h3>The launch</h3><div class="launch">'+n.launch.map(function(x){return '<figure><img class="photo" src="/assets/shirts/'+x.k+'.webp" alt="'+E(x.t)+'" width="'+x.w+'" height="'+x.h+'" loading="lazy"><figcaption class="note">'+E(x.t)+'</figcaption></figure>'}).join("")+'</div>':'');
   $("new").addEventListener("click",function(e){var b=e.target.closest("button[data-k]"); if(!b)return; $("big").src="/assets/shirts/"+b.dataset.k+".webp"; $("new").querySelectorAll("button[data-k]").forEach(function(x){x.setAttribute("aria-pressed",x===b)})});
  } else $("new").hidden=true;
- $("g").innerHTML=M.shirts.map(function(s){return '<div class="card shirt"><img src="/assets/shirts/'+s.k+'.webp" alt="Limerick shirt, '+E(s.y)+', '+E(s.t)+'" width="640" height="640" loading="lazy"><div class="b"><b>'+(s.a?'<a class="link" href="/season/?y='+s.a+'">'+E(s.y)+'</a>':E(s.y))+'</b><small>'+E(s.t)+'</small><small>'+LH.credit(s.c)+'</small></div></div>'}).join("");
-}).catch(function(){LH.fail($("g"))});
+ function card(s){var y=s.a?'<a class="link" href="/season/?y='+s.a+'">'+E(s.y)+'</a>':E(s.y);
+  return '<a class="card'+(s.sec==="shirts"||s.sec==="training"||s.sec==="retro"?" shirt":"")+'" href="/assets/shirts/'+s.k+'.webp" target="_blank" rel="noopener"><img src="/assets/shirts/'+s.k+'.webp" alt="'+E(s.t)+(s.a?', '+E(s.y):'')+'" width="'+s.w+'" height="'+s.h+'" loading="lazy"><div class="b"><b>'+E(s.y)+'</b><small>'+E(s.t)+'</small></div></a>'}
+ ["shirts","worn","launch","training","retro","history"].forEach(function(sec){var L=(M.archive||[]).filter(function(x){return x.sec===sec}); if(sec==="history")L=L.slice().reverse(); $(sec).innerHTML=L.map(card).join("")});
+}).catch(function(){LH.fail($("shirts"))});
 </script>

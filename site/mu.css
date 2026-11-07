@@ -447,3 +447,4 @@ h2.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
 @media (max-width:640px){.nsh{grid-template-columns:1fr} .thumbs{grid-template-columns:repeat(6,minmax(0,1fr))}}
 .launch{display:grid;grid-template-columns:repeat(2,minmax(0,280px));gap:12px} .launch figure{margin:0} .launch figcaption{margin-top:4px}
 .nshub{display:block;max-width:360px} .nshub img{background:#fff;aspect-ratio:1;object-fit:contain}
+.gallery.ph img{aspect-ratio:4/3;object-fit:cover;background:var(--tint)} a.card:hover{box-shadow:inset 0 0 0 1.5px var(--red-ink)}

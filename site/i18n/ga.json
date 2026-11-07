@@ -237,9 +237,55 @@
 "Biggest wins, best games, longest runs": "Na buanna is mó, na cluichí is fearr, na sraitheanna is faide",
 "Limerick manager": "Bainisteoir Luimnigh",
 "All shirts →": "Gach geansaí →",
-"Released 6 Nov 2026.": "Eisithe 6 Samh 2026."
+"Released 6 Nov 2026.": "Eisithe 6 Samh 2026.",
+"Every shirt photo in the collection, newest first. Years come from the file names and may be the year a shirt was launched rather than every season it was worn.": "Gach grianghraf geansaí sa bhailiúchán, an ceann is nuaí ar dtús. Tagann na blianta ó ainmneacha na gcomhad agus b'fhéidir gurb í bliain sheoladh an gheansaí í seachas gach séasúr ar caitheadh é.",
+"Worn in matches": "Caite i gcluichí",
+"Match photos showing the shirt of each era. Football means the county's footballers in the same jersey.": "Grianghraif ó chluichí a thaispeánann geansaí gach ré. Ciallaíonn Peil peileadóirí an chontae sa gheansaí céanna.",
+"Launches": "Seoltaí",
+"Training tops": "Barréidí traenála",
+"Retro reproductions": "Athdhéantúis sean-nóis",
+"From the archive": "Ón gcartlann",
+"Team photos and match scenes from 1887 to 1994.": "Grianghraif foirne agus radhairc chluichí ó 1887 go 1994.",
+"Photos from Richard's collection; sources not recorded.": "Grianghraif as bailiúchán Richard; níor taifeadadh na foinsí.",
+"Hurling": "Iománaíocht",
+"Football": "Peil",
+"Fenway Classic, Boston": "Fenway Classic, Boston",
+"Home, worn in a match": "Baile, caite i gcluiche",
+"Goalkeeper, long sleeve": "Cúl báire, muinchillí fada",
+"Home, number 26 (back)": "Baile, uimhir 26 (cúl)",
+"Centenary, hooped": "Céad bliain, stríocach",
+"Alternate goalkeeper": "Cúl báire, malartach",
+"Alternate": "Malartach",
+"Goalkeeper, tight fit": "Cúl báire, feisteas teann",
+"Home, away and centenary launch": "Seoladh na ngeansaithe baile, as baile agus céad bliain",
+"Home shirt launch": "Seoladh an gheansaí baile",
+"All-Ireland fundraiser training top": "Barréide traenála, tiomsú airgid na hÉireann",
+"Blue training top": "Barréide traenála gorm",
+"1992 National League retro": "Sean-nós Shraith Náisiúnta 1992",
+"1994 retro reproduction": "Athdhéantús sean-nóis 1994",
+"1996 retro": "Sean-nós 1996",
+"Commercials, football, 1887": "Commercials, peil, 1887",
+"1940 team, museum photo": "Foireann 1940, grianghraf músaeim",
+"1947 team": "Foireann 1947",
+"Munster final parade, 1973": "Paráid chluiche ceannais na Mumhan, 1973"
 },
 "patterns": [
+[
+"^All-Ireland champions, (\\d{4})$",
+"Curaidh na hÉireann, $1"
+],
+[
+"^All-Ireland final, (\\d{4})$",
+"Cluiche ceannais na hÉireann, $1"
+],
+[
+"^Limerick v Cork, (\\d{4})$",
+"Luimneach v Corcaigh, $1"
+],
+[
+"^(.+), (\\d{4}(?:-\\d\\d)?)$",
+"{T1}, $2"
+],
 [
 "^New (\\d{4}) home shirt$",
 "Geansaí baile nua $1"

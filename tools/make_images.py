@@ -5,10 +5,7 @@ import csv, json, os, re, sys
 from PIL import Image
 from urllib.parse import urlparse
 src = sys.argv[1]
-SHIRTS = [('2024-sponsorless', '2024', 'White, no sponsor', 2024, 2024), ('2021-centenary-sponsorless', '2021', 'Centenary, hooped, no sponsor', 2021, 2021), ('2021-sponsorless', '2021', 'Home, no sponsor', 2021, 2021),
-          ('2020-home', '2020', 'Home', 2020, 2020), ('2019-2020-tight-fit', '2019-20', 'Tight fit', 2019, 2020), ('2019-goalkeeper', '2019', 'Goalkeeper', 2019, 2019),
-          ('2018-tight-fit', '2018', 'Tight fit, Sporting Limerick', 2018, 2018), ('2017-home', '2017', 'Home, Sporting Limerick', 2017, 2017), ('2016-sporting-limerick', '2016', 'Sporting Limerick', 2016, 2016),
-          ('2005-sporting-limerick', '2005', 'Sporting Limerick', 2005, 2005), ('academy-undated', 'Undated', 'Academy jersey', 0, 0)]
+SHIRTS = []   # retired 7 Nov 2026: shirts now come from tools/data/shirt_archive.json
 CUPS = [('liam-maccarthy-cup', 'aishc', 'Liam MacCarthy Cup', 'All-Ireland'), ('national-hurling-league-cup', 'nl', 'National League cup', 'National League'), ('mick-mackey-cup', 'mshc', 'Mick Mackey Cup', 'Munster'), ('original-liam-maccarthy-cup', '', 'The original Liam MacCarthy Cup', 'All-Ireland, 1921 to 1992')]
 GROUNDS = 'gaelic-grounds-limerick semple-stadium pairc-ui-chaoimh croke-park nowlan-park pearse-stadium walsh-park wexford-park fitzgerald-stadium parnell-park oconnor-park austin-stack-park'.split()
 rows = {r['file']: r for r in csv.DictReader(open(src + '/sources.csv', encoding='utf-8'))}
@@ -29,6 +26,7 @@ for k, h, t, c in CUPS:
 for k in GROUNDS:
     f = f'stadiums/{k}.png'; w = conv(f, f'site/assets/grounds/{k}.webp', 1100)
     M['grounds'][k] = dict(w=w[0], h=w[1], c=credit(f))
-M['shirts'] = json.load(open('tools/data/shirts_extra.json'))['shirts'] + M['shirts']   # newest first; hand-kept extras (2027 home)
+A = json.load(open('tools/data/shirt_archive.json'))['items']   # Richard's shirt archive replaces the retailer shots (7 Nov 2026)
+M['shirts'] = json.load(open('tools/data/shirts_extra.json'))['shirts'] + [x for x in A if x['sec'] == 'shirts']; M['archive'] = A   # newest first; hand-kept extras (2027 home)
 json.dump(M, open('tools/data/image_sources.json', 'w'), ensure_ascii=False, indent=0)
 print('ok')
