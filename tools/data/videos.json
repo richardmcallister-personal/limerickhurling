@@ -1,5 +1,5 @@
 {
- "_": "From Richard's YouTube playlist PLY2oX7oWMk0Q (27 videos at 7 Nov 2026). m = match id in matches.json; k = full | highlights | video (uploader doesn't say); e = false when the uploader has turned embedding off (shown as a link to YouTube). Clare v Cork 2024 (PoViqHOY-XY) is in the playlist but has no Limerick, so it is left out.",
+ "_": "From Richard's YouTube playlist PLY2oX7oWMk0Q (27 videos at 7 Nov 2026). m = match id in matches.json; k = full | highlights | video (uploader doesn't say); e = false when the uploader has turned embedding off (shown as a link to YouTube). Clare v Cork 2024 (PoViqHOY-XY) is in the playlist but has no Limerick, so it is left out. 5nIKBu9kgEU (2023 final highlights, Anything Irish) removed at Richard's request, 7 Nov 2026.",
  "v": [
   {
    "id": "HB2dueE-zwQ",
@@ -43,13 +43,6 @@
    "t": "Limerick vs Kilkenny All Ireland Final 2022",
    "ch": "Dante",
    "e": false
-  },
-  {
-   "id": "5nIKBu9kgEU",
-   "m": "2023-kilkenny-2",
-   "k": "highlights",
-   "t": "Limerick v Kilkenny All Ireland Senior Hurling Championship Final 2023 Highlights",
-   "ch": "Anything Irish"
   },
   {
    "id": "0JTwowdxYOA",
