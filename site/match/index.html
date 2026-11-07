@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 <script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
-<link rel="stylesheet" href="/mu.css?v=bbab0bc1"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<link rel="stylesheet" href="/mu.css?v=985f1c5e"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
 <header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">Match<span></span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
@@ -19,7 +19,7 @@
 </main>
 <footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
-<script>window.LH_V="bbab0bc1"</script><script src="/lh.js?v=bbab0bc1"></script>
+<script>window.LH_V="985f1c5e"</script><script src="/lh.js?v=985f1c5e"></script>
 <script>
 (function(){
 LH.nav('Results');
@@ -31,7 +31,7 @@ Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("videos
  document.title="Limerick v "+m.opp+" "+m.y; $("from").innerHTML=E(LH.comp(m.cn))+"<span>"+m.y+"</span>";
  var info=[m.d?LH.fmtD(m.d,true):m.y,m.v,D.loc&&(m.v||"").indexOf(D.loc)<0?D.loc:"",D.att?"Attendance "+D.att.replace(/,/g,""):"",D.ref?"Referee "+D.ref:"",D.tv?"TV "+D.tv:""].filter(Boolean);
  $("head").innerHTML='<div class="kick">'+E(LH.comp(m.cn))+(m.rnd?' · '+E(m.rnd):'')+'</div>'+(m.h==="A"?LH.board(m.opp,"Limerick",m):LH.board("Limerick",m.opp,m))+(m.r?'':'<p class="sbmeta">'+E(m.wo||"")+'</p>')+'<p class="note" style="margin:10px 0 0">'+info.map(function(x){return x===m.v&&m.g?'<a class="link" href="/ground/?g='+m.g+'">'+E(x)+'</a>':E(x)}).join(" · ")+'</p>'+(function(){var g=R[2].filter(function(x){return x.s===m.g})[0]; return g&&g.c?'<img class="photo" style="margin-top:12px;max-height:320px" src="/assets/grounds/'+g.ph+'.webp" alt="'+E(g.n)+'" width="'+g.iw+'" height="'+g.ih+'" loading="lazy"><p class="note" style="margin:6px 0 0">'+LH.credit(g.c,g.n+'. Not necessarily taken at this match.')+'</p>':""})();
- var V=R[3].filter(function(v){return v.m===id}).sort(function(a,b){return a.k===b.k?0:a.k==="highlights"?-1:1}); if(V.length){$("vid").hidden=false; $("vid").innerHTML='<h2 class="row">'+(V.length>1?"Videos":"Video")+' <a href="/videos/">All videos →</a></h2>'+V.map(LH.video).join("")}
+ var V=R[3].filter(function(v){return v.m===id}).sort(function(a,b){var o={highlights:0,video:1,full:2}; return o[a.k]-o[b.k]}); if(V.length){$("vid").hidden=false; $("vid").innerHTML='<h2 class="row">'+(V.length>1?"Videos":"Video")+' <a href="/videos/">All videos →</a></h2>'+V.map(LH.video).join("")}
  function tbl(sc,link){return sc&&sc.length?'<table class="mu"><tbody>'+sc.slice().sort(function(a,b){return (b[1]*3+b[2])-(a[1]*3+a[2])}).map(function(s){return '<tr><td>'+(link?'<a href="/player/?p='+LH.slug(s[0])+'">'+E(s[0])+'</a>':E(s[0]))+'</td><td class="n">'+s[1]+'-'+s[2]+'</td></tr>'}).join("")+'</tbody></table>':'<p class="note" style="margin:0">Not recorded.</p>'}
  function chk(sc,want){if(!sc||!sc.length||!want||want[0]==null)return ""; var g=0,p=0; sc.forEach(function(s){g+=s[1];p+=s[2]}); return g===want[0]&&p===want[1]?"":'<p class="note" style="margin:8px 0 0">The source\'s scorers add to '+g+'-'+p+', not '+want[0]+'-'+want[1]+'.</p>'}
  $("us").innerHTML='<h2>Limerick scorers</h2>'+tbl(m.sc,1)+chk(m.sc,m.u); $("them").innerHTML='<h2>'+LH.crest(m.opp,20)+E(m.opp)+' scorers</h2>'+tbl(D.osc)+chk(D.osc,m.o);

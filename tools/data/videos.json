@@ -1,13 +1,188 @@
 {
- "_": "From Richard's YouTube playlist PLY2oX7oWMk0Q (7 Nov 2026). m = match id in matches.json; k = full | highlights; e = false when the uploader has turned embedding off (shown as a link to YouTube). Clare v Cork 2024 (PoViqHOY-XY) is in the playlist but has no Limerick, so it is left out.",
+ "_": "From Richard's YouTube playlist PLY2oX7oWMk0Q (27 videos at 7 Nov 2026). m = match id in matches.json; k = full | highlights | video (uploader doesn't say); e = false when the uploader has turned embedding off (shown as a link to YouTube). Clare v Cork 2024 (PoViqHOY-XY) is in the playlist but has no Limerick, so it is left out.",
  "v": [
-  {"id":"HB2dueE-zwQ","m":"2018-galway-2","k":"full","t":"Galway v Limerick 2018 All Ireland Senior Hurling Final (Full Match)","ch":"Classic GAA Videos & Clips"},
-  {"id":"NuT3jBl8-TE","m":"2018-cork-2","k":"full","t":"2018 All-Ireland SHC Semi-Final: Cork v Limerick","ch":"GAA"},
-  {"id":"4qRfeHtqpxw","m":"2020-waterford-3","k":"full","t":"GAANOW 2020 GAA Hurling All-Ireland Final: Limerick v Waterford","ch":"GAA"},
-  {"id":"t0rzgUeFv4Y","m":"2021-cork-3","k":"full","t":"Limerick v Cork - All Ireland Final 2021 - Hurling","ch":"MAC MEDIA"},
-  {"id":"TF0BSVTNnOA","m":"2022-kilkenny","k":"highlights","t":"Limerick v Kilkenny All Ireland Senior Hurling Championship Final 2022 Highlights","ch":"Anything Irish"},
-  {"id":"IksdLKTa22I","m":"2022-kilkenny","k":"full","t":"Limerick vs Kilkenny All Ireland Final 2022","ch":"Dante","e":false},
-  {"id":"5nIKBu9kgEU","m":"2023-kilkenny-2","k":"highlights","t":"Limerick v Kilkenny All Ireland Senior Hurling Championship Final 2023 Highlights","ch":"Anything Irish"},
-  {"id":"0JTwowdxYOA","m":"2023-kilkenny-2","k":"full","t":"Limerick v Kilkenny: 2023 All Ireland hurling final (full game + cup presentation)","ch":"Limerick Supporters Group / Cuimhnigh Ar Luimneach"}
+  {
+   "id": "HB2dueE-zwQ",
+   "m": "2018-galway-2",
+   "k": "full",
+   "t": "Galway v Limerick 2018 All Ireland Senior Hurling Final (Full Match)",
+   "ch": "Classic GAA Videos & Clips"
+  },
+  {
+   "id": "NuT3jBl8-TE",
+   "m": "2018-cork-2",
+   "k": "full",
+   "t": "2018 All-Ireland SHC Semi-Final: Cork v Limerick",
+   "ch": "GAA"
+  },
+  {
+   "id": "4qRfeHtqpxw",
+   "m": "2020-waterford-3",
+   "k": "full",
+   "t": "GAANOW 2020 GAA Hurling All-Ireland Final: Limerick v Waterford",
+   "ch": "GAA"
+  },
+  {
+   "id": "t0rzgUeFv4Y",
+   "m": "2021-cork-3",
+   "k": "full",
+   "t": "Limerick v Cork - All Ireland Final 2021 - Hurling",
+   "ch": "MAC MEDIA"
+  },
+  {
+   "id": "TF0BSVTNnOA",
+   "m": "2022-kilkenny",
+   "k": "highlights",
+   "t": "Limerick v Kilkenny All Ireland Senior Hurling Championship Final 2022 Highlights",
+   "ch": "Anything Irish"
+  },
+  {
+   "id": "IksdLKTa22I",
+   "m": "2022-kilkenny",
+   "k": "full",
+   "t": "Limerick vs Kilkenny All Ireland Final 2022",
+   "ch": "Dante",
+   "e": false
+  },
+  {
+   "id": "5nIKBu9kgEU",
+   "m": "2023-kilkenny-2",
+   "k": "highlights",
+   "t": "Limerick v Kilkenny All Ireland Senior Hurling Championship Final 2023 Highlights",
+   "ch": "Anything Irish"
+  },
+  {
+   "id": "0JTwowdxYOA",
+   "m": "2023-kilkenny-2",
+   "k": "full",
+   "t": "Limerick v Kilkenny: 2023 All Ireland hurling final (full game + cup presentation)",
+   "ch": "Limerick Supporters Group / Cuimhnigh Ar Luimneach"
+  },
+  {
+   "id": "VQS4nQRwEss",
+   "m": "2026-galway-2",
+   "k": "full",
+   "t": "Galway vs Limerick 2026 All-Ireland Senior Championship Final",
+   "ch": "Tommy Hamm"
+  },
+  {
+   "id": "XmzSUxg4Gp8",
+   "m": "2026-clare-2",
+   "k": "full",
+   "t": "Clare vs Limerick 2026 All-Ireland Senior Championship Semi-Final",
+   "ch": "Tommy Hamm"
+  },
+  {
+   "id": "y3b2_FfH9eY",
+   "m": "2026-cork-4",
+   "k": "video",
+   "t": "Cork v Limerick - Munster SHC Final - 2026",
+   "ch": "Joco Sports"
+  },
+  {
+   "id": "3QIrSlPRNhU",
+   "m": "2025-cork-3",
+   "k": "video",
+   "t": "Limerick v Cork - Munster SHC Final - 2025",
+   "ch": "Joco Sports"
+  },
+  {
+   "id": "vNp-bI8S-aw",
+   "m": "2025-dublin",
+   "k": "video",
+   "t": "Dublin v Limerick - All Ireland SHC Quarter Final - 2025",
+   "ch": "Joco Sports"
+  },
+  {
+   "id": "P1FuSuOtqK8",
+   "m": "2025-cork-2",
+   "k": "full",
+   "t": "Limerick v Cork: 2025 Munster Senior Hurling Championship R4 (full game)",
+   "ch": "Limerick Supporters Group / Cuimhnigh Ar Luimneach"
+  },
+  {
+   "id": "Pcp7HXUK864",
+   "m": "2025-waterford",
+   "k": "full",
+   "t": "Limerick v Waterford: 2025 Munster hurling championship Round 3 (full game)",
+   "ch": "Limerick Supporters Group / Cuimhnigh Ar Luimneach"
+  },
+  {
+   "id": "1L2C_Vrkh5I",
+   "m": "2025-tipperary-2",
+   "k": "full",
+   "t": "Limerick v Tipperary: 2025 Munster senior hurling championship (full game)",
+   "ch": "Limerick Supporters Group / Cuimhnigh Ar Luimneach"
+  },
+  {
+   "id": "AC7nLY0sI4w",
+   "m": "2024-clare-2",
+   "k": "full",
+   "t": "Limerick vs Clare: 2024 Munster hurling final (full game)",
+   "ch": "Limerick Supporters Group / Cuimhnigh Ar Luimneach"
+  },
+  {
+   "id": "DsUrGGd0A8M",
+   "m": "2023-clare-3",
+   "k": "full",
+   "t": "Limerick v Clare: 2023 Munster senior hurling final at the Gaelic Grounds",
+   "ch": "Limerick Supporters Group / Cuimhnigh Ar Luimneach"
+  },
+  {
+   "id": "IaAJ-KF6Xf0",
+   "m": "2023-cork-2",
+   "k": "full",
+   "t": "Limerick defeat Cork in a Munster hurling championship game in 2023",
+   "ch": "Limerick Supporters Group / Cuimhnigh Ar Luimneach"
+  },
+  {
+   "id": "xbFf1zcacqo",
+   "m": "2022-cork",
+   "k": "video",
+   "t": "Cork v Limerick - Munster SHC Rd.1 - 2022",
+   "ch": "Joco Sports"
+  },
+  {
+   "id": "OfWBbCLMvt4",
+   "m": "2020-galway-2",
+   "k": "highlights",
+   "t": "Limerick vs Galway 2020 All-Ireland Semi-Final Highlights",
+   "ch": "Юрий Васильков"
+  },
+  {
+   "id": "HYZF63dqCbc",
+   "m": "2019-tipperary-2",
+   "k": "full",
+   "t": "Limerick v Tipperary: 2019 Munster senior hurling final at the Gaelic Grounds (full game)",
+   "ch": "Limerick Supporters Group / Cuimhnigh Ar Luimneach"
+  },
+  {
+   "id": "s1g5hkNX-xY",
+   "m": "2018-cork",
+   "k": "video",
+   "t": "Cork v Limerick - Munster SHC - 2018",
+   "ch": "Joco Sports"
+  },
+  {
+   "id": "uQAqdzkmnnk",
+   "m": "2018-clare-2",
+   "k": "video",
+   "t": "Clare v Limerick - Munster Hurling Championship 2018",
+   "ch": "Wilderness of Tigers"
+  },
+  {
+   "id": "n5j_aBNlEy4",
+   "m": "2001-cork",
+   "k": "full",
+   "t": "Limerick vs Cork: 2001 Munster hurling quarter-final (full match)",
+   "ch": "Limerick Supporters Group / Cuimhnigh Ar Luimneach"
+  },
+  {
+   "id": "fJ2xLqLdXyc",
+   "m": "1996-wexford",
+   "k": "video",
+   "t": "1996 All-Ireland SHC Final: Wexford v Limerick",
+   "ch": "GAA"
+  }
  ]
 }

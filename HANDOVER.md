@@ -26,3 +26,4 @@ Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/re
 ## 7 Nov 2026: videos
 - 8 videos from Richard's playlist on 6 games (2018 semi and final, 2020, 2021, 2022, 2023 finals). Match pages play them in place (youtube-nocookie, tap to play); /videos/ lists them by season; ▶ marker on result rows.
 - 2022 full game (IksdLKTa22I) has embedding off: shown as a link to YouTube. Clare v Cork 2024 (PoViqHOY-XY) left out, no Limerick.
+- Later 7 Nov: playlist grew to 27; 18 more added (2026 final and semi, Munster games 2018-2026, 2001 Munster quarter-final, 1996 final). 26 videos on 24 games. Label "Match video" where the uploader doesn't say full game or highlights (Joco Sports, Wilderness of Tigers, GAA 1996).
