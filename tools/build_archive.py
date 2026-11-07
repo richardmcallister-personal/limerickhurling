@@ -19,6 +19,9 @@ def round_name(r):
     n = re.sub(r'^(Munster|All-Ireland|National League|NHL|Division \d\w?)\s+', '', n, flags=re.I) if not re.fullmatch(r'Division \d\w?', n) else n
     n = re.sub(r'\s*results?$', '', n, flags=re.I).strip()
     if re.search(r'^\d{1,2}\s+\w+\s+\d{4}', n) or n.lower() in ('fixtures','', 'matches', 'division 1', 'division 1a', 'division 1b', 'division 2', 'division 2a'): n = r['rnd'] if re.fullmatch(r'Division.*', r['rnd'] or '') else ''
+    # some Wikipedia boxes put the date or throw-in time in the round field: not a round
+    if re.search(r'\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday|january|february|march|april|june|july|august|september|october|november|december)\b|\d(:|\.)\d\d|\d\s*[ap]m\b|utc', n, re.I): n = re.sub(r'.*?(\b(?:Final|Semi-final|Quarter-final|Round \d+)\b.*)?$', lambda m: m.group(1) or '', n, flags=re.I).strip()
+    n = re.sub(r'\s*\d{1,2}[:.]\d\d.*$', '', n).replace('Semifinal', 'Semi-final')
     n = n.replace('Semi-Final', 'Semi-final').replace('Quarter-Final', 'Quarter-final').replace(' Replay', ' replay').replace('First Round', 'First round').replace('Senior Hurling Championship', '')
     return n[:1].upper() + n[1:] if n else ''
 for r in raw: r['rnd'] = round_name(r)

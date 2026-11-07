@@ -21,6 +21,10 @@ LH.list=function(L,opt){return L.length?'<ul class="mlist">'+L.map(function(m){r
 LH.tot=function(L){var t={p:0,w:0,d:0,l:0,gf:0,ga:0}; L.forEach(function(m){if(!m.r)return; t.p++; t[m.r.toLowerCase()]++; t.gf+=m.gf; t.ga+=m.ga}); return t};
 LH.stat=function(k,v,s){return '<div class="stat"><div class="k">'+esc(k)+'</div><div class="v">'+v+'</div>'+(s?'<div class="s">'+s+'</div>':'')+'</div>'};
 LH.nav=function(active){var el=document.querySelector("nav.munav"); if(!el)return;
+  // sticky masthead: header and section bar travel together; --mast tells anchors how tall it is (as on manutd.wiki)
+  (function(){var h=document.querySelector("header.mu"); if(!h||h.parentNode.classList.contains("mast"))return;
+    var m=document.createElement("div"); m.className="mast"; h.parentNode.insertBefore(m,h); m.appendChild(h); m.appendChild(el);
+    function set(){document.documentElement.style.setProperty("--mast",m.offsetHeight+"px")} set(); if(window.ResizeObserver)new ResizeObserver(set).observe(m)})();
   el.innerHTML=NAV.map(function(n){return '<a href="'+n[0]+'"'+(n[1]===active?' aria-current="page"':'')+'>'+n[1]+'</a>'}).join("")+'<form class="musearch" role="search" action="/search/"><input type="search" name="q" placeholder="Search players, opponents, seasons…" aria-label="Search the site" autocomplete="off"><div class="hits" hidden></div></form>';
   searchBox(el.querySelector(".musearch"));
   var I={h:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>',s:'<path d="M4 6h16M4 12h16M4 18h10"/>',r:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',p:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/>',m:'<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>'};
@@ -40,6 +44,18 @@ function theme(m){try{if(m==="auto")localStorage.removeItem("mu:theme"); else lo
 (function(){try{var t=localStorage.getItem("mu:theme"); if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})();
 document.addEventListener("DOMContentLoaded",function(){var f=document.querySelector("footer.mu"); if(!f)return; var cur="auto"; try{cur=localStorage.getItem("mu:theme")||"auto"}catch(e){}
   var d=document.createElement("span"); d.className="themesw"; d.setAttribute("role","group"); d.setAttribute("aria-label","Appearance"); d.innerHTML=["auto","light","dark"].map(function(m){return '<button type="button" data-m="'+m+'" aria-pressed="'+(m===cur)+'">'+m+'</button>'}).join(""); d.addEventListener("click",function(e){var b=e.target.closest("button"); if(b)theme(b.dataset.m)}); f.appendChild(document.createTextNode(" Appearance:")); f.appendChild(d)});
-LH.credit=function(c,extra){return '<span class="attr">'+(extra?esc(extra)+' ':'')+'Photo: <a href="'+esc(c.page)+'" rel="noopener">'+esc(c.by||c.site)+'</a></span>'};
+// scoreboard: crest and name either side, score (or "v") in the middle
+LH.board=function(a,b,m){function side(n){return '<a class="sbt" href="'+(n==="Limerick"?"/":"/opponent/?o="+slug(n))+'">'+crest(n,56)+'<span>'+esc(n)+'</span></a>'}
+  var mid=m&&m.r?'<b>'+(a==="Limerick"?gp(m.u)+' – '+gp(m.o):gp(m.o)+' – '+gp(m.u))+'</b><span class="rs '+m.r+'">'+({W:"Won",D:"Drawn",L:"Lost"})[m.r]+'</span><small>'+(a==="Limerick"?m.gf+' – '+m.ga:m.ga+' – '+m.gf)+' on points value</small>':'<b class="vs">v</b>';
+  return '<div class="sb">'+side(a)+'<div class="sbs">'+mid+'</div>'+side(b)+'</div>'};
+var CAL='<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
+LH.calMenu=function(){var h="limerickhurling.wiki/calendar.ics";
+  return '<details class="calmenu"><summary class="btn ghost">'+CAL+'<span>Add to calendar</span></summary><div class="calpop">'+
+    '<a href="webcal://'+h+'">Subscribe to every fixture<small>Apple Calendar or Outlook; updates itself when dates are confirmed</small></a>'+
+    '<a href="https://calendar.google.com/calendar/r?cid=webcal://'+h+'" target="_blank" rel="noopener">Subscribe in Google Calendar<small>Opens Google Calendar</small></a>'+
+    '<a href="/calendar.ics" download>Download the fixtures<small>A one-off .ics file</small></a></div></details>'};
+document.addEventListener("click",function(e){document.querySelectorAll("details.calmenu[open]").forEach(function(d){if(!d.contains(e.target))d.removeAttribute("open")})});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")document.querySelectorAll("details.calmenu[open]").forEach(function(d){d.removeAttribute("open")})});
+LH.credit=function(c,extra){return '<span class="attr">'+(extra?esc(extra)+' ':'')+'Photo: '+(c.page?'<a href="'+esc(c.page)+'" rel="noopener">'+esc(c.by||c.site)+'</a>':esc(c.site))+'</span>'};
 LH.fail=function(el){el.innerHTML='<p class="empty">This section could not load. Refresh to try again.</p>'};
 })();

@@ -29,5 +29,6 @@ for k, h, t, c in CUPS:
 for k in GROUNDS:
     f = f'stadiums/{k}.png'; w = conv(f, f'site/assets/grounds/{k}.webp', 1100)
     M['grounds'][k] = dict(w=w[0], h=w[1], c=credit(f))
+M['shirts'] = json.load(open('tools/data/shirts_extra.json'))['shirts'] + M['shirts']   # newest first; hand-kept extras (2027 home)
 json.dump(M, open('tools/data/image_sources.json', 'w'), ensure_ascii=False, indent=0)
 print('ok')

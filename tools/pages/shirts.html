@@ -2,9 +2,14 @@
 <!--kick:History-->
 <!--sub:Shirts-->
 <!--nav:Shirts-->
-<section class="sheet"><h2>Limerick shirts</h2><p class="note" style="margin:0 0 12px">A selection, not the full history. Years are the retailers' dates and may not match the seasons each shirt was worn.</p><div class="gallery" id="g"></div></section>
+<section class="sheet" id="new"></section>
+<section class="sheet"><h2>Limerick shirts</h2><p class="note" style="margin:0 0 12px">A selection, not the full history. Years before 2027 are the retailers' dates and may not match the seasons each shirt was worn.</p><div class="gallery" id="g"></div></section>
 <script>
 LH.get("media").then(function(M){
- $("g").innerHTML=M.shirts.map(function(s){return '<div class="card shirt"><img src="/assets/shirts/'+s.k+'.webp" alt="Limerick shirt, '+E(s.y)+', '+E(s.t)+'" width="640" height="640" loading="lazy"><div class="b"><b>'+(s.a?'<a class="link" href="/season/?y='+s.a+'">'+E(s.y)+'</a>':E(s.y))+'</b><small>'+E(s.t)+'</small><small><span class="attr">Photo: <a href="'+E(s.c.page)+'" rel="noopener">'+E(s.c.site)+'</a></span></small></div></div>'}).join("");
+ var n=M.shirts[0]; if(n&&n.views){var all=[n.k].concat(n.views);
+  $("new").innerHTML='<h2>New for '+E(n.y)+': the home shirt</h2><p class="note" style="margin:0 0 12px">'+E(n.t)+'. '+LH.credit(n.c)+'</p><div class="nsh"><img id="big" class="photo" src="/assets/shirts/'+n.k+'.webp" alt="Limerick home shirt 2027" width="640" height="640"><div class="thumbs">'+all.map(function(k,i){return '<button type="button" data-k="'+k+'" aria-label="View '+(i+1)+' of '+all.length+'"'+(i?'':' aria-pressed="true"')+'><img src="/assets/shirts/'+k+'.webp" alt="" width="80" height="80" loading="lazy"></button>'}).join("")+'</div></div>'+(n.launch?'<h3>The launch</h3><div class="launch">'+n.launch.map(function(x){return '<figure><img class="photo" src="/assets/shirts/'+x.k+'.webp" alt="'+E(x.t)+'" width="'+x.w+'" height="'+x.h+'" loading="lazy"><figcaption class="note">'+E(x.t)+'</figcaption></figure>'}).join("")+'</div>':'');
+  $("new").addEventListener("click",function(e){var b=e.target.closest("button[data-k]"); if(!b)return; $("big").src="/assets/shirts/"+b.dataset.k+".webp"; $("new").querySelectorAll("button[data-k]").forEach(function(x){x.setAttribute("aria-pressed",x===b)})});
+ } else $("new").hidden=true;
+ $("g").innerHTML=M.shirts.map(function(s){return '<div class="card shirt"><img src="/assets/shirts/'+s.k+'.webp" alt="Limerick shirt, '+E(s.y)+', '+E(s.t)+'" width="640" height="640" loading="lazy"><div class="b"><b>'+(s.a?'<a class="link" href="/season/?y='+s.a+'">'+E(s.y)+'</a>':E(s.y))+'</b><small>'+E(s.t)+'</small><small>'+LH.credit(s.c)+'</small></div></div>'}).join("");
 }).catch(function(){LH.fail($("g"))});
 </script>

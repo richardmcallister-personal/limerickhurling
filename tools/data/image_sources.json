@@ -1,6 +1,39 @@
 {
 "shirts": [
 {
+"k": "2027-home-front",
+"y": "2027",
+"t": "Home, released 6 Nov 2026",
+"a": 2027,
+"b": 2027,
+"views": [
+"2027-home-back",
+"2027-home-crest-detail",
+"2027-home-collar-detail",
+"2027-home-sleeve-detail",
+"2027-home-gaa-detail"
+],
+"c": {
+"page": "",
+"site": "Supplied, source not recorded",
+"by": ""
+},
+"launch": [
+{
+"k": "launch-aaron-gillane",
+"t": "Aaron Gillane at the launch",
+"w": 639,
+"h": 900
+},
+{
+"k": "launch-barry-coleman-and-aaron-gillane",
+"t": "Barry Coleman and Aaron Gillane at the launch",
+"w": 783,
+"h": 900
+}
+]
+},
+{
 "k": "2024-sponsorless",
 "y": "2024",
 "t": "White, no sponsor",

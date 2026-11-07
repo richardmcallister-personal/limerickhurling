@@ -1,0 +1,435 @@
+{
+"countries": {
+"Antrim": "Aontroim",
+"Armagh": "Ard Mhacha",
+"Carlow": "Ceatharlach",
+"Cavan": "an Cabhán",
+"Clare": "an Clár",
+"Cork": "Corcaigh",
+"Derry": "Doire",
+"Donegal": "Dún na nGall",
+"Down": "an Dún",
+"Dublin": "Baile Átha Cliath",
+"Fermanagh": "Fear Manach",
+"Galway": "Gaillimh",
+"Kerry": "Ciarraí",
+"Kildare": "Cill Dara",
+"Kilkenny": "Cill Chainnigh",
+"Laois": "Laois",
+"Leitrim": "Liatroim",
+"Limerick": "Luimneach",
+"London": "Londain",
+"Longford": "an Longfort",
+"Louth": "Lú",
+"Mayo": "Maigh Eo",
+"Meath": "an Mhí",
+"Monaghan": "Muineachán",
+"Offaly": "Uíbh Fhailí",
+"Roscommon": "Ros Comáin",
+"Sligo": "Sligeach",
+"Tipperary": "Tiobraid Árann",
+"Tyrone": "Tír Eoghain",
+"Waterford": "Port Láirge",
+"Westmeath": "an Iarmhí",
+"Wexford": "Loch Garman",
+"Wicklow": "Cill Mhantáin"
+},
+"exact": {
+"Hub": "Baile",
+"Season": "Séasúr",
+"Results": "Torthaí",
+"Players": "Imreoirí",
+"Opponents": "Céilí comhraic",
+"Managers": "Bainisteoirí",
+"Grounds": "Páirceanna",
+"Honours": "Onóracha",
+"Shirts": "Geansaithe",
+"Records": "Taifid",
+"More": "Tuilleadh",
+"Sections": "Rannóga",
+"Search": "Cuardach",
+"Skip to main content": "Téigh chuig an bpríomhábhar",
+"Appearance": "Cuma",
+"Appearance:": "Cuma:",
+"auto": "uathoibríoch",
+"light": "geal",
+"dark": "dorcha",
+"Search players, opponents, seasons…": "Cuardaigh imreoirí, céilí comhraic, séasúir…",
+"Search the site": "Cuardaigh an suíomh",
+"Nothing matches.": "Níor aimsíodh tada.",
+"Nothing here.": "Níl tada anseo.",
+"Limerick Hurling": "Iománaíocht Luimnigh",
+"Limerick crest": "Suaitheantas Luimnigh",
+"History": "Stair",
+"Match": "Cluiche",
+"Player": "Imreoir",
+"Manager": "Bainisteoir",
+"Opponent": "Céile comhraic",
+"Ground": "Páirc",
+"County": "Contae",
+"Competition": "Comórtas",
+"Decade": "Deich mbliana",
+"Result": "Toradh",
+"Search ": "Cuardach",
+"All-Ireland champions": "Curaidh na hÉireann",
+"Results and scorers from": "Torthaí agus scórálaithe ó",
+"Wikipedia": "Vicipéid Bhéarla",
+"(CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.": "(CC BY-SA 4.0); tá taifid na gcluichí neamhiomlán sna séasúir luatha. Is lena n-úinéirí na suaitheantais agus na grianghraif, agus tá nasc leis an bhfoinse in aice le gach grianghraf. Suíomh neamhspleách lucht leanúna, gan aon cheangal le CLG Luimnigh ná le CLG.",
+"This section could not load. Refresh to try again.": "Níor lódáil an chuid seo. Athnuaigh an leathanach chun triail eile a bhaint as.",
+"All-Ireland": "Craobh na hÉireann",
+"Munster": "Craobh na Mumhan",
+"Munster Championship": "Craobh na Mumhan",
+"National League": "An tSraith Náisiúnta",
+"League": "An tSraith",
+"Championship": "Craobh",
+"All-Ireland, Munster": "Craobh na hÉireann, Craobh na Mumhan",
+"All-Ireland, Munster, League": "Craobh na hÉireann, Craobh na Mumhan, an tSraith",
+"Munster, League": "Craobh na Mumhan, an tSraith",
+"All-Ireland, League": "Craobh na hÉireann, an tSraith",
+"Final": "Cluiche ceannais",
+"Final replay": "Athimirt an chluiche cheannais",
+"Final (refixture)": "Cluiche ceannais (athshocrú)",
+"Home final": "Cluiche ceannais baile",
+"Semi-final": "Cluiche leathcheannais",
+"Semi-finals": "Cluichí leathcheannais",
+"Semi-final replay": "Athimirt an chluiche leathcheannais",
+"Semi-final 2nd replay": "An dara hathimirt den chluiche leathcheannais",
+"Semi-final refixture": "Cluiche leathcheannais (athshocrú)",
+"SW semi-final": "Cluiche leathcheannais an iardheiscirt",
+"Quarter-final": "Cluiche ceathrú ceannais",
+"Quarter-finals": "Cluichí ceathrú ceannais",
+"Quarter-final replay": "Athimirt an chluiche ceathrú ceannais",
+"Preliminary quarter-final": "Réamhchluiche ceathrú ceannais",
+"Quarter Final C": "Cluiche ceathrú ceannais C",
+"Group stage": "Céim an ghrúpa",
+"First round": "An chéad bhabhta",
+"First round replay": "Athimirt an chéad bhabhta",
+"Preliminary round": "Réamhbhabhta",
+"Play-off": "Cluiche réitigh",
+"Relegation play-off": "Cluiche réitigh ísliú grád",
+"Next match": "An chéad chluiche eile",
+"Latest result": "An toradh is déanaí",
+"Head to head →": "Ceann ar cheann →",
+"Match page →": "Leathanach an chluiche →",
+"2027 fixtures": "Daingneáin 2027",
+"Season →": "Séasúr →",
+"Every title and final →": "Gach teideal agus cluiche ceannais →",
+"Every title and final": "Gach teideal agus cluiche ceannais",
+"On this day": "Ar an lá seo",
+"Results →": "Torthaí →",
+"Top scorers on record": "Na scórálaithe is fearr sa taifead",
+"All players →": "Gach imreoir →",
+"Explore Limerick": "Fiosraigh Luimneach",
+"Provisional": "Sealadach",
+"No recorded Limerick game on this date.": "Níl cluiche taifeadta ag Luimneach ar an dáta seo.",
+"Every recorded game": "Gach cluiche taifeadta",
+"Scorers since 1887": "Scórálaithe ó 1887",
+"Since 1972": "Ó 1972",
+"Record at each": "An taifead ag gach ceann",
+"New 2027 home shirt": "Geansaí baile nua 2027",
+"Biggest wins, best games": "Na buanna is mó, na cluichí is fearr",
+"Weekend of 23/24 Jan": "Deireadh seachtaine 23/24 Ean",
+"Mid-April, date to come": "Lár Aibreáin, dáta le fógairt",
+"April, date to come": "Aibreán, dáta le fógairt",
+"May, date to come": "Bealtaine, dáta le fógairt",
+"Limerick's other league games (Clare, Dublin, Tipperary) have no reported dates yet.": "Níl dátaí tuairiscithe fós do chluichí sraithe eile Luimnigh (an Clár, Baile Átha Cliath, Tiobraid Árann).",
+"Won": "Buaite",
+"Drawn": "Comhscór",
+"Lost": "Caillte",
+"Add to calendar": "Cuir le féilire",
+"Subscribe to every fixture": "Liostáil le gach daingneán",
+"Apple Calendar or Outlook; updates itself when dates are confirmed": "Apple Calendar nó Outlook; nuashonraítear é nuair a dhearbhaítear dátaí",
+"Subscribe in Google Calendar": "Liostáil in Google Calendar",
+"Opens Google Calendar": "Osclaíonn sé Google Calendar",
+"Download the fixtures": "Íoslódáil na daingneáin",
+"A one-off .ics file": "Comhad .ics aonuaire",
+"Played": "Imeartha",
+"Games": "Cluichí",
+"Score": "Scór",
+"Total": "Iomlán",
+"Years": "Blianta",
+"For": "Ar son",
+"Ag": "I gc.",
+"Win %": "% buaite",
+"Win rate": "Ráta buaite",
+"Scored": "Scóráilte",
+"Conceded": "Ligthe isteach",
+"Points value": "Luach pointí",
+"Recorded games": "Cluichí taifeadta",
+"Titles": "Teidil",
+"Last: 2026": "An ceann deireanach: 2026",
+"Management": "Bainistíocht",
+"Spells": "Tréimhsí",
+"Finals": "Cluichí ceannais",
+"Every game": "Gach cluiche",
+"No finals recorded in his seasons.": "Níl aon chluiche ceannais taifeadta ina shéasúir.",
+"Games in this archive during his seasons. A handover year counts for the outgoing manager, and joint managements share the same games.": "Cluichí sa chartlann seo le linn a shéasúr. Áirítear bliain an athraithe don bhainisteoir atá ag imeacht, agus roinneann comhbhainistíochtaí na cluichí céanna.",
+"Managers since 1972": "Bainisteoirí ó 1972",
+"Names and titles from Wikipedia's managerial history. Records count the games in this archive; a handover year goes to the outgoing manager, so they are a guide.": "Ainmneacha agus teidil ó stair na mbainisteoirí ar Vicipéid. Áirítear sna taifid na cluichí sa chartlann seo; téann bliain an athraithe don bhainisteoir atá ag imeacht, mar sin is treoir iad.",
+"All competitions": "Gach comórtas",
+"All opponents": "Gach céile comhraic",
+"All decades": "Gach deich mbliana",
+"All results": "Gach toradh",
+"All eras": "Gach ré",
+"Show more": "Taispeáin tuilleadh",
+"The archive holds what Wikipedia's season articles record. League games before about 1960 are mostly missing, so totals are a floor rather than the full record.": "Tá sa chartlann a bhfuil taifeadta in ailt séasúir Vicipéide. Tá formhór na gcluichí sraithe roimh thart ar 1960 in easnamh, mar sin is íosmhéid iad na hiomláin seachas an taifead iomlán.",
+"No scorers recorded for this season.": "Níl aon scórálaithe taifeadta don séasúr seo.",
+"Other meetings": "Cruinnithe eile",
+"Not recorded.": "Níor taifeadadh.",
+"Source article": "An t-alt foinse",
+"No match with that reference.": "Níl cluiche ann leis an tagairt sin.",
+"Filter by name": "Scag de réir ainm",
+"Filter players": "Scag imreoirí",
+"Scorers on record": "Scórálaithe sa taifead",
+"By season": "De réir séasúir",
+"Games scored in": "Cluichí ar scóráil sé iontu",
+"Best game": "An cluiche is fearr",
+"The source lists scorers only, not teams, so a player who never scored is not here and \"Games\" means games he scored in. Many older players appear by initial as printed in the source.": "Ní liostaíonn an fhoinse ach scórálaithe, ní foirne, mar sin níl imreoir nár scóráil riamh anseo agus ciallaíonn \"Cluichí\" na cluichí ar scóráil sé iontu. Tá go leor imreoirí níos sine faoina dtúslitreacha mar atá san fhoinse.",
+"League and championship games where Wikipedia lists his scores. His real totals can be higher, and the source has no appearance data.": "Cluichí sraithe agus craoibhe ina liostaíonn Vicipéid a chuid scór. D'fhéadfadh a fhíoriomláin a bheith níos airde, agus níl sonraí láithrithe san fhoinse.",
+"Record against every county": "Taifead in aghaidh gach contae",
+"The cups": "Na cupáin",
+"Finals lost": "Cluichí ceannais caillte",
+"All-Ireland finals": "Cluichí ceannais na hÉireann",
+"Munster finals": "Cluichí ceannais na Mumhan",
+"League finals": "Cluichí ceannais na Sraithe",
+"Liam MacCarthy Cup": "Corn Liam Mhic Cárthaigh",
+"Mick Mackey Cup": "Corn Mick Mackey",
+"National League cup": "Corn na Sraithe Náisiúnta",
+"The original Liam MacCarthy Cup": "Corn bunaidh Liam Mhic Cárthaigh",
+"All-Ireland, 1921 to 1992": "Craobh na hÉireann, 1921 go 1992",
+"Worked out from the archive only, so a record set in a game Wikipedia doesn't hold won't show. Margins use points value (a goal is 3).": "Ríomhtha ón gcartlann amháin, mar sin ní thaispeánfar curiarracht a socraíodh i gcluiche nach bhfuil ag Vicipéid. Úsáideann na difríochtaí luach pointí (is fiú trí phointe cúl).",
+"Biggest wins": "Na buanna is mó",
+"Heaviest defeats": "Na caillteanais is troime",
+"Highest scores": "Na scóir is airde",
+"Best individual games": "Na cluichí aonair is fearr",
+"Runs and seasons": "Sraitheanna agus séasúir",
+"Longest unbeaten run": "An sraith gan chailleadh is faide",
+"Longest winning run": "An sraith bua is faide",
+"Best season by win rate": "An séasúr is fearr de réir ráta buaite",
+"Where Limerick have played": "Na háiteanna ar imir Luimneach",
+"Every other ground": "Gach páirc eile",
+"Recorded games here": "Cluichí taifeadta anseo",
+"Limerick's record at each ground, from recorded games. Thurles Sportsfield counts as Semple Stadium, Jones's Road as Croke Park, and the Cork Athletic Grounds as Páirc Uí Chaoimh, which replaced it on the same site.": "Taifead Luimnigh ag gach páirc, ó na cluichí taifeadta. Áirítear Thurles Sportsfield mar Semple Stadium, Jones's Road mar Croke Park, agus Cork Athletic Grounds mar Pháirc Uí Chaoimh, a tháinig ina áit ar an láthair chéanna.",
+"No ground with that name.": "Níl páirc ann leis an ainm sin.",
+"Limerick shirts": "Geansaithe Luimnigh",
+"The launch": "An seoladh",
+"New for 2027: the home shirt": "Nua do 2027: an geansaí baile",
+"A selection, not the full history. Years before 2027 are the retailers' dates and may not match the seasons each shirt was worn.": "Rogha, ní an stair ar fad. Is iad dátaí na miondíoltóirí na blianta roimh 2027 agus b'fhéidir nach dtagann siad leis na séasúir ar caitheadh gach geansaí.",
+"Home": "Baile",
+"Tight fit": "Feisteas teann",
+"Home, Sporting Limerick": "Baile, Sporting Limerick",
+"Tight fit, Sporting Limerick": "Feisteas teann, Sporting Limerick",
+"White, no sponsor": "Bán, gan urraitheoir",
+"Centenary, hooped, no sponsor": "Céad bliain, stríocach, gan urraitheoir",
+"Home, no sponsor": "Baile, gan urraitheoir",
+"Goalkeeper": "Cúl báire",
+"Academy jersey": "Geansaí an acadaimh",
+"Undated": "Gan dáta",
+"Home, released 6 Nov 2026": "Baile, eisithe 6 Samh 2026",
+"Home, released 6 Nov 2026.": "Baile, eisithe 6 Samh 2026.",
+"Limerick home shirt 2027": "Geansaí baile Luimnigh 2027",
+"Photo:": "Grianghraf:",
+"Supplied, source not recorded": "Seolta chugainn, foinse gan taifeadadh",
+"Add 2027 fixtures to calendar": "Cuir daingneáin 2027 le d’fhéilire",
+"Provisional dates": "Dátaí sealadacha",
+"Limerick's record at each ground": "Taifead Luimnigh ag gach páirc",
+"From 2005 on": "Ó 2005 ar aghaidh",
+"Biggest wins, best games, longest runs": "Na buanna is mó, na cluichí is fearr, na sraitheanna is faide",
+"Limerick manager": "Bainisteoir Luimnigh"
+},
+"patterns": [
+[
+"^(\\d+) games: (\\d+) won, (\\d+) drawn, (\\d+) lost$",
+"Cluichí: $1 · buaite $2, comhscór $3, caillte $4"
+],
+[
+"^Recorded meetings: (\\d+) games, (\\d+) won, (\\d+) drawn, (\\d+) lost$",
+"Cluichí taifeadta eatarthu: $1 · buaite $2, comhscór $3, caillte $4"
+],
+[
+"^(\\d+) won, (\\d+) drawn, (\\d+) lost$",
+"Buaite $1, comhscór $2, caillte $3"
+],
+[
+"^(\\d+) of (\\d+) recorded games$",
+"$1 buaite as $2 (cluichí taifeadta)"
+],
+[
+"^(\\d+) – (\\d+) on points value$",
+"$1 – $2 de réir luach pointí"
+],
+[
+"^(\\d+) days$",
+"$1 lá"
+],
+[
+"^(\\d+) recorded games$",
+"Cluichí taifeadta: $1"
+],
+[
+"^(\\d+-\\d+) recorded, (\\d{4}-\\d{4})$",
+"$1 taifeadta, $2"
+],
+[
+"^(\\d{1,2} [A-Z][a-z]+ \\d{4}) to (\\d{1,2} [A-Z][a-z]+ \\d{4})$",
+"{T1} go {T2}"
+],
+[
+"^Scorers in (\\d{4})$",
+"Scórálaithe i $1"
+],
+[
+"^Shirts from (\\d{4})$",
+"Geansaithe ó $1"
+],
+[
+"^Full record v (.+) →$",
+"Taifead iomlán: Luimneach v {t1} →"
+],
+[
+"^Rank (\\d+) on record$",
+"Uimhir $1 sa taifead"
+],
+[
+"^(All-Ireland|Munster|National League): (\\d+) titles, last in (\\d{4})$",
+"{T1}: $2 teideal, an ceann deireanach in $3"
+],
+[
+"^Last: (\\d{4})$",
+"An ceann deireanach: $1"
+],
+[
+"^Championship \\((\\d+-\\d+-\\d+)\\)$",
+"Craobh ($1)"
+],
+[
+"^League \\((\\d+-\\d+-\\d+)\\)$",
+"An tSraith ($1)"
+],
+[
+"^Biggest win: (\\d+-\\d+) to (\\d+-\\d+), (\\d{4})\\. Heaviest defeat: (\\d+-\\d+) to (\\d+-\\d+), (\\d{4})\\.$",
+"An bua is mó: $1 go $2, $3. An caillteanas is troime: $4 go $5, $6."
+],
+[
+"^Biggest win: (\\d+-\\d+) to (\\d+-\\d+), (\\d{4})\\.$",
+"An bua is mó: $1 go $2, $3."
+],
+[
+"^Heaviest defeat: (\\d+-\\d+) to (\\d+-\\d+), (\\d{4})\\.$",
+"An caillteanas is troime: $1 go $2, $3."
+],
+[
+"^Biggest win: (.+?), (\\d{4})\\. Heaviest defeat: (.+?), (\\d{4})\\.$",
+"An bua is mó: $1, $2. An caillteanas is troime: $3, $4."
+],
+[
+"^Biggest win: (.+?), (\\d{4})\\.$",
+"An bua is mó: $1, $2."
+],
+[
+"^Heaviest defeat: (.+?), (\\d{4})\\.$",
+"An caillteanas is troime: $1, $2."
+],
+[
+"^The source's scorers add to (.+), not (.+)\\.$",
+"Is ionann scórálaithe na foinse agus $1, ní $2."
+],
+[
+"^(.+)\\. Not necessarily taken at this match\\. Photo:$",
+"$1. Ní gá gur ag an gcluiche seo a tógadh é. Grianghraf:"
+],
+[
+"^Photo: (.+)$",
+"Grianghraf: {T1}"
+],
+[
+"^Limerick shirt, (\\d{4}(?:-\\d\\d)?|Undated), (.+)$",
+"Geansaí Luimnigh, {T1}, {T2}"
+],
+[
+"^Limerick shirt, (.+)$",
+"Geansaí Luimnigh, {T1}"
+],
+[
+"^View (\\d+) of (\\d+)$",
+"Radharc $1 as $2"
+],
+[
+"^(.+) and (.+) at the launch$",
+"$1 agus $2 ag an seoladh"
+],
+[
+"^(.+) at the launch$",
+"$1 ag an seoladh"
+],
+[
+"^(.+) Last checked (.+)\\.$",
+"{T1} Seiceáilte go deireanach: {T2}."
+],
+[
+"^(.+) scorers$",
+"Scórálaithe: {T1}"
+],
+[
+"^Attendance (\\d+)$",
+"Slua $1"
+],
+[
+"^Referee (.+)$",
+"Moltóir $1"
+],
+[
+"^TV (.+)$",
+"Teilifís: $1"
+],
+[
+"^· (.+)$",
+"· {T1}"
+],
+[
+"^(.+) ·$",
+"{T1} ·"
+],
+[
+"^v (.+), (All-Ireland|Munster|National League)$",
+"v {t1}, {T2}"
+],
+[
+"^v (.+), (\\d{4})$",
+"v {t1}, $2"
+],
+[
+"^v (.+)$",
+"v {t1}"
+],
+[
+"^Round (\\d+|[IVX]+)$",
+"Babhta $1"
+],
+[
+"^Phase (\\d+)$",
+"Céim $1"
+],
+[
+"^Division (\\w+)$",
+"Roinn $1"
+],
+[
+"^Division (\\w+) round (\\d+)$",
+"Roinn $1, babhta $2"
+],
+[
+"^Division (\\w+) final$",
+"Roinn $1, cluiche ceannais"
+],
+[
+"^(\\d{3}0)s$",
+"Na $1idí"
+],
+[
+"^No player with that name\\.$",
+"Níl imreoir ann leis an ainm sin."
+]
+],
+"blocks": {}
+}

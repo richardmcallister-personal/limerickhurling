@@ -5,12 +5,14 @@
 <meta property="og:title" content="Limerick Hurling · Shirts"><meta property="og:type" content="website"><meta property="og:image" content="https://limerickhurling.wiki/assets/og.png"><link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Limerick">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
 <link rel="stylesheet" href="/mu.css"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
-<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="from" id="from">History<span>Shirts</span></div></header>
+<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">History<span>Shirts</span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
-<section class="sheet"><h2>Limerick shirts</h2><p class="note" style="margin:0 0 12px">A selection, not the full history. Years are the retailers' dates and may not match the seasons each shirt was worn.</p><div class="gallery" id="g"></div></section>
+<section class="sheet" id="new"></section>
+<section class="sheet"><h2>Limerick shirts</h2><p class="note" style="margin:0 0 12px">A selection, not the full history. Years before 2027 are the retailers' dates and may not match the seasons each shirt was worn.</p><div class="gallery" id="g"></div></section>
 
 </main>
 <footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
@@ -22,7 +24,11 @@ LH.nav('Shirts');
 var $=function(i){return document.getElementById(i)}, E=LH.esc;
 
 LH.get("media").then(function(M){
- $("g").innerHTML=M.shirts.map(function(s){return '<div class="card shirt"><img src="/assets/shirts/'+s.k+'.webp" alt="Limerick shirt, '+E(s.y)+', '+E(s.t)+'" width="640" height="640" loading="lazy"><div class="b"><b>'+(s.a?'<a class="link" href="/season/?y='+s.a+'">'+E(s.y)+'</a>':E(s.y))+'</b><small>'+E(s.t)+'</small><small><span class="attr">Photo: <a href="'+E(s.c.page)+'" rel="noopener">'+E(s.c.site)+'</a></span></small></div></div>'}).join("");
+ var n=M.shirts[0]; if(n&&n.views){var all=[n.k].concat(n.views);
+  $("new").innerHTML='<h2>New for '+E(n.y)+': the home shirt</h2><p class="note" style="margin:0 0 12px">'+E(n.t)+'. '+LH.credit(n.c)+'</p><div class="nsh"><img id="big" class="photo" src="/assets/shirts/'+n.k+'.webp" alt="Limerick home shirt 2027" width="640" height="640"><div class="thumbs">'+all.map(function(k,i){return '<button type="button" data-k="'+k+'" aria-label="View '+(i+1)+' of '+all.length+'"'+(i?'':' aria-pressed="true"')+'><img src="/assets/shirts/'+k+'.webp" alt="" width="80" height="80" loading="lazy"></button>'}).join("")+'</div></div>'+(n.launch?'<h3>The launch</h3><div class="launch">'+n.launch.map(function(x){return '<figure><img class="photo" src="/assets/shirts/'+x.k+'.webp" alt="'+E(x.t)+'" width="'+x.w+'" height="'+x.h+'" loading="lazy"><figcaption class="note">'+E(x.t)+'</figcaption></figure>'}).join("")+'</div>':'');
+  $("new").addEventListener("click",function(e){var b=e.target.closest("button[data-k]"); if(!b)return; $("big").src="/assets/shirts/"+b.dataset.k+".webp"; $("new").querySelectorAll("button[data-k]").forEach(function(x){x.setAttribute("aria-pressed",x===b)})});
+ } else $("new").hidden=true;
+ $("g").innerHTML=M.shirts.map(function(s){return '<div class="card shirt"><img src="/assets/shirts/'+s.k+'.webp" alt="Limerick shirt, '+E(s.y)+', '+E(s.t)+'" width="640" height="640" loading="lazy"><div class="b"><b>'+(s.a?'<a class="link" href="/season/?y='+s.a+'">'+E(s.y)+'</a>':E(s.y))+'</b><small>'+E(s.t)+'</small><small>'+LH.credit(s.c)+'</small></div></div>'}).join("");
 }).catch(function(){LH.fail($("g"))});
 
 })();

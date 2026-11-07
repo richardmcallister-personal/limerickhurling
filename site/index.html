@@ -5,19 +5,28 @@
 <meta property="og:title" content="Limerick Hurling · Hub"><meta property="og:type" content="website"><meta property="og:image" content="https://limerickhurling.wiki/assets/og.png"><link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Limerick">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
 <link rel="stylesheet" href="/mu.css"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
-<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="from" id="from">All-Ireland champions<span>2026</span></div></header>
+<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">All-Ireland champions<span>2026</span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
 <div class="hub"><div class="col">
-<section class="sheet" id="next" style="min-height:190px"></section>
-<section class="sheet" id="last" style="min-height:150px"></section>
-<section class="sheet"><h2>2027 fixtures</h2><div id="fx"></div><p class="note" id="fxn"></p><p style="margin:10px 0 0"><a class="btn" href="/calendar.ics" download>Add to calendar</a></p></section>
+<section class="sheet" id="next" style="min-height:300px"></section>
+<section class="sheet" id="last" style="min-height:300px"></section>
+<section class="sheet"><h2 class="row">2027 fixtures <a href="/season/">Season →</a></h2><div id="fx"></div><p class="note" id="fxn"></p><div id="cal" style="margin-top:8px"></div></section>
 </div><div class="col">
-<section class="sheet"><h2>Honours</h2><div class="tiles" id="hon"></div><p style="margin:10px 0 0"><a class="link" href="/honours/">Every title and final →</a></p></section>
-<section class="sheet" id="otd"></section>
-<section class="sheet"><h2>Top scorers on record</h2><div id="top"></div><p style="margin:10px 0 0"><a class="link" href="/players/">All players →</a></p></section>
+<section class="sheet"><h2 class="row">Honours <a href="/honours/">Every title and final →</a></h2><div class="tiles" id="hon"></div></section>
+<section class="sheet" id="otd"><h2 class="row">On this day <a href="/results/">Results →</a></h2><div id="otdb"></div></section>
+<section class="sheet"><h2 class="row">Top scorers on record <a href="/players/">All players →</a></h2><div id="top"></div></section>
+<section class="sheet"><h2>Explore Limerick</h2><div class="xp">
+<a href="/results/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Results<small>Every recorded game</small></a>
+<a href="/players/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/></svg>Players<small>Scorers since 1887</small></a>
+<a href="/managers/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Managers<small>Since 1972</small></a>
+<a href="/grounds/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M12 6v12"/><circle cx="12" cy="12" r="2.5"/></svg>Grounds<small>Record at each</small></a>
+<a href="/shirts/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3 3 6l2 4 2-1v12h10V9l2 1 2-4-5-3c0 2-2 3-4 3S8 5 8 3z"/></svg>Shirts<small>New 2027 home shirt</small></a>
+<a href="/records/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg>Records<small>Biggest wins, best games</small></a>
+</div></section>
 </div></div>
 
 </main>
@@ -29,18 +38,20 @@
 LH.nav('Hub');
 var $=function(i){return document.getElementById(i)}, E=LH.esc;
 
+$("cal").innerHTML=LH.calMenu();
 Promise.all([LH.get("matches"),LH.get("fixtures"),LH.get("honours"),LH.get("players")]).then(function(R){
  var M=R[0],F=R[1],H=R[2],P=R[3], today=new Date().toISOString().slice(0,10);
  var dated=F.games.filter(function(g){return g.d&&g.d>=today}).sort(function(a,b){return a.d<b.d?-1:1}), g=dated[0]||F.games[0];
  var days=g.d?Math.round((new Date(g.d+"T12:00:00Z")-new Date(today+"T12:00:00Z"))/864e5):null;
- var past=M.filter(function(m){return m.opp===g.opp&&m.r}), t=LH.tot(past), last5=past.slice(-3).reverse();
- $("next").innerHTML='<h2>Next match</h2><div class="kick">'+E(g.comp)+' · '+E(g.rnd)+' <span class="prov">Provisional</span></div>'+(g.h==="H"?LH.vs("Limerick",g.opp):LH.vs(g.opp,"Limerick"))+'<div class="big">'+(g.h==="H"?"Limerick v "+E(g.opp):E(g.opp)+" v Limerick")+'</div><div>'+(g.approx&&!g.d?E(g.approx):g.approx?E(g.approx):LH.fmtD(g.d,true))+(days!=null?' · '+days+' days':'')+'</div><div class="note">'+(g.g?'<a class="link" href="/ground/?g='+g.g+'">'+E(g.v)+'</a>':E(g.v))+'</div><p class="note" style="margin:10px 0 0">Recorded meetings: <a class="link" href="/opponent/?o='+LH.slug(g.opp)+'">'+t.p+' games, '+t.w+' won, '+t.d+' drawn, '+t.l+' lost</a></p>'+LH.list(last5,{nov:1});
- var L=M.filter(function(m){return m.r&&m.d}).sort(function(a,b){return a.d<b.d?-1:1}).pop();
- $("last").innerHTML='<h2>Last match</h2><div class="kick">'+E(LH.comp(L.cn))+(L.rnd?' · '+E(L.rnd):'')+' · '+LH.fmtD(L.d)+'</div>'+LH.vs("Limerick",L.opp)+'<div class="big">Limerick '+LH.gp(L.u)+' '+E(L.opp)+' '+LH.gp(L.o)+'</div><div class="sclist">'+LH.scs(L,6)+'</div><p style="margin:10px 0 0"><a class="link" href="/match/?id='+L.id+'">Match page →</a></p>';
- $("fx").innerHTML='<ul class="mlist">'+F.games.map(function(x){return '<li><span class="d">'+(x.d&&!x.approx?LH.fmtD(x.d):E(x.approx||""))+'</span><span class="o">'+LH.crest(x.opp)+(x.h==="H"?"Limerick v "+E(x.opp):E(x.opp)+" v Limerick")+'<small>'+E(x.comp)+' · '+E(x.rnd)+' · '+(x.g?'<a href="/ground/?g='+x.g+'" style="color:inherit">'+E(x.v)+'</a>':E(x.v))+'</small></span><span class="prov">Prov.</span></li>'}).join("")+'</ul>'; $("fxn").textContent=F.open+" Last checked "+LH.fmtD(F.checked)+".";
+ var past=M.filter(function(m){return m.opp===g.opp&&m.r}), t=LH.tot(past), last3=past.slice(-3).reverse();
+ var when=g.approx?E(g.approx):LH.fmtD(g.d,true);
+ $("next").innerHTML='<h2 class="row">Next match <a href="/opponent/?o='+LH.slug(g.opp)+'">Head to head →</a></h2><div class="kick">'+E(g.comp)+' · '+E(g.rnd)+' <span class="prov">Provisional</span></div>'+(g.h==="H"?LH.board("Limerick",g.opp):LH.board(g.opp,"Limerick"))+'<p class="sbmeta">'+when+(days!=null&&days>0?' · <span>'+days+' days</span>':'')+'</p><p class="sbmeta">'+(g.g?'<a class="link" href="/ground/?g='+g.g+'">'+E(g.v)+'</a>':E(g.v))+'</p><h3>Recorded meetings: '+t.p+' games, '+t.w+' won, '+t.d+' drawn, '+t.l+' lost</h3>'+LH.list(last3,{nov:1});
+ var L=M.filter(function(m){return m.r&&m.d}).sort(function(a,b){return a.d<b.d?-1:1}).pop(), home=L.h==="H";
+ $("last").innerHTML='<h2 class="row">Latest result <a href="/match/?id='+L.id+'">Match page →</a></h2><div class="kick">'+E(LH.comp(L.cn))+(L.rnd?' · '+E(L.rnd):'')+' · '+LH.fmtD(L.d)+'</div>'+(home||L.h!=="A"?LH.board("Limerick",L.opp,L):LH.board(L.opp,"Limerick",L))+'<p class="sbmeta">'+(L.g?'<a class="link" href="/ground/?g='+L.g+'">'+E(L.v)+'</a>':E(L.v||""))+'</p><h3>Limerick scorers</h3><div class="sclist">'+LH.scs(L,8)+'</div>';
+ $("fx").innerHTML='<ul class="mlist">'+F.games.map(function(x){return '<li><span class="d">'+(x.approx?E(x.approx):LH.fmtD(x.d))+'</span><span class="o">'+LH.crest(x.opp)+(x.h==="H"?"Limerick v "+E(x.opp):E(x.opp)+" v Limerick")+'<small>'+E(x.comp)+' · '+E(x.rnd)+' · '+(x.g?'<a href="/ground/?g='+x.g+'" style="color:inherit">'+E(x.v)+'</a>':E(x.v))+'</small></span><span class="prov">Provisional</span></li>'}).join("")+'</ul>'; $("fxn").textContent=F.open+" Last checked "+LH.fmtD(F.checked)+".";
  $("hon").innerHTML=LH.stat("All-Ireland",H.aishc.w.n,"Last: "+H.aishc.w.y.slice(-1)[0])+LH.stat("League",H.nl.w.n,"Last: "+H.nl.w.y.slice(-1)[0])+LH.stat("Munster",H.mshc.w.n,"Last: "+H.mshc.w.y.slice(-1)[0]);
  var md=today.slice(5), od=M.filter(function(m){return m.d&&m.d.slice(5)===md&&m.r}).sort(function(a,b){return a.d<b.d?1:-1});
- $("otd").innerHTML='<h2>On this day</h2>'+(od.length?LH.list(od.slice(0,3),{nov:1}):'<p class="note" style="margin:0">No recorded Limerick game on this date. November is the off-season.</p>');
+ $("otdb").innerHTML=od.length?LH.list(od.slice(0,3),{nov:1}):'<p class="note" style="margin:0">No recorded Limerick game on this date.</p>';
  $("top").innerHTML='<table class="mu"><thead><tr><th>Player</th><th>Years</th><th class="n">Score</th><th class="n">Total</th></tr></thead><tbody>'+P.slice(0,6).map(function(p){return '<tr><td><a href="/player/?p='+p.s+'">'+E(p.n)+'</a></td><td class="yrs">'+p.f+'-'+p.l+'</td><td class="n">'+p.g+'-'+p.p+'</td><td class="n"><b>'+p.t+'</b></td></tr>'}).join("")+'</tbody></table>';
 }).catch(function(){LH.fail($("next"))});
 

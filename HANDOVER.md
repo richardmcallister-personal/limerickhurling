@@ -7,6 +7,8 @@ Live on limerickhurling.wiki (also limerickhurling.richardmcallister.workers.dev
 Pages: manager, hub, season (any year), results (filters), match, players, player, opponents, opponent, managers, honours, records, search, more. Dark mode, phone tab bar, calendar file. County crests from Richard's gaa_assets folder.
 Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/reconcile.txt.
 
+- 7 Nov 2026: manutd.wiki redesign ported (green masthead, scoreboards, Explore card, calendar subscribe menu); Irish version via English/Gaeilge picker; 2027 home shirt with detail views and two launch photos (tools/data/shirts_extra.json, source not recorded); dates and times stripped out of round names.
+
 ## Needs Richard
 - Rights for the photos are not cleared. Richard chose to publish them; recheck before removing noindex. No grounds photo yet for Cusack Park (Ennis), Kilmallock, Birr, Portlaoise, Markets Field.
 
