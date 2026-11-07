@@ -10,6 +10,7 @@
 <section class="sheet"><h2 class="row">Honours <a href="/honours/">Every title and final →</a></h2><div class="tiles" id="hon"></div></section>
 <section class="sheet" id="otd"><h2 class="row">On this day <a href="/results/">Results →</a></h2><div id="otdb"></div></section>
 <section class="sheet"><h2 class="row">Top scorers on record <a href="/players/">All players →</a></h2><div id="top"></div></section>
+<section class="sheet" id="shirt" hidden></section>
 <section class="sheet"><h2>Explore Limerick</h2><div class="xp">
 <a href="/results/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Results<small>Every recorded game</small></a>
 <a href="/players/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/></svg>Players<small>Scorers since 1887</small></a>
@@ -21,6 +22,7 @@
 </div></div>
 <script>
 $("cal").innerHTML=LH.calMenu();
+LH.get("media").then(function(D){var n=D.shirts[0]; if(!n||!n.views)return; $("shirt").hidden=false; $("shirt").innerHTML='<h2 class="row">New '+E(n.y)+' home shirt <a href="/shirts/">All shirts →</a></h2><a href="/shirts/" class="nshub"><img class="photo" src="/assets/shirts/'+n.k+'.webp" alt="Limerick home shirt 2027" width="640" height="640" loading="lazy"></a><p class="note" style="margin:8px 0 0">Released 6 Nov 2026.</p>'}).catch(function(){});
 Promise.all([LH.get("matches"),LH.get("fixtures"),LH.get("honours"),LH.get("players")]).then(function(R){
  var M=R[0],F=R[1],H=R[2],P=R[3], today=new Date().toISOString().slice(0,10);
  var dated=F.games.filter(function(g){return g.d&&g.d>=today}).sort(function(a,b){return a.d<b.d?-1:1}), g=dated[0]||F.games[0];

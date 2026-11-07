@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Write site/<page>/index.html from tools/pages/<page>.html with the shared shell. Run from the repo root after editing a page."""
-import os, glob, re
+import os, glob, re, hashlib
 HEAD = '''<!doctype html><html lang="en-IE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex"><meta name="theme-color" content="#00693e">
 <title>Limerick Hurling · {title}</title>
@@ -10,7 +10,7 @@ HEAD = '''<!doctype html><html lang="en-IE"><head><meta charset="utf-8"><meta na
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 <script>(function(){{var l=null;try{{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}}catch(e){{}}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){{var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){{d.classList.remove("i18n-wait")}},3000)}}}})()</script><style>html.i18n-wait body{{visibility:hidden}}</style><script src="/i18n.js?v=1"></script>
-<link rel="stylesheet" href="/mu.css"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<link rel="stylesheet" href="/mu.css?v={ver}"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
 <header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">{kick}<span>{sub}</span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
@@ -19,7 +19,7 @@ FOOT = '''
 </main>
 <footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
-<script src="/lh.js"></script>
+<script>window.LH_V="{ver}"</script><script src="/lh.js?v={ver}"></script>
 <script>
 (function(){{
 LH.nav({nav!r});
@@ -28,6 +28,9 @@ var $=function(i){{return document.getElementById(i)}}, E=LH.esc;
 }})();
 </script></body></html>
 '''
+h = hashlib.sha1()
+for f in sorted(glob.glob('site/history/*.json')) + ['site/lh.js', 'site/mu.css', 'site/i18n/ga.json']: h.update(open(f, 'rb').read())
+VER = h.hexdigest()[:8]
 for f in sorted(glob.glob('tools/pages/*.html')):
     name = os.path.basename(f)[:-5]; t = open(f, encoding='utf-8').read()
     meta = dict(re.findall(r'^<!--(\w+):(.*?)-->\s*$', t, re.M))
@@ -35,5 +38,5 @@ for f in sorted(glob.glob('tools/pages/*.html')):
     body, script = t.split('<script>', 1); script = script.rsplit('</script>', 1)[0]
     out = 'site/index.html' if name == 'index' else f'site/{name}/index.html'
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    open(out, 'w', encoding='utf-8').write(HEAD.format(title=meta.get('title', name), kick=meta.get('kick', ''), sub=meta.get('sub', '')) + body + FOOT.format(nav=meta.get('nav', ''), script=script))
+    open(out, 'w', encoding='utf-8').write(HEAD.format(ver=VER, title=meta.get('title', name), kick=meta.get('kick', ''), sub=meta.get('sub', '')) + body + FOOT.format(nav=meta.get('nav', ''), script=script, ver=VER))
 print('ok')

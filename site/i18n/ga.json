@@ -235,9 +235,15 @@
 "Limerick's record at each ground": "Taifead Luimnigh ag gach páirc",
 "From 2005 on": "Ó 2005 ar aghaidh",
 "Biggest wins, best games, longest runs": "Na buanna is mó, na cluichí is fearr, na sraitheanna is faide",
-"Limerick manager": "Bainisteoir Luimnigh"
+"Limerick manager": "Bainisteoir Luimnigh",
+"All shirts →": "Gach geansaí →",
+"Released 6 Nov 2026.": "Eisithe 6 Samh 2026."
 },
 "patterns": [
+[
+"^New (\\d{4}) home shirt$",
+"Geansaí baile nua $1"
+],
 [
 "^(\\d+) games: (\\d+) won, (\\d+) drawn, (\\d+) lost$",
 "Cluichí: $1 · buaite $2, comhscór $3, caillte $4"

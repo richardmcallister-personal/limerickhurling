@@ -15,7 +15,7 @@ export default {
     out.headers.set("Strict-Transport-Security", "max-age=31536000");
     const p = new URL(request.url).pathname;
     if (p.endsWith(".ics")) out.headers.set("content-type", "text/calendar; charset=utf-8");
-    if (p.startsWith("/history/")) out.headers.set("cache-control", "public, max-age=3600");
+    if (p.startsWith("/history/")) out.headers.set("cache-control", "public, max-age=300");
     return out;
   },
 };

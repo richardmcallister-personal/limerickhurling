@@ -10,7 +10,7 @@ var CR="antrim carlow clare cork derry donegal down dublin galway kerry kildare 
 var crest=LH.crest=function(n,s){s=s||18; var k=slug(n); return CR.indexOf(k)<0?"":'<img class="crest" src="/assets/crests/'+k+'.webp" alt="" width="'+s+'" height="'+s+'" style="width:'+s+'px;height:'+s+'px" loading="lazy" decoding="async">'};
 LH.vs=function(a,b,s){return '<div class="vs">'+crest(a,s||44)+crest(b,s||44)+'</div>'};
 LH.q=function(k){return new URLSearchParams(location.search).get(k)};
-var cache={}; LH.get=function(n){return cache[n]||(cache[n]=fetch("/history/"+n+".json").then(function(r){if(!r.ok)throw new Error(n);return r.json()}))};
+var cache={}; LH.get=function(n){return cache[n]||(cache[n]=fetch("/history/"+n+".json"+(window.LH_V?"?v="+window.LH_V:"")).then(function(r){if(!r.ok)throw new Error(n);return r.json()}))};
 var fmtD=LH.fmtD=function(d,long){if(!d)return "";return new Date(d+"T12:00:00Z").toLocaleDateString("en-GB",long?{weekday:"short",day:"numeric",month:"short",year:"numeric",timeZone:"UTC"}:{day:"numeric",month:"short",year:"numeric",timeZone:"UTC"})};
 var gp=LH.gp=function(a){return a&&a[0]!=null?a[0]+"-"+a[1]:""};
 LH.score=function(m){if(!m.r)return '<span class="score rd">'+esc(m.wo||"no result")+'</span>'; return '<span class="score r'+m.r.toLowerCase()+'">'+gp(m.u)+' <small>('+m.gf+')</small> – '+gp(m.o)+' <small>('+m.ga+')</small></span>'};
