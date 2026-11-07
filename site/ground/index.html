@@ -7,17 +7,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 <script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
-<link rel="stylesheet" href="/mu.css?v=7582392c"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<link rel="stylesheet" href="/mu.css?v=bd8e3046"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
 <header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">Ground<span></span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
 <section class="sheet" id="head"></section>
+<div class="two"><section class="sheet" id="facts"></section><section class="sheet" id="us"></section></div>
+<section class="sheet" id="mapsheet" hidden><h2>Where it is</h2><div id="map" class="gmap small"></div><p class="note" id="mapnote" style="margin:8px 0 0"></p></section>
 <section class="sheet" id="games"></section>
 
 </main>
 <footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
-<script>window.LH_V="7582392c"</script><script src="/lh.js?v=7582392c"></script>
+<script>window.LH_V="bd8e3046"</script><script src="/lh.js?v=bd8e3046"></script>
 <script>
 (function(){
 LH.nav('Grounds');
@@ -26,10 +29,20 @@ var $=function(i){return document.getElementById(i)}, E=LH.esc;
 Promise.all([LH.get("grounds"),LH.get("matches")]).then(function(R){
  var s=LH.q("g"), g=R[0].filter(function(x){return x.s===s})[0];
  if(!g){$("head").innerHTML='<p class="empty">No ground with that name. <a class="link" href="/grounds/">All grounds</a></p>';return}
- document.title="Limerick Hurling · "+g.n; $("from").innerHTML="Ground<span>"+E(g.n)+"</span>";
- var L=R[1].filter(function(m){return m.g===s&&m.r}).reverse();
- $("head").innerHTML='<div class="big">'+E(g.n)+'</div><p class="note" style="margin:0 0 10px">'+E(g.t)+'</p>'+(g.c?'<img class="photo" src="/assets/grounds/'+g.ph+'.webp" alt="'+E(g.n)+'" width="'+g.iw+'" height="'+g.ih+'"><p class="note" style="margin:6px 0 12px">'+LH.credit(g.c)+'</p>':'')+'<div class="tiles">'+LH.stat("Played",g.p,g.first+"-"+g.last)+LH.stat("Won",g.w)+LH.stat("Drawn",g.d)+LH.stat("Lost",g.l)+'</div>';
- $("games").innerHTML='<h2>Recorded games here</h2>'+LH.list(L,{nov:1});
+ var f=g.f||{}; document.title="Limerick Hurling · "+g.n; $("from").innerHTML="Ground<span>"+E(g.n)+"</span>";
+ var GL=R[1].filter(function(m){return m.g===s&&m.r}).reverse(), M={}; R[1].forEach(function(m){M[m.id]=m});
+ $("head").innerHTML='<div class="big">'+E(g.n)+'</div><p class="note" style="margin:0 0 10px">'+E(g.t)+'</p>'+(g.c?'<img class="photo" src="/assets/grounds/'+g.ph+'.webp" alt="'+E(g.n)+'" width="'+g.iw+'" height="'+g.ih+'"><p class="note" style="margin:6px 0 0">'+LH.credit(g.c)+'</p>':'');
+ var rows=[["Opened",f.opened],["Closed",f.closed],["Capacity",f.capacity],["Record crowd",f.record],["Owner",f.owner],["Former names",f.former],["Redeveloped",f.renovated]].filter(function(r){return r[1]});
+ $("facts").innerHTML='<h2>The ground</h2>'+(f.lead?'<p style="margin:0 0 12px">'+E(f.lead)+'</p>':'')+(rows.length?'<table class="mu"><tbody>'+rows.map(function(r){return '<tr><th scope="row">'+r[0]+'</th><td>'+E(r[1])+'</td></tr>'}).join("")+'</tbody></table>':'<p class="note" style="margin:0">No Wikipedia article found for this ground.</p>')+(f.url?'<p class="note" style="margin:10px 0 0">From <a class="link" href="'+E(f.url)+'">Wikipedia</a> (CC BY-SA 4.0).</p>':'');
+ var a=g.att&&M[g.att[1]], CN={AISHC:"All-Ireland",MSHC:"Munster",NL:"National League"};
+ $("us").innerHTML='<h2>Limerick here</h2><div class="tiles">'+LH.stat("Played",g.p,g.first+(g.last!==g.first?"-"+g.last:""))+LH.stat("Won",g.w)+LH.stat("Drawn",g.d)+LH.stat("Lost",g.l)+(g.fin?LH.stat("Finals",g.fin):"")+(a?LH.stat("Biggest crowd",g.att[0],'<a class="link" href="/match/?id='+a.id+'">v '+E(a.opp)+', '+a.y+'</a>'):"")+'</div>'+
+  '<table class="mu" style="margin-top:12px"><thead><tr><th>Competition</th><th class="n">W</th><th class="n">D</th><th class="n">L</th></tr></thead><tbody>'+Object.keys(g.bc||{}).map(function(c){var x=g.bc[c]; return '<tr><td>'+CN[c]+'</td><td class="n">'+x[0]+'</td><td class="n">'+x[1]+'</td><td class="n">'+x[2]+'</td></tr>'}).join("")+'</tbody></table><p class="note" style="margin:10px 0 0">Years Limerick played here, from recorded games. Crowds come from the match records where they exist.</p>';
+ function games(all){$("games").innerHTML='<h2>Recorded games here</h2>'+LH.list(all?GL:GL.slice(0,20),{nov:1})+(!all&&GL.length>20?'<p style="margin:10px 0 0"><button class="btn ghost" type="button" id="allg">Show all '+GL.length+' games</button></p>':''); var b=$("allg"); if(b)b.addEventListener("click",function(){games(true)})}
+ games(false);
+ if(f.lat!=null){$("mapsheet").hidden=false; $("mapnote").textContent=f.town?"Town centre only; the ground's exact spot isn't recorded. Map © OpenStreetMap contributors.":"Map © OpenStreetMap contributors.";
+  (function map(){if(!window.L)return setTimeout(map,100); var m=L.map("map",{scrollWheelZoom:false}).setView([f.lat,f.lon],f.town?12:15);
+   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:"&copy; OpenStreetMap contributors"}).addTo(m);
+   L.circleMarker([f.lat,f.lon],{radius:10,color:"#00693e",weight:3,fillColor:"#00693e",fillOpacity:f.town?0:.6}).addTo(m)})();}
 }).catch(function(){LH.fail($("head"))});
 
 })();

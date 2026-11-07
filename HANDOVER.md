@@ -9,6 +9,8 @@ Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/re
 
 - 7 Nov 2026: manutd.wiki redesign ported (green masthead, scoreboards, Explore card, calendar subscribe menu); Irish version via English/Gaeilge picker; 2027 home shirt with detail views and two launch photos (tools/data/shirts_extra.json, source not recorded); dates and times stripped out of round names.
 
+- 7 Nov 2026: ground pages have Wikipedia facts, Limerick's record by competition, finals, biggest recorded crowd and a map; Grounds page has a map of all 62 placed grounds. Duplicate ground names merged (66 grounds). No coordinates for Bruff, Tulla, Ballygalget, Riverstown.
+
 ## Needs Richard
 - Rights for the photos are not cleared. Richard chose to publish them; recheck before removing noindex. No grounds photo yet for Cusack Park (Ennis), Kilmallock, Birr, Portlaoise, Markets Field.
 

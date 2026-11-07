@@ -1,0 +1,531 @@
+{
+ "gaelic-grounds": {
+  "title": "Gaelic Grounds",
+  "url": "https://en.wikipedia.org/wiki/Gaelic_Grounds",
+  "lead": "The Gaelic Grounds, known for sponsorship reasons as the TUS Gaelic Grounds, is the principal GAA stadium in the city of Limerick in Ireland. Home to the Limerick hurling and football teams, it has a capacity of 44,023.",
+  "town": false,
+  "opened": "1928",
+  "capacity": "44,023",
+  "owner": "Limerick GAA",
+  "renovated": "2004",
+  "lat": 52.67,
+  "lon": -8.65416667
+ },
+ "semple-stadium": {
+  "title": "Semple Stadium",
+  "url": "https://en.wikipedia.org/wiki/Semple_Stadium",
+  "lead": "FBD Semple Stadium is the home of hurling and Gaelic football for Tipperary GAA and for the province of Munster. Located in Thurles, County Tipperary, it is the second largest GAA stadium in Ireland (after Croke Park), with a capacity of 45,690 and named after Tom Semple, the captain of the Thurles \"Blues\". He won All-Ireland Senior Hurling Championship medals in 1900, 1906, and 1908.",
+  "town": false,
+  "opened": "1910",
+  "capacity": "45,690 (24,000 seated)",
+  "owner": "Tipperary GAA",
+  "renovated": "1934 ;  1968 ;  1981 ;  2007–2009",
+  "lat": 52.68222222,
+  "lon": -7.825
+ },
+ "pairc-ui-chaoimh": {
+  "title": "Páirc Uí Chaoimh",
+  "url": "https://en.wikipedia.org/wiki/P%C3%A1irc_U%C3%AD_Chaoimh",
+  "lead": "Páirc Uí Chaoimh (Irish pronunciation: [ˈpˠaːɾʲc iː ˈxiːvʲ] PARK ee KHEEV) is a Gaelic games stadium in Cork, Ireland. Often referred to simply as \"The Park\", it is the home of Cork GAA and is located in Ballintemple, near the site of the original Cork Athletic Grounds. In February 2024, following a naming-rights agreement with SuperValu, the venue was branded as SuperValu Páirc Uí Chaoimh.",
+  "town": false,
+  "opened": "6 June 1976",
+  "capacity": "45,300",
+  "owner": "Cork County Board",
+  "renovated": "2008; 2015–2017",
+  "lat": 51.89975,
+  "lon": -8.43504167
+ },
+ "croke-park": {
+  "title": "Croke Park",
+  "url": "https://en.wikipedia.org/wiki/Croke_Park",
+  "lead": "Croke Park (Irish: Páirc an Chrócaigh, IPA: [ˈpˠaːɾʲc ə ˈxɾˠoːkəj]) is a Gaelic games stadium in Dublin, Ireland. Named after Archbishop Thomas Croke, it is referred to as Croker by GAA fans and locals. It is the headquarters of the Gaelic Athletic Association (GAA).",
+  "town": false,
+  "opened": "1884",
+  "capacity": "82,300 (total)",
+  "record": "(Down–Offaly, 24 September 1961)",
+  "owner": "GAA",
+  "renovated": "2004",
+  "lat": 53.3608,
+  "lon": -6.2511
+ },
+ "cusack-park-ennis": {
+  "title": "Cusack Park (Ennis)",
+  "url": "https://en.wikipedia.org/wiki/Cusack_Park_(Ennis)",
+  "lead": "Cusack Park (Páirc Uí Chíosóg in Irish) is a Gaelic Athletic Association (GAA) stadium in Ennis, County Clare, Ireland. It is the primary home of the Clare hurling, Gaelic football, camogie and Ladies' Gaelic football teams at all grades.\nNamed after the founder of the GAA, Michael Cusack, the ground had an original capacity of about 28,000 (mostly terraced), but following a 2011 safety review, the certified capacity was reduced to 14,864.",
+  "town": false,
+  "opened": "1936",
+  "capacity": "20,800",
+  "owner": "Clare GAA",
+  "renovated": "2018",
+  "lat": 52.84631389,
+  "lon": -8.97866111
+ },
+ "nowlan-park": {
+  "title": "Nowlan Park",
+  "url": "https://en.wikipedia.org/wiki/Nowlan_Park",
+  "lead": "Nowlan Park (; Páirc Uí Nualláin), known for sponsorship reasons as UPMC Nowlan Park, is the principal Gaelic Athletic Association stadium in Kilkenny, Ireland. Named after James Nowlan, the longest serving President of the GAA, the stadium hosts major hurling matches and is home to the Kilkenny hurling team. It opened in 1927, replacing St.",
+  "town": false,
+  "capacity": "27,000 (18,000 seated)",
+  "owner": "Kilkenny GAA",
+  "lat": 52.65638889,
+  "lon": -7.23944444
+ },
+ "fitzgerald-park": {
+  "town": true,
+  "lat": 52.399,
+  "lon": -8.575,
+  "townpage": "Kilmallock"
+ },
+ "markets-field": {
+  "title": "Markets Field",
+  "url": "https://en.wikipedia.org/wiki/Markets_Field",
+  "lead": "The Markets Field is a UEFA category two stadium in Garryowen, Limerick, Ireland and the home ground of Treaty United. Formerly the home of Limerick FC, it has a capacity of 3,075.\nAfter departing for Hogan Park in 1984, Limerick F.C. returned to Markets Field in 2015 and were the principal tenant until their demise in 2019.",
+  "town": false,
+  "opened": "1886",
+  "capacity": "3,075 (1,710 seated)",
+  "owner": "Limerick Enterprise Development Partnership",
+  "renovated": "2014",
+  "lat": 52.6603,
+  "lon": -8.6149
+ },
+ "st-brendans-park": {
+  "title": "St Brendan's Park",
+  "url": "https://en.wikipedia.org/wiki/St_Brendan%27s_Park",
+  "lead": "St Brendan's Park (Irish: Páirc Naoimh Breandáin), known for sponsorship reasons as Grant Heating St. Brendan's Park, is a GAA stadium in Birr, County Offaly, Ireland.  It is one of the main grounds of Offaly's Gaelic football and hurling teams.",
+  "town": false,
+  "capacity": "8,800",
+  "owner": "Offaly GAA",
+  "lat": 53.09142778,
+  "lon": -7.90861389
+ },
+ "wexford-park": {
+  "title": "Chadwicks Wexford Park",
+  "url": "https://en.wikipedia.org/wiki/Chadwicks_Wexford_Park",
+  "lead": "Chadwicks Wexford Park is a GAA stadium in Wexford, County Wexford, Ireland. It is the home of Wexford GAA's Gaelic football and hurling teams. After a recent development the ground has a capacity of 18,000.",
+  "town": false,
+  "capacity": "18,000",
+  "owner": "Wexford GAA",
+  "lat": 52.3325,
+  "lon": -6.47583333
+ },
+ "omoore-park": {
+  "title": "O'Moore Park",
+  "url": "https://en.wikipedia.org/wiki/O%27Moore_Park",
+  "lead": "O'Moore Park (Irish: Páirc Uí Mhórdha) is a GAA stadium in Portlaoise, County Laois, Ireland. It is the home of the Laois Gaelic football and hurling teams. Under a new sponsorship deal it is known as \"Laois Hire O'Moore Park\".",
+  "town": false,
+  "capacity": "22,000 (6,500 seated)",
+  "owner": "Laois GAA",
+  "renovated": "2002",
+  "lat": 53.02611111,
+  "lon": -7.30222222
+ },
+ "fraher-field": {
+  "title": "Fraher Field",
+  "url": "https://en.wikipedia.org/wiki/Fraher_Field",
+  "lead": "Fraher Field (Irish: Páirc Uí Fhearachair) is a GAA stadium, located in Dungarvan, County Waterford, owned by the Waterford GAA County Board. It has a total capacity of around 15,000.",
+  "town": false,
+  "opened": "1885",
+  "capacity": "15,000",
+  "owner": "Waterford GAA",
+  "former": "Dungarvan Gaelic Field (1885–1995)",
+  "renovated": "1995",
+  "lat": 52.09668333,
+  "lon": -7.62363611
+ },
+ "oconnor-park": {
+  "title": "Glenisk O'Connor Park",
+  "url": "https://en.wikipedia.org/wiki/Glenisk_O%27Connor_Park",
+  "lead": "O'Connor Park  (Irish: Páirc Uí Chonchúir) is a GAA stadium in Tullamore, County Offaly, Ireland.  It is one of the principal grounds of the Offaly GAA Gaelic football and hurling teams. It is known for sponsorship reasons as Glenisk O’Connor Park.",
+  "town": false,
+  "opened": "1934",
+  "capacity": "18,000 (7,000 seated)",
+  "owner": "Offaly GAA",
+  "renovated": "2004–06",
+  "lat": 53.28055556,
+  "lon": -7.48944444
+ },
+ "walsh-park": {
+  "title": "Walsh Park",
+  "url": "https://en.wikipedia.org/wiki/Walsh_Park",
+  "lead": "Walsh Park (Irish: Páirc Breathnach) is a GAA stadium in Waterford, Ireland. It is one of the two homes of the Waterford Gaelic football and hurling teams, the other being Fraher Field in Dungarvan. The two grounds are rivals for important games.",
+  "town": false,
+  "capacity": "12,000",
+  "owner": "Robert Starken",
+  "lat": 52.25488889,
+  "lon": -7.12778333
+ },
+ "pearse-stadium": {
+  "title": "Pearse Stadium",
+  "url": "https://en.wikipedia.org/wiki/Pearse_Stadium",
+  "lead": "Pearse Stadium (Irish: Páirc an Phiarsaigh) is the principal GAA stadium in Galway, Ireland. The Galway GAA Gaelic football and hurling teams use the stadium for their home games.",
+  "town": false,
+  "opened": "1957",
+  "capacity": "26,197",
+  "owner": "Gaelic Athletic Association",
+  "renovated": "2002",
+  "lat": 53.26333333,
+  "lon": -9.08416667
+ },
+ "casement-park": {
+  "title": "Casement Park",
+  "url": "https://en.wikipedia.org/wiki/Casement_Park",
+  "lead": "Casement Park (Irish: Páirc Mhic Asmaint) was the principal Gaelic games stadium in Belfast, Northern Ireland. It is located in Andersonstown Road in the west of the city, and is named after the Irish revolutionary Roger Casement.\nThe stadium, which has been closed since June 2013, previously had a capacity of approximately 31,500.",
+  "town": false,
+  "opened": "1953",
+  "closed": "June 2013",
+  "capacity": "(as of 2010)",
+  "owner": "Antrim GAA",
+  "renovated": "2000",
+  "lat": 54.57333333,
+  "lon": -5.98388889
+ },
+ "parnell-park": {
+  "title": "Parnell Park",
+  "url": "https://en.wikipedia.org/wiki/Parnell_Park",
+  "lead": "Parnell Park is a GAA stadium in Donnycarney, Dublin, Ireland with a capacity of 7,300. It is the  home of the Dublin GAA hurling, football, camogie and ladies' football teams at all levels of competition.\nThe ground is used mainly by the county hurling team during home National Hurling League & All-Ireland Senior Hurling Championship games and as a training ground, with most games played by the county football team in the National Football League and All-Ireland Senior Football Championship being held at Croke Park.",
+  "town": false,
+  "opened": "1901",
+  "capacity": "7,300",
+  "owner": "Dublin GAA",
+  "former": "Celtic Club Grounds (1901-1912)",
+  "renovated": "1932-33,;  1993-95",
+  "lat": 53.37297222,
+  "lon": -6.21666667
+ },
+ "cusack-park-mullingar": {
+  "title": "TEG Cusack Park",
+  "url": "https://en.wikipedia.org/wiki/TEG_Cusack_Park",
+  "lead": "Cusack Park (Páirc Uí Chíosóig in Irish) is a GAA stadium in Mullingar, County Westmeath, Ireland. It is the main grounds of Westmeath GAA's Gaelic football and hurling teams.",
+  "town": false,
+  "opened": "1933",
+  "capacity": "11,500",
+  "owner": "Westmeath GAA",
+  "lat": 53.52800833,
+  "lon": -7.33854167
+ },
+ "fitzgerald-stadium": {
+  "title": "Fitzgerald Stadium",
+  "url": "https://en.wikipedia.org/wiki/Fitzgerald_Stadium",
+  "lead": "Fitzgerald Stadium (Irish: Staid a' Ghearaltaigh) is the principal GAA stadium in Killarney, Ireland, and is the home championship venue for the Kerry senior football team.\nNamed in honour of one of the first great players of the Gaelic Athletic Association, Dick Fitzgerald, Fitzgerald Stadium was officially opened on 31 May 1936 by Dr O'Brien, the then Bishop of Kerry, and J. M. Harty, Archbishop of Cashel.",
+  "town": false,
+  "opened": "1936",
+  "capacity": "38,000",
+  "owner": "Kerry GAA",
+  "renovated": "2008–2009",
+  "lat": 52.06638889,
+  "lon": -9.50805556
+ },
+ "austin-stack-park": {
+  "title": "Austin Stack Park",
+  "url": "https://en.wikipedia.org/wiki/Austin_Stack_Park",
+  "lead": "Austin Stack Park is a GAA stadium in Tralee, County Kerry, Ireland. It is one of the stadiums used by Kerry GAA's Gaelic football team and the stadium of the hurling team.\nThe ground was named after Austin Stack, an Irish revolutionary and captain of the All-Ireland winning Kerry Gaelic football team of 1904.",
+  "town": false,
+  "capacity": "14,000",
+  "owner": "Kerry GAA",
+  "renovated": "1994, 2001, 2015, 2026",
+  "lat": 52.2675,
+  "lon": -9.6962,
+  "townpage": "Tralee"
+ },
+ "duggan-park": {
+  "title": "Duggan Park",
+  "url": "https://en.wikipedia.org/wiki/Duggan_Park",
+  "lead": "Duggan Park (Irish: Páirc Ó Dubhagain) is a GAA stadium in Ballinasloe, County Galway, Ireland. \n\nThe ground, named after the Catholic Bishop of Clonfert Patrick Duggan, was opened in 1934 and has a capacity of 3,000.",
+  "town": false,
+  "opened": "1934",
+  "capacity": "3,000",
+  "owner": "Galway GAA",
+  "lat": 53.3308,
+  "lon": -8.2293
+ },
+ "tipperary": {
+  "town": true,
+  "lat": 52.474,
+  "lon": -8.162,
+  "townpage": "Tipperary (town)"
+ },
+ "dr-cullen-park": {
+  "title": "Dr Cullen Park",
+  "url": "https://en.wikipedia.org/wiki/Dr_Cullen_Park",
+  "lead": "Dr Cullen Park, known for sponsorship reasons as Netwatch Cullen Park, is a GAA stadium in Carlow, County Carlow, Ireland. It is the home of the Carlow Gaelic football and hurling teams. It has a capacity of 11,000.",
+  "town": false,
+  "opened": "9 August 1936",
+  "capacity": "11,000",
+  "owner": "Carlow GAA",
+  "renovated": "2003",
+  "lat": 52.84694444,
+  "lon": -6.91638889
+ },
+ "enniscorthy": {
+  "town": true,
+  "lat": 52.502064,
+  "lon": -6.565876,
+  "townpage": "Enniscorthy"
+ },
+ "okennedy-park": {
+  "title": "O'Kennedy Park",
+  "url": "https://en.wikipedia.org/wiki/O%27Kennedy_Park",
+  "lead": "O'Kennedy Park (sometimes designated Kennedy Park) is a GAA stadium in New Ross, County Wexford, Ireland.  It is the main ground of Geraldine O'Hanrahan's Gaelic football and hurling teams and has also hosted inter-county fixtures.  It was named O'Kennedy Park in 1953 after Seán O'Kennedy and Gus O'Kennedy in recognition of their contributions to Wexford GAA.\nIts former name was Barrett's Park.",
+  "town": false,
+  "owner": "Geraldine O'Hanrahan's GAA",
+  "lat": 52.404097,
+  "lon": -6.933864
+ },
+ "macdonagh-park": {
+  "title": "MacDonagh Park",
+  "url": "https://en.wikipedia.org/wiki/MacDonagh_Park",
+  "lead": "MacDonagh Park is a GAA stadium in Nenagh, County Tipperary, Ireland.  It is the home ground of the Nenagh Éire Óg club and has often been used for inter-county matches, including some of Tipperary's National Hurling League fixtures.",
+  "town": false,
+  "owner": "Nenagh Éire Óg GAA",
+  "lat": 52.866863,
+  "lon": -8.215265
+ },
+ "kelly-daly-park-rathdowney": {
+  "town": true,
+  "lat": 52.8554,
+  "lon": -7.5848,
+  "townpage": "Rathdowney"
+ },
+ "mitchell-park": {},
+ "pairc-ui-rinn": {
+  "title": "Páirc Uí Rinn",
+  "url": "https://en.wikipedia.org/wiki/P%C3%A1irc_U%C3%AD_Rinn",
+  "lead": "Páirc Uí Rinn (pronounced [ˈpˠaːɾʲc iː ˈɾˠiːn̠ʲ]), also known as Páirc Chríostóir Uí Rinn, is a Gaelic Athletic Association stadium located between Ballinlough and Ballintemple in Cork. It was previously known as Flower Lodge  and was used as an association football stadium. During the 1960s, 1970s and 1980s, Flower Lodge served as the home ground of three League of Ireland clubs – Cork Hibernians, Albert Rovers and Cork City.",
+  "town": false,
+  "opened": "1957",
+  "capacity": "16,440",
+  "owner": "Cork GAA; Ancient Order of Hibernians",
+  "former": "Flower Lodge",
+  "renovated": "1989 to 1993",
+  "lat": 51.891378,
+  "lon": -8.436749
+ },
+ "kenny-park": {
+  "title": "Kenny Park",
+  "url": "https://en.wikipedia.org/wiki/Kenny_Park",
+  "lead": "Kenny Park, also known as Park Eun-kwan, is a South Korean businessman. He is the founder and CEO of Simone Accessory, a handbag and accessories manufacturer. Forbes estimated his personal fortune in 2020 to be around $610 million.",
+  "town": false,
+  "lat": 53.3,
+  "lon": -8.746,
+  "townpage": "Athenry"
+ },
+ "kilmallock": {
+  "town": true,
+  "lat": 52.399,
+  "lon": -8.575,
+  "townpage": "Kilmallock"
+ },
+ "st-cronans-park": {
+  "town": true,
+  "lat": 52.955,
+  "lon": -7.797,
+  "townpage": "Roscrea"
+ },
+ "ennis-road-limerick": {
+  "town": true,
+  "lat": 52.6653,
+  "lon": -8.6238,
+  "townpage": "Limerick"
+ },
+ "ballinasloe": {
+  "town": true,
+  "lat": 53.3275,
+  "lon": -8.2194,
+  "townpage": "Ballinasloe"
+ },
+ "corrigan-park": {
+  "title": "Corrigan Park",
+  "url": "https://en.wikipedia.org/wiki/Corrigan_Park",
+  "lead": "Corrigan Park is a Gaelic games ground on the Whiterock Road in west Belfast that served as the main venue for GAA in Belfast until the opening of Casement Park in 1953. It is named in honour of John Corrigan (1881–1916), who was secretary of the Antrim County Board when Antrim won Ulster Senior Hurling Championship titles between 1909 and 1913.\nIt is home to St John's GAA club and also hosts Ulster club and colleges matches.",
+  "town": false,
+  "opened": "12 September 1926",
+  "capacity": "2,100 (2021) ;  3,700 (600 seated) (2021–present)",
+  "owner": "St John's",
+  "renovated": "2001 ;  2020–2021",
+  "lat": 54.59237,
+  "lon": -5.97736
+ },
+ "bruff-sportsfield-bruff": {},
+ "dunlo-gaa-grounds-ballinasloe": {
+  "town": true,
+  "lat": 53.3275,
+  "lon": -8.2194,
+  "townpage": "Ballinasloe"
+ },
+ "newport": {
+  "town": true,
+  "lat": 52.71,
+  "lon": -8.407,
+  "townpage": "Newport, County Tipperary"
+ },
+ "tralee": {
+  "town": true,
+  "lat": 52.2675,
+  "lon": -9.6962,
+  "townpage": "Tralee"
+ },
+ "newcastle-west": {
+  "town": true,
+  "lat": 52.451,
+  "lon": -9.055,
+  "townpage": "Newcastle West"
+ },
+ "abbeyfeale": {
+  "town": true,
+  "lat": 52.386,
+  "lon": -9.294,
+  "townpage": "Abbeyfeale"
+ },
+ "charleville-grounds": {
+  "town": true,
+  "lat": 52.355,
+  "lon": -8.684,
+  "townpage": "Charleville, County Cork"
+ },
+ "cork-park": {
+  "town": true,
+  "lat": 51.89722222,
+  "lon": -8.47,
+  "townpage": "Cork (city)"
+ },
+ "limerick": {
+  "town": true,
+  "lat": 52.6653,
+  "lon": -8.6238,
+  "townpage": "Limerick"
+ },
+ "turners-cross": {
+  "title": "Turners Cross (stadium)",
+  "url": "https://en.wikipedia.org/wiki/Turners_Cross_(stadium)",
+  "lead": "Turners Cross, also known as Turners Cross Stadium and officially as Munster FA Turners Cross Stadium from January 2026, is an all-seater football stadium located in and synonymous with the district of Turners Cross in Cork, Ireland. It is owned by the Munster Football Association (MFA), and is used by the MFA and by League of Ireland side Cork City.\nIt was the first all-seated, all-covered stadium in Ireland following redevelopment in 2009, and it is currently one out of only three, the others being the Aviva Stadium and Tallaght Stadium.",
+  "town": false,
+  "opened": "Mid-late 1800s",
+  "capacity": "7,485 (all-seated)",
+  "record": "12,000; (Cork City vs Dundalk, 21 April 1991)",
+  "owner": "Munster Football Association",
+  "renovated": "1980s, 2007",
+  "lat": 51.88555556,
+  "lon": -8.46777778
+ },
+ "portlaoise": {
+  "town": true,
+  "lat": 53.03083333,
+  "lon": -7.30083333,
+  "townpage": "Portlaoise"
+ },
+ "waterford-sportsfield": {
+  "town": true,
+  "lat": 52.25666667,
+  "lon": -7.12916667,
+  "townpage": "Waterford"
+ },
+ "waterford": {
+  "town": true,
+  "lat": 52.25666667,
+  "lon": -7.12916667,
+  "townpage": "Waterford"
+ },
+ "ennis-grounds": {
+  "town": true,
+  "lat": 52.8463,
+  "lon": -8.9807,
+  "townpage": "Ennis"
+ },
+ "riverstown-sportsfield": {},
+ "waterford-gaelic-field-waterford": {
+  "town": true,
+  "lat": 52.25666667,
+  "lon": -7.12916667,
+  "townpage": "Waterford"
+ },
+ "tuam": {
+  "town": true,
+  "lat": 53.515,
+  "lon": -8.851,
+  "townpage": "Tuam"
+ },
+ "ned-hall-park-clonmel": {
+  "town": true,
+  "lat": 52.3539,
+  "lon": -7.7116,
+  "townpage": "Clonmel"
+ },
+ "clonmel-sportsfield-clonmel": {
+  "town": true,
+  "lat": 52.3539,
+  "lon": -7.7116,
+  "townpage": "Clonmel"
+ },
+ "leahy-park-cashel": {
+  "town": true,
+  "lat": 52.516717,
+  "lon": -7.889428,
+  "townpage": "Cashel, County Tipperary"
+ },
+ "ardfert": {
+  "town": true,
+  "lat": 52.35,
+  "lon": -9.6833,
+  "townpage": "Ardfert"
+ },
+ "st-patricks-park-enniscorthy": {
+  "town": true,
+  "lat": 52.502064,
+  "lon": -6.565876,
+  "townpage": "Enniscorthy"
+ },
+ "the-mardyke": {
+  "town": true,
+  "lat": 51.89722222,
+  "lon": -8.47,
+  "townpage": "Cork (city)"
+ },
+ "dr-daly-park-tulla": {},
+ "gorey": {
+  "town": true,
+  "lat": 52.677,
+  "lon": -6.292,
+  "townpage": "Gorey"
+ },
+ "ballinasloe-sportsfield-ballinasloe": {
+  "town": true,
+  "lat": 53.3275,
+  "lon": -8.2194,
+  "townpage": "Ballinasloe"
+ },
+ "bellefield-park-enniscorthy": {
+  "town": true,
+  "lat": 52.502064,
+  "lon": -6.565876,
+  "townpage": "Enniscorthy"
+ },
+ "hennessy-park-milltown-malbay": {
+  "town": true,
+  "lat": 52.85,
+  "lon": -9.4,
+  "townpage": "Milltown Malbay"
+ },
+ "lavey-sportsfield-lavey": {
+  "town": true,
+  "lat": 54.842,
+  "lon": -6.562,
+  "townpage": "Lavey, County Londonderry"
+ },
+ "pairc-mac-uilin-ballycastle": {
+  "title": "Páirc Mac Uílín",
+  "url": "https://en.wikipedia.org/wiki/P%C3%A1irc_Mac_U%C3%ADl%C3%ADn",
+  "lead": "Páirc Mac Uílín (Irish pronunciation: [ˈpˠaːɾʲc mˠək ˈiːlʲiːnʲ]) is a Gaelic Athletic Association playing field in Ballycastle, County Antrim, Northern Ireland. It is the home of the McQuillan GAC Ballycastle club. The grounds have two full size pitches, floodlight facilities, a training area, a Hurling wall as well as multi-purpose clubrooms.",
+  "town": false,
+  "opened": "2007",
+  "capacity": "4,900",
+  "owner": "20px|border McQuillan GAC Ballycastle",
+  "lat": 55.204123,
+  "lon": -6.273142
+ },
+ "pairc-mhuire-cushendall": {
+  "town": true,
+  "lat": 55.082887,
+  "lon": -6.05896,
+  "townpage": "Cushendall"
+ }
+}

@@ -267,9 +267,47 @@
 "Commercials, football, 1887": "Commercials, peil, 1887",
 "1940 team, museum photo": "Foireann 1940, grianghraf músaeim",
 "1947 team": "Foireann 1947",
-"Munster final parade, 1973": "Paráid chluiche ceannais na Mumhan, 1973"
+"Munster final parade, 1973": "Paráid chluiche ceannais na Mumhan, 1973",
+"Every ground in the archive, sized by how often Limerick played there. Tap a pin for the record. Thurles Sportsfield counts as Semple Stadium, Jones's Road as Croke Park, and the Cork Athletic Grounds as Páirc Uí Chaoimh, which replaced it on the same site.": "Gach páirc sa chartlann, de réir líon na gcluichí a d'imir Luimneach ann. Tapáil biorán chun an taifead a fheiceáil. Áirítear Thurles Sportsfield mar Semple Stadium, Jones's Road mar Croke Park, agus Cork Athletic Grounds mar Pháirc Uí Chaoimh, a tháinig ina áit ar an láthair chéanna.",
+"Hollow pins mark the town only, where the ground itself couldn't be placed. Map © OpenStreetMap contributors.": "Ní thaispeánann bioráin fholmha ach an baile, nuair nárbh fhéidir an pháirc féin a aimsiú. Léarscáil © rannpháirtithe OpenStreetMap.",
+"Map © OpenStreetMap contributors.": "Léarscáil © rannpháirtithe OpenStreetMap.",
+"Town centre only; the ground's exact spot isn't recorded. Map © OpenStreetMap contributors.": "Lár an bhaile amháin; níl suíomh beacht na páirce taifeadta. Léarscáil © rannpháirtithe OpenStreetMap.",
+"Map of the grounds": "Léarscáil na bpáirceanna",
+"Main grounds": "Na príomhpháirceanna",
+"Every ground": "Gach páirc",
+"Opened": "Osclaíodh",
+"Closed": "Dúnadh",
+"Capacity": "Toilleadh",
+"Record crowd": "An slua is mó riamh",
+"Owner": "Úinéir",
+"Former names": "Seanainmneacha",
+"Redeveloped": "Athfhorbartha",
+"The ground": "An pháirc",
+"Limerick here": "Luimneach anseo",
+"Biggest crowd": "An slua is mó",
+"Where it is": "Cá bhfuil sí",
+"Ground page →": "Leathanach na páirce →",
+"No Wikipedia article found for this ground.": "Níor aimsíodh alt Vicipéide don pháirc seo.",
+"From": "Ó",
+"Years Limerick played here, from recorded games. Crowds come from the match records where they exist.": "Na blianta ar imir Luimneach anseo, ó na cluichí taifeadta. Tagann na sluaite ó thaifid na gcluichí nuair atá siad ann."
 },
 "patterns": [
+[
+"^Show all (\\d+) games$",
+"Taispeáin na cluichí ar fad ($1)"
+],
+[
+"^Opened (\\d{4})$",
+"Osclaíodh $1"
+],
+[
+"^Capacity (\\d+)$",
+"Toilleadh $1"
+],
+[
+"^Opened (\\d{4}) · Capacity (\\d+)$",
+"Osclaíodh $1 · Toilleadh $2"
+],
 [
 "^All-Ireland champions, (\\d{4})$",
 "Curaidh na hÉireann, $1"

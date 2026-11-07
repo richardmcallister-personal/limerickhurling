@@ -2,12 +2,24 @@
 <!--kick:History-->
 <!--sub:Grounds-->
 <!--nav:Grounds-->
-<section class="sheet"><h2>Where Limerick have played</h2><p class="note" style="margin:0 0 12px">Limerick's record at each ground, from recorded games. Thurles Sportsfield counts as Semple Stadium, Jones's Road as Croke Park, and the Cork Athletic Grounds as Páirc Uí Chaoimh, which replaced it on the same site.</p><div class="gallery" id="g"></div></section>
-<section class="sheet"><h2>Every other ground</h2><div id="rest"></div></section>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<section class="sheet"><h2>Where Limerick have played</h2><p class="note" style="margin:0 0 12px">Every ground in the archive, sized by how often Limerick played there. Tap a pin for the record. Thurles Sportsfield counts as Semple Stadium, Jones's Road as Croke Park, and the Cork Athletic Grounds as Páirc Uí Chaoimh, which replaced it on the same site.</p><div id="map" class="gmap" role="img" aria-label="Map of the grounds"></div><p class="note" style="margin:8px 0 0">Hollow pins mark the town only, where the ground itself couldn't be placed. Map © OpenStreetMap contributors.</p></section>
+<section class="sheet"><h2>Main grounds</h2><div class="gallery" id="g"></div></section>
+<section class="sheet"><h2>Every ground</h2><div class="tw"><table class="mu" id="all"></table></div></section>
 <script>
 LH.get("grounds").then(function(G){
- var ph=G.filter(function(g){return g.c}), rest=G.filter(function(g){return !g.c});
- $("g").innerHTML=ph.map(function(g){return '<a class="card gcard" href="/ground/?g='+g.s+'"><img src="/assets/grounds/'+g.ph+'.webp" alt="'+E(g.n)+'" width="'+g.iw+'" height="'+g.ih+'" loading="lazy"><div class="b"><b>'+E(g.n)+'</b><small>'+E(g.t)+'</small><small>'+g.p+' games: '+g.w+' won, '+g.d+' drawn, '+g.l+' lost</small></div></a>'}).join("");
- $("rest").innerHTML='<table class="mu"><thead><tr><th>Ground</th><th class="n">P</th><th class="n">W</th><th class="n">D</th><th class="n">L</th><th>Years</th></tr></thead><tbody>'+rest.map(function(g){return '<tr><td><a href="/ground/?g='+g.s+'">'+E(g.n)+'</a>'+(g.t?' <small>'+E(g.t)+'</small>':'')+'</td><td class="n">'+g.p+'</td><td class="n">'+g.w+'</td><td class="n">'+g.d+'</td><td class="n">'+g.l+'</td><td class="yrs">'+g.first+(g.last!==g.first?'-'+g.last:'')+'</td></tr>'}).join("")+'</tbody></table>';
+ var ph=G.filter(function(g){return g.c});
+ function yr(s){var m=String(s||"").match(/\d{4}/); return m?m[0]:""}
+ function cap(s){var m=String(s||"").match(/^\d+/); return m?m[0]:""}
+ $("g").innerHTML=ph.map(function(g){var f=g.f||{}; return '<a class="card gcard" href="/ground/?g='+g.s+'"><img src="/assets/grounds/'+g.ph+'.webp" alt="'+E(g.n)+'" width="'+g.iw+'" height="'+g.ih+'" loading="lazy"><div class="b"><b>'+E(g.n)+'</b><small>'+E(g.t)+'</small>'+(yr(f.opened)||cap(f.capacity)?'<small>'+(yr(f.opened)?'Opened '+yr(f.opened):'')+(yr(f.opened)&&cap(f.capacity)?' · ':'')+(cap(f.capacity)?'Capacity '+cap(f.capacity):'')+'</small>':'')+'<small>'+g.p+' games: '+g.w+' won, '+g.d+' drawn, '+g.l+' lost</small></div></a>'}).join("");
+ $("all").innerHTML='<thead><tr><th>Ground</th><th>Opened</th><th class="n">Capacity</th><th class="n">P</th><th class="n">W</th><th class="n">D</th><th class="n">L</th><th class="n">Finals</th><th>Years</th></tr></thead><tbody>'+G.map(function(g){var f=g.f||{}; return '<tr><td><a href="/ground/?g='+g.s+'">'+E(g.n)+'</a>'+(g.t?' <small>'+E(g.t)+'</small>':'')+'</td><td>'+yr(f.opened)+'</td><td class="n">'+cap(f.capacity)+'</td><td class="n">'+g.p+'</td><td class="n">'+g.w+'</td><td class="n">'+g.d+'</td><td class="n">'+g.l+'</td><td class="n">'+(g.fin||"")+'</td><td class="yrs">'+g.first+(g.last!==g.first?'-'+g.last:'')+'</td></tr>'}).join("")+'</tbody>';
+ (function map(){if(!window.L)return setTimeout(map,100);
+  var m=L.map("map",{scrollWheelZoom:false}).setView([53.1,-8.2],7);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:17,attribution:"&copy; OpenStreetMap contributors"}).addTo(m);
+  var c="#00693e", pts=[];
+  G.forEach(function(g){var f=g.f||{}; if(f.lat==null)return; pts.push([f.lat,f.lon]);
+   L.circleMarker([f.lat,f.lon],{radius:Math.max(5,Math.min(18,4+Math.sqrt(g.p)*1.2)),color:c,weight:2,fillColor:c,fillOpacity:f.town?0:.55}).addTo(m)
+    .bindPopup('<b>'+E(g.n)+'</b>'+(g.t?', '+E(g.t):'')+'<br>'+g.p+' games: '+g.w+' won, '+g.d+' drawn, '+g.l+' lost<br><a href="/ground/?g='+g.s+'">Ground page →</a>')});
+  if(pts.length)m.fitBounds(pts,{padding:[20,20]})})();
 }).catch(function(){LH.fail($("g"))});
 </script>

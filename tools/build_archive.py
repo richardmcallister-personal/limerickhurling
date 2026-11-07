@@ -135,6 +135,10 @@ G_RULES = [(r'gaelic grounds', 'gaelic-grounds', 'Gaelic Grounds', 'Limerick', '
  (r'fitzgerald stadium', 'fitzgerald-stadium', 'FitzGerald Stadium', 'Killarney', 'fitzgerald-stadium'), (r'parnell', 'parnell-park', 'Parnell Park', 'Dublin', 'parnell-park'),
  (r"o'connor park", 'oconnor-park', "O'Connor Park", 'Tullamore', 'oconnor-park'), (r'austin stack|tralee sportsfield', 'austin-stack-park', 'Austin Stack Park', 'Tralee', 'austin-stack-park'),
  (r'fitzgerald park', 'fitzgerald-park', 'FitzGerald Park', 'Kilmallock', ''), (r'fraher', 'fraher-field', 'Fraher Field', 'Dungarvan', ''), (r"o'moore", 'omoore-park', "O'Moore Park", 'Portlaoise', ''),
+ (r'mac ?donagh park|mcdonagh park', 'macdonagh-park', 'MacDonagh Park', 'Nenagh', ''), (r'cullen park', 'dr-cullen-park', 'Dr Cullen Park', 'Carlow', ''),
+ (r'cronan', 'st-cronans-park', "St Cronan's Park", 'Roscrea', ''), (r'u[ií] rinn', 'pairc-ui-rinn', 'Páirc Uí Rinn', 'Cork', ''), (r'mitchell park', 'mitchell-park', 'Mitchell Park', 'Ballygalget', ''),
+ (r'duggan park', 'duggan-park', 'Duggan Park', 'Ballinasloe', ''), (r"o'kennedy park", 'okennedy-park', "O'Kennedy Park", 'New Ross', ''), (r'kenny park', 'kenny-park', 'Kenny Park', 'Athenry', ''),
+ (r'corrigan park', 'corrigan-park', 'Corrigan Park', 'Belfast', ''), (r'turner', 'turners-cross', "Turner's Cross", 'Cork', ''), (r'mardyke', 'the-mardyke', 'The Mardyke', 'Cork', ''),
  (r'markets field', 'markets-field', 'Markets Field', 'Limerick', ''), (r"st\.? brendan", 'st-brendans-park', "St Brendan's Park", 'Birr', ''), (r'casement', 'casement-park', 'Casement Park', 'Belfast', ''), (r"chíosóg|chiosog", 'cusack-park-ennis', 'Cusack Park', 'Ennis', '')]
 def ground(r):
     t = (r['v'] or '').replace('\u2019', "'")
@@ -192,6 +196,7 @@ for n, x in pl.items():
 pll.sort(key=lambda a: -a['t'])
 json.dump(pll, open(OUT + 'players.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 # Grounds and images
+GF = json.load(open('tools/data/ground_facts.json')) if os.path.exists('tools/data/ground_facts.json') else {}
 IM = json.load(open('tools/data/image_sources.json'))
 gs = {}
 for r, m in zip(rows, matches):
@@ -202,6 +207,24 @@ gl = []
 for x in gs.values():
     L = x.pop('L'); t = tot(L); t.update(x); t.update(first=L[0]['y'], last=L[-1]['y'])
     if x['ph'] in IM['grounds']: t['c'] = IM['grounds'][x['ph']]['c']; t['iw'] = IM['grounds'][x['ph']]['w']; t['ih'] = IM['grounds'][x['ph']]['h']
+    # Limerick at this ground: finals, biggest recorded crowd, record by competition
+    t['fin'] = sum(1 for m in L if re.match(r'final', m.get('rnd', ''), re.I))
+    best = None
+    for m in L:
+        a_ = re.sub(r'[^\d]', '', (detail.get(m['id'], {}).get('att') or '').split('(')[0])
+        if a_ and 100 <= int(a_) <= 100000 and (not best or int(a_) > best[0]): best = (int(a_), m['id'])
+    if best: t['att'] = list(best)
+    t['bc'] = {c: [sum(1 for m in L if m['cn'] == c and m['r'] == k) for k in 'WDL'] for c in ('AISHC', 'MSHC', 'NL') if any(m['cn'] == c for m in L)}
+    # facts about the ground itself, from Wikipedia (tools/fetch_grounds.py)
+    f = dict(GF.get(x['s'], {}))
+    for k in ('capacity', 'record', 'closed'):
+        if f.get(k) and not re.search(r'\d{2}', f[k].split('(')[0]): f.pop(k)   # no figure before any bracket: drop it
+    if f.get('owner'): f['owner'] = re.sub(r'^\d+px\|border\s*', '', f['owner'])
+    if x['s'] == 'walsh-park': f.pop('owner', None)   # the infobox names a private person: not reliable
+    if f.get('lat') is not None and not (51.3 < f['lat'] < 55.5 and -10.8 < f['lon'] < -5.3): f.pop('lat'); f.pop('lon'); f.pop('town', None)   # outside Ireland: wrong article
+    for k in ('capacity', 'record', 'opened', 'closed', 'renovated'):
+        if f.get(k): f[k] = re.sub(r'(\d),(\d{3})', r'\1\2', f[k]).replace(' ;', ';')
+    if f: t['f'] = {k: v for k, v in f.items() if k not in ('townpage',)}
     gl.append(t)
 gl.sort(key=lambda g: -g['p'])
 json.dump(gl, open(OUT + 'grounds.json', 'w'), ensure_ascii=False, separators=(',', ':'))
