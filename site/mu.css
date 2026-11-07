@@ -452,3 +452,17 @@ h2.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
 @media (max-width:640px){.gmap{height:340px}}
 .leaflet-popup-content{font-family:var(--body);font-size:14px} .leaflet-popup-content a{color:var(--red-ink)}
 table.mu tbody th{font-weight:600;color:var(--muted);font-size:13px;text-align:left;padding:9px 8px;border-bottom:1px solid var(--rule);width:38%}
+
+/* Videos */
+:root{--vid:#000;--vidfg:#fff}
+.ytf{margin:0}.ytf+.ytf{margin-top:18px}
+.yt{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:var(--vid)}
+.yt iframe,.ytp{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;margin:0;background:var(--vid);cursor:pointer;display:block}
+.ytp img{width:100%;height:100%;object-fit:cover;display:block}
+.ytb{position:absolute;left:50%;top:50%;width:68px;height:48px;margin:-24px 0 0 -34px;border-radius:12px;background:var(--red);opacity:.92;transition:opacity .15s}
+.ytb::after{content:"";position:absolute;left:27px;top:14px;border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent var(--vidfg)}
+.ytp:hover .ytb,.ytp:focus-visible .ytb{opacity:1}
+.ytf figcaption{margin:8px 0 0}
+.vb{display:inline-block;width:0;height:0;margin-left:7px;vertical-align:middle;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent var(--red-ink)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:18px}.vgrid .ytf+.ytf{margin-top:0}
+.vgrid h3{font-size:15px;margin:0 0 8px}

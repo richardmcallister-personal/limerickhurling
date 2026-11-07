@@ -1,6 +1,6 @@
 /* Limerick hurling: shared helpers. Forked in spirit from manutd.wiki's mu.js; no live feed, everything is static JSON. */
 (function(){
-var LH=window.LH={}, NAV=[["/","Hub"],["/season/","Season"],["/results/","Results"],["/players/","Players"],["/opponents/","Opponents"],["/managers/","Managers"],["/grounds/","Grounds"],["/honours/","Honours"],["/shirts/","Shirts"],["/records/","Records"]];
+var LH=window.LH={}, NAV=[["/","Hub"],["/season/","Season"],["/results/","Results"],["/players/","Players"],["/opponents/","Opponents"],["/managers/","Managers"],["/grounds/","Grounds"],["/honours/","Honours"],["/shirts/","Shirts"],["/videos/","Videos"],["/records/","Records"]];
 var C={NL:"National League",MSHC:"Munster",AISHC:"All-Ireland"};
 LH.comp=function(c){return C[c]||c};
 var esc=LH.esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
@@ -15,8 +15,13 @@ var fmtD=LH.fmtD=function(d,long){if(!d)return "";return new Date(d+"T12:00:00Z"
 var gp=LH.gp=function(a){return a&&a[0]!=null?a[0]+"-"+a[1]:""};
 LH.score=function(m){if(!m.r)return '<span class="score rd">'+esc(m.wo||"no result")+'</span>'; return '<span class="score r'+m.r.toLowerCase()+'">'+gp(m.u)+' <small>('+m.gf+')</small> – '+gp(m.o)+' <small>('+m.ga+')</small></span>'};
 LH.scs=function(m,lim){var a=(m.sc||[]).slice().sort(function(x,y){return (y[1]*3+y[2])-(x[1]*3+x[2])}); if(lim)a=a.slice(0,lim); return a.map(function(s){return '<a href="/player/?p='+slug(s[0])+'" style="color:inherit">'+esc(s[0])+'</a> '+s[1]+'-'+s[2]}).join(", ")};
-LH.row=function(m,opt){opt=opt||{}; var title=crest(m.opp)+'v '+esc(m.opp);
+LH.row=function(m,opt){opt=opt||{}; var title=crest(m.opp)+'v '+esc(m.opp)+(m.vd?'<span class="vb" title="Video" role="img" aria-label="Video"></span>':'');
   return '<li><span class="d">'+(m.d?fmtD(m.d):m.y)+'</span><span class="o"><a href="/match/?id='+m.id+'">'+title+'</a><small>'+esc(C[m.cn])+(m.rnd?' · '+esc(m.rnd):'')+(m.v&&!opt.nov?' · '+esc(m.v):'')+'</small>'+(opt.sc&&m.sc?'<span class="sclist" style="display:block">'+LH.scs(m,5)+'</span>':'')+'</span>'+LH.score(m)+'</li>'};
+/* YouTube: a thumbnail until tapped, then the youtube-nocookie player in place. Videos the uploader won't let others embed open on YouTube. */
+LH.video=function(v){var w="https://www.youtube.com/watch?v="+v.id, th='<img src="https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="ytb" aria-hidden="true"></span>';
+  return '<figure class="ytf"><div class="yt">'+(v.e===false?'<a class="ytp" href="'+w+'" target="_blank" rel="noopener" aria-label="Watch on YouTube">'+th+'</a>':'<button type="button" class="ytp" data-yt="'+esc(v.id)+'" aria-label="Play video">'+th+'</button>')+'</div><figcaption class="note"><span>'+(v.k==="full"?"Full game":"Highlights")+'</span> · <span data-noi18n>'+esc(v.ch)+'</span> · <a class="link" href="'+w+'" target="_blank" rel="noopener">YouTube</a>'+(v.e===false?' · <span>Plays on YouTube only</span>':'')+'</figcaption></figure>'};
+document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button.ytp"); if(!b)return; var f=document.createElement("iframe");
+  f.src="https://www.youtube-nocookie.com/embed/"+encodeURIComponent(b.getAttribute("data-yt"))+"?autoplay=1&rel=0&playsinline=1"; f.title="YouTube video"; f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen=true; f.referrerPolicy="strict-origin-when-cross-origin"; b.replaceWith(f)});
 LH.list=function(L,opt){return L.length?'<ul class="mlist">'+L.map(function(m){return LH.row(m,opt)}).join("")+'</ul>':'<p class="empty">Nothing here.</p>'};
 LH.tot=function(L){var t={p:0,w:0,d:0,l:0,gf:0,ga:0}; L.forEach(function(m){if(!m.r)return; t.p++; t[m.r.toLowerCase()]++; t.gf+=m.gf; t.ga+=m.ga}); return t};
 LH.stat=function(k,v,s){return '<div class="stat"><div class="k">'+esc(k)+'</div><div class="v">'+v+'</div>'+(s?'<div class="s">'+s+'</div>':'')+'</div>'};
@@ -28,7 +33,7 @@ LH.nav=function(active){var el=document.querySelector("nav.munav"); if(!el)retur
   el.innerHTML=NAV.map(function(n){return '<a href="'+n[0]+'"'+(n[1]===active?' aria-current="page"':'')+'>'+n[1]+'</a>'}).join("")+'<form class="musearch" role="search" action="/search/"><input type="search" name="q" placeholder="Search players, opponents, seasons…" aria-label="Search the site" autocomplete="off"><div class="hits" hidden></div></form>';
   searchBox(el.querySelector(".musearch"));
   var I={h:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>',s:'<path d="M4 6h16M4 12h16M4 18h10"/>',r:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',p:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/>',m:'<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>'};
-  var T=[["/","Hub",I.h,["Hub"]],["/season/","Season",I.s,["Season"]],["/results/","Results",I.r,["Results"]],["/players/","Players",I.p,["Players"]],["/more/","More",I.m,["More","Opponents","Managers","Honours","Records","Grounds","Shirts"]]];
+  var T=[["/","Hub",I.h,["Hub"]],["/season/","Season",I.s,["Season"]],["/results/","Results",I.r,["Results"]],["/players/","Players",I.p,["Players"]],["/more/","More",I.m,["More","Opponents","Managers","Honours","Records","Grounds","Shirts","Videos"]]];
   var t=document.createElement("nav"); t.className="mutabs"; t.setAttribute("aria-label","Sections");
   t.innerHTML=T.map(function(x){return '<a href="'+x[0]+'"'+(x[3].indexOf(active)>=0?' aria-current="page"':'')+'><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'+x[2]+'</svg>'+x[1]+'</a>'}).join(""); document.body.appendChild(t);
 };

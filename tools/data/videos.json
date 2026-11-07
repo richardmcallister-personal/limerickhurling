@@ -1,0 +1,13 @@
+{
+ "_": "From Richard's YouTube playlist PLY2oX7oWMk0Q (7 Nov 2026). m = match id in matches.json; k = full | highlights; e = false when the uploader has turned embedding off (shown as a link to YouTube). Clare v Cork 2024 (PoViqHOY-XY) is in the playlist but has no Limerick, so it is left out.",
+ "v": [
+  {"id":"HB2dueE-zwQ","m":"2018-galway-2","k":"full","t":"Galway v Limerick 2018 All Ireland Senior Hurling Final (Full Match)","ch":"Classic GAA Videos & Clips"},
+  {"id":"NuT3jBl8-TE","m":"2018-cork-2","k":"full","t":"2018 All-Ireland SHC Semi-Final: Cork v Limerick","ch":"GAA"},
+  {"id":"4qRfeHtqpxw","m":"2020-waterford-3","k":"full","t":"GAANOW 2020 GAA Hurling All-Ireland Final: Limerick v Waterford","ch":"GAA"},
+  {"id":"t0rzgUeFv4Y","m":"2021-cork-3","k":"full","t":"Limerick v Cork - All Ireland Final 2021 - Hurling","ch":"MAC MEDIA"},
+  {"id":"TF0BSVTNnOA","m":"2022-kilkenny","k":"highlights","t":"Limerick v Kilkenny All Ireland Senior Hurling Championship Final 2022 Highlights","ch":"Anything Irish"},
+  {"id":"IksdLKTa22I","m":"2022-kilkenny","k":"full","t":"Limerick vs Kilkenny All Ireland Final 2022","ch":"Dante","e":false},
+  {"id":"5nIKBu9kgEU","m":"2023-kilkenny-2","k":"highlights","t":"Limerick v Kilkenny All Ireland Senior Hurling Championship Final 2023 Highlights","ch":"Anything Irish"},
+  {"id":"0JTwowdxYOA","m":"2023-kilkenny-2","k":"full","t":"Limerick v Kilkenny: 2023 All Ireland hurling final (full game + cup presentation)","ch":"Limerick Supporters Group / Cuimhnigh Ar Luimneach"}
+ ]
+}

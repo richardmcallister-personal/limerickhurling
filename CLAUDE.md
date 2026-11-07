@@ -13,6 +13,7 @@ tools/fetch_wiki.py  downloads Wikipedia season articles to tools/data/wiki/ (sm
 tools/parse_wiki.py  match boxes -> rows; tools/build_archive.py dedupes, names, totals, reconcile.txt
 tools/make_crests.py <folder>   crests and icons from Richard's ~/Documents/gaa_assets
 tools/fetch_grounds.py   ground facts from Wikipedia (coordinates, opened, capacity, record crowd, owner, lead) -> tools/data/ground_facts.json; town coordinates when the ground has no article. Map is Leaflet 1.9.4 (cdnjs) + OpenStreetMap tiles, credited.
+tools/data/videos.json     hand-kept from Richard's YouTube playlist PLY2oX7oWMk0Q: video id -> match id, full/highlights, e:false when embedding is off (link out instead). Check new ones with youtube.com/oembed (401 = not embeddable). Only Limerick games.
 tools/data/fixtures.json   hand-kept fixtures; every entry provisional until the GAA confirms it
 tools/data/reconcile.txt   checks against the honours list and every game whose scorers don't add up
 ```

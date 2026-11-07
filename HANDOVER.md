@@ -21,3 +21,8 @@ Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/re
 - No team sheets or current panel: Wikipedia's panel list dates from 2021.
 - Not ported from manutd.wiki: Ask, match alerts, trips, shirts, timeline, compare, analytics.
 - Munster Hurling League (pre-season) is not in the archive.
+
+
+## 7 Nov 2026: videos
+- 8 videos from Richard's playlist on 6 games (2018 semi and final, 2020, 2021, 2022, 2023 finals). Match pages play them in place (youtube-nocookie, tap to play); /videos/ lists them by season; ▶ marker on result rows.
+- 2022 full game (IksdLKTa22I) has embedding off: shown as a link to YouTube. Clare v Cork 2024 (PoViqHOY-XY) left out, no Limerick.

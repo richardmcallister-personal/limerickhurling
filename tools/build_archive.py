@@ -161,6 +161,11 @@ def slim(r):
     return o
 # Full match detail, one file (small enough), plus a slim list
 matches = [slim(r) for r in rows]
+# Videos: hand-kept from Richard's YouTube playlist (tools/data/videos.json); flag the games that have one
+VID = [v for v in json.load(open('tools/data/videos.json'))['v'] if v['m'] in {m['id'] for m in matches}]
+for m in matches:
+    if any(v['m'] == m['id'] for v in VID): m['vd'] = 1
+json.dump(VID, open(OUT + 'videos.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 json.dump(matches, open(OUT + 'matches.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 detail = {}
 for r in rows:

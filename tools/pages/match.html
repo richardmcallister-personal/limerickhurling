@@ -3,15 +3,17 @@
 <!--sub:-->
 <!--nav:Results-->
 <section class="sheet" id="head"></section>
+<section class="sheet" id="vid" hidden></section>
 <div class="two"><section class="sheet" id="us"></section><section class="sheet" id="them"></section></div>
 <section class="sheet" id="prev"></section>
 <script>
-Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds")]).then(function(R){
+Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("videos").catch(function(){return []})]).then(function(R){
  var id=LH.q("id"), m=R[0].filter(function(x){return x.id===id})[0], D=R[1][id]||{};
  if(!m){$("head").innerHTML='<p class="empty">No match with that reference. <a class="link" href="/results/">All results</a></p>';return}
  document.title="Limerick v "+m.opp+" "+m.y; $("from").innerHTML=E(LH.comp(m.cn))+"<span>"+m.y+"</span>";
  var info=[m.d?LH.fmtD(m.d,true):m.y,m.v,D.loc&&(m.v||"").indexOf(D.loc)<0?D.loc:"",D.att?"Attendance "+D.att.replace(/,/g,""):"",D.ref?"Referee "+D.ref:"",D.tv?"TV "+D.tv:""].filter(Boolean);
  $("head").innerHTML='<div class="kick">'+E(LH.comp(m.cn))+(m.rnd?' · '+E(m.rnd):'')+'</div>'+(m.h==="A"?LH.board(m.opp,"Limerick",m):LH.board("Limerick",m.opp,m))+(m.r?'':'<p class="sbmeta">'+E(m.wo||"")+'</p>')+'<p class="note" style="margin:10px 0 0">'+info.map(function(x){return x===m.v&&m.g?'<a class="link" href="/ground/?g='+m.g+'">'+E(x)+'</a>':E(x)}).join(" · ")+'</p>'+(function(){var g=R[2].filter(function(x){return x.s===m.g})[0]; return g&&g.c?'<img class="photo" style="margin-top:12px;max-height:320px" src="/assets/grounds/'+g.ph+'.webp" alt="'+E(g.n)+'" width="'+g.iw+'" height="'+g.ih+'" loading="lazy"><p class="note" style="margin:6px 0 0">'+LH.credit(g.c,g.n+'. Not necessarily taken at this match.')+'</p>':""})();
+ var V=R[3].filter(function(v){return v.m===id}).sort(function(a,b){return a.k===b.k?0:a.k==="highlights"?-1:1}); if(V.length){$("vid").hidden=false; $("vid").innerHTML='<h2 class="row">'+(V.length>1?"Videos":"Video")+' <a href="/videos/">All videos →</a></h2>'+V.map(LH.video).join("")}
  function tbl(sc,link){return sc&&sc.length?'<table class="mu"><tbody>'+sc.slice().sort(function(a,b){return (b[1]*3+b[2])-(a[1]*3+a[2])}).map(function(s){return '<tr><td>'+(link?'<a href="/player/?p='+LH.slug(s[0])+'">'+E(s[0])+'</a>':E(s[0]))+'</td><td class="n">'+s[1]+'-'+s[2]+'</td></tr>'}).join("")+'</tbody></table>':'<p class="note" style="margin:0">Not recorded.</p>'}
  function chk(sc,want){if(!sc||!sc.length||!want||want[0]==null)return ""; var g=0,p=0; sc.forEach(function(s){g+=s[1];p+=s[2]}); return g===want[0]&&p===want[1]?"":'<p class="note" style="margin:8px 0 0">The source\'s scorers add to '+g+'-'+p+', not '+want[0]+'-'+want[1]+'.</p>'}
  $("us").innerHTML='<h2>Limerick scorers</h2>'+tbl(m.sc,1)+chk(m.sc,m.u); $("them").innerHTML='<h2>'+LH.crest(m.opp,20)+E(m.opp)+' scorers</h2>'+tbl(D.osc)+chk(D.osc,m.o);

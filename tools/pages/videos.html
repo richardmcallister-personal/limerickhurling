@@ -1,0 +1,15 @@
+<!--title:Videos-->
+<!--kick:Videos-->
+<!--sub:Full games and highlights-->
+<!--nav:Videos-->
+<section class="sheet" id="vids"><p class="note">Loading…</p></section>
+<p class="note" style="margin:12px 4px">Videos are YouTube uploads by the channels named, played here through YouTube. Tap a picture to play.</p>
+<script>
+Promise.all([LH.get("videos"),LH.get("matches")]).then(function(R){
+ var M={}; R[1].forEach(function(m){M[m.id]=m});
+ var V=R[0].filter(function(v){return M[v.m]}).sort(function(a,b){var x=M[a.m],y=M[b.m]; return (y.d||"").localeCompare(x.d||"")||(a.k==="highlights"?-1:1)});
+ if(!V.length){$("vids").innerHTML='<p class="empty">No videos yet.</p>';return}
+ var yrs=[],by={}; V.forEach(function(v){var y=M[v.m].y; if(!by[y]){by[y]=[];yrs.push(y)} by[y].push(v)});
+ $("vids").innerHTML=yrs.map(function(y){return '<h2 class="row">'+y+' <a href="/season/?y='+y+'">Season →</a></h2><div class="vgrid" style="margin-bottom:22px">'+by[y].map(function(v){var m=M[v.m]; return '<div><h3><a class="link" href="/match/?id='+m.id+'">'+LH.crest(m.opp,18)+'v '+E(m.opp)+'</a> <span class="note">'+E(LH.comp(m.cn))+(m.rnd?' · '+E(m.rnd):'')+'</span></h3>'+LH.video(v)+'</div>'}).join("")+'</div>'}).join("");
+}).catch(function(){LH.fail($("vids"))});
+</script>
