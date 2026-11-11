@@ -1,7 +1,7 @@
 /* Limerick hurling: shared helpers. Forked in spirit from manutd.wiki's mu.js; no live feed, everything is static JSON. */
 (function(){
 var LH=window.LH={}, NAV=[["/","Hub"],["/season/","Season"],["/results/","Results"],["/players/","Players"],["/opponents/","Opponents"],["/managers/","Managers"],["/grounds/","Grounds"],["/honours/","Honours"],["/shirts/","Shirts"],["/videos/","Videos"],["/records/","Records"]];
-LH.ROADS=[2018];   /* title runs with a Road to the title page linked from honours, newest first */
+LH.ROADS=[2026,2023,2022,2021,2020,2018];   /* title runs with a Road to the title page linked from honours, newest first */
 var C={NL:"National League",MSHC:"Munster",AISHC:"All-Ireland"};
 LH.comp=function(c){return C[c]||c};
 var esc=LH.esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
@@ -48,6 +48,19 @@ function searchBox(f){if(!f)return; var i=f.querySelector("input"), b=f.querySel
 }
 function theme(m){try{if(m==="auto")localStorage.removeItem("mu:theme"); else localStorage.setItem("mu:theme",m)}catch(e){} if(m==="auto")document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme",m); document.querySelectorAll(".themesw button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.m===m)})}
 (function(){try{var t=localStorage.getItem("mu:theme"); if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})();
+/* Site footer, after manutd.wiki: who we are, the sections, official links and Richard's other sites. The page's own source note,
+   appearance and language controls stay underneath. */
+document.addEventListener("DOMContentLoaded",function(){var f=document.querySelector("footer.mu"); if(!f||f.querySelector(".sitefoot"))return;
+  function col(h,L){return '<div class="fcol"><h2>'+h+'</h2><ul>'+L.map(function(l){return '<li><a href="'+l[0]+'"'+(/^https?:/.test(l[0])?' target="_blank" rel="noopener"':'')+'>'+l[1]+'</a></li>'}).join("")+'</ul></div>'}
+  var sis=[["https://manutd.wiki/","Manchester United","manutd.wiki","manutd"],["https://irelandfootball.wiki/","Ireland Football","irelandfootball.wiki","irelandfootball"],["https://irelandrugby.wiki/","Ireland Rugby","irelandrugby.wiki","irelandrugby"],["https://footballclub.wiki/","Football Club Wiki","footballclub.wiki","footballclub"]];
+  var d=document.createElement("div"); d.className="sitefoot";
+  d.innerHTML='<div class="fbrand"><a class="fname" href="/"><img src="/assets/crest-88.png" alt="" width="36" height="36"><span translate="no">Limerick Hurling</span></a><p>An independent fan site about Limerick\'s senior hurlers.</p><p class="fdata">Data: Wikipedia (CC BY-SA), YouTube, OpenStreetMap.</p></div>'+
+    '<div class="fcols">'+col("Matchday",[["/","Hub"],["/results/","Fixtures and results"],["/season/","This season"],["webcal://limerickhurling.wiki/calendar.ics","Fixtures in your calendar"]])+
+    col("History",[["/honours/","Honours"],["/road/","Road to the title"],["/records/","Records"],["/players/","Players"],["/managers/","Managers"]])+
+    col("Explore",[["/opponents/","Opponents"],["/grounds/","Grounds"],["/shirts/","Shirts"],["/videos/","Videos"]])+
+    col("Official",[["https://www.limerickgaa.ie/","limerickgaa.ie"],["https://munstergaa.ie/","munstergaa.ie"],["https://www.gaa.ie/","gaa.ie"],["/more/","More"]])+'</div>'+
+    '<div class="fsis"><h2>Other sites</h2><ul>'+sis.map(function(x){return '<li><a href="'+x[0]+'" target="_blank" rel="noopener"><img src="/assets/sites/'+x[3]+'.webp" alt="" width="40" height="40" loading="lazy" decoding="async"><span><b translate="no">'+x[1]+'</b><small translate="no">'+x[2]+'</small></span></a></li>'}).join("")+'</ul></div>';
+  f.insertBefore(d,f.firstChild); f.classList.add("big")});
 document.addEventListener("DOMContentLoaded",function(){var f=document.querySelector("footer.mu"); if(!f)return; var cur="auto"; try{cur=localStorage.getItem("mu:theme")||"auto"}catch(e){}
   var d=document.createElement("span"); d.className="themesw"; d.setAttribute("role","group"); d.setAttribute("aria-label","Appearance"); d.innerHTML=["auto","light","dark"].map(function(m){return '<button type="button" data-m="'+m+'" aria-pressed="'+(m===cur)+'">'+m+'</button>'}).join(""); d.addEventListener("click",function(e){var b=e.target.closest("button"); if(b)theme(b.dataset.m)}); f.appendChild(document.createTextNode(" Appearance:")); f.appendChild(d)});
 // scoreboard: crest and name either side, score (or "v") in the middle

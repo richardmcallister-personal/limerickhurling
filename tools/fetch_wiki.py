@@ -2,7 +2,7 @@
 """Download Wikipedia wikitext for hurling season articles, in polite batches, into tools/data/wiki/."""
 import json, os, time, urllib.parse, urllib.request, urllib.error
 OUT = os.path.join(os.path.dirname(__file__), 'data', 'wiki')
-UA = 'limerickhurling data builder (richardmcallister@gmail.com)'
+UA = 'limerickhurling.wiki data builder (fan site)'
 titles = ['Limerick county hurling team', 'List of All-Ireland Senior Hurling Championship finals', 'Munster Senior Hurling Championship', 'National Hurling League']
 for y in range(1887, 2027):
     titles += [f'{y} All-Ireland Senior Hurling Championship', f'{y} Munster Senior Hurling Championship', f'{y} National Hurling League', f'{y}-{str(y+1)[2:]} National Hurling League', f'{y}–{str(y+1)[2:]} National Hurling League']

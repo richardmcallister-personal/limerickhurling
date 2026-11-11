@@ -100,6 +100,10 @@ def _items(text, kind, share):
             else:
                 for n in pend: put(n, 1 if kind == 'g' else 0, 1 if kind == 'p' else 0)
             pend = []; put(m.group(1), g, pt); continue
+        m = re.fullmatch(r"(\d{1,2})-(\d{1,3})(\s+each)?", part)
+        if m and pend:                                   # "A, B, 0-1": a stray comma before the shared score
+            for n in pend: put(n, int(m.group(1)), int(m.group(2)))
+            pend = []; continue
         if re.fullmatch(r"\d.*", part): continue
         pend.append(part)
     for n in pend: put(n, 1 if kind == 'g' else 0, 1 if kind == 'p' else 0)

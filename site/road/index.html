@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 <script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
-<link rel="stylesheet" href="/mu.css?v=ab962e30"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<link rel="stylesheet" href="/mu.css?v=4820951d"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
 <header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">Road to the title<span></span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
@@ -20,7 +20,7 @@
 </main>
 <footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
-<script>window.LH_V="ab962e30"</script><script src="/lh.js?v=ab962e30"></script>
+<script>window.LH_V="4820951d"</script><script src="/lh.js?v=4820951d"></script>
 <script>
 (function(){
 LH.nav('Honours');
@@ -32,7 +32,7 @@ Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("honour
  var y=+(LH.q("y")||LH.ROADS[0]);
  if(H.indexOf(y)<0){$("head").innerHTML='<p class="empty">Limerick didn\'t win the All-Ireland in '+E(y)+'. <a class="link" href="/honours/">Honours</a></p>';return}
  document.title="Road to the title "+y+" · Limerick hurling"; $("from").innerHTML="Road to the title<span>"+y+"</span>";
- var CO={MSHC:0,AISHC:1}, G=M.filter(function(m){return m.y===y&&m.cn in CO&&m.r}).map(function(m,i){m._i=i;return m}).sort(function(a,b){return a.d&&b.d?a.d.localeCompare(b.d):(CO[a.cn]-CO[b.cn])||a._i-b._i});
+ var CO={MSHC:0,AISHC:1}, G=M.filter(function(m){return m.y===y&&(m.cn in CO||m.cn2 in CO)&&m.r}).map(function(m,i){m=Object.assign({},m); m._i=i; if(!(m.cn in CO)){m._also=m.cn;m._alsoR=m.rnd;m.cn=m.cn2;m.rnd=m.rnd2} return m}).sort(function(a,b){return a.d&&b.d?a.d.localeCompare(b.d):(CO[a.cn]-CO[b.cn])||a._i-b._i});
  if(!G.length){$("head").innerHTML='<p class="empty">No games recorded for '+y+'.</p>';return}
  // summary
  var t=LH.tot(G),gu=0,pu=0,go=0,po=0; G.forEach(function(m){gu+=m.u[0];pu+=m.u[1];go+=m.o[0];po+=m.o[1]});
@@ -45,8 +45,8 @@ Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("honour
   '<p class="rdlead">'+(prev?'<span>Limerick\'s first All-Ireland since</span> <a class="link" href="/road/?y='+prev+'">'+prev+'</a>'+(y-prev>1?' · <span>'+(y-prev)+' years</span>':''):'<span>Limerick\'s first All-Ireland.</span>')+'</p>'+
   '<p class="note" style="margin:6px 0 0"><span>'+G.length+' games</span>'+(days!=null?' · <span>'+LH.fmtD(G[0].d)+'</span> – <span>'+LH.fmtD(G[G.length-1].d)+'</span>':'')+'</p></div>'+
   (cup?'<figure class="rdcup"><img class="photo" src="/assets/cups/'+cup.k+'.webp" alt="'+E(cup.t)+'" width="'+cup.w+'" height="'+cup.ht+'"><figcaption class="note">'+LH.credit(cup.c)+'</figcaption></figure>':'')+'</div>'+
-  '<div class="tiles">'+LH.stat("Record",t.w+"-"+t.d+"-"+t.l,"Won, drawn, lost")+LH.stat("Scored",gu+"-"+pu,(gu*3+pu)+" points value")+LH.stat("Conceded",go+"-"+po,(go*3+po)+" points value")+
-  (top?LH.stat("Top scorer",'<a class="tsv" href="/player/?p='+LH.slug(top.n)+'">'+E(top.n)+'</a>',top.g+"-"+top.p+" in "+top.gm+" games"):"")+(crowdN?LH.stat("Recorded crowds",crowd,approx?"Includes an estimate":""):"")+'</div>';
+  (LH.ROADS.length>1?'<nav class="yrs" aria-label="Title runs">'+LH.ROADS.map(function(x){return '<a href="/road/?y='+x+'"'+(x===y?' aria-current="page"':'')+'>'+x+'</a>'}).join("")+'</nav>':'')+'<div class="tiles">'+LH.stat("Record",t.w+"-"+t.d+"-"+t.l,"Won, drawn, lost")+LH.stat("Scored",gu+"-"+pu,(gu*3+pu)+" points value")+LH.stat("Conceded",go+"-"+po,(go*3+po)+" points value")+
+  (top&&G.filter(function(m){return m.sc&&m.sc.length}).length*2>G.length?LH.stat("Top scorer",'<a class="tsv" href="/player/?p='+LH.slug(top.n)+'">'+E(top.n)+'</a>',top.g+"-"+top.p+" in "+top.gm+" games"):"")+(crowdN?LH.stat("Recorded crowds",crowd,approx?"Includes an estimate":""):"")+'</div>';
  // route strip
  function ab(r){r=r||"Game"; var m=r.match(/^Round (\d+)/i); if(m)return "R"+m[1]; return r.split(/[\s-]+/).map(function(w){return w[0]}).join("").toUpperCase()}
  var CN={MSHC:"Munster",AISHC:"All-Ireland"}, CT={MSHC:"Munster championship",AISHC:"All-Ireland series"};
@@ -59,7 +59,7 @@ Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("honour
  $("steps").hidden=false; $("steps").innerHTML='<h2>Game by game</h2><ol class="road">'+G.map(function(m,i){var d=D[m.id]||{}, g=GR[m.g], hd=(i===0||G[i-1].cn!==m.cn)?'<li class="phase"><h3>'+CT[m.cn]+'</h3></li>':'';
   var info=[m.d?E(LH.fmtD(m.d,true)):"",m.v?(g?'<a class="link" href="/ground/?g='+m.g+'">'+E(m.v)+'</a>':E(m.v)):"",d.att?'<span>Crowd</span> '+E(d.att.replace(/,/g,"")):"",d.ref?'<span>Referee</span> '+E(d.ref):""].filter(Boolean).join(" · ");
   return hd+'<li class="step '+m.r+'" id="g-'+m.id+'"><span class="dot" aria-hidden="true">'+(++n)+'</span><div class="kick">'+E(CN[m.cn])+(m.rnd?' · '+E(m.rnd):'')+'</div>'+
-   (m.h==="A"?LH.board(m.opp,"Limerick",m):LH.board("Limerick",m.opp,m))+'<p class="note" style="margin:4px 0 10px">'+info+'</p>'+
+   (m.h==="A"?LH.board(m.opp,"Limerick",m):LH.board("Limerick",m.opp,m))+(m._also?'<p class="note" style="margin:0 0 4px"><span>Also</span>: <span>'+E(LH.comp(m._also))+'</span> · <span>'+E(m._alsoR)+'</span></p>':'')+'<p class="note" style="margin:4px 0 10px">'+info+'</p>'+
    (m.sc&&m.sc.length?'<p class="rdsc"><b>Limerick</b> '+lscl(m.sc)+short(m.sc,m.u)+'</p>':'<p class="note">Limerick scorers not recorded.</p>')+
    (d.osc&&d.osc.length?'<details class="rdo"><summary>'+E(m.opp)+' <span>scorers</span></summary><p class="rdsc">'+scl(d.osc)+short(d.osc,m.o)+'</p></details>':'')+
    '<p class="rdlinks"><a class="link" href="/match/?id='+m.id+'">Match page →</a>'+(V[m.id]?' <a class="vlink" href="/match/?id='+m.id+'#vid"><span class="vb" aria-hidden="true"></span>Video</a>':'')+'</p></li>'}).join("")+'</ol>';

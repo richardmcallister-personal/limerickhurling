@@ -500,3 +500,31 @@ ol.road li.step:last-child{border-bottom:0;padding-bottom:4px}
 @media (max-width:640px){ol.road{padding-left:28px}ol.road::before{left:10px}.step .dot{left:-28px;width:22px;height:22px;font-size:11px;top:14px}}
 .rdhead .stat .v{white-space:nowrap}
 @media (max-width:640px){.rdhead .stat .v{font-size:32px}.rdhead .stat .v .tsv{font-size:19px;white-space:normal}.rdcup img{max-height:200px;object-fit:cover;width:100%}}
+.yrs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.yrs a{padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;font-variant-numeric:tabular-nums}
+.yrs a:hover{background:var(--us)}.yrs a[aria-current]{background:var(--red);color:var(--on-black)}
+
+/* Site footer, after manutd.wiki's, on the Limerick green of the masthead */
+footer.mu.big{position:relative;isolation:isolate;max-width:none;margin-top:40px;padding:40px 0 28px;color:var(--foot-muted);font-size:13px}
+footer.mu.big::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);background:var(--red)}
+:root{--foot-muted:rgba(255,255,255,.72)}
+footer.mu.big a{color:var(--on-black)}
+footer.mu.big .stamp{background:transparent;color:var(--foot-muted);border-color:rgba(255,255,255,.25)}
+footer.mu.big .cookies{color:var(--on-black)}
+footer.mu.big .langsw,footer.mu.big .themesw{background:transparent;color:var(--on-black);border-color:rgba(255,255,255,.3)}
+footer.mu.big .themesw button{color:var(--on-black)}
+.sitefoot{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,3fr) minmax(0,1.3fr);gap:32px;padding-bottom:28px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,.18)}
+.sitefoot h2{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--on-black);margin:0 0 12px;padding:0;background:none}
+.sitefoot ul{list-style:none;margin:0;padding:0}
+.sitefoot li a{display:inline-flex;align-items:center;min-height:32px;text-decoration:none;color:rgba(255,255,255,.86)} .sitefoot li a:hover{color:var(--on-black);text-decoration:underline}
+.fbrand .fname{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--on-black)} .fbrand .fname span{font-family:var(--brand);font-size:22px;text-transform:uppercase;letter-spacing:.01em}
+.fbrand p{margin:12px 0 0;max-width:34ch;line-height:1.5} .fbrand .fdata{font-size:12px}
+.fcols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.fsis li a{gap:12px;min-height:52px;padding:4px 0} .fsis img{width:40px;height:40px;border-radius:9px;flex:0 0 auto}
+.fsis b{display:block;color:var(--on-black);font-weight:600;font-size:14px} .fsis small{display:block;font-size:12px;color:var(--foot-muted)}
+@media (max-width:1099px){.sitefoot{grid-template-columns:1fr 1fr} .fcols{grid-column:1/-1;order:3}}
+@media (max-width:640px){footer.mu.big{padding-top:28px} .sitefoot{grid-template-columns:1fr;gap:22px} .fcols{display:none}}
+body:has(footer.mu.big){padding-bottom:0} footer.mu.big{padding-bottom:96px} @media (max-width:640px){footer.mu.big{padding-bottom:150px}}
+html,body{overflow-x:clip}
+footer.mu.big .themesw button{background:transparent;color:var(--foot-muted)} footer.mu.big .themesw button[aria-pressed="true"]{background:rgba(255,255,255,.2);color:var(--on-black)}
+@media (min-width:641px){footer.mu.big{padding-bottom:40px}}

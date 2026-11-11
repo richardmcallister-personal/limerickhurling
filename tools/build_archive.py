@@ -23,6 +23,7 @@ def round_name(r):
     if re.search(r'\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday|january|february|march|april|june|july|august|september|october|november|december)\b|\d(:|\.)\d\d|\d\s*[ap]m\b|utc', n, re.I): n = re.sub(r'.*?(\b(?:Final|Semi-final|Quarter-final|Round \d+)\b.*)?$', lambda m: m.group(1) or '', n, flags=re.I).strip()
     n = re.sub(r'\s*\d{1,2}[:.]\d\d.*$', '', n).replace('Semifinal', 'Semi-final')
     n = n.replace('Semi-Final', 'Semi-final').replace('Quarter-Final', 'Quarter-final').replace(' Replay', ' replay').replace('First Round', 'First round').replace('Senior Hurling Championship', '')
+    n = re.sub(r'^SF\d?$', 'Semi-final', n); n = re.sub(r'^QF\d?$', 'Quarter-final', n); n = re.sub(r'^Semi-finals$', 'Semi-final', n, flags=re.I)
     return n[:1].upper() + n[1:] if n else ''
 for r in raw: r['rnd'] = round_name(r)
 
@@ -41,6 +42,8 @@ for k, v in group.items():
             if not best.get(f) and o.get(f): best[f] = o[f]
         for f in ('sc', 'osc'):
             if not best[f] and o[f]: best[f] = o[f]
+    alt = [o for o in v[1:] if o['comp'] != best['comp']]
+    if alt: best['also'] = (alt[0]['comp'], alt[0]['rnd'])   # one game, two competitions (2020: league final and Munster quarter-final)
     rows.append(best)
 # Empty stubs (a final listed with no score) dropped when a scored game with that year, opponent and date exists.
 scored = {(r['y'], r['opp'], r['d']) for r in rows if r['gf'] is not None}
@@ -127,6 +130,7 @@ for r in rows:
     r['id'] = base + (f"-{seen[base]}" if seen[base] > 1 else '')
     r['h'] = venue_kind(r)
     r['cn'] = {'National League': 'NL', 'Munster Championship': 'MSHC', 'All-Ireland Championship': 'AISHC'}[r['comp']]
+    if r.get('also'): r['cn2'] = {'National League': 'NL', 'Munster Championship': 'MSHC', 'All-Ireland Championship': 'AISHC'}[r['also'][0]]; r['rnd2'] = r['also'][1]
 
 # Grounds: one name per ground. Thurles Sportsfield became Semple Stadium; Jones's Road became Croke Park; the Cork Athletic Grounds
 # was rebuilt as Páirc Uí Chaoimh in 1976. The photo in the assets called athletic-grounds is Armagh, so it is not used.
@@ -157,7 +161,7 @@ for r in rows:
     g = ground(r)
     r['g'] = g[0] if g else None; r['gi'] = g
 def slim(r):
-    o = {k: r[k] for k in ('id', 'y', 'cn', 'rnd', 'd', 'opp', 'u', 'o', 'gf', 'ga', 'r', 'v', 'g', 'h') if r.get(k) not in (None, '')}
+    o = {k: r[k] for k in ('id', 'y', 'cn', 'rnd', 'cn2', 'rnd2', 'd', 'opp', 'u', 'o', 'gf', 'ga', 'r', 'v', 'g', 'h') if r.get(k) not in (None, '')}
     if r['wo']: o['wo'] = r['wo']
     if r['sc']: o['sc'] = r['sc']
     return o

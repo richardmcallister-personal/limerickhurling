@@ -33,3 +33,12 @@ Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/re
 - Linked from honours (feature card and the 2018 year in the titles table) and from each 2018 Munster/All-Ireland match page. LH.ROADS = [2018].
 - 2018 name slips fixed in HAND: T Morrisey to Tom Morrissey, D O'Donnovan to Darragh O'Donovan. The 2018 final source lists only 3-15 of 3-16 for Limerick; the page says so.
 - Next candidates: 1973 and 1940 (all scorers add up), 2020 and 2021.
+
+## 11 Nov 2026: all title runs since 2018, footer
+- Road to the title now for 2018, 2020, 2021, 2022, 2023, 2026, with a year switcher on the page and on the honours card.
+- 2020 v Clare (25 Oct) was both the league final and the Munster quarter-final: kept as one game with cn2/rnd2, shown on the road page and match page.
+- Parser fix: "A, B, 0-1" (stray comma before a shared score) gave each name a goal. Fixed six games (2001 Antrim, 2004 Waterford, Clare and Tipperary, 2006 Clare, 2018 Offaly); 2023 Waterford now reads as the source has it (1-17 of 1-18).
+- Round names: SF2 and Semi-finals now Semi-final.
+- 2026 Munster: Wikipedia has no scorers for Limerick's five games, so the page marks them not recorded and hides the top-scorer tile.
+- fetch_wiki.py User-Agent no longer carries Richard's email.
+- Footer from manutd.wiki: brand, Matchday / History / Explore / Official columns, Other sites (manutd.wiki, irelandfootball.wiki, irelandrugby.wiki, footballclub.wiki), on the masthead green.
