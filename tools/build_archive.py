@@ -80,6 +80,8 @@ HAND = [('G Kirby','Gary Kirby',1985,2002),('R Bennis','Richie Bennis',1964,1980
  ('D Byrnes','Diarmaid Byrnes',2014,2030),("L O'Donoghue","Liam O'Donoghue",1971,1988),('E Grimes','Éamonn Grimes',1965,1982),('É Grimes','Éamonn Grimes',1965,1982),
  ('P Kelly','Paddy Kelly',1974,1988),('T Kenny','Terence Kenny',1982,1992),('M Houlihan','Mike Houlihan',1989,2003),('J Gillane','John Gillane',2020,2030)]
 HAND = [h for h in HAND if h[0] not in ('T Kenny', 'J Gillane')]
+# misspellings in the 2018 source, same game lists the player in full or he is the only one of that name in the panel
+HAND += [('T Morrisey','Tom Morrissey',2018,2018),("D O'Donnovan","Darragh O'Donovan",2018,2018)]
 team_txt = json.load(open('tools/data/wiki/Limerick_county_hurling_team.json'))['text']
 linked = {}
 for a, b in re.findall(r'\[\[([^\]|#]+?)(?:\|([^\]]+))?\]\]', team_txt[team_txt.find('==Players'):team_txt.find('==Honours')]):

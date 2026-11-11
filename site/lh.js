@@ -1,6 +1,7 @@
 /* Limerick hurling: shared helpers. Forked in spirit from manutd.wiki's mu.js; no live feed, everything is static JSON. */
 (function(){
 var LH=window.LH={}, NAV=[["/","Hub"],["/season/","Season"],["/results/","Results"],["/players/","Players"],["/opponents/","Opponents"],["/managers/","Managers"],["/grounds/","Grounds"],["/honours/","Honours"],["/shirts/","Shirts"],["/videos/","Videos"],["/records/","Records"]];
+LH.ROADS=[2018];   /* title runs with a Road to the title page linked from honours, newest first */
 var C={NL:"National League",MSHC:"Munster",AISHC:"All-Ireland"};
 LH.comp=function(c){return C[c]||c};
 var esc=LH.esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};

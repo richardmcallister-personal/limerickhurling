@@ -7,10 +7,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 <script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
-<link rel="stylesheet" href="/mu.css?v=f4d5d419"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<link rel="stylesheet" href="/mu.css?v=ab962e30"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
 <header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">History<span>Honours</span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
+<section class="sheet" id="road" hidden></section>
 <section class="sheet"><h2>The cups</h2><div class="cups" id="cups"></div></section>
 <section class="sheet"><h2>Titles</h2><div id="hon"></div></section>
 <section class="sheet"><h2>All-Ireland finals</h2><div id="ai"></div></section>
@@ -20,7 +21,7 @@
 </main>
 <footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
-<script>window.LH_V="f4d5d419"</script><script src="/lh.js?v=f4d5d419"></script>
+<script>window.LH_V="ab962e30"</script><script src="/lh.js?v=ab962e30"></script>
 <script>
 (function(){
 LH.nav('Honours');
@@ -28,8 +29,10 @@ var $=function(i){return document.getElementById(i)}, E=LH.esc;
 
 Promise.all([LH.get("honours"),LH.get("matches"),LH.get("media")]).then(function(R){var H=R[0],M=R[1];
  $("cups").innerHTML=R[2].cups.map(function(c){var x=c.h?H[c.h].w:null; return '<div class="card"><img src="/assets/cups/'+c.k+'.webp" alt="'+E(c.t)+'" width="'+c.w+'" height="'+c.ht+'" loading="lazy"><div class="b"><b>'+E(c.t)+'</b><small>'+E(c.comp)+(x?': '+x.n+' titles, last in '+x.y.slice(-1)[0]:'')+'</small><small>'+LH.credit(c.c)+'</small></div></div>'}).join("");
- function row(t,x){return '<tr><td><b>'+t+'</b></td><td class="n">'+x.w.n+'</td><td>'+x.w.y.join(", ")+'</td><td class="n">'+x.ru.n+'</td><td>'+x.ru.y.join(", ")+'</td></tr>'}
- $("hon").innerHTML='<table class="mu"><thead><tr><th>Competition</th><th class="n">Won</th><th>Years</th><th class="n">Lost</th><th>Finals lost</th></tr></thead><tbody>'+row("All-Ireland",H.aishc)+row("National League",H.nl)+row("Munster",H.mshc)+'</tbody></table>';
+ var RY=LH.ROADS||[]; if(RY.length){$("road").hidden=false; $("road").innerHTML='<div class="rdfeat"><div><div class="kick">Road to the title</div><h2 style="margin:4px 0 0">'+RY.map(function(y){return '<a href="/road/?y='+y+'">'+y+' All-Ireland</a>'}).join(", ")+'</h2><p class="note">Follow the campaign game by game: opponents, grounds, scores and scorers.</p></div><a class="btn" href="/road/?y='+RY[0]+'">Follow the '+RY[0]+' run →</a></div>'}
+ function yl(y,c){return c==="aishc"&&RY.indexOf(+y)>=0?'<a class="link" href="/road/?y='+y+'">'+y+'</a>':y}
+ function row(t,x){return '<tr><td><b>'+t+'</b></td><td class="n">'+x.w.n+'</td><td>'+x.w.y.map(function(y){return yl(y,x.c)}).join(", ")+'</td><td class="n">'+x.ru.n+'</td><td>'+x.ru.y.join(", ")+'</td></tr>'}
+ $("hon").innerHTML='<table class="mu"><thead><tr><th>Competition</th><th class="n">Won</th><th>Years</th><th class="n">Lost</th><th>Finals lost</th></tr></thead><tbody>'+row("All-Ireland",Object.assign({c:"aishc"},H.aishc))+row("National League",H.nl)+row("Munster",H.mshc)+'</tbody></table>';
  function F(c){return M.filter(function(m){return m.cn===c&&/^final/i.test(m.rnd||"")&&m.r}).reverse()}
  $("ai").innerHTML=LH.list(F("AISHC"),{sc:1}); $("mu").innerHTML=LH.list(F("MSHC")); $("nl").innerHTML=LH.list(F("NL"));
 }).catch(function(){LH.fail($("hon"))});

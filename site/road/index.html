@@ -1,0 +1,85 @@
+<!doctype html><html lang="en-IE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#00693e">
+<title>Limerick Hurling · Road to the title</title>
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/assets/favicon-32.png?v=2" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=3">
+<meta property="og:title" content="Limerick Hurling · Road to the title"><meta property="og:type" content="website"><meta property="og:image" content="https://limerickhurling.wiki/assets/og.png"><link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Limerick">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
+<link rel="stylesheet" href="/mu.css?v=ab962e30"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">Road to the title<span></span></div></div></header>
+<nav class="munav" aria-label="Sections"></nav>
+<main id="main-content" tabindex="-1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<section class="sheet rdhead" id="head"><p class="note">Loading…</p></section>
+<section class="sheet" id="route" hidden></section>
+<section class="sheet" id="steps" hidden></section>
+<div class="two"><section class="sheet" id="scorers" hidden></section><section class="sheet" id="where" hidden></section></div>
+
+</main>
+<footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
+</div>
+<script>window.LH_V="ab962e30"</script><script src="/lh.js?v=ab962e30"></script>
+<script>
+(function(){
+LH.nav('Honours');
+var $=function(i){return document.getElementById(i)}, E=LH.esc;
+
+Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("honours"),LH.get("media"),LH.get("videos").catch(function(){return []})]).then(function(R){
+ var M=R[0],D=R[1],GR={},H=R[3].aishc.w.y.map(Number),cup=R[4].cups.filter(function(c){return c.h==="aishc"})[0],V={};
+ R[2].forEach(function(g){GR[g.s]=g}); R[5].forEach(function(v){V[v.m]=1});
+ var y=+(LH.q("y")||LH.ROADS[0]);
+ if(H.indexOf(y)<0){$("head").innerHTML='<p class="empty">Limerick didn\'t win the All-Ireland in '+E(y)+'. <a class="link" href="/honours/">Honours</a></p>';return}
+ document.title="Road to the title "+y+" · Limerick hurling"; $("from").innerHTML="Road to the title<span>"+y+"</span>";
+ var CO={MSHC:0,AISHC:1}, G=M.filter(function(m){return m.y===y&&m.cn in CO&&m.r}).map(function(m,i){m._i=i;return m}).sort(function(a,b){return a.d&&b.d?a.d.localeCompare(b.d):(CO[a.cn]-CO[b.cn])||a._i-b._i});
+ if(!G.length){$("head").innerHTML='<p class="empty">No games recorded for '+y+'.</p>';return}
+ // summary
+ var t=LH.tot(G),gu=0,pu=0,go=0,po=0; G.forEach(function(m){gu+=m.u[0];pu+=m.u[1];go+=m.o[0];po+=m.o[1]});
+ var prev=H.filter(function(x){return x<y}).pop(), crowd=0,crowdN=0,approx=false;
+ G.forEach(function(m){var a=(D[m.id]||{}).att; if(!a)return; var n=parseInt(a.split("(")[0].replace(/[^\d]/g,""),10); if(n>=100){crowd+=n;crowdN++; if(/~|c\.|approx|about/i.test(a))approx=true}});
+ var S={}; G.forEach(function(m){(m.sc||[]).forEach(function(s){var x=S[s[0]]=S[s[0]]||{n:s[0],g:0,p:0,gm:0}; x.g+=s[1];x.p+=s[2];x.gm++})});
+ var SL=Object.keys(S).map(function(k){return S[k]}).sort(function(a,b){return (b.g*3+b.p)-(a.g*3+a.p)||b.gm-a.gm}), top=SL[0];
+ var days=G[0].d&&G[G.length-1].d?Math.round((new Date(G[G.length-1].d)-new Date(G[0].d))/864e5):null;
+ $("head").innerHTML='<div class="rdtop"><div><div class="kick">All-Ireland champions</div><h1 class="rdh">'+y+'</h1>'+
+  '<p class="rdlead">'+(prev?'<span>Limerick\'s first All-Ireland since</span> <a class="link" href="/road/?y='+prev+'">'+prev+'</a>'+(y-prev>1?' · <span>'+(y-prev)+' years</span>':''):'<span>Limerick\'s first All-Ireland.</span>')+'</p>'+
+  '<p class="note" style="margin:6px 0 0"><span>'+G.length+' games</span>'+(days!=null?' · <span>'+LH.fmtD(G[0].d)+'</span> – <span>'+LH.fmtD(G[G.length-1].d)+'</span>':'')+'</p></div>'+
+  (cup?'<figure class="rdcup"><img class="photo" src="/assets/cups/'+cup.k+'.webp" alt="'+E(cup.t)+'" width="'+cup.w+'" height="'+cup.ht+'"><figcaption class="note">'+LH.credit(cup.c)+'</figcaption></figure>':'')+'</div>'+
+  '<div class="tiles">'+LH.stat("Record",t.w+"-"+t.d+"-"+t.l,"Won, drawn, lost")+LH.stat("Scored",gu+"-"+pu,(gu*3+pu)+" points value")+LH.stat("Conceded",go+"-"+po,(go*3+po)+" points value")+
+  (top?LH.stat("Top scorer",'<a class="tsv" href="/player/?p='+LH.slug(top.n)+'">'+E(top.n)+'</a>',top.g+"-"+top.p+" in "+top.gm+" games"):"")+(crowdN?LH.stat("Recorded crowds",crowd,approx?"Includes an estimate":""):"")+'</div>';
+ // route strip
+ function ab(r){r=r||"Game"; var m=r.match(/^Round (\d+)/i); if(m)return "R"+m[1]; return r.split(/[\s-]+/).map(function(w){return w[0]}).join("").toUpperCase()}
+ var CN={MSHC:"Munster",AISHC:"All-Ireland"}, CT={MSHC:"Munster championship",AISHC:"All-Ireland series"};
+ $("route").hidden=false; $("route").innerHTML='<h2>The route</h2><div class="route" role="list">'+G.map(function(m,i){return (i===0||G[i-1].cn!==m.cn?'<span class="rgrp">'+CN[m.cn]+'</span>':'')+'<a role="listitem" class="chip '+m.r+'" href="#g-'+m.id+'" title="'+E(CN[m.cn]+(m.rnd?" · "+m.rnd:"")+" v "+m.opp)+'">'+LH.crest(m.opp,22)+'<small>'+E(ab(m.rnd))+'</small><b>'+m.r+'</b></a>'}).join("")+'</div>';
+ // steps
+ function scl(sc){return sc&&sc.length?sc.slice().sort(function(a,b){return (b[1]*3+b[2])-(a[1]*3+a[2])}).map(function(s){return E(s[0])+' '+s[1]+'-'+s[2]}).join(", "):""}
+ function lscl(sc){return sc.slice().sort(function(a,b){return (b[1]*3+b[2])-(a[1]*3+a[2])}).map(function(s){return '<span class="si"><a href="/player/?p='+LH.slug(s[0])+'">'+E(s[0])+'</a> <span class="n">'+s[1]+'-'+s[2]+'</span></span>'}).join(", ")}
+ function short(sc,want){if(!sc||!sc.length)return ""; var g=0,p=0; sc.forEach(function(s){g+=s[1];p+=s[2]}); return g===want[0]&&p===want[1]?"":' <span class="note">(<span>the source lists</span> '+g+'-'+p+' <span>of</span> '+want[0]+'-'+want[1]+')</span>'}
+ var n=0;
+ $("steps").hidden=false; $("steps").innerHTML='<h2>Game by game</h2><ol class="road">'+G.map(function(m,i){var d=D[m.id]||{}, g=GR[m.g], hd=(i===0||G[i-1].cn!==m.cn)?'<li class="phase"><h3>'+CT[m.cn]+'</h3></li>':'';
+  var info=[m.d?E(LH.fmtD(m.d,true)):"",m.v?(g?'<a class="link" href="/ground/?g='+m.g+'">'+E(m.v)+'</a>':E(m.v)):"",d.att?'<span>Crowd</span> '+E(d.att.replace(/,/g,"")):"",d.ref?'<span>Referee</span> '+E(d.ref):""].filter(Boolean).join(" · ");
+  return hd+'<li class="step '+m.r+'" id="g-'+m.id+'"><span class="dot" aria-hidden="true">'+(++n)+'</span><div class="kick">'+E(CN[m.cn])+(m.rnd?' · '+E(m.rnd):'')+'</div>'+
+   (m.h==="A"?LH.board(m.opp,"Limerick",m):LH.board("Limerick",m.opp,m))+'<p class="note" style="margin:4px 0 10px">'+info+'</p>'+
+   (m.sc&&m.sc.length?'<p class="rdsc"><b>Limerick</b> '+lscl(m.sc)+short(m.sc,m.u)+'</p>':'<p class="note">Limerick scorers not recorded.</p>')+
+   (d.osc&&d.osc.length?'<details class="rdo"><summary>'+E(m.opp)+' <span>scorers</span></summary><p class="rdsc">'+scl(d.osc)+short(d.osc,m.o)+'</p></details>':'')+
+   '<p class="rdlinks"><a class="link" href="/match/?id='+m.id+'">Match page →</a>'+(V[m.id]?' <a class="vlink" href="/match/?id='+m.id+'#vid"><span class="vb" aria-hidden="true"></span>Video</a>':'')+'</p></li>'}).join("")+'</ol>';
+ // scorers
+ var bad=G.filter(function(m){var g=0,p=0;(m.sc||[]).forEach(function(s){g+=s[1];p+=s[2]}); return !m.sc||!m.sc.length||g!==m.u[0]||p!==m.u[1]});
+ $("scorers").hidden=false; $("scorers").innerHTML='<h2>Campaign scorers</h2><table class="mu"><thead><tr><th>Player</th><th class="n">Games</th><th class="n">Score</th><th class="n">Total</th></tr></thead><tbody>'+SL.map(function(s){return '<tr><td><a href="/player/?p='+LH.slug(s.n)+'">'+E(s.n)+'</a></td><td class="n">'+s.gm+'</td><td class="n">'+s.g+'-'+s.p+'</td><td class="n"><b>'+(s.g*3+s.p)+'</b></td></tr>'}).join("")+'</tbody></table>'+
+  '<p class="note" style="margin:10px 0 0">Games = games he scored in.'+(bad.length?' <span>Incomplete in the source:</span> '+bad.map(function(m){return '<a class="link" href="#g-'+m.id+'">v '+E(m.opp)+'</a>'}).join(", ")+'.':'')+'</p>';
+ // grounds and map
+ var GS=[],seen={}; G.forEach(function(m){if(!m.g)return; if(!seen[m.g]){seen[m.g]={s:m.g,n:m.v,c:0,L:[]};GS.push(seen[m.g])} seen[m.g].c++; seen[m.g].L.push(m)});
+ var pts=G.map(function(m){var g=GR[m.g]; return g&&g.f&&g.f.lat!=null?[g.f.lat,g.f.lon,m]:null}).filter(Boolean);
+ $("where").hidden=false; $("where").innerHTML='<h2>Where</h2>'+(pts.length?'<div id="rmap" class="gmap small"></div><p class="note" style="margin:6px 0 12px">Numbers follow the order of the games. Map © OpenStreetMap contributors.</p>':'')+
+  '<table class="mu"><thead><tr><th>Ground</th><th class="n">Games</th></tr></thead><tbody>'+GS.map(function(x){return '<tr><td><a href="/ground/?g='+x.s+'">'+E(GR[x.s]?GR[x.s].n:x.n)+'</a></td><td class="n">'+x.c+'</td></tr>'}).join("")+'</tbody></table>';
+ if(pts.length)(function map(){if(!window.L)return setTimeout(map,100); var css=getComputedStyle(document.documentElement), green=css.getPropertyValue("--red").trim()||"green", ink=css.getPropertyValue("--on-black").trim()||"white";
+  var mp=L.map("rmap",{scrollWheelZoom:false}); L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:"&copy; OpenStreetMap contributors"}).addTo(mp);
+  L.polyline(pts.map(function(p){return [p[0],p[1]]}),{color:green,weight:3,opacity:.7,dashArray:"6 6"}).addTo(mp);
+  var at={}; pts.forEach(function(p,i){var k=p[0]+","+p[1]; at[k]=(at[k]||[]).concat(i+1)});
+  Object.keys(at).forEach(function(k){var ll=k.split(",").map(Number), nums=at[k], m=pts[nums[0]-1][2];
+   L.marker(ll,{icon:L.divIcon({className:"rdpin",html:'<span style="background:'+green+';color:'+ink+'">'+nums.join(" ")+'</span>',iconSize:null})}).addTo(mp).bindPopup(E(m.v||"")+"<br>"+nums.map(function(x){var g=pts[x-1][2]; return x+'. <a href="#g-'+g.id+'">v '+E(g.opp)+'</a>'}).join("<br>"))});
+  mp.fitBounds(pts.map(function(p){return [p[0],p[1]]}),{padding:[30,30],maxZoom:10})})();
+}).catch(function(e){LH.fail($("head"))});
+
+})();
+</script></body></html>

@@ -27,3 +27,9 @@ Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/re
 - 8 videos from Richard's playlist on 6 games (2018 semi and final, 2020, 2021, 2022, 2023 finals). Match pages play them in place (youtube-nocookie, tap to play); /videos/ lists them by season; ▶ marker on result rows.
 - 2022 full game (IksdLKTa22I) has embedding off: shown as a link to YouTube. Clare v Cork 2024 (PoViqHOY-XY) left out, no Limerick.
 - Later 7 Nov: playlist grew to 27; 18 more added (2026 final and semi, Munster games 2018-2026, 2001 Munster quarter-final, 1996 final). 26 videos on 24 games. Label "Match video" where the uploader doesn't say full game or highlights (Joco Sports, Wilderness of Tigers, GAA 1996).
+
+## 11 Nov 2026: Road to the title
+- New page /road/?y=2018: header (first since 1973, record, scores, top scorer, crowds, cup photo), route strip, game-by-game timeline (stage, scoreboard, date, ground, crowd, referee, scorers, opposition scorers, video link, match page), campaign scorers, map of grounds in order.
+- Linked from honours (feature card and the 2018 year in the titles table) and from each 2018 Munster/All-Ireland match page. LH.ROADS = [2018].
+- 2018 name slips fixed in HAND: T Morrisey to Tom Morrissey, D O'Donnovan to Darragh O'Donovan. The 2018 final source lists only 3-15 of 3-16 for Limerick; the page says so.
+- Next candidates: 1973 and 1940 (all scorers add up), 2020 and 2021.

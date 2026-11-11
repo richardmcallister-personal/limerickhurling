@@ -304,7 +304,31 @@
 "No videos yet.": "Níl aon fhíseán fós.",
 "Loading…": "Á lódáil…",
 "Videos are YouTube uploads by the channels named, played here through YouTube. Tap a picture to play.": "Is iad na cainéil a ainmnítear a chuir na físeáin seo suas ar YouTube, agus seinntear anseo iad trí YouTube. Tapáil pictiúr chun é a sheinm.",
-"Match video": "Físeán an chluiche"
+"Match video": "Físeán an chluiche",
+"Road to the title": "An bóthar chun na craoibhe",
+"Limerick's first All-Ireland since": "An chéad Chraobh na hÉireann ag Luimneach ó",
+"Limerick's first All-Ireland.": "An chéad Chraobh na hÉireann ag Luimneach.",
+"Record": "Taifead",
+"Won, drawn, lost": "Buaite, comhscór, caillte",
+"Top scorer": "Príomhscórálaí",
+"Recorded crowds": "Sluaite taifeadta",
+"Includes an estimate": "Meastachán san áireamh",
+"The route": "An bealach",
+"Game by game": "Cluiche ar chluiche",
+"Munster championship": "Craobh na Mumhan",
+"All-Ireland series": "Sraith Chraobh na hÉireann",
+"Crowd": "Slua",
+"Referee": "Réiteoir",
+"scorers": "scórálaithe",
+"Limerick scorers not recorded.": "Níor taifeadadh scórálaithe Luimnigh.",
+"Campaign scorers": "Scórálaithe an fheachtais",
+"Games = games he scored in.": "Cluichí = na cluichí ar scóráil sé iontu.",
+"Incomplete in the source:": "Neamhiomlán san fhoinse:",
+"Where": "Cá háit",
+"Numbers follow the order of the games. Map © OpenStreetMap contributors.": "Leanann na huimhreacha ord na gcluichí. Léarscáil © rannpháirtithe OpenStreetMap.",
+"the source lists": "liostaíonn an fhoinse",
+"of": "as",
+"Follow the campaign game by game: opponents, grounds, scores and scorers.": "Lean an feachtas cluiche ar chluiche: céilí comhraic, páirceanna, scóir agus scórálaithe."
 },
 "patterns": [
 [
@@ -534,6 +558,34 @@
 [
 "^No player with that name\\.$",
 "Níl imreoir ann leis an ainm sin."
+],
+[
+"^(\\d+) years$",
+"$1 bliain"
+],
+[
+"^(\\d+) games$",
+"Cluichí: $1"
+],
+[
+"^(\\d+) points value$",
+"$1 de réir luach pointí"
+],
+[
+"^(\\d+-\\d+) in (\\d+) games$",
+"$1 (cluichí: $2)"
+],
+[
+"^(\\d{4}) All-Ireland$",
+"Craobh na hÉireann $1"
+],
+[
+"^Follow the (\\d{4}) run →$",
+"Lean feachtas $1 →"
+],
+[
+"^Road to the (\\d{4}) title →$",
+"An bóthar chun craobh $1 →"
 ]
 ],
 "blocks": {}
