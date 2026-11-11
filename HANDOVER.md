@@ -42,3 +42,7 @@ Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/re
 - 2026 Munster: Wikipedia has no scorers for Limerick's five games, so the page marks them not recorded and hides the top-scorer tile.
 - fetch_wiki.py User-Agent no longer carries Richard's email.
 - Footer from manutd.wiki: brand, Matchday / History / Explore / Official columns, Other sites (manutd.wiki, irelandfootball.wiki, irelandrugby.wiki, footballclub.wiki), on the masthead green.
+
+## 11 Nov 2026: How the score was made
+- Match page: new section under the scoreboard turns each side's goals-points into a total (2-18 = 2 goals x 3 + 18 points = 24), states the margin, and says when goals beat a side with more points (or the reverse). Uses the rule of the day for 1887-1895.
+- Scorer tables now show each player's points value and share of the side's total, with a stacked bar; any gap between the source's scorers and the final score shows as "Not in the source". Scorers sit straight after the explanation; the video moved below them.

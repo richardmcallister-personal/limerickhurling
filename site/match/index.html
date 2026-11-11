@@ -7,19 +7,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 <script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
-<link rel="stylesheet" href="/mu.css?v=c26c3ed6"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<link rel="stylesheet" href="/mu.css?v=385a6e05"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
 <header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">Match<span></span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
 <section class="sheet" id="head"></section>
-<section class="sheet" id="vid" hidden style="scroll-margin-top:calc(var(--mast,60px) + 12px)"></section>
+<section class="sheet" id="how" hidden></section>
 <div class="two"><section class="sheet" id="us"></section><section class="sheet" id="them"></section></div>
+<section class="sheet" id="vid" hidden style="scroll-margin-top:calc(var(--mast,60px) + 12px)"></section>
 <section class="sheet" id="prev"></section>
 
 </main>
 <footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
-<script>window.LH_V="c26c3ed6"</script><script src="/lh.js?v=c26c3ed6"></script>
+<script>window.LH_V="385a6e05"</script><script src="/lh.js?v=385a6e05"></script>
 <script>
 (function(){
 LH.nav('Results');
@@ -33,9 +34,42 @@ Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("videos
  var info=[m.d?LH.fmtD(m.d,true):m.y,m.v,D.loc&&(m.v||"").indexOf(D.loc)<0?D.loc:"",D.att?"Attendance "+D.att.replace(/,/g,""):"",D.ref?"Referee "+D.ref:"",D.tv?"TV "+D.tv:""].filter(Boolean);
  $("head").innerHTML='<div class="kick">'+E(LH.comp(m.cn))+(m.rnd?' · '+E(m.rnd):'')+'</div>'+(m.h==="A"?LH.board(m.opp,"Limerick",m):LH.board("Limerick",m.opp,m))+(m.r?'':'<p class="sbmeta">'+E(m.wo||"")+'</p>')+'<p class="note" style="margin:10px 0 0">'+info.map(function(x){return x===m.v&&m.g?'<a class="link" href="/ground/?g='+m.g+'">'+E(x)+'</a>':E(x)}).join(" · ")+'</p>'+(m.cn2?'<p class="note" style="margin:8px 0 0"><span>Also</span>: <span>'+E(LH.comp(m.cn2))+'</span>'+(m.rnd2?' · <span>'+E(m.rnd2)+'</span>':'')+'</p>':'')+(road?'<p style="margin:10px 0 0"><a class="link" href="/road/?y='+m.y+'#g-'+m.id+'">Road to the '+m.y+' title →</a></p>':'')+(function(){var g=R[2].filter(function(x){return x.s===m.g})[0]; return g&&g.c?'<img class="photo" style="margin-top:12px;max-height:320px" src="/assets/grounds/'+g.ph+'.webp" alt="'+E(g.n)+'" width="'+g.iw+'" height="'+g.ih+'" loading="lazy"><p class="note" style="margin:6px 0 0">'+LH.credit(g.c,g.n+'. Not necessarily taken at this match.')+'</p>':""})();
  var V=R[3].filter(function(v){return v.m===id}).sort(function(a,b){var o={highlights:0,video:1,full:2}; return o[a.k]-o[b.k]}); if(V.length){$("vid").hidden=false; $("vid").innerHTML='<h2 class="row">'+(V.length>1?"Videos":"Video")+' <a href="/videos/">All videos →</a></h2>'+V.map(LH.video).join("")}
- function tbl(sc,link){return sc&&sc.length?'<table class="mu"><tbody>'+sc.slice().sort(function(a,b){return (b[1]*3+b[2])-(a[1]*3+a[2])}).map(function(s){return '<tr><td>'+(link?'<a href="/player/?p='+LH.slug(s[0])+'">'+E(s[0])+'</a>':E(s[0]))+'</td><td class="n">'+s[1]+'-'+s[2]+'</td></tr>'}).join("")+'</tbody></table>':'<p class="note" style="margin:0">Not recorded.</p>'}
- function chk(sc,want){if(!sc||!sc.length||!want||want[0]==null)return ""; var g=0,p=0; sc.forEach(function(s){g+=s[1];p+=s[2]}); return g===want[0]&&p===want[1]?"":'<p class="note" style="margin:8px 0 0">The source\'s scorers add to '+g+'-'+p+', not '+want[0]+'-'+want[1]+'.</p>'}
- $("us").innerHTML='<h2>Limerick scorers</h2>'+tbl(m.sc,1)+chk(m.sc,m.u); $("them").innerHTML='<h2>'+LH.crest(m.opp,20)+E(m.opp)+' scorers</h2>'+tbl(D.osc)+chk(D.osc,m.o);
+ var gv=LH.gv(m.y);
+ function pts(n,w){return n+' '+(n===1?w:w+'s')}
+ // How the score was made: each side's goals and points turned into one total, then the margin
+ if(m.r&&m.u&&m.u[0]!=null){
+  var sides=[["Limerick",m.u],[m.opp,m.o]]; if(m.h==="A")sides.reverse();
+  var rows=sides.map(function(t){var g=t[1][0],p=t[1][1];
+   return '<div class="hrow"><div class="hteam">'+LH.crest(t[0],24)+'<span>'+E(t[0])+'</span></div><div class="hsum"><span class="hgp">'+g+'-'+p+'</span><span class="heq">=</span>'+
+    '<span class="hpart"><b>'+g+'</b> <span>'+(g===1?"goal":"goals")+'</span>'+(gv?' <span class="hx">× '+gv+' = '+(g*gv)+'</span>':'')+'</span><span class="heq">+</span><span class="hpart"><b>'+p+'</b> <span>'+(p===1?"point":"points")+'</span></span>'+
+    '</div>'+(gv?'<div class="htot"><span class="heq">=</span>'+(g*gv+p)+'</div>':'')+'</div>'}).join("");
+  var W=m.r==="W"?["Limerick",m.u,m.opp,m.o]:m.r==="L"?[m.opp,m.o,"Limerick",m.u]:null, line="",extra="";
+  if(gv){var a=m.u[0]*gv+m.u[1];
+   if(!W)line="A draw, "+a+" points each";
+   else{var d=(W[1][0]*gv+W[1][1])-(W[3][0]*gv+W[3][1]); line=W[0]+" won by "+pts(d,"point");
+    if(W[1][1]<W[3][1]&&W[1][0]>W[3][0])extra=W[2]+" scored more points, "+W[3][1]+" to "+W[1][1]+", but goals made the difference: "+W[1][0]+" to "+W[3][0]+".";
+    else if(W[1][0]<W[3][0])extra=W[2]+" scored more goals, "+W[3][0]+" to "+W[1][0]+", but "+W[0]+" scored more points, "+W[1][1]+" to "+W[3][1]+".";}
+  }else{ if(!W)line="A draw";
+   else if(W[1][0]!==W[3][0])line=W[0]+" won on goals, "+W[1][0]+" to "+W[3][0];
+   else line=W[0]+" won on points, "+W[1][1]+" to "+W[3][1]+", with goals level";}
+  var rule=gv===3?"A goal, into the net under the bar, is worth 3 points. A point, over the bar, is worth 1. Add them up: the higher total wins.":gv===5?"From 1892 to 1895 a goal was worth 5 points; it has been worth 3 since 1896. A point, over the bar, is worth 1.":"Until 1892 a goal outweighed any number of points: goals were compared first, and points only counted when the goals were level.";
+  $("how").hidden=false; $("how").innerHTML='<h2>How the score was made</h2><div class="hgrid">'+rows+'</div><p class="hres '+m.r+'">'+E(line)+'</p>'+(extra?'<p class="hextra">'+E(extra)+'</p>':'')+'<p class="note" style="margin:10px 0 0">'+rule+'</p>';
+ }
+ // Who scored what: each player's goals and points, their points value and share of the side's total
+ function contrib(sc,want,link,side){if(!sc||!sc.length)return '<p class="note" style="margin:0">Not recorded.</p>';
+  var L=sc.slice().sort(function(a,b){return (b[1]*(gv||3)+b[2])-(a[1]*(gv||3)+a[2])}), sg=0,sp=0; L.forEach(function(s){sg+=s[1];sp+=s[2]});
+  function nm(s){return link?'<a href="/player/?p='+LH.slug(s[0])+'">'+E(s[0])+'</a>':E(s[0])}
+  if(!gv)return '<table class="mu"><tbody>'+L.map(function(s){return '<tr><td>'+nm(s)+'</td><td class="n">'+s[1]+'-'+s[2]+'</td></tr>'}).join("")+'</tbody></table>';
+  var tot=want&&want[0]!=null?want[0]*gv+want[1]:sg*gv+sp, rec=sg*gv+sp, miss=Math.max(0,tot-rec), base=Math.max(tot,rec);
+  var segs=L.map(function(s,i){return {n:s[0],v:s[1]*gv+s[2],c:i<6?"c"+i:"co"}}); if(miss)segs.push({n:"Not in the source",v:miss,c:"cx"});
+  var bar='<div class="cbar '+side+'" role="img" aria-label="Share of the total by player">'+segs.map(function(x){return '<span class="'+x.c+'" style="flex:'+x.v+' 1 0" title="'+E(x.n)+': '+x.v+'"></span>'}).join("")+'</div>';
+  var mx=Math.max.apply(null,L.map(function(s){return s[1]*gv+s[2]}).concat([miss]));
+  function row(lab,cls,score,v){var pc=Math.round(100*v/base), bw=Math.round(100*v/mx); return '<tr'+(cls==="cx"?' class="miss"':'')+'><td><span class="sw '+cls+'" aria-hidden="true"></span>'+lab+'</td><td class="n">'+score+'</td><td class="n"><b>'+v+'</b></td><td class="sh"><span class="shb '+side+'"><i style="width:'+bw+'%"></i></span><span class="n">'+pc+'%</span></td></tr>'}
+  var top=L[0], tv=top[1]*gv+top[2];
+  var tbl='<table class="mu ctab '+side+'"><thead><tr><th>Player</th><th class="n">Score</th><th class="n">Value</th><th class="sh">Share</th></tr></thead><tbody>'+L.map(function(s,i){return row(nm(s),i<6?"c"+i:"co",s[1]+'-'+s[2],s[1]*gv+s[2])}).join("")+(miss?row('<span>Not in the source</span>',"cx","",miss):'')+'</tbody></table>';
+  var over=rec>tot?'<p class="note" style="margin:8px 0 0">The source\'s scorers add to '+sg+'-'+sp+', not '+want[0]+'-'+want[1]+'.</p>':'';
+  return bar+'<p class="ctop">'+E("Top scorer: "+top[0]+", "+tv+" of "+tot+" points ("+Math.round(100*tv/base)+"%)")+'</p>'+tbl+over}
+ $("us").innerHTML='<h2>Limerick scorers</h2>'+contrib(m.sc,m.u,1,"us"); $("them").innerHTML='<h2>'+LH.crest(m.opp,20)+E(m.opp)+' scorers</h2>'+contrib(D.osc,m.o,0,"opp");
  var P=R[0].filter(function(x){return x.opp===m.opp&&x.id!==id&&x.r}).slice().reverse().slice(0,6);
  $("prev").innerHTML='<h2>Other meetings</h2>'+LH.list(P,{nov:1})+'<p style="margin:10px 0 0"><a class="link" href="/opponent/?o='+LH.slug(m.opp)+'">Full record v '+E(m.opp)+' →</a> · <a class="link" href="https://en.wikipedia.org/wiki/'+encodeURIComponent((D.src||"").replace(/ /g,"_"))+'">Source article</a></p>';
 }).catch(function(){LH.fail($("head"))});

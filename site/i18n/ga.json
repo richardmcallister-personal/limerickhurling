@@ -340,7 +340,20 @@
 "This season": "An séasúr seo",
 "Fixtures in your calendar": "Cluichí i d'fhéilire",
 "An independent fan site about Limerick's senior hurlers.": "Suíomh neamhspleách lucht leanúna faoi iománaithe sinsir Luimnigh.",
-"Data: Wikipedia (CC BY-SA), YouTube, OpenStreetMap.": "Sonraí: Vicipéid (CC BY-SA), YouTube, OpenStreetMap."
+"Data: Wikipedia (CC BY-SA), YouTube, OpenStreetMap.": "Sonraí: Vicipéid (CC BY-SA), YouTube, OpenStreetMap.",
+"How the score was made": "Conas a rinneadh an scór",
+"goal": "cúl",
+"goals": "cúil",
+"point": "pointe",
+"points": "pointí",
+"Value": "Luach",
+"Share": "Cion",
+"Not in the source": "Níl san fhoinse",
+"A draw": "Comhscór",
+"Share of the total by player": "Cion gach imreora den iomlán",
+"A goal, into the net under the bar, is worth 3 points. A point, over the bar, is worth 1. Add them up: the higher total wins.": "Is fiú trí phointe cúl, isteach sa líontán faoin trasnán. Is fiú pointe amháin pointe, thar an trasnán. Cuir le chéile iad: buann an t-iomlán is airde.",
+"From 1892 to 1895 a goal was worth 5 points; it has been worth 3 since 1896. A point, over the bar, is worth 1.": "Ó 1892 go 1895 b'fhiú cúig phointe cúl; is fiú trí phointe é ó 1896 i leith. Is fiú pointe amháin pointe, thar an trasnán.",
+"Until 1892 a goal outweighed any number of points: goals were compared first, and points only counted when the goals were level.": "Go dtí 1892 ba mhó cúl ná aon líon pointí: cuireadh na cúil i gcomparáid ar dtús, agus níor áiríodh na pointí ach nuair a bhí na cúil cothrom."
 },
 "patterns": [
 [
@@ -598,6 +611,34 @@
 [
 "^Road to the (\\d{4}) title →$",
 "An bóthar chun craobh $1 →"
+],
+[
+"^(.+) won by (\\d+) points?$",
+"Bhuaigh {T1} le $2 pointe"
+],
+[
+"^A draw, (\\d+) points each$",
+"Comhscór, $1 pointe an taobh"
+],
+[
+"^(.+) scored more points, (\\d+) to (\\d+), but goals made the difference: (\\d+) to (\\d+)\\.$",
+"Scóráil {T1} níos mó pointí, $2 in aghaidh $3, ach rinne na cúil an difríocht: $4 in aghaidh $5."
+],
+[
+"^(.+) scored more goals, (\\d+) to (\\d+), but (.+) scored more points, (\\d+) to (\\d+)\\.$",
+"Scóráil {T1} níos mó cúl, $2 in aghaidh $3, ach scóráil {T4} níos mó pointí, $5 in aghaidh $6."
+],
+[
+"^(.+) won on goals, (\\d+) to (\\d+)$",
+"Bhuaigh {T1} ar chúil, $2 in aghaidh $3"
+],
+[
+"^(.+) won on points, (\\d+) to (\\d+), with goals level$",
+"Bhuaigh {T1} ar phointí, $2 in aghaidh $3, agus na cúil cothrom"
+],
+[
+"^Top scorer: (.+), (\\d+) of (\\d+) points \\((\\d+)%\\)$",
+"Príomhscórálaí: $1, $2 as $3 pointe ($4%)"
 ]
 ],
 "blocks": {}

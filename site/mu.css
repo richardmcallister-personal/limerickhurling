@@ -528,3 +528,33 @@ body:has(footer.mu.big){padding-bottom:0} footer.mu.big{padding-bottom:96px} @me
 html,body{overflow-x:clip}
 footer.mu.big .themesw button{background:transparent;color:var(--foot-muted)} footer.mu.big .themesw button[aria-pressed="true"]{background:rgba(255,255,255,.2);color:var(--on-black)}
 @media (min-width:641px){footer.mu.big{padding-bottom:40px}}
+/* How the score was made */
+.hgrid{display:grid;gap:10px;margin:4px 0 14px}
+.hrow{display:grid;grid-template-columns:minmax(0,180px) auto auto;justify-content:start;gap:12px;align-items:center;padding:12px 14px;border-radius:10px;background:var(--tint)}
+.hteam{display:flex;align-items:center;gap:8px;font-weight:600;min-width:0}.hteam span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hsum{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;font-variant-numeric:tabular-nums}
+.hgp{font-family:var(--score);font-size:26px;line-height:1}
+.heq{color:var(--muted);font-weight:600}
+.hpart b{font-size:18px}.hpart{white-space:nowrap}.hx{color:var(--muted);font-size:14px}
+.htot{font-family:var(--score);font-size:26px;line-height:1;color:var(--red-ink);display:flex;align-items:baseline;gap:10px}.htot .heq{font-family:var(--body,inherit);font-size:15px}
+.hres{font-size:18px;font-weight:700;margin:0;padding-left:12px;border-left:4px solid var(--draw)}
+.hres.W{border-left-color:var(--win)}.hres.L{border-left-color:var(--loss)}
+.hextra{margin:6px 0 0;padding-left:16px}
+@media (max-width:640px){.hrow{grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;padding:10px 12px}.hsum{grid-column:1/-1;grid-row:2;gap:4px 8px}.htot{grid-column:2;grid-row:1}.htot .heq{display:none}.hgp,.htot{font-size:22px}.hpart b{font-size:16px}}
+@media (max-width:640px){.ctab th.sh,.ctab td.sh{width:auto}.ctab .shb{display:none}.ctab td.sh .n{width:auto}}
+/* Who scored what */
+.cbar{display:flex;gap:2px;height:16px;border-radius:6px;overflow:hidden;margin:2px 0 10px;background:var(--paper)}
+.cbar span{min-width:3px}
+:is(.cbar,.ctab).us :is(.c0,.c1,.c2,.c3,.c4,.c5){background:var(--red)}
+:is(.cbar,.ctab).opp :is(.c0,.c1,.c2,.c3,.c4,.c5){background:var(--ink)}
+:is(.cbar,.ctab) .c1{opacity:.82}:is(.cbar,.ctab) .c2{opacity:.68}:is(.cbar,.ctab) .c3{opacity:.56}:is(.cbar,.ctab) .c4{opacity:.46}:is(.cbar,.ctab) .c5{opacity:.38}
+:is(.cbar,.ctab) .co{background:var(--muted);opacity:.4}
+:is(.cbar,.ctab) .cx{background:repeating-linear-gradient(135deg,var(--rule) 0 4px,transparent 4px 8px);box-shadow:inset 0 0 0 1px var(--rule)}
+.ctop{margin:0 0 8px;font-size:14px;color:var(--muted)}
+.ctab .sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px;vertical-align:middle}
+.ctab th.sh,.ctab td.sh{width:34%}
+.ctab td.sh{white-space:nowrap}
+.shb{display:inline-block;width:calc(100% - 46px);height:6px;border-radius:3px;background:var(--tint);vertical-align:middle;overflow:hidden}
+.shb i{display:block;height:100%;background:var(--red)}.shb.opp i{background:var(--ink);opacity:.6}
+.ctab td.sh .n{display:inline-block;width:40px;text-align:right;font-size:13px;color:var(--muted)}
+.ctab tr.miss td{color:var(--muted)}
