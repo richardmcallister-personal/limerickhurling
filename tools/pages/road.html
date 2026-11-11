@@ -11,7 +11,7 @@
 Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("honours"),LH.get("media"),LH.get("videos").catch(function(){return []})]).then(function(R){
  var M=R[0],D=R[1],GR={},H=R[3].aishc.w.y.map(Number),cup=R[4].cups.filter(function(c){return c.h==="aishc"})[0],V={};
  R[2].forEach(function(g){GR[g.s]=g}); R[5].forEach(function(v){V[v.m]=1});
- var y=+(LH.q("y")||LH.ROADS[0]);
+ var y=+(LH.q("y")||LH.ROADS[LH.ROADS.length-1]);
  if(H.indexOf(y)<0){$("head").innerHTML='<p class="empty">Limerick didn\'t win the All-Ireland in '+E(y)+'. <a class="link" href="/honours/">Honours</a></p>';return}
  document.title="Road to the title "+y+" · Limerick hurling"; $("from").innerHTML="Road to the title<span>"+y+"</span>";
  var CO={MSHC:0,AISHC:1}, G=M.filter(function(m){return m.y===y&&(m.cn in CO||m.cn2 in CO)&&m.r}).map(function(m,i){m=Object.assign({},m); m._i=i; if(!(m.cn in CO)){m._also=m.cn;m._alsoR=m.rnd;m.cn=m.cn2;m.rnd=m.rnd2} return m}).sort(function(a,b){return a.d&&b.d?a.d.localeCompare(b.d):(CO[a.cn]-CO[b.cn])||a._i-b._i});
