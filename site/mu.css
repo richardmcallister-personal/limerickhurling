@@ -586,3 +586,5 @@ footer.mu.big .themesw button{background:transparent;color:var(--foot-muted)} fo
 .clsub{display:block;font-size:12px;color:var(--muted);text-decoration:none;margin:1px 0 0 18px}.clsub:hover{text-decoration:underline}
 .dgrid tbody th,.dgrid thead th:first-child{position:sticky;left:0;z-index:1;background:var(--paper)}
 .cltab td.n,.mu td.n{white-space:nowrap}
+.badge{display:inline-block;vertical-align:middle;flex:none;margin-right:7px;position:relative;top:-1px;color:var(--ink)}
+.clubhead{display:flex;align-items:center;gap:16px}.clubhead .badge{margin:0}

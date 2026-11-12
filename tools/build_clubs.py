@@ -56,6 +56,7 @@ def clubname(s):
     return CLUBFIX.get(s.strip(), s.strip())
 
 people = []
+LINKS = {}
 for title, v in sorted(A.items()):
     F = infobox(v['text'])
     if not F: rep.append(f'no infobox: {title}'); continue
@@ -69,6 +70,8 @@ for title, v in sorted(A.items()):
     up = re.search(r'(20\d\d)', F.get('ic_update', ''))
     stale = bool(ly and ly[1] == NOW and re.search(r'present', F.get('ic_years', ''), re.I) and up and int(up.group(1)) < NOW - 1)
     if stale: ly[1] = int(up.group(1))                  # "present" in an infobox last updated years ago
+    for tgt, lab in re.findall(r'\[\[([^\]|#]+)(?:\|([^\]]*))?\]\]', F.get('club', '') or F.get('clubs', '')):
+        LINKS.setdefault(clubname(lab or tgt), set()).add(tgt.strip())
     cl, cly = parts(F.get('club', '') or F.get('clubs', '')), parts(F.get('cl_years', ''))
     clubs = []
     for i, c in enumerate(cl):
@@ -131,6 +134,36 @@ for c in CL.values():
     c['f'] = min(y[0] for y in ys) if ys else None; c['l'] = max(y[1] for y in ys) if ys else None
     arch = [APS[p['a']] for p in ps if p.get('a')]
     c['g'] = sum(a['g'] for a in arch); c['pt'] = sum(a['p'] for a in arch); c['ai'] = sum(p['ai'] for p in ps)
+# colours for the club badges, from each club's Wikipedia infobox (colour boxes, else kit colours, else colour words)
+import os
+CA = json.load(open('tools/data/players/club_articles.json')) if os.path.exists('tools/data/players/club_articles.json') else {}
+NAMED = {'green': '#00843d', 'white': '#ffffff', 'red': '#d0021b', 'blue': '#0047ab', 'navy': '#1f2a5c', 'sky blue': '#6cace4', 'gold': '#f2b705', 'yellow': '#ffd700',
+         'amber': '#ffbf00', 'black': '#111111', 'maroon': '#7a1f2b', 'purple': '#5b2a86', 'orange': '#f28c00', 'saffron': '#f4c430', 'claret': '#7f1734', 'grey': '#8a8d91'}
+def colours(t):
+    m = re.search(r'\|\s*colou?rs\s*=([^\n]*)', t)
+    v = m.group(1) if m else ''
+    h = re.findall(r'#([0-9A-Fa-f]{6})\b', v)
+    if h: return ['#' + x.lower() for x in h][:3]
+    kit = [re.search(r'\|\s*' + k + r'\s*=\s*#?([0-9A-Fa-f]{6})\b', t) for k in ('body', 'leftarm', 'shorts', 'socks')]
+    kit = ['#' + x.group(1).lower() for x in kit if x]
+    if kit: return list(dict.fromkeys(kit))[:3]
+    words = re.findall(r'sky blue|' + '|'.join(sorted(NAMED, key=len, reverse=True)), clean(v).lower())
+    return [NAMED[w] for w in dict.fromkeys(words)][:3]
+def article(n):
+    first = fold(re.split(r'[-/ ]', n)[0])
+    ts = sorted(LINKS.get(n, []), key=lambda x: (0 if 'Limerick' in x else 1))
+    for t in ts:
+        t2 = CA.get('->' + t, t)
+        if t2 in CA and first in fold(t2): return t2
+    return None
+for c in CL.values():
+    a = article(c['n'])
+    if a: c['wa'] = a; c['col'] = colours(CA[a])
+    w = [x for x in re.split(r"[\s/-]+", c['n'].replace("'s", "s")) if x and x[0].isalpha() and x.lower() not in ('st', 'na', 'gaa', 'the')]
+    c['ab'] = (w[0][:1] + (w[1][:1] if len(w) > 1 else '')).upper() if w else c['n'][:2].upper()
+    if c['n'].startswith('Na '): c['ab'] = 'NP' if 'Piarsaigh' in c['n'] else c['ab']
+    if c['n'].startswith('St '): c['ab'] = 'S' + c['ab'][:1]
+    if not c.get('col'): rep.append(f"no colours: {c['n']} ({a or 'no article'})")
 out = dict(players=people, clubs=sorted(CL.values(), key=lambda c: (-len(c['p']), c['n'])))
 json.dump(out, open('site/history/clubs.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 linked = sum(1 for p in people if p.get('a'))

@@ -42,7 +42,7 @@ Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("videos
   var L=sc.slice().sort(function(a,b){return (b[1]*(gv||3)+b[2])-(a[1]*(gv||3)+a[2])}), sg=0,sp=0; L.forEach(function(s){sg+=s[1];sp+=s[2]});
   var XC=R[4]?LH.clubIdx(R[4]):null;
   function nm(s){if(!link)return E(s[0]); var w=XC&&XC.of(s[0]), c=w&&w.cl[0], k=c&&XC.S[LH.slug(c)];
-   return '<a href="/player/?p='+LH.slug(s[0])+'">'+E(s[0])+'</a>'+(c?'<a class="clsub" href="/club/?c='+(k?k.s:'')+'">'+E(c)+'</a>':'')}
+   return '<a href="/player/?p='+LH.slug(s[0])+'">'+E(s[0])+'</a>'+(c?'<a class="clsub" href="/club/?c='+(k?k.s:'')+'">'+LH.badge(k,11)+E(c)+'</a>':'')}
   if(!gv)return '<table class="mu"><tbody>'+L.map(function(s){return '<tr><td>'+nm(s)+'</td><td class="n">'+s[1]+'-'+s[2]+'</td></tr>'}).join("")+'</tbody></table>';
   var tot=want&&want[0]!=null?want[0]*gv+want[1]:sg*gv+sp, rec=sg*gv+sp, miss=Math.max(0,tot-rec), base=Math.max(tot,rec);
   var segs=L.map(function(s,i){return {n:s[0],v:s[1]*gv+s[2],c:i<6?"c"+i:"co"}}); if(miss)segs.push({n:"Not in the source",v:miss,c:"cx"});

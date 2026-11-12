@@ -1,5 +1,6 @@
 """Download the Wikipedia articles of Limerick inter-county hurlers (Category:Limerick inter-county hurlers)
-to tools/data/players/. Their infoboxes give club, club years, county years and position; build_clubs.py reads them."""
+to tools/data/players/, then the club articles their infoboxes link to (club_articles.json: colours for the badges).
+`--clubs` skips the players and fetches only the clubs. build_clubs.py reads both."""
 import json, time, urllib.request, urllib.parse, urllib.error, os
 UA = 'limerickhurling.wiki data builder (fan site)'
 OUT = 'tools/data/players/'
@@ -12,7 +13,21 @@ def api(**q):
             if e.code == 429: time.sleep(int(e.headers.get('Retry-After', 15))); continue
             raise
     raise SystemExit('Wikipedia kept refusing; try again later')
+import re, sys
 os.makedirs(OUT, exist_ok=True)
+def clubs():
+    A = json.load(open(OUT + 'articles.json'))
+    T = sorted({t.strip() for v in A.values() for t in re.findall(r'\[\[([^\]|#]+)(?:\|[^\]]*)?\]\]', (re.search(r'\|\s*clubs?\s*=(.*)', v['text']) or [None, ''])[1]) if 'GAA' in t or 'Club' in t or 'Hurling' in t})
+    out = {}
+    for i in range(0, len(T), 40):
+        d = api(action='query', prop='revisions', rvprop='content', rvslots='main', titles='|'.join(T[i:i + 40]), redirects='1')
+        for r in d['query'].get('redirects', []): out.setdefault('->' + r['from'], r['to'])
+        for p in d['query']['pages']:
+            if 'revisions' in p: out[p['title']] = p['revisions'][0]['slots']['main']['content'][:6000]
+        time.sleep(3)
+    json.dump(out, open(OUT + 'club_articles.json', 'w'), ensure_ascii=False)
+    print(len([k for k in out if not k.startswith('->')]), 'club articles')
+if '--clubs' in sys.argv: clubs(); raise SystemExit
 T, c = [], None
 while True:
     q = dict(action='query', list='categorymembers', cmtitle='Category:Limerick inter-county hurlers', cmlimit='500', cmtype='page')
@@ -29,3 +44,4 @@ for i in range(0, len(T), 40):
     time.sleep(2)
 json.dump(out, open(OUT + 'articles.json', 'w'), ensure_ascii=False)
 print(len(out), 'player articles')
+clubs()

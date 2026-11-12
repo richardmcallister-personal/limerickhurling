@@ -31,6 +31,12 @@ LH.clubIdx=function(C){var A={},S={},W={}; C.players.forEach(function(p){if(p.a)
   return {A:A,S:S,W:W,of:function(name){return A[slug(name)]},
    on:function(y){return C.players.filter(function(p){return p.y&&p.y[0]<=y&&y<=p.y[1]})},
    wiki:function(p){return "https://en.wikipedia.org/wiki/"+encodeURIComponent(p.w.replace(/ /g,"_"))}}};
+/* Club badge: a shield in the club's colours (from its Wikipedia infobox) with its initials. Not the club's crest. */
+LH.badge=function(c,size){size=size||20; if(!c)return ""; var k=c.col||[], h=Math.round(size*46/40),
+  L="M2 2H20V44C11 41.5 2 35 2 24Z", R="M20 2H38V24C38 35 29 41.5 20 44Z", S="M2 2H38V24C38 35 29 41.5 20 44C11 41.5 2 35 2 24Z", t=c.ab||"", fs=t.length>1?13:17;
+  var body=k.length?(k.length>1?'<path d="'+L+'" fill="'+k[0]+'"/><path d="'+R+'" fill="'+k[1]+'"/>':'<path d="'+S+'" fill="'+k[0]+'"/>'):'<path d="'+S+'" style="fill:var(--tint)"/>';
+  return '<svg class="badge" width="'+size+'" height="'+h+'" viewBox="0 0 40 46" aria-hidden="true">'+body+'<path d="'+S+'" fill="none" stroke="currentColor" stroke-opacity=".28" stroke-width="1.5"/>'+
+   (size<28?'':'<text x="20" y="'+(t.length>1?28:30)+'" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="'+fs+'"'+(k.length?' fill="#fff" stroke="rgba(0,0,0,.55)" stroke-width="2.4" paint-order="stroke"':' style="fill:var(--muted)"')+'>'+esc(t)+'</text>')+'</svg>'};
 LH.list=function(L,opt){return L.length?'<ul class="mlist">'+L.map(function(m){return LH.row(m,opt)}).join("")+'</ul>':'<p class="empty">Nothing here.</p>'};
 LH.tot=function(L){var t={p:0,w:0,d:0,l:0,gf:0,ga:0}; L.forEach(function(m){if(!m.r)return; t.p++; t[m.r.toLowerCase()]++; t.gf+=m.gf; t.ga+=m.ga}); return t};
 LH.stat=function(k,v,s){return '<div class="stat"><div class="k">'+esc(k)+'</div><div class="v">'+v+'</div>'+(s?'<div class="s">'+s+'</div>':'')+'</div>'};

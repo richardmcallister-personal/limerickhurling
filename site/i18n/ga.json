@@ -405,7 +405,9 @@
 "Wing-back": "Leathchúlaí",
 "Corner-back": "Cúinne-chúlaí",
 "Wing-forward": "Leath-thosaí",
-"Corner-forward": "Cúinne-thosaí"
+"Corner-forward": "Cúinne-thosaí",
+"Clubs and county years come from the players' Wikipedia pages (Category: Limerick inter-county hurlers), so only players with a page are counted, at the club they played for while with Limerick. Scores come from the archive and count only scorers linked to a page; some older names were linked by initial and surname. Badges are drawn in each club's colours from its Wikipedia page; they are not the clubs' crests.": "Tagann na clubanna agus na blianta contae ó leathanaigh Vicipéide na n-imreoirí (Catagóir: iománaithe idirchontae Luimnigh), mar sin ní áirítear ach imreoirí a bhfuil leathanach acu, faoin gclub ar imir siad leis agus iad le Luimneach. Tagann na scóir ón gcartlann agus ní áirítear ach scórálaithe atá nasctha le leathanach; nascadh roinnt ainmneacha níos sine de réir túslitreach agus sloinne. Tá na suaitheantais tarraingthe i ndathanna gach club óna leathanach Vicipéide; ní hiad suaitheantais oifigiúla na gclub iad.",
+"Players and their years with Limerick come from their Wikipedia pages; only players with a page are listed. Scores come from the archive. The badge is drawn in the club's colours from Wikipedia; it is not the club's crest.": "Tagann na himreoirí agus a mblianta le Luimneach ó a leathanaigh Vicipéide; ní liostaítear ach imreoirí a bhfuil leathanach acu. Tagann na scóir ón gcartlann. Tá an suaitheantas tarraingthe i ndathanna an chlub ó Vicipéid; ní hé suaitheantas oifigiúil an chlub é."
 },
 "patterns": [
 [

@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 <script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
-<link rel="stylesheet" href="/mu.css?v=36709d88"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<link rel="stylesheet" href="/mu.css?v=24ad997f"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
 <header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">Club<span></span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
@@ -15,12 +15,12 @@
 <section class="sheet" id="time" hidden></section>
 <section class="sheet" id="pl" hidden></section>
 <section class="sheet" id="comp" hidden></section>
-<p class="note" style="margin:12px 4px">Players and their years with Limerick come from their Wikipedia pages; only players with a page are listed. Scores come from the archive. <a class="link" href="/clubs/">All clubs</a></p>
+<p class="note" style="margin:12px 4px">Players and their years with Limerick come from their Wikipedia pages; only players with a page are listed. Scores come from the archive. The badge is drawn in the club's colours from Wikipedia; it is not the club's crest. <a class="link" href="/clubs/">All clubs</a></p>
 
 </main>
 <footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
-<script>window.LH_V="36709d88"</script><script src="/lh.js?v=36709d88"></script>
+<script>window.LH_V="24ad997f"</script><script src="/lh.js?v=24ad997f"></script>
 <script>
 (function(){
 LH.nav('More');
@@ -35,7 +35,7 @@ Promise.all([LH.get("clubs"),LH.get("matches"),LH.get("players")]).then(function
  var A=P.filter(function(p){return p.a&&PA[p.a]}), g=0,pt=0; A.forEach(function(p){g+=PA[p.a].g;pt+=PA[p.a].p});
  var rank=C.clubs.indexOf(c)+1, yrs={}; P.forEach(function(p){if(p.y)for(var y=p.y[0];y<=p.y[1];y++)yrs[y]=(yrs[y]||0)+1});
  var top=A.slice().sort(function(a,b){return PA[b.a].t-PA[a.a].t})[0];
- $("head").innerHTML='<h1 class="rdh" style="font-size:56px">'+E(c.n)+'</h1><p class="note" style="margin:0 0 14px"><span>'+P.length+' Limerick county hurlers</span>'+(c.f?' · '+c.f+(c.l!==c.f?'–'+c.l:''):'')+' · <span>'+(rank===1?'Most of any club':'Ranked '+rank+' of '+C.clubs.length+' clubs')+'</span></p><div class="tiles">'+
+ $("head").innerHTML='<div class="clubhead">'+LH.badge(c,64)+'<h1 class="rdh" style="font-size:56px">'+E(c.n)+'</h1></div><p class="note" style="margin:0 0 14px"><span>'+P.length+' Limerick county hurlers</span>'+(c.f?' · '+c.f+(c.l!==c.f?'–'+c.l:''):'')+' · <span>'+(rank===1?'Most of any club':'Ranked '+rank+' of '+C.clubs.length+' clubs')+'</span></p><div class="tiles">'+
   LH.stat("Players",P.length,"With a Wikipedia page")+LH.stat("Seasons",Object.keys(yrs).length,"With a player on the panel")+
   LH.stat("Scored for Limerick",g+"-"+pt,(g*3+pt)+" points value")+(top?LH.stat("Top scorer",'<a class="tsv" href="/player/?p='+top.a+'">'+E(top.n)+'</a>',PA[top.a].g+"-"+PA[top.a].p):"")+(c.ai?LH.stat("All-Ireland medals",c.ai,"Won by its players"):"")+'</div>';
  // timeline: players on the panel each year
