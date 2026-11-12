@@ -1,0 +1,503 @@
+{
+ "_": "Hand-kept key moments for the matchday timelines, written from each final's Wikipedia match summary (tools/data/finals/<id>.json). m = minute (decimals only order events within a minute), d = minute as shown when it differs (70+1, or \"\" when the source gives none), k = goal | point | card | note, s = L (Limerick) or O (opponent), sc = running score [Limerick goals, points, opponent goals, points] only when the source states it, lead = Limerick's margin in points only when the source states it, end = 1 for a summary line placed just before full time, x = 1 when the minute is not given (not shown, not plotted). Substitutions, cards in the team sheets, half-time and full-time come from build_timelines.py. Never fill a score or minute the source does not give.",
+ "2018-galway-2": [
+  {
+   "m": 2,
+   "k": "point",
+   "s": "L",
+   "who": "Aaron Gillane",
+   "t": "Opens the scoring",
+   "sc": [
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "m": 7,
+   "k": "point",
+   "s": "O",
+   "who": "Joe Canning",
+   "t": "Galway's first score, from a 65",
+   "sc": [
+    0,
+    3,
+    0,
+    1
+   ]
+  },
+  {
+   "m": 15,
+   "k": "point",
+   "s": "O",
+   "who": "Joe Canning",
+   "t": "Levels the game",
+   "sc": [
+    0,
+    5,
+    0,
+    5
+   ]
+  },
+  {
+   "m": 16,
+   "k": "goal",
+   "s": "L",
+   "who": "Graeme Mulcahy",
+   "t": "Scrambles the opening goal over the line",
+   "lead": 2
+  },
+  {
+   "m": 35,
+   "d": "35",
+   "k": "point",
+   "s": "L",
+   "who": "Séamus Flanagan",
+   "t": "Point in the last minute of the half",
+   "sc": [
+    1,
+    10,
+    0,
+    9
+   ]
+  },
+  {
+   "m": 39,
+   "k": "point",
+   "s": "L",
+   "who": "Kyle Hayes",
+   "t": "First score of the second half",
+   "lead": 4
+  },
+  {
+   "m": 40,
+   "k": "point",
+   "s": "L",
+   "who": "Kyle Hayes",
+   "t": "Hawk-Eye gives the point",
+   "lead": 6
+  },
+  {
+   "m": 54,
+   "k": "goal",
+   "s": "L",
+   "who": "Tom Morrissey",
+   "t": "Pounces on a mistake and finishes to the net",
+   "lead": 9
+  },
+  {
+   "m": 68,
+   "k": "goal",
+   "s": "L",
+   "who": "Shane Dowling",
+   "t": "Substitute's goal, low to the net",
+   "lead": 8
+  },
+  {
+   "m": 71,
+   "d": "70+1",
+   "k": "goal",
+   "s": "O",
+   "who": "Conor Whelan",
+   "t": "Goal in the first minute of added time"
+  },
+  {
+   "m": 75,
+   "d": "70+5",
+   "k": "goal",
+   "s": "O",
+   "who": "Joe Canning",
+   "t": "Goal from a free",
+   "lead": 2
+  },
+  {
+   "m": 76,
+   "d": "70+6",
+   "k": "point",
+   "s": "O",
+   "who": "Niall Burke",
+   "t": "One point in it",
+   "lead": 1
+  },
+  {
+   "m": 76.3,
+   "d": "",
+   "k": "point",
+   "s": "L",
+   "who": "Graeme Mulcahy",
+   "t": "Two in it again",
+   "lead": 2
+  },
+  {
+   "m": 76.6,
+   "d": "",
+   "k": "point",
+   "s": "O",
+   "who": "Joe Canning",
+   "t": "A 65 makes it a one-point game",
+   "lead": 1
+  },
+  {
+   "m": 78,
+   "d": "70+8",
+   "k": "note",
+   "s": "O",
+   "who": "Joe Canning",
+   "t": "Last free drops short and is cleared"
+  }
+ ],
+ "2023-kilkenny-2": [
+  {
+   "m": 1,
+   "k": "point",
+   "s": "O",
+   "who": "Paddy Deegan",
+   "t": "Opens the scoring",
+   "lead": -1
+  },
+  {
+   "m": 6,
+   "k": "point",
+   "s": "L",
+   "who": "Cian Lynch",
+   "t": "Equalises",
+   "lead": 0
+  },
+  {
+   "m": 6.5,
+   "d": "",
+   "k": "point",
+   "s": "L",
+   "who": "Diarmaid Byrnes",
+   "t": "Limerick lead, briefly",
+   "lead": 1
+  },
+  {
+   "m": 10,
+   "k": "goal",
+   "s": "O",
+   "who": "Eoin Cody",
+   "t": "Goal from a loose ball",
+   "lead": -2
+  },
+  {
+   "m": 14,
+   "k": "card",
+   "s": "L",
+   "who": "William O'Donoghue",
+   "t": "Yellow card"
+  },
+  {
+   "m": 14.1,
+   "k": "card",
+   "s": "L",
+   "who": "Diarmaid Byrnes",
+   "t": "Yellow card"
+  },
+  {
+   "m": 27,
+   "k": "note",
+   "s": "O",
+   "who": "",
+   "t": "Kilkenny lead by six",
+   "lead": -6
+  },
+  {
+   "m": 40,
+   "k": "note",
+   "s": "L",
+   "who": "",
+   "t": "Limerick within a point",
+   "lead": -1
+  },
+  {
+   "m": 42,
+   "k": "goal",
+   "s": "O",
+   "who": "Paddy Deegan",
+   "t": "Goal into the side-netting",
+   "lead": -5
+  },
+  {
+   "m": 57,
+   "k": "point",
+   "s": "L",
+   "who": "",
+   "t": "Five Limerick points in a row level the game",
+   "lead": 0
+  },
+  {
+   "m": 58,
+   "k": "point",
+   "s": "L",
+   "who": "Darragh O'Donovan",
+   "t": "Limerick ahead for the first time since the 6th minute",
+   "sc": [
+    0,
+    18,
+    2,
+    11
+   ]
+  },
+  {
+   "m": 70,
+   "d": "",
+   "k": "note",
+   "s": "L",
+   "who": "",
+   "t": "Second half: Limerick 0-21, Kilkenny 1-6",
+   "end": 1
+  }
+ ],
+ "2022-kilkenny": [
+  {
+   "m": 1,
+   "k": "point",
+   "s": "L",
+   "who": "Diarmaid Byrnes",
+   "t": "Opens the scoring",
+   "sc": [
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "m": 4,
+   "k": "goal",
+   "s": "L",
+   "who": "Gearóid Hegarty",
+   "t": "Opening goal",
+   "sc": [
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "m": 50,
+   "d": "",
+   "x": 1,
+   "k": "goal",
+   "s": "O",
+   "who": "Billy Ryan, Martin Keoghan",
+   "t": "Goals bring Kilkenny level, briefly",
+   "lead": 0
+  },
+  {
+   "m": 62,
+   "d": "",
+   "x": 1,
+   "k": "point",
+   "s": "O",
+   "who": "Richie Hogan",
+   "t": "Equaliser, on his first appearance of the season",
+   "lead": 0
+  }
+ ],
+ "2021-cork-3": [
+  {
+   "m": 1,
+   "k": "point",
+   "s": "L",
+   "who": "Cian Lynch",
+   "t": "Opens the scoring",
+   "sc": [
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "m": 2,
+   "k": "goal",
+   "s": "L",
+   "who": "Gearóid Hegarty",
+   "t": "Opening goal",
+   "sc": [
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "m": 4,
+   "k": "goal",
+   "s": "O",
+   "who": "Shane Kingston",
+   "t": "Cork reply with a goal"
+  },
+  {
+   "m": 15,
+   "k": "goal",
+   "s": "L",
+   "who": "Aaron Gillane",
+   "t": "Goal from Séamus Flanagan's pass",
+   "sc": [
+    2,
+    5,
+    1,
+    5
+   ]
+  },
+  {
+   "m": 18,
+   "d": "",
+   "x": 1,
+   "k": "note",
+   "s": "L",
+   "who": "",
+   "t": "First water break",
+   "sc": [
+    2,
+    8,
+    1,
+    6
+   ]
+  },
+  {
+   "m": 35,
+   "k": "goal",
+   "s": "L",
+   "who": "Gearóid Hegarty",
+   "t": "His second goal, Limerick's third"
+  },
+  {
+   "m": 70,
+   "d": "",
+   "k": "note",
+   "s": "L",
+   "who": "",
+   "t": "Second half: Limerick 0-14, Cork 0-11",
+   "end": 1
+  }
+ ],
+ "2007-kilkenny-2": [
+  {
+   "m": 8,
+   "k": "goal",
+   "s": "O",
+   "who": "Eddie Brennan",
+   "t": "Goal from a line-ball delivery"
+  },
+  {
+   "m": 9,
+   "k": "goal",
+   "s": "O",
+   "who": "Henry Shefflin",
+   "t": "Second Kilkenny goal inside a minute"
+  },
+  {
+   "m": 10,
+   "k": "note",
+   "s": "O",
+   "who": "",
+   "t": "Score after 10 minutes",
+   "sc": [
+    0,
+    0,
+    2,
+    3
+   ]
+  },
+  {
+   "m": 15,
+   "k": "point",
+   "s": "L",
+   "who": "Dónal O'Grady",
+   "t": "Limerick's first score from play",
+   "lead": -7
+  },
+  {
+   "m": 16,
+   "k": "point",
+   "s": "O",
+   "who": "Eddie Brennan",
+   "t": "Score after 16 minutes",
+   "sc": [
+    0,
+    3,
+    2,
+    4
+   ]
+  },
+  {
+   "m": 25,
+   "k": "note",
+   "s": "O",
+   "who": "",
+   "t": "Score after 25 minutes",
+   "sc": [
+    0,
+    5,
+    2,
+    7
+   ]
+  },
+  {
+   "m": 35,
+   "k": "note",
+   "s": "O",
+   "who": "Henry Shefflin",
+   "t": "Off injured at half-time"
+  },
+  {
+   "m": 35.9,
+   "d": "HT",
+   "k": "ht",
+   "sc": [
+    0,
+    8,
+    2,
+    10
+   ]
+  },
+  {
+   "m": 47,
+   "k": "goal",
+   "s": "L",
+   "who": "Ollie Moran",
+   "t": "Goal to the roof of the net",
+   "sc": [
+    1,
+    10,
+    2,
+    13
+   ]
+  },
+  {
+   "m": 55,
+   "k": "note",
+   "s": "O",
+   "who": "",
+   "t": "Score after 55 minutes",
+   "sc": [
+    1,
+    11,
+    2,
+    16
+   ]
+  },
+  {
+   "m": 57,
+   "k": "point",
+   "s": "L",
+   "who": "",
+   "t": "Limerick within six",
+   "lead": -6
+  },
+  {
+   "m": 64,
+   "k": "point",
+   "s": "O",
+   "who": "Eddie Brennan",
+   "t": "His 1-4"
+  }
+ ],
+ "2026-galway-2": []
+}

@@ -53,3 +53,8 @@ Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/re
 - Player pages show club, years with Limerick, position and a Wikipedia link ("Probably Ciarán Carey" where linked by initials). Match pages show the club under each Limerick scorer. Road to the title has a Clubs section.
 - 136 archive scorers linked (78 by initial and surname; listed in tools/data/clubs_report.txt for review).
 - Club badges (12 Nov): no source has crests for every club (Wikipedia ~5 of 55, Limerick GAA has no directory), so Richard chose drawn shields in each club's colours from its Wikipedia infobox. 49 clubs have colours; 6 with no article are grey. Shown on clubs, club, player, match and road pages, noted as not the clubs' crests. Real crests could replace them if Richard supplies a folder.
+
+## 12 Nov 2026: Matchday timeline
+- No timed score data exists in the archive or any open feed; Wikipedia's articles on individual finals have match summaries with minutes and running scores, and team sheets with sub and card minutes. 39 of Limerick's 81 finals have an article; six are detailed enough: All-Ireland finals 2007, 2018, 2021, 2022, 2023, 2026.
+- Match page section: lead chart (Limerick's stated margin through the game), Everything / Scores only, commentary list with minute, goal/point/sub/card, and the running score or margin where the article states it. Half-time from the match box, full time from the archive.
+- 2026 final has no written summary: subs, six yellows and Galway's 59th-minute red card only, so no chart.

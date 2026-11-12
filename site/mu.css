@@ -588,3 +588,34 @@ footer.mu.big .themesw button{background:transparent;color:var(--foot-muted)} fo
 .cltab td.n,.mu td.n{white-space:nowrap}
 .badge{display:inline-block;vertical-align:middle;flex:none;margin-right:7px;position:relative;top:-1px;color:var(--ink)}
 .clubhead{display:flex;align-items:center;gap:16px}.clubhead .badge{margin:0}
+/* Matchday timeline */
+:root{--card-y:#f5c518;--card-r:#d0021b}
+.tlchart{position:relative;height:150px;margin:6px 0 14px}
+.tlchart svg{display:block;width:100%;height:100%;overflow:visible}
+.tlchart .up{fill:var(--red);opacity:.22}.tlchart .dn{fill:var(--ink);opacity:.12}
+.tlchart .zero{stroke:var(--rule);stroke-width:1}.tlchart .half{stroke:var(--rule);stroke-dasharray:4 4}
+.tlchart .ln{fill:none;stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.tlchart .dot{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--muted);box-shadow:0 0 0 2px var(--paper)}
+.tlchart .dot.u{background:var(--red)}.tlchart .dot.d{background:var(--ink)}
+.tly{position:absolute;left:0;font-size:11px;color:var(--muted)}.tlu{top:-4px}.tld{bottom:18px}
+.tlx{position:absolute;bottom:0;transform:translateX(-50%);font-size:11px;color:var(--muted)}
+h2.row .seg{font-size:13px}
+.tlist{list-style:none;margin:0;padding:0}
+.tlist li{display:grid;grid-template-columns:52px 54px minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 0 9px 10px;border-bottom:1px solid var(--rule);border-left:3px solid transparent}
+.tlist li.tlus{border-left-color:var(--red)}
+.tlist li.tlthem{border-left-color:var(--rule)}
+.tlist .tm{font-weight:700;font-variant-numeric:tabular-nums;font-size:14px;color:var(--muted)}
+.tlist .tx{min-width:0;line-height:1.4}.tlist .tx .crest,.tlist .tx img{vertical-align:-3px;margin-right:6px}
+.tlist .tlrs{font-variant-numeric:tabular-nums;font-size:14px;white-space:nowrap;text-align:right}
+.tlist .ic{justify-self:start;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:4px;padding:3px 6px;line-height:1}
+.tlist .ic.goal{background:var(--red);color:var(--on-black)}
+.tlist li.tlthem .ic.goal{background:var(--ink);color:var(--paper)}
+.tlist .ic.pt{background:var(--tint);color:var(--ink)}
+.tlist .ic.sub{color:var(--muted);padding:2px 4px}
+.tlist .ic.yc,.tlist .ic.rc{width:11px;height:15px;padding:0;border-radius:2px;background:var(--card-y)}.tlist .ic.rc{background:var(--card-r)}
+.tlist .ic.nt{width:6px;height:6px;padding:0;border-radius:50%;background:var(--rule);margin-left:6px}
+.tlist li.k-goal .tx b{font-weight:800}
+.tlist li.k-sub .tx,.tlist li.k-card .tx,.tlist li.k-red .tx{color:var(--muted);font-size:14px}
+.tlist li.tlsep{grid-template-columns:52px minmax(0,1fr) auto;background:var(--tint);border-left-color:transparent;border-radius:8px;margin:6px 0;border-bottom:0}
+@media (max-width:640px){.tlist li{grid-template-columns:44px 46px minmax(0,1fr);row-gap:2px}.tlist .tlrs{grid-column:3;text-align:left;font-size:13px;color:var(--muted)}.tlist .tlrs:empty{display:none}.tlchart{height:130px}}
+@media (max-width:640px){.tlist li.tlsep{grid-template-columns:44px minmax(0,1fr) auto}.tlist li.tlsep .tlrs{grid-column:auto;text-align:right;color:var(--ink)}}

@@ -7,12 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 <script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
-<link rel="stylesheet" href="/mu.css?v=24ad997f"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<link rel="stylesheet" href="/mu.css?v=4b4badd9"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
 <header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">Match<span></span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
 <section class="sheet" id="head"></section>
 <section class="sheet" id="how" hidden></section>
+<section class="sheet" id="tl" hidden style="scroll-margin-top:calc(var(--mast,60px) + 12px)"></section>
 <div class="two"><section class="sheet" id="us"></section><section class="sheet" id="them"></section></div>
 <section class="sheet" id="vid" hidden style="scroll-margin-top:calc(var(--mast,60px) + 12px)"></section>
 <section class="sheet" id="prev"></section>
@@ -20,13 +21,13 @@
 </main>
 <footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
-<script>window.LH_V="24ad997f"</script><script src="/lh.js?v=24ad997f"></script>
+<script>window.LH_V="4b4badd9"</script><script src="/lh.js?v=4b4badd9"></script>
 <script>
 (function(){
 LH.nav('Results');
 var $=function(i){return document.getElementById(i)}, E=LH.esc;
 
-Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("videos").catch(function(){return []}),LH.get("clubs").catch(function(){return null})]).then(function(R){
+Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("videos").catch(function(){return []}),LH.get("clubs").catch(function(){return null}),LH.get("timelines").catch(function(){return {}})]).then(function(R){
  var id=LH.q("id"), m=R[0].filter(function(x){return x.id===id})[0], D=R[1][id]||{};
  if(!m){$("head").innerHTML='<p class="empty">No match with that reference. <a class="link" href="/results/">All results</a></p>';return}
  document.title="Limerick v "+m.opp+" "+m.y; $("from").innerHTML=E(LH.comp(m.cn))+"<span>"+m.y+"</span>";
@@ -72,6 +73,33 @@ Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("videos
   var over=rec>tot?'<p class="note" style="margin:8px 0 0">The source\'s scorers add to '+sg+'-'+sp+', not '+want[0]+'-'+want[1]+'.</p>':'';
   return bar+'<p class="ctop">'+E("Top scorer: "+top[0]+", "+tv+" of "+tot+" points ("+Math.round(100*tv/base)+"%)")+'</p>'+tbl+over}
  $("us").innerHTML='<h2>Limerick scorers</h2>'+contrib(m.sc,m.u,1,"us"); $("them").innerHTML='<h2>'+LH.crest(m.opp,20)+E(m.opp)+' scorers</h2>'+contrib(D.osc,m.o,0,"opp");
+ // Matchday timeline: key moments from the final's Wikipedia article, subs and cards from its team sheets
+ var TL=(R[5]||{})[id];
+ if(TL){var opp=m.opp, dur=TL.dur, T=TL.ev, fil="all";
+  function mins(e){if(e.d!=null&&e.d!=="")return e.d==="HT"||e.d==="FT"?e.d:e.d+"'"; if(e.d==="")return ""; var x=Math.floor(e.m); return x>dur?dur+"+"+(x-dur)+"'":x+"'"}
+  function gp(a,b){return a+"-"+b}
+  function state(e){if(e.sc)return '<b>'+gp(e.sc[0],e.sc[1])+'</b> <span class="note">–</span> <b>'+gp(e.sc[2],e.sc[3])+'</b>'; if(e.lead==null)return ""; return e.lead===0?'<span>Level</span>':'<span>'+E((e.lead>0?"Limerick":opp)+" by "+Math.abs(e.lead))+'</span>'}
+  function chart(){var P=[[0,0]].concat(T.filter(function(e){return e.lead!=null&&!e.x&&e.k!=="ft"}).map(function(e){return [e.m,e.lead]})), ft=T[T.length-1]; P.push([ft.m,ft.lead]);
+   var X=Math.max(dur,ft.m), Y=Math.max(4,Math.max.apply(null,P.map(function(p){return Math.abs(p[1])}))), W=640,H=150,pl=8,pr=8,pt=12,pb=22,
+    x=function(v){return pl+(W-pl-pr)*v/X}, y=function(v){return pt+(H-pt-pb)*(Y-v)/(2*Y)}, z=y(0);
+   var line=P.map(function(p,i){return (i?"L":"M")+x(p[0]).toFixed(1)+" "+y(p[1]).toFixed(1)}).join(" "), area=line+" L"+x(P[P.length-1][0]).toFixed(1)+" "+z+" L"+x(0)+" "+z+"Z";
+   return '<div class="tlchart"><svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" role="img" aria-label="Limerick\'s lead through the game"><defs><clipPath id="tlup"><rect x="0" y="0" width="'+W+'" height="'+z+'"/></clipPath><clipPath id="tldn"><rect x="0" y="'+z+'" width="'+W+'" height="'+(H-z)+'"/></clipPath></defs>'+
+    '<path d="'+area+'" class="up" clip-path="url(#tlup)"/><path d="'+area+'" class="dn" clip-path="url(#tldn)"/>'+
+    '<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+z+'" y2="'+z+'" class="zero"/><line x1="'+x(dur/2)+'" x2="'+x(dur/2)+'" y1="'+pt+'" y2="'+(H-pb)+'" class="half"/>'+
+    '<path d="'+line+'" class="ln" vector-effect="non-scaling-stroke"/></svg>'+
+    P.slice(1).map(function(p){return '<i class="dot'+(p[1]>0?' u':p[1]<0?' d':'')+'" style="left:'+(100*x(p[0])/W).toFixed(2)+'%;top:'+(100*y(p[1])/H).toFixed(2)+'%"></i>'}).join("")+
+    '<span class="tly tlu">'+E("Limerick ahead")+'</span><span class="tly tld">'+E(opp+" ahead")+'</span><span class="tlx" style="left:'+(100*x(dur/2)/W)+'%">HT</span><span class="tlx" style="left:'+(100*x(dur)/W)+'%">'+dur+'\'</span></div>'}
+  function row(e){var side=e.s==="L"?"us":"them", cr=e.s==="L"?LH.crest("Limerick",16):LH.crest(opp,16);
+   if(e.k==="ht"||e.k==="ft")return '<li class="tlsep"><span class="tm">'+(e.k==="ht"?"HT":"FT")+'</span><span class="tx"><b>'+(e.k==="ht"?"Half-time":"Full time")+'</b></span><span class="tlrs">'+state(e)+'</span></li>';
+   var ic=e.k==="goal"?'<span class="ic goal">Goal</span>':e.k==="point"?'<span class="ic pt">Point</span>':e.k==="sub"?'<span class="ic sub" title="Substitution" aria-label="Substitution"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 5h9l-3-3M13 11H4l3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>':e.k==="card"?'<span class="ic yc" title="Yellow card" aria-label="Yellow card"></span>':e.k==="red"?'<span class="ic rc" title="Red card" aria-label="Red card"></span>':'<span class="ic nt"></span>';
+   var tx=e.k==="sub"?(e.on?cr+'<b>'+E(e.on)+'</b> <span class="note">on</span>'+(e.off?' <span class="note">for</span> '+E(e.off):''):cr+'<b>'+E(e.off)+'</b> <span class="note">off</span>'):cr+(e.who?'<b>'+E(e.who)+'</b> ':'')+(e.t?'<span>'+E(e.t)+'</span>':'');
+   return '<li class="tl'+side+' k-'+e.k+'"><span class="tm">'+mins(e)+'</span>'+ic+'<span class="tx">'+tx+'</span><span class="tlrs">'+state(e)+'</span></li>'}
+  function draw(){var L=T.filter(function(e){return fil==="all"||e.k==="goal"||e.k==="point"||e.k==="ht"||e.k==="ft"||e.sc});
+   $("tl").innerHTML='<h2 class="row">Matchday timeline <span class="seg" role="group" aria-label="Show">'+[["all","Everything"],["sc","Scores only"]].map(function(o){return '<button type="button" data-f="'+o[0]+'" aria-pressed="'+(fil===o[0])+'">'+o[1]+'</button>'}).join("")+'</span></h2>'+(T.filter(function(e){return e.lead!=null&&!e.x&&e.k!=="ft"&&e.k!=="ht"}).length>=2?chart():'')+
+    '<ol class="tlist"><li class="tlsep"><span class="tm">0\'</span><span class="tx"><b>Throw-in</b></span><span class="tlrs"></span></li>'+L.map(row).join("")+'</ol>'+
+    '<p class="note" style="margin:12px 0 0">Key moments from Wikipedia\'s article <a class="link" href="https://en.wikipedia.org/wiki/'+encodeURIComponent(TL.src.replace(/ /g,"_"))+'" target="_blank" rel="noopener">'+E(TL.src)+'</a>; substitutions and cards from its team sheets. Scores and margins appear only where the article gives them, so the chart joins those moments with straight lines and not every score is listed.</p>';
+   [].forEach.call($("tl").querySelectorAll(".seg button"),function(b){b.onclick=function(){fil=b.getAttribute("data-f");draw()}})}
+  $("tl").hidden=false; draw()}
  var P=R[0].filter(function(x){return x.opp===m.opp&&x.id!==id&&x.r}).slice().reverse().slice(0,6);
  $("prev").innerHTML='<h2>Other meetings</h2>'+LH.list(P,{nov:1})+'<p style="margin:10px 0 0"><a class="link" href="/opponent/?o='+LH.slug(m.opp)+'">Full record v '+E(m.opp)+' →</a> · <a class="link" href="https://en.wikipedia.org/wiki/'+encodeURIComponent((D.src||"").replace(/ /g,"_"))+'">Source article</a></p>';
 }).catch(function(){LH.fail($("head"))});
