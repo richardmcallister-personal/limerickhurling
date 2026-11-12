@@ -25,6 +25,12 @@ document.addEventListener("click",function(e){var b=e.target.closest&&e.target.c
   f.src="https://www.youtube-nocookie.com/embed/"+encodeURIComponent(b.getAttribute("data-yt"))+"?autoplay=1&rel=0&playsinline=1"; f.title="YouTube video"; f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen=true; f.referrerPolicy="strict-origin-when-cross-origin"; b.replaceWith(f)});
 /* What a goal was worth: 3 since 1896, 5 from 1892, and before that a goal outweighed any number of points (0 here). */
 LH.gv=function(y){return y<1892?0:y<1896?5:3};
+/* Clubs (clubs.json, from players' Wikipedia infoboxes): look up a person by archive player slug, a club by slug,
+   and who was on the county panel in a year. Only players with a Wikipedia page are there. */
+LH.clubIdx=function(C){var A={},S={},W={}; C.players.forEach(function(p){if(p.a)A[p.a]=p; W[p.w]=p}); C.clubs.forEach(function(c){S[c.s]=c});
+  return {A:A,S:S,W:W,of:function(name){return A[slug(name)]},
+   on:function(y){return C.players.filter(function(p){return p.y&&p.y[0]<=y&&y<=p.y[1]})},
+   wiki:function(p){return "https://en.wikipedia.org/wiki/"+encodeURIComponent(p.w.replace(/ /g,"_"))}}};
 LH.list=function(L,opt){return L.length?'<ul class="mlist">'+L.map(function(m){return LH.row(m,opt)}).join("")+'</ul>':'<p class="empty">Nothing here.</p>'};
 LH.tot=function(L){var t={p:0,w:0,d:0,l:0,gf:0,ga:0}; L.forEach(function(m){if(!m.r)return; t.p++; t[m.r.toLowerCase()]++; t.gf+=m.gf; t.ga+=m.ga}); return t};
 LH.stat=function(k,v,s){return '<div class="stat"><div class="k">'+esc(k)+'</div><div class="v">'+v+'</div>'+(s?'<div class="s">'+s+'</div>':'')+'</div>'};
@@ -59,7 +65,7 @@ document.addEventListener("DOMContentLoaded",function(){var f=document.querySele
   d.innerHTML='<div class="fbrand"><a class="fname" href="/"><img src="/assets/crest-88.png" alt="" width="36" height="36"><span translate="no">Limerick Hurling</span></a><p>An independent fan site about Limerick\'s senior hurlers.</p><p class="fdata">Data: Wikipedia (CC BY-SA), YouTube, OpenStreetMap.</p></div>'+
     '<div class="fcols">'+col("Matchday",[["/","Hub"],["/results/","Fixtures and results"],["/season/","This season"],["webcal://limerickhurling.wiki/calendar.ics","Fixtures in your calendar"]])+
     col("History",[["/honours/","Honours"],["/road/","Road to the title"],["/records/","Records"],["/players/","Players"],["/managers/","Managers"]])+
-    col("Explore",[["/opponents/","Opponents"],["/grounds/","Grounds"],["/shirts/","Shirts"],["/videos/","Videos"]])+
+    col("Explore",[["/opponents/","Opponents"],["/clubs/","Clubs"],["/grounds/","Grounds"],["/shirts/","Shirts"],["/videos/","Videos"]])+
     col("Official",[["https://www.limerickgaa.ie/","limerickgaa.ie"],["https://munstergaa.ie/","munstergaa.ie"],["https://www.gaa.ie/","gaa.ie"],["/more/","More"]])+'</div>'+
     '<div class="fsis"><h2>Other sites</h2><ul>'+sis.map(function(x){return '<li><a href="'+x[0]+'" target="_blank" rel="noopener"><img src="/assets/sites/'+x[3]+'.webp" alt="" width="40" height="40" loading="lazy" decoding="async"><span><b translate="no">'+x[1]+'</b><small translate="no">'+x[2]+'</small></span></a></li>'}).join("")+'</ul></div>';
   f.insertBefore(d,f.firstChild); f.classList.add("big")});

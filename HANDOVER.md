@@ -46,3 +46,9 @@ Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/re
 ## 11 Nov 2026: How the score was made
 - Match page: new section under the scoreboard turns each side's goals-points into a total (2-18 = 2 goals x 3 + 18 points = 24), states the margin, and says when goals beat a side with more points (or the reverse). Uses the rule of the day for 1887-1895.
 - Scorer tables now show each player's points value and share of the side's total, with a stacked bar; any gap between the source's scorers and the final score shows as "Not in the source". Scorers sit straight after the explanation; the video moved below them.
+
+## 12 Nov 2026: Clubs
+- Source: Wikipedia's Category:Limerick inter-county hurlers (256 players, 55 clubs). Infobox gives club, county years, position, All-Ireland medals.
+- /clubs/: by season (pick a year, all games / championship / league; clubs on the panel and their scoring that season; All-Ireland years as shortcuts), decades grid for the 16 biggest clubs, all clubs table. /club/?c=: players, county-panel timeline, scoring by competition.
+- Player pages show club, years with Limerick, position and a Wikipedia link ("Probably Ciarán Carey" where linked by initials). Match pages show the club under each Limerick scorer. Road to the title has a Clubs section.
+- 136 archive scorers linked (78 by initial and surname; listed in tools/data/clubs_report.txt for review).

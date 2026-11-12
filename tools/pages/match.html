@@ -8,7 +8,7 @@
 <section class="sheet" id="vid" hidden style="scroll-margin-top:calc(var(--mast,60px) + 12px)"></section>
 <section class="sheet" id="prev"></section>
 <script>
-Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("videos").catch(function(){return []})]).then(function(R){
+Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("videos").catch(function(){return []}),LH.get("clubs").catch(function(){return null})]).then(function(R){
  var id=LH.q("id"), m=R[0].filter(function(x){return x.id===id})[0], D=R[1][id]||{};
  if(!m){$("head").innerHTML='<p class="empty">No match with that reference. <a class="link" href="/results/">All results</a></p>';return}
  document.title="Limerick v "+m.opp+" "+m.y; $("from").innerHTML=E(LH.comp(m.cn))+"<span>"+m.y+"</span>";
@@ -40,7 +40,9 @@ Promise.all([LH.get("matches"),LH.get("detail"),LH.get("grounds"),LH.get("videos
  // Who scored what: each player's goals and points, their points value and share of the side's total
  function contrib(sc,want,link,side){if(!sc||!sc.length)return '<p class="note" style="margin:0">Not recorded.</p>';
   var L=sc.slice().sort(function(a,b){return (b[1]*(gv||3)+b[2])-(a[1]*(gv||3)+a[2])}), sg=0,sp=0; L.forEach(function(s){sg+=s[1];sp+=s[2]});
-  function nm(s){return link?'<a href="/player/?p='+LH.slug(s[0])+'">'+E(s[0])+'</a>':E(s[0])}
+  var XC=R[4]?LH.clubIdx(R[4]):null;
+  function nm(s){if(!link)return E(s[0]); var w=XC&&XC.of(s[0]), c=w&&w.cl[0], k=c&&XC.S[LH.slug(c)];
+   return '<a href="/player/?p='+LH.slug(s[0])+'">'+E(s[0])+'</a>'+(c?'<a class="clsub" href="/club/?c='+(k?k.s:'')+'">'+E(c)+'</a>':'')}
   if(!gv)return '<table class="mu"><tbody>'+L.map(function(s){return '<tr><td>'+nm(s)+'</td><td class="n">'+s[1]+'-'+s[2]+'</td></tr>'}).join("")+'</tbody></table>';
   var tot=want&&want[0]!=null?want[0]*gv+want[1]:sg*gv+sp, rec=sg*gv+sp, miss=Math.max(0,tot-rec), base=Math.max(tot,rec);
   var segs=L.map(function(s,i){return {n:s[0],v:s[1]*gv+s[2],c:i<6?"c"+i:"co"}}); if(miss)segs.push({n:"Not in the source",v:miss,c:"cx"});

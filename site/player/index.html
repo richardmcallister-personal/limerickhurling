@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 <script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
-<link rel="stylesheet" href="/mu.css?v=385a6e05"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<link rel="stylesheet" href="/mu.css?v=36709d88"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
 <header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">Player<span></span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
@@ -18,18 +18,20 @@
 </main>
 <footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
-<script>window.LH_V="385a6e05"</script><script src="/lh.js?v=385a6e05"></script>
+<script>window.LH_V="36709d88"</script><script src="/lh.js?v=36709d88"></script>
 <script>
 (function(){
 LH.nav('Players');
 var $=function(i){return document.getElementById(i)}, E=LH.esc;
 
-Promise.all([LH.get("players"),LH.get("matches")]).then(function(R){
+Promise.all([LH.get("players"),LH.get("matches"),LH.get("clubs").catch(function(){return null})]).then(function(R){
  var s=LH.q("p"), p=R[0].filter(function(x){return x.s===s})[0];
  if(!p){$("head").innerHTML='<p class="empty">No player with that name. <a class="link" href="/players/">All players</a></p>';return}
  document.title="Limerick Hurling · "+p.n; $("from").innerHTML="Player<span>"+E(p.n)+"</span>";
  var rank=R[0].indexOf(p)+1, G=R[1].filter(function(m){return (m.sc||[]).some(function(x){return x[0]===p.n})}).reverse(), b=R[1].filter(function(m){return m.id===(p.b||[])[3]})[0];
- $("head").innerHTML='<div class="big">'+E(p.n)+'</div><div class="tiles">'+LH.stat("Score",p.g+"-"+p.p,"Rank "+rank+" on record")+LH.stat("Total",p.t,"Points value")+LH.stat("Games scored in",p.c,p.f+"-"+p.l)+(b?LH.stat("Best game",p.b[1]+"-"+p.b[2],"v "+E(b.opp)+", "+b.y):"")+'</div><p class="note" style="margin:10px 0 0">League and championship games where Wikipedia lists his scores. His real totals can be higher, and the source has no appearance data.</p>';
+ $("head").innerHTML='<div class="big">'+E(p.n)+'</div>'+(function(){if(!R[2])return ""; var X=LH.clubIdx(R[2]), w=X.A[p.s]; if(!w)return "";
+   var cs=w.cl.map(function(c){var k=X.S[LH.slug(c)]; return k?'<a class="link" href="/club/?c='+k.s+'">'+E(c)+'</a>':E(c)}).join(", ");
+   return '<p class="plclub">'+(w.i?'<span>Probably</span> <a class="link" href="'+X.wiki(w)+'" target="_blank" rel="noopener">'+E(w.n)+'</a> · ':'')+(cs?'<span>Club</span> '+cs:'')+(w.y?' · <span>With Limerick</span> '+w.y[0]+(w.y[1]!==w.y[0]?'–'+w.y[1]:''):'')+(w.pos?' · <span>'+E(w.pos)+'</span>':'')+(w.i?'':' · <a class="link" href="'+X.wiki(w)+'" target="_blank" rel="noopener">Wikipedia</a>')+'</p>'})()+'<div class="tiles">'+LH.stat("Score",p.g+"-"+p.p,"Rank "+rank+" on record")+LH.stat("Total",p.t,"Points value")+LH.stat("Games scored in",p.c,p.f+"-"+p.l)+(b?LH.stat("Best game",p.b[1]+"-"+p.b[2],"v "+E(b.opp)+", "+b.y):"")+'</div><p class="note" style="margin:10px 0 0">League and championship games where Wikipedia lists his scores. His real totals can be higher, and the source has no appearance data.</p>';
  $("sea").innerHTML='<h2>By season</h2><table class="mu"><thead><tr><th>Season</th><th class="n">Games</th><th class="n">Score</th><th class="n">Total</th></tr></thead><tbody>'+p.by.slice().reverse().map(function(b){return '<tr><td><a href="/season/?y='+b[0]+'">'+b[0]+'</a></td><td class="n">'+b[3]+'</td><td class="n">'+b[1]+'-'+b[2]+'</td><td class="n"><b>'+(b[1]*3+b[2])+'</b></td></tr>'}).join("")+'</tbody></table>';
  $("games").innerHTML='<h2>Games scored in</h2><ul class="mlist">'+G.map(function(m){var x=m.sc.filter(function(y){return y[0]===p.n})[0]; return '<li><span class="d">'+(m.d?LH.fmtD(m.d):m.y)+'</span><span class="o"><a href="/match/?id='+m.id+'">'+LH.crest(m.opp)+'v '+E(m.opp)+'</a><small>'+E(LH.comp(m.cn))+(m.rnd?' · '+E(m.rnd):'')+'</small></span><span class="score">'+x[1]+'-'+x[2]+'</span></li>'}).join("")+'</ul>';
 }).catch(function(){LH.fail($("head"))});

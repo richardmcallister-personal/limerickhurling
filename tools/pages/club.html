@@ -1,0 +1,35 @@
+<!--title:Club-->
+<!--kick:Club-->
+<!--sub:-->
+<!--nav:More-->
+<section class="sheet rdhead" id="head"><p class="note">Loading…</p></section>
+<section class="sheet" id="time" hidden></section>
+<section class="sheet" id="pl" hidden></section>
+<section class="sheet" id="comp" hidden></section>
+<p class="note" style="margin:12px 4px">Players and their years with Limerick come from their Wikipedia pages; only players with a page are listed. Scores come from the archive. <a class="link" href="/clubs/">All clubs</a></p>
+<script>
+Promise.all([LH.get("clubs"),LH.get("matches"),LH.get("players")]).then(function(R){
+ var C=R[0],X=LH.clubIdx(C),M=R[1],PA={}; R[2].forEach(function(p){PA[p.s]=p});
+ var c=X.S[LH.q("c")];
+ if(!c){$("head").innerHTML='<p class="empty">No club with that name. <a class="link" href="/clubs/">All clubs</a></p>';return}
+ document.title=c.n+" · Limerick hurling"; $("from").innerHTML="Club<span>"+E(c.n)+"</span>";
+ var P=c.p.map(function(w){return X.W[w]}).sort(function(a,b){return ((b.y||[0])[0])-((a.y||[0])[0])||a.n.localeCompare(b.n)});
+ var A=P.filter(function(p){return p.a&&PA[p.a]}), g=0,pt=0; A.forEach(function(p){g+=PA[p.a].g;pt+=PA[p.a].p});
+ var rank=C.clubs.indexOf(c)+1, yrs={}; P.forEach(function(p){if(p.y)for(var y=p.y[0];y<=p.y[1];y++)yrs[y]=(yrs[y]||0)+1});
+ var top=A.slice().sort(function(a,b){return PA[b.a].t-PA[a.a].t})[0];
+ $("head").innerHTML='<h1 class="rdh" style="font-size:56px">'+E(c.n)+'</h1><p class="note" style="margin:0 0 14px"><span>'+P.length+' Limerick county hurlers</span>'+(c.f?' · '+c.f+(c.l!==c.f?'–'+c.l:''):'')+' · <span>'+(rank===1?'Most of any club':'Ranked '+rank+' of '+C.clubs.length+' clubs')+'</span></p><div class="tiles">'+
+  LH.stat("Players",P.length,"With a Wikipedia page")+LH.stat("Seasons",Object.keys(yrs).length,"With a player on the panel")+
+  LH.stat("Scored for Limerick",g+"-"+pt,(g*3+pt)+" points value")+(top?LH.stat("Top scorer",'<a class="tsv" href="/player/?p='+top.a+'">'+E(top.n)+'</a>',PA[top.a].g+"-"+PA[top.a].p):"")+(c.ai?LH.stat("All-Ireland medals",c.ai,"Won by its players"):"")+'</div>';
+ // timeline: players on the panel each year
+ var ks=Object.keys(yrs).map(Number); if(ks.length){var a=Math.min.apply(null,ks),b=Math.max.apply(null,ks),mx=Math.max.apply(null,ks.map(function(k){return yrs[k]})); a=Math.min(a,b-20);
+  var bars=[];for(var y=a;y<=b;y++)bars.push('<a href="/clubs/?y='+y+'" style="--h:'+(yrs[y]?Math.max(8,Math.round(100*yrs[y]/mx)):0)+'%" title="'+y+': '+(yrs[y]||0)+'"'+(y%10===0?' data-l="'+y+'"':'')+'></a>');
+  $("time").hidden=false; $("time").innerHTML='<h2>On the county panel</h2><p class="note" style="margin:0 0 10px">Players from '+E(c.n)+' with Limerick each season. Tap a year to see every club that season.</p><div class="tline">'+bars.join("")+'</div>'}
+ // players
+ $("pl").hidden=false; $("pl").innerHTML='<h2>Players</h2><table class="mu"><thead><tr><th>Player</th><th class="n">With Limerick</th><th class="hide-s">Position</th><th class="n">Scored</th></tr></thead><tbody>'+P.map(function(p){var a=p.a&&PA[p.a];
+  return '<tr><td>'+(a?'<a href="/player/?p='+p.a+'">'+E(p.n)+'</a>':E(p.n))+' <a class="wk" href="'+X.wiki(p)+'" target="_blank" rel="noopener" aria-label="Wikipedia">W</a>'+(p.ai?'<small class="ai"><span>All-Ireland</span> ×'+p.ai+'</small>':'')+'</td><td class="n">'+(p.y?p.y[0]+(p.y[1]!==p.y[0]?'–'+p.y[1]:''):'')+'</td><td class="hide-s">'+E(p.pos||"")+'</td><td class="n">'+(a?a.g+'-'+a.p:'')+'</td></tr>'}).join("")+'</tbody></table>';
+ // by competition, from the archive
+ var B={}; M.forEach(function(m){(m.sc||[]).forEach(function(s){var p=X.of(s[0]); if(p&&p.cl[0]===c.n){var k=m.cn; B[k]=B[k]||{g:0,p:0,m:{},pl:{}}; B[k].g+=s[1];B[k].p+=s[2];B[k].m[m.id]=1;B[k].pl[p.w]=1}})});
+ var ks2=["AISHC","MSHC","NL"].filter(function(k){return B[k]});
+ if(ks2.length){$("comp").hidden=false; $("comp").innerHTML='<h2>Scoring for Limerick by competition</h2><table class="mu"><thead><tr><th>Competition</th><th class="n">Players</th><th class="n">Games</th><th class="n">Scored</th></tr></thead><tbody>'+ks2.map(function(k){var b=B[k];return '<tr><td>'+E(LH.comp(k))+'</td><td class="n">'+Object.keys(b.pl).length+'</td><td class="n">'+Object.keys(b.m).length+'</td><td class="n">'+b.g+'-'+b.p+' <span class="note">'+(b.g*3+b.p)+'</span></td></tr>'}).join("")+'</tbody></table>'}
+}).catch(function(){LH.fail($("head"))});
+</script>

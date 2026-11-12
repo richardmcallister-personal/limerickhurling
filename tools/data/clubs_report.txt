@@ -1,0 +1,131 @@
+256 players from Wikipedia, 55 clubs, 136 linked to archive scorers
+top 60 archive scorers with no club: ['P Tobin', 'S Tobin', "O O'Connor", 'B Hartigan', 'Paddy McMahon', 'T Kenny', 'D Flynn', 'A Dunworth', "Sean O'Connor", 'T Bluett', 'P McCarthy', "T O'Brien"]
+no Limerick years: Andy McCallin
+no Limerick years: Dan Troy (hurler)
+no club: George Clancy (rugby union)
+no Limerick years: George Clancy (rugby union)
+no infobox: Ger Cunningham (Limerick hurler)
+no Limerick years: Jack Quaid (hurler)
+no Limerick years: Jim Flood
+no Limerick years: Jim Quaid
+no Limerick years: Jim Roche (hurler)
+no Limerick years: John Condon (hurler)
+no Limerick years: John Reidy
+no Limerick years: Maurice Flynn (hurler)
+no Limerick years: Michael Downes
+no club: Michael Herbert
+no Limerick years: Michael Herbert
+no infobox: Mick Hickey (Limerick hurler)
+no Limerick years: Mick Kennedy (Limerick hurler)
+no Limerick years: Mick Mullane (hurler)
+no Limerick years: Mick Rochford
+no infobox: Micky Cross
+no infobox: Ned Chawke
+no club: Ollie O'Connor (Limerick hurler)
+no Limerick years: Ollie O'Connor (Limerick hurler)
+no Limerick years: P. J. Garvey
+no Limerick years: Paddy Cunneen
+no infobox: Paddy McMahon (hurler)
+no Limerick years: Patrick Flynn (hurler)
+no Limerick years: Seoirse Bulfin
+no infobox: Séamus Ryan (hurler)
+no club: Tom Aherne
+no Limerick years: Tom Aherne
+no Limerick years: Tom Brazill
+no club: Tony Herbert
+no Limerick years: Tony Herbert
+no Limerick years: Vivian Cobbe
+initials: B Foley (1996-2008) = Barry Foley ([1996, 2008])
+initials: D Ryan (2002-2011) = Donie Ryan ([2000, 2011])
+initials: K Downes (2011-2016) = Kevin Downes (hurler) ([2011, 2018])
+initials: P O'Grady (2001-2006) = Paul O'Grady (hurler) ([2001, 2006])
+initials: C Allis (2012-2014) = Conor Allis ([2012, None])
+initials: F Nolan (1970-1983) = Frankie Nolan ([1971, 1983])
+initials: F Carroll (1991-1997) = Frankie Carroll ([1991, 1997])
+initials: M Foley (1994-2008) = Mark Foley (Limerick hurler) ([1995, 2009])
+initials: P Heffernan (1989-1997) = Pat Heffernan ([1989, 2003])
+initials: C Carey (1989-2004) = Ciarán Carey ([1989, 2004])
+initials: D Sheehan (2003-2009) = Donncha Sheehan ([2003, 2009])
+initials: D Kelly (1951-1960) = Dermot Kelly (hurler) ([1951, 1959])
+initials: M Dowling (1968-1975) = Mossie Dowling ([1967, 1976])
+initials: W Moore (1970-1972) = Willie Moore (Limerick hurler) ([1971, 1974])
+initials: G Hegarty (1986-1998) = Ger Hegarty ([1985, 1998])
+initials: R McCarthy (2009-2015) = Richie McCarthy ([2009, 2019])
+initials: J Power (1940-1949) = Jackie Power ([1930, 1948])
+initials: R Lynch (2016-2017) = Ronan Lynch ([2015, None])
+initials: T McGarry (1956-1963) = Tom McGarry ([1956, 1963])
+initials: L Hogan (1957-1963) = Liam Hogan (hurler) ([1958, 1963])
+initials: JV O'Brien (2003-2010) = James O'Brien (hurler) ([2003, 2026])
+initials: D Quigley (1994-1999) = Damien Quigley ([1994, 1999])
+initials: L O'Connor (1987-1994) = Leo O'Connor (hurler) ([1988, 1994])
+initials: S Foley (1970-1983) = Seán Foley ([1970, 1983])
+initials: M Ruth (1973-1974) = Matt Ruth ([1973, 1974])
+initials: R Sampson (1984-1993) = Ray Sampson (hurler) ([1984, 1993])
+initials: G O'Mahony (2009-2016) = Gavin O'Mahony ([2007, 2017])
+initials: P Kirby (2003-2006) = Patrick Kirby ([2003, 2006])
+initials: B Finn (1987-1993) = Brian Finn ([1985, 1994])
+initials: B Geary (2002-2011) = Brian Geary ([1999, 2012])
+initials: B Murphy (2018-2024) = Barry Murphy (Limerick hurler) ([2018, None])
+initials: P Hartigan (1968-1977) = Pat Hartigan ([1968, 1981])
+initials: P Lawlor (2002-2005) = Peter Lawlor (hurler) ([2002, None])
+initials: B O'Sullivan (2009-2010) = Bryan O'Sullivan ([2009, 2026])
+initials: M Reale (1987-1993) = Mike Reale ([1988, 1993])
+initials: S Lucey (2002-2006) = Stephen Lucey ([1999, 2015])
+initials: G Ryan (1987-1992) = Gus Ryan ([1988, 1993])
+initials: P Clohessy (1933-1940) = Paddy Clohessy ([1928, 1940])
+initials: D FitzGerald (1983-1987) = Danny Fitzgerald (sportsperson) ([1983, 1993])
+initials: P Davoren (1989-1992) = Pat Davoren ([1989, 1993])
+initials: E Foley (2002-2007) = Eoin Foley ([2001, 2009])
+initials: C Ryan (2017-2019) = Colin Ryan (Limerick hurler) ([2017, 2026])
+initials: P Fitzmaurice (1973-1979) = Paudie Fitzmaurice ([1973, 1981])
+initials: L Enright (1973-1981) = Leonard Enright ([1971, 1988])
+initials: T Herbert (1993-1994) = Turlough Herbert ([1993, 1996])
+initials: O O'Reilly (2018-2023) = Oisín O'Reilly ([2018, None])
+initials: W Gleeson (1921-1921) = Willie Gleeson ([1915, 1928])
+initials: P O'Dwyer (2005-2008) = Paudie O'Dwyer ([2003, 2008])
+initials: T McGrath (1921-1921) = Tom McGrath (Limerick hurler) ([1918, 1923])
+initials: R Prendergast (1955-1957) = Ralph Prendergast ([1955, 1957])
+initials: D Clarke (1992-1999) = Dave Clarke (hurler) ([1990, 2000])
+initials: P O'Donovan (2024-2025) = Patrick O'Donovan (hurler) ([2022, 2026])
+initials: C Smith (1999-2003) = Clem Smith (hurler) ([1997, 2005])
+initials: P O'Loughlin (2019-2020) = Paddy O'Loughlin ([2018, 2020])
+initials: L Ryan (1955-1956) = Liam Ryan (Limerick hurler) ([1952, 1960])
+initials: A La Touche Cosgrave (2017-2017) = Andrew La Touche Cosgrave ([2017, 2018])
+initials: D O'Connell (2020-2021) = Darren O'Connell ([2019, 2020])
+initials: J O'Connell (1935-1935) = Jackie O'Connell ([1933, 1935])
+initials: B O'Connell (2018-2018) = Barry O'Connell (hurler) ([2016, 2019])
+initials: R Hanley (2019-2022) = Robbie Hanley ([2018, 2022])
+initials: D Nash (1989-1994) = Declan Nash ([1987, 1999])
+initials: M Casey (2023-2025) = Mike Casey (hurler) ([2016, 2026])
+initials: E Hurley (2025-2025) = Ethan Hurley ([2024, None])
+initials: D Reale (2001-2008) = Damien Reale ([2001, 2011])
+initials: H Flavin (2007-2008) = Hugh Flavin ([2007, 2008])
+initials: B Ryan (2020-2020) = Brian Ryan (hurler) ([2019, 2021])
+initials: R English (2021-2023) = Richie English ([2014, 2024])
+initials: M Quinlan (2024-2024) = Mark Quinlan ([2019, 2023])
+initials: W Hough (1921-1921) = Willie Hough ([1915, 1929])
+initials: G Howard (1921-1921) = Garrett Howard ([1921, 1936])
+initials: P Cregan (1942-1942) = Peter Cregan ([1937, 1947])
+initials: S Herbert (1951-1951) = Seán Herbert ([1942, 1953])
+initials: G Galvin (1993-1993) = Ger Galvin ([1993, 1994])
+initials: S Walsh (2012-2012) = Stephen Walsh (hurler) ([2009, 2015])
+initials: B O'Grady (2021-2021) = Brian O'Grady (hurler) ([2019, 2020])
+initials: R Connolly (2022-2022) = Ronan Connolly ([2018, 2023])
+initials: C Barry (2023-2023) = Ciarán Barry ([2022, None])
+initials: F O'Connor (2024-2024) = Fergal O'Connor ([2022, 2024])
+open-ended county years: Adrian Breen (hurler) -> [2020, 2020]
+open-ended county years: Barry Murphy (Limerick hurler) -> [2018, 2024]
+open-ended county years: Ciarán Barry -> [2022, 2023]
+open-ended county years: Conor Allis -> [2012, 2014]
+open-ended county years: David Breen -> [2009, 2009]
+open-ended county years: Donnacha Ó Dálaigh -> [2023, 2026]
+open-ended county years: Ethan Hurley -> [2024, 2025]
+open-ended county years: Matthew Fitzgerald -> [2026, 2026]
+open-ended county years: Mikey O'Brien -> [2019, 2019]
+open-ended county years: Oisín O'Reilly -> [2018, 2023]
+open-ended county years: Peter Lawlor (hurler) -> [2002, 2005]
+open-ended county years: Ronan Lynch -> [2015, 2017]
+open-ended county years: Shane Dowling (hurler) -> [2012, 2019]
+open-ended county years: William O'Donoghue -> [2017, 2025]
+open-ended county years: William O'Meara (hurler) -> [2018, 2018]
+archive player sean-oconnor matched 2 articles; unlinked

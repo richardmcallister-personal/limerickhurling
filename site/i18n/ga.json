@@ -353,7 +353,59 @@
 "Share of the total by player": "Cion gach imreora den iomlán",
 "A goal, into the net under the bar, is worth 3 points. A point, over the bar, is worth 1. Add them up: the higher total wins.": "Is fiú trí phointe cúl, isteach sa líontán faoin trasnán. Is fiú pointe amháin pointe, thar an trasnán. Cuir le chéile iad: buann an t-iomlán is airde.",
 "From 1892 to 1895 a goal was worth 5 points; it has been worth 3 since 1896. A point, over the bar, is worth 1.": "Ó 1892 go 1895 b'fhiú cúig phointe cúl; is fiú trí phointe é ó 1896 i leith. Is fiú pointe amháin pointe, thar an trasnán.",
-"Until 1892 a goal outweighed any number of points: goals were compared first, and points only counted when the goals were level.": "Go dtí 1892 ba mhó cúl ná aon líon pointí: cuireadh na cúil i gcomparáid ar dtús, agus níor áiríodh na pointí ach nuair a bhí na cúil cothrom."
+"Until 1892 a goal outweighed any number of points: goals were compared first, and points only counted when the goals were level.": "Go dtí 1892 ba mhó cúl ná aon líon pointí: cuireadh na cúil i gcomparáid ar dtús, agus níor áiríodh na pointí ach nuair a bhí na cúil cothrom.",
+"Clubs": "Clubanna",
+"Club": "Club",
+"Where the county players came from": "Cá as ar tháinig imreoirí an chontae",
+"Limerick's county hurlers came from these clubs. Pick a season to see which clubs were represented, and follow a club to its players.": "Ó na clubanna seo a tháinig iománaithe contae Luimnigh. Roghnaigh séasúr chun na clubanna a bhí ann a fheiceáil, agus lean club go dtí a imreoirí.",
+"With a county player": "Le himreoir contae",
+"With a Wikipedia page": "Le leathanach Vicipéide",
+"Most players": "Is mó imreoirí",
+"Most scored": "Is mó scóráilte",
+"All games": "Gach cluiche",
+"All-Ireland years": "Blianta Chraobh na hÉireann",
+"On the panel": "Ar an bpainéal",
+"Club not known": "Club anaithnid",
+"Through the decades": "Trí na deicheanna",
+"County players from each club in each decade. The 16 clubs with most players.": "Imreoirí contae ó gach club i ngach deich mbliana. Na 16 club leis an líon is mó imreoirí.",
+"All clubs": "Gach club",
+"All-Irelands": "Craobhacha na hÉireann",
+"All-Irelands: medals won by the club's players, from their Wikipedia pages.": "Craobhacha na hÉireann: boinn a bhuaigh imreoirí an chlub, ó a leathanaigh Vicipéide.",
+"Clubs and county years come from the players' Wikipedia pages (Category: Limerick inter-county hurlers), so only players with a page are counted, at the club they played for while with Limerick. Scores come from the archive and count only scorers linked to a page; some older names were linked by initial and surname.": "Tagann na clubanna agus na blianta contae ó leathanaigh Vicipéide na n-imreoirí (Catagóir: iománaithe idirchontae Luimnigh), mar sin ní áirítear ach imreoirí a bhfuil leathanach acu, faoin gclub ar imir siad leis agus iad le Luimneach. Tagann na scóir ón gcartlann agus ní áirítear ach scórálaithe atá nasctha le leathanach; nascadh roinnt ainmneacha níos sine de réir túslitreach agus sloinne.",
+"Most of any club": "An líon is mó d'aon chlub",
+"Seasons": "Séasúir",
+"With a player on the panel": "Le himreoir ar an bpainéal",
+"Scored for Limerick": "Scóráilte do Luimneach",
+"All-Ireland medals": "Boinn Chraobh na hÉireann",
+"Won by its players": "Buaite ag a imreoirí",
+"On the county panel": "Ar phainéal an chontae",
+"With Limerick": "Le Luimneach",
+"Position": "Ionad",
+"Scoring for Limerick by competition": "Scóráil do Luimneach de réir comórtais",
+"Players and their years with Limerick come from their Wikipedia pages; only players with a page are listed. Scores come from the archive.": "Tagann na himreoirí agus a mblianta le Luimneach ó a leathanaigh Vicipéide; ní liostaítear ach imreoirí a bhfuil leathanach acu. Tagann na scóir ón gcartlann.",
+"Probably": "Is dócha",
+"Scorers in the run": "Scórálaithe san fheachtas",
+"Clubs from the players' Wikipedia pages. On the panel: players from the club with Limerick that season who have a page.": "Clubanna ó leathanaigh Vicipéide na n-imreoirí. Ar an bpainéal: imreoirí ón gclub a bhí le Luimneach an séasúr sin agus a bhfuil leathanach acu.",
+"Full-back": "Lánchúlaí",
+"Right corner-back": "Cúinne-chúlaí deas",
+"Left corner-back": "Cúinne-chúlaí clé",
+"Centre-back": "Leathchúlaí láir",
+"Right wing-back": "Leathchúlaí deas",
+"Left wing-back": "Leathchúlaí clé",
+"Midfield": "Lár na páirce",
+"Right wing-forward": "Leath-thosaí deas",
+"Left wing-forward": "Leath-thosaí clé",
+"Centre-forward": "Leath-thosaí láir",
+"Right corner-forward": "Cúinne-thosaí deas",
+"Left corner-forward": "Cúinne-thosaí clé",
+"Full-forward": "Lántosaí",
+"Full Forward": "Lántosaí",
+"Forward": "Tosaí",
+"Back": "Cúlaí",
+"Wing-back": "Leathchúlaí",
+"Corner-back": "Cúinne-chúlaí",
+"Wing-forward": "Leath-thosaí",
+"Corner-forward": "Cúinne-thosaí"
 },
 "patterns": [
 [
@@ -639,6 +691,38 @@
 [
 "^Top scorer: (.+), (\\d+) of (\\d+) points \\((\\d+)%\\)$",
 "Príomhscórálaí: $1, $2 as $3 pointe ($4%)"
+],
+[
+"^(\\d+) county players$",
+"$1 imreoir contae"
+],
+[
+"^(\\d+-\\d+) for Limerick$",
+"$1 do Luimneach"
+],
+[
+"^(\\d+) clubs$",
+"Clubanna: $1"
+],
+[
+"^(\\d+) players$",
+"Imreoirí: $1"
+],
+[
+"^(\\d+) Limerick county hurlers$",
+"$1 iománaí contae le Luimneach"
+],
+[
+"^Ranked (\\d+) of (\\d+) clubs$",
+"Uimhir $1 as $2 club"
+],
+[
+"^Every club in (\\d{4}) →$",
+"Gach club in $1 →"
+],
+[
+"^Players from (.+) with Limerick each season\\. Tap a year to see every club that season\\.$",
+"Imreoirí ó $1 le Luimneach gach séasúr. Tapáil bliain chun gach club an séasúr sin a fheiceáil."
 ]
 ],
 "blocks": {}
