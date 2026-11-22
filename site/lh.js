@@ -1,6 +1,6 @@
 /* Limerick hurling: shared helpers. Forked in spirit from manutd.wiki's mu.js; no live feed, everything is static JSON. */
 (function(){
-var LH=window.LH={}, NAV=[["/","Hub"],["/season/","Season"],["/results/","Results"],["/players/","Players"],["/opponents/","Opponents"],["/managers/","Managers"],["/grounds/","Grounds"],["/honours/","Honours"],["/shirts/","Shirts"],["/videos/","Videos"],["/records/","Records"]];
+var LH=window.LH={}, NAV=[["/","Hub"],["/season/","Season"],["/results/","Results"],["/players/","Players"],["/opponents/","Opponents"],["/managers/","Managers"],["/grounds/","Grounds"],["/honours/","Honours"],["/finals/","Finals"],["/shirts/","Shirts"],["/videos/","Videos"],["/records/","Records"]];
 LH.ROADS=[2018,2020,2021,2022,2023,2026];   /* title runs with a Road to the title page linked from honours, oldest first; the newest is the default */
 var C={NL:"National League",MSHC:"Munster",AISHC:"All-Ireland"};
 LH.comp=function(c){return C[c]||c};
@@ -48,7 +48,7 @@ LH.nav=function(active){var el=document.querySelector("nav.munav"); if(!el)retur
   el.innerHTML=NAV.map(function(n){return '<a href="'+n[0]+'"'+(n[1]===active?' aria-current="page"':'')+'>'+n[1]+'</a>'}).join("")+'<form class="musearch" role="search" action="/search/"><input type="search" name="q" placeholder="Search players, opponents, seasons…" aria-label="Search the site" autocomplete="off"><div class="hits" hidden></div></form>';
   searchBox(el.querySelector(".musearch"));
   var I={h:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>',s:'<path d="M4 6h16M4 12h16M4 18h10"/>',r:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',p:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/>',m:'<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>'};
-  var T=[["/","Hub",I.h,["Hub"]],["/season/","Season",I.s,["Season"]],["/results/","Results",I.r,["Results"]],["/players/","Players",I.p,["Players"]],["/more/","More",I.m,["More","Opponents","Managers","Honours","Records","Grounds","Shirts","Videos"]]];
+  var T=[["/","Hub",I.h,["Hub"]],["/season/","Season",I.s,["Season"]],["/results/","Results",I.r,["Results"]],["/players/","Players",I.p,["Players"]],["/more/","More",I.m,["More","Opponents","Managers","Honours","Finals","Records","Grounds","Shirts","Videos"]]];
   var t=document.createElement("nav"); t.className="mutabs"; t.setAttribute("aria-label","Sections");
   t.innerHTML=T.map(function(x){return '<a href="'+x[0]+'"'+(x[3].indexOf(active)>=0?' aria-current="page"':'')+'><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'+x[2]+'</svg>'+x[1]+'</a>'}).join(""); document.body.appendChild(t);
 };
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded",function(){var f=document.querySele
   var d=document.createElement("div"); d.className="sitefoot";
   d.innerHTML='<div class="fbrand"><a class="fname" href="/"><img src="/assets/crest-88.png" alt="" width="36" height="36"><span translate="no">Limerick Hurling</span></a><p>An independent fan site about Limerick\'s senior hurlers.</p><p class="fdata">Data: Wikipedia (CC BY-SA), YouTube, OpenStreetMap.</p></div>'+
     '<div class="fcols">'+col("Matchday",[["/","Hub"],["/results/","Fixtures and results"],["/season/","This season"],["webcal://limerickhurling.wiki/calendar.ics","Fixtures in your calendar"]])+
-    col("History",[["/honours/","Honours"],["/road/","Road to the title"],["/records/","Records"],["/players/","Players"],["/managers/","Managers"]])+
+    col("History",[["/honours/","Honours"],["/finals/","All-Ireland finals"],["/road/","Road to the title"],["/records/","Records"],["/players/","Players"],["/managers/","Managers"]])+
     col("Explore",[["/opponents/","Opponents"],["/clubs/","Clubs"],["/grounds/","Grounds"],["/shirts/","Shirts"],["/videos/","Videos"]])+
     col("Official",[["https://www.limerickgaa.ie/","limerickgaa.ie"],["https://munstergaa.ie/","munstergaa.ie"],["https://www.gaa.ie/","gaa.ie"],["/more/","More"]])+'</div>'+
     '<div class="fsis"><h2>Other sites</h2><ul>'+sis.map(function(x){return '<li><a href="'+x[0]+'" target="_blank" rel="noopener"><img src="/assets/sites/'+x[3]+'.webp" alt="" width="40" height="40" loading="lazy" decoding="async"><span><b translate="no">'+x[1]+'</b><small translate="no">'+x[2]+'</small></span></a></li>'}).join("")+'</ul></div>';

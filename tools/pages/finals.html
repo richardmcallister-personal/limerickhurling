@@ -1,0 +1,113 @@
+<!--title:All-Ireland finals-->
+<!--kick:History-->
+<!--sub:Every All-Ireland final-->
+<!--nav:Finals-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<section class="sheet"><h2>Every All-Ireland hurling final</h2><p class="note" style="margin:0 0 12px">Every county, every final and every replay since the first championship in 1887. The year is the championship's: early finals were often played a year or two late.</p><div class="tiles" id="tiles"></div></section>
+<section class="sheet"><h2 class="row"><span>On the map</span><span class="seg" id="mode" role="group" aria-label="Map view"><button type="button" data-m="year" aria-pressed="true">Year by year</button><button type="button" data-m="grounds" aria-pressed="false">Grounds</button><button type="button" data-m="counties" aria-pressed="false">Counties</button></span></h2>
+ <div class="fyear" id="ybar"><button type="button" class="btn ghost" id="prev" aria-label="Earlier final">‹</button><input type="range" id="yr" aria-label="Championship year" step="1"><button type="button" class="btn ghost" id="next" aria-label="Later final">›</button><button type="button" class="btn" id="play">Play</button></div>
+ <div id="map" class="gmap" role="img" aria-label="Map of All-Ireland finals"></div>
+ <div id="yc" class="fcard" aria-live="polite"></div>
+ <p class="note" id="mnote" style="margin:8px 0 0"></p></section>
+<section class="sheet"><h2>Roll of honour</h2><div class="tw"><table class="mu" id="roll"></table></div></section>
+<section class="sheet" id="all"><h2>All finals</h2><div class="pick"><select id="fc" aria-label="County"><option value="">All counties</option></select><select id="fd" aria-label="Decade"><option value="">All decades</option></select><select id="fg" aria-label="Ground"><option value="">All grounds</option></select></div><p class="note" id="count" style="margin:0 0 8px"></p><div id="list"></div>
+ <p class="note" style="margin:12px 0 0">Scores are goals-points with the points value in brackets. A goal has been worth 3 points since 1896. It was worth 5 from 1892 to 1895, and before 1892 a goal outweighed any number of points, so those years show no total.</p>
+ <p class="note" style="margin:6px 0 0">From Wikipedia's list of finals and its article on each final. Where the two give different scores or grounds, the final's own article is used and the row says so.</p></section>
+<script>
+LH.get("finals").then(function(D){
+ var G=D.games, Y={}, years=[];
+ G.forEach(function(g){(Y[g.y]=Y[g.y]||[]).push(g)}); years=Object.keys(Y).map(Number).sort(function(a,b){return a-b});
+ var DEC=G.filter(function(g){return g.res==="W"});
+ /* county markers sit in the middle of the county, not on a ground */
+ var CO={Kilkenny:[52.62,-7.22],Cork:[51.97,-8.73],Tipperary:[52.62,-7.92],Limerick:[52.5,-8.75],Dublin:[53.4,-6.3],Wexford:[52.46,-6.6],Clare:[52.86,-8.98],Galway:[53.22,-8.7],Offaly:[53.22,-7.62],Waterford:[52.2,-7.58],Kerry:[52.16,-9.6],Laois:[53.0,-7.33],Antrim:[54.86,-6.28],London:[51.51,-0.13]};
+ function val(s,y){var v=LH.gv(y); return v?s[0]*v+s[1]:null}
+ function sc(s,y){var v=val(s,y); return LH.gp(s)+(v==null?'':' <small>('+v+')</small>')}
+ function nf(n){return String(n)}
+ function label(g){return g.of===1?"":g.n===1?"First game":g.n===g.of?(g.of>2?"Second replay":"Replay"):"Replay"}
+ function how(g){return g.res==="D"?"Drawn":g.res==="V"?"Result set aside":""}
+
+ /* tiles */
+ var sites={}; G.forEach(function(g){sites[g.lat+","+g.lon]=1});
+ var big=G.filter(function(g){return g.att}).sort(function(a,b){return b.att-a.att})[0], win={}; DEC.forEach(function(g){win[g.a]=(win[g.a]||0)+1});
+ $("tiles").innerHTML=LH.stat("Championships",years.length,years[0]+" to "+years[years.length-1])+LH.stat("Games",G.length,(G.length-years.length)+" draws and replays")+LH.stat("Winning counties",Object.keys(win).length)+LH.stat("Places played",Object.keys(sites).length)+LH.stat("Biggest crowd",nf(big.att),big.y+": "+E(big.a)+" v "+E(big.b));
+
+ /* roll of honour */
+ var R={}; function rr(c){return R[c]||(R[c]={c:c,w:[],l:[]})}
+ DEC.forEach(function(g){rr(g.a).w.push(g.y); rr(g.b).l.push(g.y)});
+ var RL=Object.keys(R).map(function(k){return R[k]}).sort(function(a,b){return b.w.length-a.w.length||b.l.length-a.l.length||a.c.localeCompare(b.c)}), top=RL[0].w.length;
+ $("roll").innerHTML='<thead><tr><th>County</th><th class="n">Won</th><th class="fbarh"></th><th class="n">Lost</th><th class="n">Finals</th><th>First title</th><th>Last title</th></tr></thead><tbody>'+RL.map(function(r){
+  return '<tr'+(r.c==="Limerick"?' class="us"':'')+'><td><a href="#all" data-c="'+E(r.c)+'" class="fco">'+LH.crest(r.c,20)+E(r.c)+'</a></td><td class="n"><b>'+r.w.length+'</b></td><td class="fbarc">'+(r.w.length?'<span class="fbar" style="width:'+Math.round(r.w.length/top*100)+'%"></span>':'')+'</td><td class="n">'+r.l.length+'</td><td class="n">'+(r.w.length+r.l.length)+'</td><td>'+(r.w[0]||"")+'</td><td>'+(r.w.length?r.w[r.w.length-1]:"")+'</td></tr>'}).join("")+'</tbody>';
+
+ /* one game as a row with the detail behind it */
+ function facts(g){var f=[];
+  function add(k,v){if(v)f.push('<div><dt>'+k+'</dt><dd>'+v+'</dd></div>')}
+  add("Played",g.d?LH.fmtD(g.d,1):""); add("Ground",E(g.v)+(g.t&&g.t!==g.v?', '+E(g.t):''));
+  add("Crowd",g.att==null?"":g.att===0?"Behind closed doors":(g.atte?"about ":"")+nf(g.att)); add("Referee",E(g.ref));
+  if(g.cw||g.cl)add("Captains",E(g.cw||"not recorded")+(g.cl?' · '+E(g.cl):''));
+  add("Man of the match",E(g.motm));
+  var x='<dl class="ffacts">'+f.join("")+'</dl>';
+  if(g.note)x+='<p class="note">'+E(g.note)+'</p>';
+  if(g.alt)x+='<p class="note">Sources differ: Wikipedia\'s list of finals has '+LH.gp(g.alt[0])+' to '+LH.gp(g.alt[1])+'.</p>';
+  if(g.tn)x+='<p class="note">Placed on the map by town; the ground itself is not mapped.</p>';
+  x+='<p class="flinks">'+(g.m?'<a class="link" href="/match/?id='+g.m+'">Limerick match page →</a>':'')+(g.w?'<a class="link" href="https://en.wikipedia.org/wiki/'+encodeURIComponent(g.w.replace(/ /g,"_"))+'" target="_blank" rel="noopener">Wikipedia</a>':'')+'<a class="link" href="#map" data-y="'+g.y+'">Show on map</a></p>';
+  return x}
+ function side(n,s,y,w){return '<span class="ft'+(w?' w':'')+'">'+LH.crest(n,22)+'<span class="nm">'+E(n)+'</span><span class="sv">'+sc(s,y)+'</span></span>'}
+ function row(g){var lb=[label(g),how(g)].filter(Boolean).map(function(t){return '<span>'+t+'</span>'}).join(" · ");
+  return '<details class="frow'+(g.a==="Limerick"||g.b==="Limerick"?' us':'')+'" id="f'+g.y+'-'+g.n+'"><summary><span class="fy">'+(g.n===1?g.y:'')+'</span><span class="fm">'+side(g.a,g.sa,g.y,g.res==="W")+side(g.b,g.sb,g.y,false)+'</span><span class="fv">'+(lb?'<b>'+lb+'</b>':'')+'<span>'+E(g.v)+'</span></span></summary><div class="fd">'+facts(g)+'</div></details>'}
+
+ /* list with filters */
+ var fc=$("fc"),fd=$("fd"),fg=$("fg"), cs={}, ds={}, gs={};
+ G.forEach(function(g){cs[g.a]=cs[g.b]=1; ds[Math.floor(g.y/10)*10]=1; gs[g.v]=(gs[g.v]||0)+1});
+ fc.innerHTML+=Object.keys(cs).sort().map(function(c){return '<option>'+E(c)+'</option>'}).join("");
+ fd.innerHTML+=Object.keys(ds).reverse().map(function(d){return '<option value="'+d+'">'+d+'s</option>'}).join("");
+ fg.innerHTML+=Object.keys(gs).sort(function(a,b){return gs[b]-gs[a]||a.localeCompare(b)}).map(function(v){return '<option>'+E(v)+'</option>'}).join("");
+ function draw(){var c=fc.value,d=fd.value,v=fg.value;
+  var L=G.filter(function(g){return (!c||g.a===c||g.b===c)&&(!d||Math.floor(g.y/10)*10===+d)&&(!v||g.v===v)}).slice().sort(function(a,b){return b.y-a.y||a.n-b.n});
+  var w=c?L.filter(function(g){return g.res==="W"&&g.a===c}).length:0, l=c?L.filter(function(g){return g.res==="W"&&g.b===c}).length:0;
+  $("count").innerHTML='<span>'+L.length+(L.length===1?' game':' games')+'</span>'+(c?' · <span>'+w+' won</span> · <span>'+l+' lost</span>':'');
+  var h=L.map(row).join("");
+  if(!c&&!v&&(!d||+d===1880))D.gaps.forEach(function(x){h+='<div class="frow gap"><span class="fy">'+x.y+'</span><span class="fm"><span>Not played</span></span><span class="fv"><span>'+E(x.note)+'</span></span></div>'});
+  $("list").innerHTML=h||'<p class="empty">Nothing here.</p>'}
+ [fc,fd,fg].forEach(function(s){s.addEventListener("change",draw)}); if(LH.q("c")&&cs[LH.q("c")])fc.value=LH.q("c"); draw();
+
+ /* map */
+ var mode="year", yi=years.length-1, map, layer, timer=null, wide=null;
+ var sl=$("yr"); sl.min=0; sl.max=years.length-1; sl.value=yi;
+ var IRL=[[51.45,-10.4],[55.2,-5.6]], LON=[[51.3,-10.4],[55.2,0.2]];
+ function card(y){var L=Y[y]; return '<div class="fch"><b>'+y+'</b><span>'+(L.length>1?L.length+' games':'')+'</span></div>'+L.map(function(g){var lb=[label(g),how(g)].filter(Boolean).join(" · ");
+   return '<a class="fcg" href="#f'+g.y+'-'+g.n+'">'+side(g.a,g.sa,g.y,g.res==="W")+side(g.b,g.sb,g.y,false)+'<small>'+(lb?'<b>'+lb+'</b> · ':'')+E(g.v)+(g.d?' · '+LH.fmtD(g.d):'')+(g.att?' · '+nf(g.att):'')+'</small></a>'}).join("")}
+ function pin(n,sz){return L.divIcon({html:LH.crest(n,sz||30),className:"fcrest",iconSize:[sz||30,sz||30]})}
+ function showYear(){var y=years[yi], L2=Y[y], g=L2[L2.length-1]; layer.clearLayers(); sl.value=yi; sl.setAttribute("aria-valuetext",y);
+  var need=(g.a==="London"||g.b==="London")?"lon":"irl"; if(need!==wide){wide=need; map.fitBounds(need==="lon"?LON:IRL,{animate:true})}
+  var seen={}; L2.forEach(function(x){var k=x.lat+","+x.lon; if(seen[k])return; seen[k]=1;
+   [[x.a,"fl-w"],[x.b,"fl-l"]].forEach(function(t){if(CO[t[0]])L.polyline([CO[t[0]],[x.lat,x.lon]],{className:t[1]+(x===g?"":" old"),weight:3,interactive:false}).addTo(layer)});
+   L.circleMarker([x.lat,x.lon],{radius:9,className:"fl-g"+(x.tn?" tn":""),weight:3}).addTo(layer).bindTooltip(E(x.v),{direction:"top"})});
+  [g.b,g.a].forEach(function(n,i){if(CO[n])L.marker(CO[n],{icon:pin(n,i?38:28),zIndexOffset:i?500:0,keyboard:false}).addTo(layer).bindTooltip(E(n)+(i?": champions":""),{direction:"top"})});
+  $("yc").innerHTML=card(y)}
+ function showGrounds(){layer.clearLayers(); wide="irl"; map.fitBounds(IRL); var S={};
+  G.forEach(function(g){var k=g.lat+","+g.lon, s=S[k]||(S[k]={lat:g.lat,lon:g.lon,tn:g.tn,n:{},g:[]}); s.n[g.v]=1; s.g.push(g)});
+  Object.keys(S).forEach(function(k){var s=S[k], ys=s.g.map(function(g){return g.y}).filter(function(y,i,a){return a.indexOf(y)===i});
+   L.circleMarker([s.lat,s.lon],{radius:Math.max(7,Math.min(26,5+Math.sqrt(s.g.length)*2)),className:"fl-g"+(s.tn?" tn":""),weight:2}).addTo(layer)
+    .bindPopup('<b>'+Object.keys(s.n).map(E).join(" / ")+'</b><br>'+s.g.length+(s.g.length===1?' game':' games')+', '+ys[0]+(ys.length>1?' to '+ys[ys.length-1]:'')+(ys.length<=12?'<br>'+ys.join(", "):''))});
+  $("yc").innerHTML=''}
+ function showCounties(){layer.clearLayers(); wide="lon"; map.fitBounds(LON);
+  RL.forEach(function(r){if(!CO[r.c])return; var sz=Math.round(22+Math.sqrt(r.w.length)*6);
+   L.marker(CO[r.c],{icon:pin(r.c,sz),zIndexOffset:r.w.length*10}).addTo(layer).bindPopup('<b>'+E(r.c)+'</b><br>'+r.w.length+' won, '+r.l.length+' lost'+(r.w.length?'<br>'+(r.w.length<=14?r.w.join(", "):r.w[0]+' to '+r.w[r.w.length-1]):'')+'<br><a href="#all" data-c="'+E(r.c)+'" class="fco">Their finals →</a>')});
+  $("yc").innerHTML=''}
+ var NOTE={year:"The solid line runs from the champions' county to the ground, the dashed line from the runners-up. Crests sit in the middle of each county. Map © OpenStreetMap contributors.",grounds:"Sized by the number of finals. Jones's Road and Croke Park are the same ground. Hollow pins mark the town only. Map © OpenStreetMap contributors.",counties:"Crests sized by titles won. Tap one for the years. Map © OpenStreetMap contributors."};
+ function stop(){if(timer){clearInterval(timer); timer=null; $("play").textContent="Play"}}
+ function show(){$("ybar").hidden=mode!=="year"; $("mnote").textContent=NOTE[mode]; if(mode==="year")showYear(); else{stop(); mode==="grounds"?showGrounds():showCounties()}}
+ function go(i){yi=Math.max(0,Math.min(years.length-1,i)); showYear()}
+ (function boot(){if(!window.L)return setTimeout(boot,100);
+  map=L.map("map",{scrollWheelZoom:false,zoomSnap:.25}); map.fitBounds(IRL);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:17,attribution:"&copy; OpenStreetMap contributors"}).addTo(map); layer=L.layerGroup().addTo(map);
+  var qy=+LH.q("y"); if(Y[qy])yi=years.indexOf(qy); show()})();
+ $("mode").addEventListener("click",function(e){var b=e.target.closest("button"); if(!b||!map)return; mode=b.getAttribute("data-m"); [].forEach.call(this.children,function(x){x.setAttribute("aria-pressed",x===b?"true":"false")}); show()});
+ sl.addEventListener("input",function(){stop(); go(+sl.value)}); $("prev").addEventListener("click",function(){stop(); go(yi-1)}); $("next").addEventListener("click",function(){stop(); go(yi+1)});
+ $("play").addEventListener("click",function(){if(timer)return stop(); if(yi>=years.length-1)go(0); this.textContent="Pause"; timer=setInterval(function(){if(yi>=years.length-1)return stop(); go(yi+1)},900)});
+ document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[data-c],a[data-y],a.fcg"); if(!a)return;
+  if(a.hasAttribute("data-c")){fc.value=a.getAttribute("data-c"); fd.value=""; fg.value=""; draw()}
+  else if(a.hasAttribute("data-y")){if(!map)return; mode="year"; [].forEach.call($("mode").children,function(x){x.setAttribute("aria-pressed",x.getAttribute("data-m")==="year"?"true":"false")}); stop(); yi=years.indexOf(+a.getAttribute("data-y")); show()}
+  else{fc.value=fd.value=fg.value=""; draw(); var t=document.getElementById(a.getAttribute("href").slice(1)); if(t)t.open=true}});
+}).catch(function(){LH.fail($("list"))});
+</script>

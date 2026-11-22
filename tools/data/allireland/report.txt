@@ -1,0 +1,18 @@
+148 games in 139 championships, 1887-2026; missing years: [1888]
+Titles: Kilkenny 36, Cork 30, Tipperary 29, Limerick 13, Dublin 6, Wexford 6, Clare 5, Galway 5, Offaly 4, Waterford 2, Kerry 1, London 1, Laois 1
+Runners-up: Kilkenny 29, Cork 22, Galway 21, Dublin 15, Tipperary 13, Wexford 11, Limerick 9, Waterford 6, Clare 3, London 3, Offaly 3, Laois 2, Antrim 2
+No date: []
+No crowd: [(1901, 1), (1903, 1), (1905, 1), (1905, 2), (1908, 1), (1908, 2), (1911, 1), (1914, 1), (2022, 1), (2025, 1), (2026, 1)]
+No referee: [(1904, 1), (1905, 1), (1908, 1), (1908, 2), (1911, 1), (1914, 1)]
+1889 game 1: list has Dublin [5, 4] Clare [1, 6]; the final's article has [5, 1] and [1, 6] (article used)
+1889: list says 'Pond Field, Inchicore'; the final's article says "St. Patrick's GAA Field", 'Dublin' (article used)
+1892 game 1: list has Cork [2, 4] Dublin [1, 1]; the final's article has [2, 3] and [1, 5] (article used)
+1895 game 1: list has Tipperary [6, 8] Kilkenny [1, 0]; the final's article has [6, 8] and [1, 10] (article used)
+1897: list says "Jones' Road"; the final's article says 'Tipperary GAA Field', 'Tipperary' (article used)
+1900 game 1: list has Tipperary [3, 13] London [0, 6]; the final's article has [2, 5] and [0, 6] (article used)
+1903: list says 'Fraher Field, Dungarvan'; the final's article says "Jones' Road", 'Dublin' (article used)
+1905: list says 'Tipperary'; the final's article says 'Fraher Field', 'Dungarvan' (article used)
+1906: list says "St. James' Park, Kilkenny"; the final's article says 'Nowlan Park', 'Kilkenny' (article used)
+1922 game 1: list has Kilkenny [5, 3] Tipperary [2, 6]; the final's article has [4, 2] and [2, 6] (article used)
+1931: the list has 1 game(s), the final's article has 3; earlier games taken from the article
+1934 game 2: list has Limerick [3, 4] Dublin [2, 6]; the final's article has [5, 2] and [2, 6] (article used)

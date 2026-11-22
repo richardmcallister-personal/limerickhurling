@@ -470,7 +470,36 @@
 "Limerick's lead through the game": "Luimneach chun tosaigh tríd an gcluiche",
 "Timeline →": "Amlíne →",
 "; substitutions and cards from its team sheets. Scores and margins appear only where the article gives them, so the chart joins those moments with straight lines and not every score is listed.": "; ionadaithe agus cártaí óna bhileoga foirne. Ní thaispeántar scóir ná difríochtaí ach nuair a thugann an t-alt iad, mar sin ceanglaíonn an chairt na chuimhneacháin sin le línte díreacha agus níl gach scór liostaithe.",
-"Key moments from Wikipedia's article": "Príomhchuimhneacháin ó alt Vicipéide"
+"Key moments from Wikipedia's article": "Príomhchuimhneacháin ó alt Vicipéide",
+"Every All-Ireland final": "Gach cluiche ceannais na hÉireann",
+"Every All-Ireland hurling final": "Gach cluiche ceannais iomána na hÉireann",
+"On the map": "Ar an léarscáil",
+"Year by year": "Bliain ar bhliain",
+"Counties": "Contaetha",
+"Play": "Seinn",
+"Pause": "Sos",
+"Roll of honour": "Rolla na gcuradh",
+"All finals": "Gach cluiche ceannais",
+"All counties": "Gach contae",
+"All grounds": "Gach páirc",
+"First title": "An chéad chraobh",
+"Last title": "An chraobh is déanaí",
+"Championships": "Craobhacha",
+"Winning counties": "Contaetha a bhuaigh",
+"Places played": "Áiteanna imeartha",
+"First game": "An chéad chluiche",
+"Replay": "Athimirt",
+"Second replay": "An dara hathimirt",
+"Result set aside": "Toradh curtha ar ceal",
+"Not played": "Níor imríodh",
+"Captains": "Captaein",
+"Man of the match": "Laoch na himeartha",
+"Behind closed doors": "Gan lucht féachana",
+"Show on map": "Taispeáin ar an léarscáil",
+"Limerick match page →": "Leathanach chluiche Luimnigh →",
+"Every county's finals →": "Cluichí ceannais gach contae →",
+"Their finals →": "A gcluichí ceannais →",
+"Every county, every final since 1887, on a map": "Gach contae, gach cluiche ceannais ó 1887, ar léarscáil"
 },
 "patterns": [
 [
@@ -796,6 +825,22 @@
 [
 "^(.+) ahead$",
 "{T1} chun tosaigh"
+],
+[
+"^(\\d+) won$",
+"$1 buaite"
+],
+[
+"^(\\d+) lost$",
+"$1 caillte"
+],
+[
+"^(\\d+) draws and replays$",
+"$1 cluiche cothrom agus athimirt"
+],
+[
+"^(\\d{4}) to (\\d{4})$",
+"$1 go $2"
 ]
 ],
 "blocks": {}

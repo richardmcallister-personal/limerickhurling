@@ -58,3 +58,11 @@ Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/re
 - No timed score data exists in the archive or any open feed; Wikipedia's articles on individual finals have match summaries with minutes and running scores, and team sheets with sub and card minutes. 39 of Limerick's 81 finals have an article; six are detailed enough: All-Ireland finals 2007, 2018, 2021, 2022, 2023, 2026.
 - Match page section: lead chart (Limerick's stated margin through the game), Everything / Scores only, commentary list with minute, goal/point/sub/card, and the running score or margin where the article states it. Half-time from the match box, full time from the archive.
 - 2026 final has no written summary: subs, six yellows and Galway's 59th-minute red card only, so no chart.
+
+## 22 Nov 2026: All-Ireland finals archive
+- New page /finals/: every All-Ireland senior final for every county, 148 games in 139 championships (1888 not played). Map with three views (year by year with a slider and Play, grounds, counties), roll of honour, list with county / decade / ground filters and a detail panel per game (date, ground, crowd, referee, captains, man of the match, notes). Limerick's 23 games link to their match pages. In the nav, More, the footer and from Honours.
+- Titles per county match the roll of honour (Kilkenny 36, Cork 30, Tipperary 29, Limerick 13).
+- Six scores differ between Wikipedia's list and the final's own article (1889, 1892, 1895, 1900, 1922, 1934 replay). The article is used and the row shows the other score. 1895 (Kilkenny 1-10 or 1-0) has no third source in the repo: worth checking against a GAA record.
+- No crowd recorded for 1901, 1903, 1905, 1908, 1911, 1914, 2022, 2025, 2026; no referee for 1904, 1905 first game, 1908, 1911, 1914.
+- Old grounds (Clonturk Park, Phoenix Park, Inchicore, Birr, Tipperary, Carrick-on-Suir, Athy) are placed by town, hollow pins.
+- Irish strings for the page added to ga.json for Richard to review.
