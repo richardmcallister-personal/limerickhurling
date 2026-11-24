@@ -66,3 +66,7 @@ Archive: 786 games 1887-2026 from Wikipedia. Details and checks in tools/data/re
 - No crowd recorded for 1901, 1903, 1905, 1908, 1911, 1914, 2022, 2025, 2026; no referee for 1904, 1905 first game, 1908, 1911, 1914.
 - Old grounds (Clonturk Park, Phoenix Park, Inchicore, Birr, Tipperary, Carrick-on-Suir, Athy) are placed by town, hollow pins.
 - Irish strings for the page added to ga.json for Richard to review.
+
+## 24 Nov 2026: league fixtures confirmed
+- 2027 Allianz Hurling League, Division 1A, from the GAA announcement as reported by the Limerick Leader (24 Nov): Kilkenny (A) 24 Jan 13:30, Dublin (H) 31 Jan 15:00, Cork (A) 20 Feb 19:30, Galway (A) 28 Feb 15:45, Tipperary (H) 6 Mar 19:00, Clare (H) 20 Mar 19:00. Finals weekend 3/4 April.
+- fixtures.json: `t` throw-in time, `ok: 1` confirmed (no Provisional label, calendar status CONFIRMED with timed events). Round numbers kept only where reported (1, 4, 5). Munster dates still to come.

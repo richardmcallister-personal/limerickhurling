@@ -1,34 +1,72 @@
 {
-"note": "Hand-kept. All provisional until the GAA publishes the master fixtures. Sources: Tipperary Live and Echo Live (league, Oct-Nov 2026), Irish Examiner (Munster order, Aug 2026).",
-"checked": "2026-11-02",
+"note": "Hand-kept. League games (ok: 1) confirmed by the GAA's fixture announcement as reported by the Limerick Leader, 24 Nov 2026 (dates and throw-in times; round numbers only where earlier reports gave them; Galway venue from Tipperary Live/Echo Live). Munster Championship still provisional (Irish Examiner, Aug 2026). Division 1A and 1B finals: weekend of 3/4 April 2027.",
+"checked": "2026-11-24",
 "games": [
 {
 "comp": "National League",
 "rnd": "Round 1",
 "d": "2027-01-24",
-"approx": "Weekend of 23/24 Jan",
+"t": "13:30",
 "opp": "Kilkenny",
 "h": "A",
 "v": "UPMC Nowlan Park, Kilkenny",
-"g": "nowlan-park"
+"g": "nowlan-park",
+"ok": 1
+},
+{
+"comp": "National League",
+"rnd": "Division 1A",
+"d": "2027-01-31",
+"t": "15:00",
+"opp": "Dublin",
+"h": "H",
+"v": "TUS Gaelic Grounds, Limerick",
+"g": "gaelic-grounds",
+"ok": 1
 },
 {
 "comp": "National League",
 "rnd": "Round 4",
 "d": "2027-02-20",
+"t": "19:30",
 "opp": "Cork",
 "h": "A",
 "v": "SuperValu Páirc Uí Chaoimh, Cork",
-"g": "pairc-ui-chaoimh"
+"g": "pairc-ui-chaoimh",
+"ok": 1
 },
 {
 "comp": "National League",
 "rnd": "Round 5",
 "d": "2027-02-28",
+"t": "15:45",
 "opp": "Galway",
 "h": "A",
 "v": "Pearse Stadium, Salthill",
-"g": "pearse-stadium"
+"g": "pearse-stadium",
+"ok": 1
+},
+{
+"comp": "National League",
+"rnd": "Division 1A",
+"d": "2027-03-06",
+"t": "19:00",
+"opp": "Tipperary",
+"h": "H",
+"v": "TUS Gaelic Grounds, Limerick",
+"g": "gaelic-grounds",
+"ok": 1
+},
+{
+"comp": "National League",
+"rnd": "Division 1A",
+"d": "2027-03-20",
+"t": "19:00",
+"opp": "Clare",
+"h": "H",
+"v": "TUS Gaelic Grounds, Limerick",
+"g": "gaelic-grounds",
+"ok": 1
 },
 {
 "comp": "Munster Championship",
@@ -67,5 +105,5 @@
 "g": "gaelic-grounds"
 }
 ],
-"open": "Limerick's other league games (Clare, Dublin, Tipperary) have no reported dates yet."
+"open": "League finals on the weekend of 3/4 April. Munster Championship dates to come."
 }

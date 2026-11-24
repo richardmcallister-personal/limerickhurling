@@ -287,10 +287,15 @@ json.dump(fx, open(OUT + 'fixtures.json', 'w'), ensure_ascii=False, separators=(
 ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//limerickhurling//EN', 'CALSCALE:GREGORIAN', 'X-WR-CALNAME:Limerick hurling']
 for f in fx['games']:
     if not f.get('d') or f.get('approx'): continue   # no calendar entry until there is a real date
-    d = f['d'].replace('-', ''); e = (DT.date.fromisoformat(f['d']) + DT.timedelta(days=1)).strftime('%Y%m%d')
     home = f['h'] == 'H'
-    ics += ['BEGIN:VEVENT', f"UID:{f['d']}-{slug(f['opp'])}@limerickhurling", f"DTSTAMP:{DT.datetime.now(DT.UTC).strftime('%Y%m%dT%H%M%SZ')}", f"DTSTART;VALUE=DATE:{d}", f"DTEND;VALUE=DATE:{e}",
-            f"SUMMARY:{'Limerick v ' + f['opp'] if home else f['opp'] + ' v Limerick'} ({f['comp']}, provisional)", f"LOCATION:{f.get('v','')}", 'STATUS:TENTATIVE', 'END:VEVENT']
+    if f.get('t'):                                   # throw-in known: a 2-hour event, Irish time converted to UTC
+        from zoneinfo import ZoneInfo
+        st = DT.datetime.fromisoformat(f['d'] + 'T' + f['t']).replace(tzinfo=ZoneInfo('Europe/Dublin')).astimezone(DT.UTC)
+        when = [f"DTSTART:{st.strftime('%Y%m%dT%H%M%SZ')}", f"DTEND:{(st + DT.timedelta(hours=2)).strftime('%Y%m%dT%H%M%SZ')}"]
+    else:
+        when = [f"DTSTART;VALUE=DATE:{f['d'].replace('-', '')}", f"DTEND;VALUE=DATE:{(DT.date.fromisoformat(f['d']) + DT.timedelta(days=1)).strftime('%Y%m%d')}"]
+    ics += ['BEGIN:VEVENT', f"UID:{f['d']}-{slug(f['opp'])}@limerickhurling", f"DTSTAMP:{DT.datetime.now(DT.UTC).strftime('%Y%m%dT%H%M%SZ')}"] + when + [
+            f"SUMMARY:{'Limerick v ' + f['opp'] if home else f['opp'] + ' v Limerick'} ({f['comp']}{'' if f.get('ok') else ', provisional'})", f"LOCATION:{f.get('v','')}", 'STATUS:' + ('CONFIRMED' if f.get('ok') else 'TENTATIVE'), 'END:VEVENT']
 ics.append('END:VCALENDAR')
 open('site/calendar.ics', 'w').write('\r\n'.join(ics) + '\r\n')
 # Search index

@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 <script>(function(){var l=null;try{l=new URLSearchParams(location.search).get("lang");if(l==="ga"||l==="en")localStorage.setItem("mu:lang",l);else l=localStorage.getItem("mu:lang")}catch(e){}window.MU_LANG=l==="ga"?"ga":"en";if(l==="ga"){var d=document.documentElement;d.lang="ga";d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},3000)}})()</script><style>html.i18n-wait body{visibility:hidden}</style><script src="/i18n.js?v=1"></script>
-<link rel="stylesheet" href="/mu.css?v=b8e4ed46"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
+<link rel="stylesheet" href="/mu.css?v=8ff7255a"></head><body><a class="skip" href="#main-content">Skip to main content</a><div class="wrap">
 <header class="mu"><a class="brand" href="/"><img src="/assets/crest-88.png?v=2" alt="Limerick crest" width="52" height="52" decoding="async"><h1><small>Luimneach</small>Limerick Hurling</h1></a><div class="hr"><div class="from" id="from">All-Ireland champions<span>2026</span></div></div></header>
 <nav class="munav" aria-label="Sections"></nav>
 <main id="main-content" tabindex="-1">
@@ -34,7 +34,7 @@
 </main>
 <footer class="mu">Results and scorers from <a href="https://en.wikipedia.org/wiki/Limerick_county_hurling_team">Wikipedia</a> (CC BY-SA 4.0), where match records are incomplete in early seasons. Crests and photos belong to their owners, with sources linked beside each photo. An independent fan site, not connected to Limerick GAA or the GAA.</footer>
 </div>
-<script>window.LH_V="b8e4ed46"</script><script src="/lh.js?v=b8e4ed46"></script>
+<script>window.LH_V="8ff7255a"</script><script src="/lh.js?v=8ff7255a"></script>
 <script>
 (function(){
 LH.nav('Hub');
@@ -47,11 +47,11 @@ Promise.all([LH.get("matches"),LH.get("fixtures"),LH.get("honours"),LH.get("play
  var dated=F.games.filter(function(g){return g.d&&g.d>=today}).sort(function(a,b){return a.d<b.d?-1:1}), g=dated[0]||F.games[0];
  var days=g.d?Math.round((new Date(g.d+"T12:00:00Z")-new Date(today+"T12:00:00Z"))/864e5):null;
  var past=M.filter(function(m){return m.opp===g.opp&&m.r}), t=LH.tot(past), last3=past.slice(-3).reverse();
- var when=g.approx?E(g.approx):LH.fmtD(g.d,true);
- $("next").innerHTML='<h2 class="row">Next match <a href="/opponent/?o='+LH.slug(g.opp)+'">Head to head →</a></h2><div class="kick">'+E(g.comp)+' · '+E(g.rnd)+' <span class="prov">Provisional</span></div>'+(g.h==="H"?LH.board("Limerick",g.opp):LH.board(g.opp,"Limerick"))+'<p class="sbmeta">'+when+(days!=null&&days>0?' · <span>'+days+' days</span>':'')+'</p><p class="sbmeta">'+(g.g?'<a class="link" href="/ground/?g='+g.g+'">'+E(g.v)+'</a>':E(g.v))+'</p><h3>Recorded meetings: '+t.p+' games, '+t.w+' won, '+t.d+' drawn, '+t.l+' lost</h3>'+LH.list(last3,{nov:1});
+ var when=g.approx?E(g.approx):LH.fmtD(g.d,true)+(g.t?' · '+E(g.t):'');
+ $("next").innerHTML='<h2 class="row">Next match <a href="/opponent/?o='+LH.slug(g.opp)+'">Head to head →</a></h2><div class="kick">'+E(g.comp)+' · '+E(g.rnd)+(g.ok?'':' <span class="prov">Provisional</span>')+'</div>'+(g.h==="H"?LH.board("Limerick",g.opp):LH.board(g.opp,"Limerick"))+'<p class="sbmeta">'+when+(days!=null&&days>0?' · <span>'+days+' days</span>':'')+'</p><p class="sbmeta">'+(g.g?'<a class="link" href="/ground/?g='+g.g+'">'+E(g.v)+'</a>':E(g.v))+'</p><h3>Recorded meetings: '+t.p+' games, '+t.w+' won, '+t.d+' drawn, '+t.l+' lost</h3>'+LH.list(last3,{nov:1});
  var L=M.filter(function(m){return m.r&&m.d}).sort(function(a,b){return a.d<b.d?-1:1}).pop(), home=L.h==="H";
  $("last").innerHTML='<h2 class="row">Latest result <a href="/match/?id='+L.id+'">Match page →</a></h2><div class="kick">'+E(LH.comp(L.cn))+(L.rnd?' · '+E(L.rnd):'')+' · '+LH.fmtD(L.d)+'</div>'+(home||L.h!=="A"?LH.board("Limerick",L.opp,L):LH.board(L.opp,"Limerick",L))+'<p class="sbmeta">'+(L.g?'<a class="link" href="/ground/?g='+L.g+'">'+E(L.v)+'</a>':E(L.v||""))+'</p><h3>Limerick scorers</h3><div class="sclist">'+LH.scs(L,8)+'</div>';
- $("fx").innerHTML='<ul class="mlist">'+F.games.map(function(x){return '<li><span class="d">'+(x.approx?E(x.approx):LH.fmtD(x.d))+'</span><span class="o">'+LH.crest(x.opp)+(x.h==="H"?"Limerick v "+E(x.opp):E(x.opp)+" v Limerick")+'<small>'+E(x.comp)+' · '+E(x.rnd)+' · '+(x.g?'<a href="/ground/?g='+x.g+'" style="color:inherit">'+E(x.v)+'</a>':E(x.v))+'</small></span><span class="prov">Provisional</span></li>'}).join("")+'</ul>'; $("fxn").textContent=F.open+" Last checked "+LH.fmtD(F.checked)+".";
+ $("fx").innerHTML='<ul class="mlist">'+F.games.map(function(x){return '<li><span class="d">'+(x.approx?E(x.approx):LH.fmtD(x.d)+(x.t?'<small>'+E(x.t)+'</small>':''))+'</span><span class="o">'+LH.crest(x.opp)+(x.h==="H"?"Limerick v "+E(x.opp):E(x.opp)+" v Limerick")+'<small>'+E(x.comp)+' · '+E(x.rnd)+' · '+(x.g?'<a href="/ground/?g='+x.g+'" style="color:inherit">'+E(x.v)+'</a>':E(x.v))+'</small></span>'+(x.ok?'<span></span>':'<span class="prov">Provisional</span>')+'</li>'}).join("")+'</ul>'; $("fxn").textContent=F.open+" Last checked "+LH.fmtD(F.checked)+".";
  $("hon").innerHTML=LH.stat("All-Ireland",H.aishc.w.n,"Last: "+H.aishc.w.y.slice(-1)[0])+LH.stat("League",H.nl.w.n,"Last: "+H.nl.w.y.slice(-1)[0])+LH.stat("Munster",H.mshc.w.n,"Last: "+H.mshc.w.y.slice(-1)[0]);
  var md=today.slice(5), od=M.filter(function(m){return m.d&&m.d.slice(5)===md&&m.r}).sort(function(a,b){return a.d<b.d?1:-1});
  $("otdb").innerHTML=od.length?LH.list(od.slice(0,3),{nov:1}):'<p class="note" style="margin:0">No recorded Limerick game on this date.</p>';

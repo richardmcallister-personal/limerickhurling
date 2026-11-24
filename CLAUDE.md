@@ -20,7 +20,7 @@ tools/fetch_finals.py    downloads Wikipedia's articles on the All-Ireland and M
 tools/data/timelines.json  hand-kept key moments per final, written only from that article's match summary (no invented scores or minutes); tools/build_timelines.py adds subs and cards from its team sheets, half-time from its match box and full time -> site/history/timelines.json
 tools/fetch_allireland.py  downloads Wikipedia's list of All-Ireland finals and its article on each final (every county) to tools/data/allireland/
 tools/build_finals.py    joins them (plus the season articles in tools/data/wiki) -> site/history/finals.json; checks in tools/data/allireland/report.txt
-tools/data/fixtures.json   hand-kept fixtures; every entry provisional until the GAA confirms it
+tools/data/fixtures.json   hand-kept fixtures; provisional until the GAA confirms them (`ok: 1` = confirmed, `t` = throw-in, Irish time; calendar.ics gets timed events)
 tools/data/reconcile.txt   checks against the honours list and every game whose scorers don't add up
 ```
 Refresh: `python3 tools/fetch_wiki.py && python3 tools/fetch_players.py && python3 tools/build_archive.py && python3 tools/build_clubs.py && python3 tools/build_timelines.py && python3 tools/make_pages.py`, read `reconcile.txt`, commit, push.
